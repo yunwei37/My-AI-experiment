@@ -1,6 +1,6 @@
 site_name: AGI Chaos
-repo_url: https://github.com/yunwei37/mkdocs-template
-site_url: https://mydomain.org/mysite
+repo_url: https://github.com/yunwei37/My-AI-experiment
+site_url: https://yunwei37.github.io/My-AI-experiment/
 theme:
   name: material
   features:
