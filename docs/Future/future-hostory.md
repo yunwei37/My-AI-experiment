@@ -1,4 +1,4 @@
-# **What Will We Remember About the 2020s in CS? A Look Back in History and a Look Ahead from the Future**
+# What Will We Remember from the 2020s? Looking Back in history and Thinking Forward
 
 Lately, I've been thinking a lot about AGI and where it might take us, but honestly, that feels like a puzzle we won't solve anytime soon. Instead, let's take a different approach: Imagine it's 2074, and we're looking back on the 2020s. What would we say were the major milestones in AI and computing? What applications and research grabbed our attention? What challenges were we struggling with? And most importantly, how are the things we’re doing today laying the groundwork for future breakthroughs?
 
