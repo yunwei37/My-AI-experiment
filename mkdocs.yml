@@ -3,6 +3,7 @@ repo_url: https://github.com/yunwei37/My-AI-experiment
 site_url: https://yunwei37.github.io/My-AI-experiment/
 theme:
   name: material
+  custom_dir: overrides
   features:
     - search.suggest
     - search.highlight
@@ -42,8 +43,23 @@ plugins:
   - git-authors
   - git-revision-date-localized:
       enable_creation_date: true
-
+  - rss:
+      match_path: ".*"
+      date_from_meta:
+        as_creation: date.created
+        as_update: date.updated
 extra:
   analytics:
     provider: google
     property: G-XXXXXXXXXX
+  social:
+  - icon: /fontawesome/regular/envelope
+    name: send me an email
+    link: mailto:yunwei37@gmail.com
+hooks:
+  - hooks/socialmedia.py
+markdown_extensions:
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
