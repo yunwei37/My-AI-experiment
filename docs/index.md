@@ -19,26 +19,26 @@ Curated insights on AI, from hands-on experiments to thought-provoking discussio
 - [AGI is around the corner and bringing chaos, opportunity and uncertainty](index.md)
 - Writing
   - [Tired of AI Tech Writing? Here’s How to Make Your Posts More Human](Writing/Feel-human.md)
-- Future
-  - [What Will We Remember from the 2020s? Looking Back in history and Thinking Forward](Future/future-hostory.md)
-  - [如何重新定义与AI的互动？Canvas能带来什么改变？](Future/openai-canvas.zh.md)
-  - [ai os](Future/ai-os.md)
-  - [Rethinking AI Interaction: OpenAI's Canvas and the Future of User Engagement](Future/openai-canvas.md)
-  - [Are AI similar to the computers in 1950s? Look back in histry](Future/history.md)
-  - [AI 插件：未来的浏览器、前端与交互](Future/plugin.md)
-  - ['自然语言编程: 从 AutoGPT 往前迈的一小步'](Future/natual-language-program.md)
-  - [[guidance](https://github.com/microsoft/guidance): 自然语言的编程语言](Future/guidance.md)
 - Prompt-engineering
-  - [OpenAI 新发布GPT 最佳实践：落地大模型应用的策略和战术](Prompt-engineering/gpt-best-practice.md)
   - [Prompt Engineering is Dead, Long Live AI Engineering](Prompt-engineering/prompt-dead.md)
+  - [OpenAI 新发布GPT 最佳实践：落地大模型应用的策略和战术](Prompt-engineering/gpt-best-practice.md)
   - [提示工程已死，AI工程万岁](Prompt-engineering/prompt-dead.zh.md)
-- Notes
-  - [Local inference llama3 with llama.cpp and CPU](Notes/inference-locally.md)
+- Future
+  - [ai os](Future/ai-os.md)
+  - [Are AI similar to the computers in 1950s? Look back in histry](Future/history.md)
+  - [What Will We Remember from the 2020s? Looking Back in history and Thinking Forward](Future/future-hostory.md)
+  - [[guidance](https://github.com/microsoft/guidance): 自然语言的编程语言](Future/guidance.md)
+  - [如何重新定义与AI的互动？Canvas能带来什么改变？](Future/openai-canvas.zh.md)
+  - [Rethinking AI Interaction: OpenAI's Canvas and the Future of User Engagement](Future/openai-canvas.md)
+  - ['自然语言编程: 从 AutoGPT 往前迈的一小步'](Future/natual-language-program.md)
+  - [AI 插件：未来的浏览器、前端与交互](Future/plugin.md)
 - Agents
-  - [Are Multi-Agent Systems the Future of AI? A Look at OpenAI’s Swarm Experiment](Agents/swarm.md)
   - [GitHub Copilot 背后的 AI 编码技术：如何让 GPT 更好地理解你的代码](Agents/copilot.md)
   - [Simplifying Kernel Programming: The LLM-Powered eBPF Tool](Agents/kgent.md)
   - [多智能体系统是人工智能的未来吗？探讨OpenAI的Swarm实验](Agents/swarm.zh.md)
+  - [Are Multi-Agent Systems the Future of AI? A Look at OpenAI’s Swarm Experiment](Agents/swarm.md)
+- Notes
+  - [Local inference llama3 with llama.cpp and CPU](Notes/inference-locally.md)
 
 ## Connect with me
 
