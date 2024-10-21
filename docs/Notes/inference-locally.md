@@ -1,8 +1,4 @@
----
-title: Local inference llama3 with llama.cpp and CPU
-date: 2024-07-17T18:41:06-08:00
-tags: notes
----
+# Local inference llama3 with llama.cpp and CPU
 
 My 4090 has been sold..so I only have this in the old computer:
 

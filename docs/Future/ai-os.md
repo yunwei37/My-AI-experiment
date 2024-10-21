@@ -1,9 +1,3 @@
----
-title: ai os
-date: 2022-08-09T08:41:06-08:00
-tags: others
----
-
 # ai os
 
 ## assume

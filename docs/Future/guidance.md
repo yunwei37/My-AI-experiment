@@ -1,9 +1,3 @@
----
-title: 'guidance: 自然语言的编程语言'
-date: 2023-06-13T18:41:06-08:00
-tags: notes gpt ai
----
-
 # [guidance](https://github.com/microsoft/guidance): 自然语言的编程语言
 
 TLDR:
