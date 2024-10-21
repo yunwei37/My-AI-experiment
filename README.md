@@ -17,10 +17,10 @@ This repository is designed for anyone curious about AI, prompt engineering, fut
   - [ai os](docs/Future/ai-os.md)
   - [Are AI similar to the computers in 1950s? Look back in histry](docs/Future/history.md)
   - [What Will We Remember from the 2020s? Looking Back in history and Thinking Forward](docs/Future/future-hostory.md)
-  - [[guidance](https://github.com/microsoft/guidance): 自然语言的编程语言](docs/Future/guidance.md)
+  - [guidance: 自然语言的编程语言](docs/Future/guidance.md)
   - [如何重新定义与AI的互动？Canvas能带来什么改变？](docs/Future/openai-canvas.zh.md)
   - [Rethinking AI Interaction: OpenAI's Canvas and the Future of User Engagement](docs/Future/openai-canvas.md)
-  - ['自然语言编程: 从 AutoGPT 往前迈的一小步'](docs/Future/natual-language-program.md)
+  - [自然语言编程: 从 AutoGPT 往前迈的一小步](docs/Future/natual-language-program.md)
   - [AI 插件：未来的浏览器、前端与交互](docs/Future/plugin.md)
 - Agents
   - [GitHub Copilot 背后的 AI 编码技术：如何让 GPT 更好地理解你的代码](docs/Agents/copilot.md)
