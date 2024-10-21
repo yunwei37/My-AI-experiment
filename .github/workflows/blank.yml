@@ -28,4 +28,13 @@ jobs:
       - run: pip install mkdocs-material "mkdocs-material[imaging]" mkdocs-git-authors-plugin mkdocs-git-revision-date-localized-plugin
       - run: pip install mkdocs-rss-plugin
       - run: sudo apt-get install libcairo2-dev
+      # New steps start here
+      - name: Generate and update TOC
+        run: |
+          .github/replace.sh
+      - name: Commit changes
+        run: |
+          git add README.md docs/index.md
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Update table of contents" && git push)
+      # New steps end here
       - run: mkdocs gh-deploy --force
