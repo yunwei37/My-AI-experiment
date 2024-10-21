@@ -1,6 +1,6 @@
 # My AI Experiment
 
-This is a collection of personal insights, resources, and experiments centered around the future of AI, its impact on society, and the evolving landscape of technology. 
+This is a collection of personal insights, resources, and experiments centered around the future of AI, its impact on society, and the evolving landscape of technology.
 
 This repository is designed for anyone curious about AI, prompt engineering, future trends, and multi-agent systems.
 

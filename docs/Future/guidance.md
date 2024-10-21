@@ -1,4 +1,4 @@
-# [guidance](https://github.com/microsoft/guidance): 自然语言的编程语言
+# guidance: 自然语言的编程语言
 
 TLDR:
 
