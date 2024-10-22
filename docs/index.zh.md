@@ -1,48 +1,46 @@
-Translate the following content from English to Chinese:
+# 首页
 
-# Home
+**欢迎来到我的AI实验**
 
-**Welcome to My AI Experiment**
+探索一个AI与未来相遇的世界。我是**郑昱升**，一名研究人员和开发者，对AI如何改变我们的生活充满兴趣。这个空间专注于分享关于AI系统如何演变的见解、实验和想法，以及这对于未来意味着什么。
 
-Explore a world where AI meets the future. I’m **Yusheng Zheng**, a researcher and developer fascinated by the ways AI is transforming our lives. This space is dedicated to sharing insights, experiments, and ideas on how AI systems are evolving—and what that means for the future.
+## **在这里你会发现什么**
 
-## **What You’ll Find Here**
+关于AI的精心策划的见解，从动手实验到引人深思的讨论：
 
-Curated insights on AI, from hands-on experiments to thought-provoking discussions:
+- **AI实验与博客**：深入了解我最新的AI项目、实验和思考。
+- **为AI而写**：厌倦了枯燥的技术写作？学习如何将AI内容人性化，让你的文章更具吸引力。
+- **AI与未来**：AI的未来会是什么样子？探索塑造下一个十年的趋势和技术。
+- **提示工程**：学习创建有效AI提示的最佳实践，探索AI工程如何演变。
+- **多智能体系统**：多智能体系统是AI的未来吗？深入了解OpenAI的实验等内容。
 
-- **AI Experiments & Blogs**: Dive into my latest AI projects, experiments, and reflections.
-- **Writing for AI**: Tired of dry technical writing? Learn how to humanize AI content and make your posts more engaging.
-- **AI & the Future**: What does the future hold for AI? Explore the trends and technologies shaping the next decade.
-- **Prompt Engineering**: Learn the best practices for creating AI prompts that work, and discover how AI engineering is evolving.
-- **Multi-Agent Systems**: Are multi-agent systems the future of AI? Take a deep dive into OpenAI’s experiments and more.
+## 目录
 
-## Contents
-
-- [AGI is around the corner and bringing chaos, opportunity and uncertainty](index.md)
-- Writing
-  - [Tired of AI Tech Writing? Here’s How to Make Your Posts More Human](Writing/Feel-human.md)
-- Prompt-engineering
-  - [Prompt Engineering is Dead, Long Live AI Engineering](Prompt-engineering/prompt-dead.md)
-  - [OpenAI 新发布GPT 最佳实践：落地大模型应用的策略和战术](Prompt-engineering/gpt-best-practice.md)
+- [AGI 即将到来，带来混乱、机会和不确定性](index.md)
+- 写作
+  - [厌倦AI技术写作？如何让你的文章更具人性化](Writing/Feel-human.md)
+- 提示工程
+  - [提示工程已死，AI工程万岁](Prompt-engineering/prompt-dead.md)
+  - [OpenAI新发布GPT最佳实践：落地大模型应用的策略和战术](Prompt-engineering/gpt-best-practice.md)
   - [提示工程已死，AI工程万岁](Prompt-engineering/prompt-dead.zh.md)
-- Future
+- 未来
   - [ai os](Future/ai-os.md)
-  - [Are AI similar to the computers in 1950s? Look back in histry](Future/history.md)
-  - [What Will We Remember from the 2020s? Looking Back in history and Thinking Forward](Future/future-hostory.md)
+  - [AI是否类似于1950年代的计算机？回顾历史](Future/history.md)
+  - [我们将从2020年代记住什么？回顾历史并展望未来](Future/future-hostory.md)
   - [guidance: 自然语言的编程语言](Future/guidance.md)
   - [如何重新定义与AI的互动？Canvas能带来什么改变？](Future/openai-canvas.zh.md)
-  - [Rethinking AI Interaction: OpenAI's Canvas and the Future of User Engagement](Future/openai-canvas.md)
-  - [自然语言编程: 从 AutoGPT 往前迈的一小步](Future/natual-language-program.md)
-  - [AI 插件：未来的浏览器、前端与交互](Future/plugin.md)
-- Agents
-  - [GitHub Copilot 背后的 AI 编码技术：如何让 GPT 更好地理解你的代码](Agents/copilot.md)
-  - [Simplifying Kernel Programming: The LLM-Powered eBPF Tool](Agents/kgent.md)
+  - [重新思考AI交互：OpenAI的Canvas和用户互动的未来](Future/openai-canvas.md)
+  - [自然语言编程: 从AutoGPT往前迈的一小步](Future/natual-language-program.md)
+  - [AI插件：未来的浏览器、前端与交互](Future/plugin.md)
+- 代理
+  - [GitHub Copilot 背后的AI编码技术：如何让GPT更好理解你的代码](Agents/copilot.md)
+  - [简化内核编程：LLM驱动的eBPF工具](Agents/kgent.md)
   - [多智能体系统是人工智能的未来吗？探讨OpenAI的Swarm实验](Agents/swarm.zh.md)
-  - [Are Multi-Agent Systems the Future of AI? A Look at OpenAI’s Swarm Experiment](Agents/swarm.md)
-- Notes
-  - [Local inference llama3 with llama.cpp and CPU](Notes/inference-locally.md)
+  - [多智能体系统是AI的未来吗？一窥OpenAI的Swarm实验](Agents/swarm.md)
+- 笔记
+  - [使用llama.cpp和CPU进行本地推理的llama3](Notes/inference-locally.md)
 
-## Connect with me
+## 联系我
 
 - [LinkedIn](https://www.linkedin.com/in/yunwei37/)
 - [X/Twitter](https://x.com/yunwei37)

@@ -1,86 +1,83 @@
-Translate the following content from English to Chinese:
+# 简化内核编程：由 LLM 驱动的 eBPF 工具
 
-# Simplifying Kernel Programming: The LLM-Powered eBPF Tool
+内核编程可能会令人望而生畏，因为它需要对操作系统的内部结构和编程约束有深刻的理解。我们最新的工具 Kgent 旨在改变这种状况，让创建扩展的伯克利数据包过滤器（eBPF）程序比以往更容易。Kgent 利用大语言模型（LLM）的强大功能，将自然语言提示翻译为 eBPF 代码，从而为更广泛的受众打开了内核编程的大门。
 
+我们的论文 “[Kgent: Kernel Extensions Large Language Model Agent](https://dl.acm.org/doi/10.1145/3672197.3673434)” 最近在 eBPF '24 上展示，该会议是 ACM SIGCOMM 2024 年关于 eBPF 和内核扩展的研讨会的一部分。让我们深入探讨 Kgent 如何成为内核编程的一次重大变革。
 
-Kernel programming can be intimidating, requiring deep knowledge of operating system internals and programming constraints. Our latest tool, Kgent, aims to change that by making it easier than ever to create extended Berkeley Packet Filters (eBPF) programs. Kgent leverages the power of large language models (LLMs) to translate natural language prompts into eBPF code, opening up kernel programming to a wider audience.
+## Kgent 的核心理念
 
-Our paper, "[Kgent: Kernel Extensions Large Language Model Agent](https://dl.acm.org/doi/10.1145/3672197.3673434)," was recently presented at eBPF '24: Proceedings of the ACM SIGCOMM 2024 Workshop on eBPF and Kernel Extensions. Let's dive into what makes Kgent a game-changer for kernel programming.
+Kgent 简化了传统上复杂的编写 eBPF 程序的过程。通过将用户的自然语言提示翻译为 eBPF 代码，它消除了对深刻操作系统内核知识的需求。该工具结合程序理解、符号执行和反馈循环，确保合成的程序准确无误，并符合用户的意图。
 
-## The Key Idea Behind Kgent
+## 亮点
 
-Kgent simplifies the traditionally complex process of writing eBPF programs. By translating user prompts in natural language to eBPF code, it eliminates the need for deep OS kernel knowledge. This tool combines program comprehension, symbolic execution, and feedback loops to ensure the synthesized program is accurate and aligns with the user's intent.
+- **自然语言到 eBPF**：Kgent 可以将用户的英文提示转换为功能性的 eBPF 程序。
+- **技术的结合**：它结合了程序理解、符号执行和反馈循环，确保高精度。
+- **评估**：我们的测试表明，Kgent 在生成正确的 eBPF 程序方面比 GPT-4 提高了 2.67 倍，具有高精确率和最少的误报。
 
-## Highlights
+## 潜在用例
 
-- **Natural Language to eBPF**: Kgent can take user prompts in plain English and convert them into functional eBPF programs.
-- **Combination of Techniques**: It employs a mix of program comprehension, symbolic execution, and feedback loops to ensure high accuracy.
-- **Evaluation**: Our tests show that Kgent achieves a 2.67x improvement over GPT-4 in producing correct eBPF programs, with a high accuracy rate and minimal false positives.
+Kgent 可以在多种场景中用于促进内核开发和管理：
 
-## Potential Use Cases
+1. **系统管理员**：帮助初级系统管理员创建和维护 eBPF 程序，而无需深厚的操作系统内核知识。
+2. **DevOps 人员**：协助编写和部署内核扩展以进行监控和跟踪应用程序，增强系统性能和安全性。
+3. **补丁制作者**：通过将问题和修复的自然语言描述转换为 eBPF 程序来简化补丁的创建。
+4. **内核开发人员**：加速内核扩展的原型设计和验证，节省时间并减少错误。
+5. **教育目的**：作为学生和新开发人员理解 eBPF 编程的学习工具，通过自然语言交互。
+6. **研究与实验**：为研究人员提供一个平台，以探索新的 eBPF 应用程序并测试假设，而无需深入复杂的编码。
+7. **网络工具开发**：通过将高级需求转换为高效的 eBPF 程序，简化自定义网络监控、安全和性能分析工具的创建。
 
-Kgent can be utilized in various scenarios to facilitate kernel development and management:
+## 为什么我们需要 Kgent 而不是直接询问 GPT？
 
-1. **System Administrators**: Helps junior sys admins create and maintain eBPF programs without needing extensive OS kernel knowledge.
-2. **DevOps Personnel**: Assists in writing and deploying kernel extensions for monitoring and tracing applications, enhancing system performance and security.
-3. **Patch Makers**: Simplifies the creation of patches by translating natural language descriptions of issues and fixes into eBPF programs.
-4. **Kernel Developers**: Speeds up the prototyping and validation of kernel extensions, saving time and reducing errors.
-5. **Educational Purposes**: Serves as a learning aid for students and new developers to understand eBPF programming through natural language interactions.
-6. **Research and Experimentation**: Provides a platform for researchers to explore new eBPF applications and test hypotheses without diving into complex coding.
-7. **Network Tools Development**: Eases the creation of custom network monitoring, security, and performance analysis tools by translating high-level requirements into efficient eBPF programs.
+虽然像 GPT-4 这样的大型语言模型（LLM）可以建议代码，但它们通常会推荐错误的助手或不存在的 API——一种被称为幻觉的现象。考虑到 eBPF 中的助手和 kfuncs 数量较小且有限，这些问题可以相对容易地解决。另一个常见问题是错误的附加点。在 eBPF 中，程序必须附加到特定的内核事件，例如 kprobes、tracepoints 和 perf 事件。错误的附加事件可能会被内核拒绝，或者更糟的是，通过验证程序并错误加载，导致错误结果。
 
-## Why we need kgent instead of just ask GPT?
+eBPF 验证程序增加了另一个复杂性。例如，由于安全检查，循环代码通常无法通过验证程序。虽然验证程序可以防止有害代码，但它不能总是防止错误代码。例如，当被要求编写一个跟踪 TCP 连接事件的程序时，GPT-4 生成的代码未能正确读取端口号，也没有考虑 IPv6。
 
-While large language models (LLMs) like GPT-4 can suggest code, they often recommend incorrect helpers or non-existent APIs—a phenomenon known as hallucination. Given the small and limited set of helpers and kfuncs in eBPF, these issues can be fixed relatively easily. Another common issue is incorrect attach points. In eBPF, programs must attach to specific kernel events, such as kprobes, tracepoints, and perf events. Incorrect attach events can either be rejected by the kernel or, worse, pass the verifier and load incorrectly, leading to wrong results.
+要帮助 LLM 学习像 eBPF 这样的新知识，常见的方法包括微调或检索增强生成（RAG）。然而，公开可用的 eBPF 示例不足，而 eBPF 能力可以随内核版本变化。RAG 是一种有前途的解决方案，因为它允许模型从外部资源中检索最新且相关的信息。该方法将语言模型生成与从向量数据库中检索相关信息相结合。
 
-The eBPF verifier adds another layer of complexity. For instance, loop code often cannot pass the verifier due to safety checks. Although the verifier prevents harmful code, it cannot always prevent incorrect code. For example, when asked to write a program to trace TCP connect events, GPT-4's generated code failed to read the port number correctly and didn't consider IPv6.
+## LLM 代理框架
 
-To help the LLM learn about new knowledge like eBPF, common approaches include fine-tuning or Retrieval-Augmented Generation (RAG). However, publicly available examples of eBPF are insufficient, and eBPF abilities can change across kernel versions. RAG is a promising solution, as it allows the model to retrieve the most up-to-date and relevant information from external sources. This method combines language model generation with relevant information retrieval from a vector database.
-
-## The LLM Agent Framework
-
-To address these issues, we built an LLM agent with three core components: planning, tools, and memory.
+为了解决这些问题，我们构建了一个包含三个核心组件的 LLM 代理：规划、工具和记忆。
 
 ![kgent](imgs/kgent2.svg)
 
-**Plan Component**
-The agent follows a predefined workflow:
+**规划组件**
+代理遵循预定义的工作流程：
 
-1. **Prompter**: Retrieves related examples, attach points, and specs based on user input.
-2. **Synthesis Engine**: Creates eBPF candidates from the prompt.
-3. **Comprehension Engine**: Annotates the eBPF candidate, adding necessary assumptions and assertions for verification.
-4. **Symbolic Verifier**: Verifies the candidate's behavior. If invalid, the process iterates until a valid program is produced, forming a feedback loop.
-For some cases, it can also use ReAct mode for decision-making.
+1. **提示器**：根据用户输入检索相关示例、附加点和规格。
+2. **合成引擎**：从提示中创建 eBPF 候选程序。
+3. **理解引擎**：注释 eBPF 候选程序，添加必要的假设和断言以进行验证。
+4. **符号验证器**：验证候选程序的行为。如果无效，过程将迭代，直到生成有效的程序，形成反馈循环。
+在某些情况下，它也可以使用 ReAct 模式进行决策。
 
-![kgent](imgs/kgent1.png)
+![kgent](imgs/kgент1.png)
 
-**Tools Component**
-The agent can use various tools like clang to compile eBPF programs, Seahorn for verification, and bpftrace for obtaining attach points and running eBPF programs.
+**工具组件**
+代理可以使用各种工具，如 clang 编译 eBPF 程序，Seahorn 进行验证，以及 bpftrace 获取附加点并运行 eBPF 程序。
 
-**Memory Component**
-The agent uses short-term in-context memory to remember past actions, errors, and decisions, ensuring the feedback loop is successful.
+**记忆组件**
+代理使用短期上下文记忆来记忆过去的动作、错误和决策，确保反馈循环成功。
 
-**Example Workflow**
-Let’s take a simple bpftrace program as an example. Suppose a user requests: "Trace tcp_connect events for both IPv4 and IPv6 connection attempts, and display the source and destination IP addresses." The agent forms a prompt based on a predefined template and asks the LLM to generate the program. We use in-context learning and few-shot techniques, including examples in the template's context. The examples vector database contains samples from BCC, bpftrace, and our own collection. The agent searches for similar examples based on user input and includes these examples in the prompt.
+**示例工作流程**
+让我们以一个简单的 bpftrace 程序为例。假设用户请求：“跟踪 IPv4 和 IPv6 连接尝试的 tcp_connect 事件，并显示源和目标 IP 地址。”代理根据预定义模板形成提示，要求 LLM 生成程序。我们使用上下文学习和少量样本技术，在模板的上下文中包含示例。例子向量数据库包含来自 BCC、bpftrace 和我们自己集合的样本。代理根据用户输入搜索相似示例，并将这些示例包含在提示中。
 
-We also built a pipeline to generate specifications and descriptions for each hook point and helper function from the kernel source code. For instance, when building the spec database, we generate the spec for the tcp_connect_init function in the kernel using the LLM. During the synthesis step, the agent can search for related function specs with user input in the vector database.
+我们还建立了一个流水线，以从内核源代码生成每个挂钩点和助手函数的规格和描述。例如，在构建规范数据库时，我们使用 LLM 为内核中的 tcp_connect_init 函数生成规范。在合成步骤中，代理可以在向量数据库中根据用户输入搜索相关函数规范。
 
-## Limitations and Future Work
+## 局限性和未来工作
 
-While Kgent is a significant step forward, it has some limitations. Currently, our implementation focuses on small programs under 100 lines due to the LLM's context window limit. Additionally, our eBPF program dataset is relatively small, which restricts the tool's ability to handle more complex and varied tasks. Right now, Kgent's use cases are mostly limited to simple trace programs and network functions.
+虽然 Kgent 代表了一个显著的进步，但它也有一些局限性。目前，我们的实现专注于 100 行以下的小程序，因为 LLM 的上下文窗口限制。此外，我们的 eBPF 程序数据集相对较小，这限制了工具处理更多复杂和多样任务的能力。现在，Kgent 的用例主要限于简单的跟踪程序和网络功能。
 
-We are exploring ways to extend Kgent's capabilities. For example, we know that tools like ChatGPT can handle many tasks using its Python code interpreter. This raises exciting possibilities: can we automate larger tasks like auto-monitoring and auto-performance tuning? Could an LLM help analyze results from different tools and even find these tools automatically? Could it play a role in rapidly developing solutions for urgent problems?
+我们正在探索扩展 Kgent 能力的方法。例如，我们知道像 ChatGPT 这样的工具可以使用其 Python 代码解释器处理许多任务。这提出了令人振奋的可能性：我们能否自动化更大的任务，例如自动监控和自动性能调优？LLM 是否可以帮助分析不同工具的结果，甚至自动找到这些工具？它能在快速开发紧急问题的解决方案中发挥作用吗？
 
-To tackle these challenges, we are considering splitting larger tasks into smaller, manageable parts, similar to the approach used by AutoGPT. This would allow the LLM to plan the overall structure of the program, generate each component, and then merge them together. Additionally, involving users in the iteration process could provide interactive feedback, improving the quality of the generated programs.
+为解决这些挑战，我们正在考虑将更大的任务拆分为更小的、可管理的部分，类似于 AutoGPT 使用的方法。这将允许 LLM 规划程序的整体结构，生成每个组件，然后将它们合并在一起。此外，在迭代过程中让用户参与互动反馈，可以提高生成程序的质量。
 
-We also acknowledge that writing correct Hoare contracts is challenging for LLMs, and current verification methods may not cover all behaviors of the generated eBPF programs. To improve this, we need better background descriptions and more robust Hoare expressions. Incorporating more software engineering practices, such as counterexample generation and test-driven development, could help ensure comprehensive verification.
+我们还认识到为 LLM 编写正确的霍尔合同是具有挑战性的，当前的验证方法可能无法涵盖生成的 eBPF 程序的所有行为。为提高这一点，我们需要更好的背景描述和更强大的霍尔表达式。结合更多的软件工程实践，如反例生成和测试驱动开发，可以帮助确保全面的验证。
 
-Another critical concern is security. Since eBPF runs in the kernel, any flaws could lead to significant issues. We plan to involve users more in the review process to mitigate these risks and ensure the safety of the generated programs.
+另一个关键问题是安全性。由于 eBPF 在内核中运行，任何缺陷都可能导致重大问题。我们计划更多地让用户参与审查过程，以减轻这些风险并确保生成程序的安全。
 
-## Conclusion
+## 结论
 
-Kgent is revolutionizing the way we approach kernel programming by making eBPF program creation accessible to a broader audience. By translating natural language into functional eBPF code, it opens up kernel extension development to system administrators, DevOps personnel, patch makers, and more. Our paper, presented at eBPF '24, highlights the potential of this tool to democratize kernel programming and foster innovation.
+Kgent 正在通过将 eBPF 程序创作面向更广泛的受众，从而改变我们进行内核编程的方式。通过将自然语言翻译为功能性的 eBPF 代码，它使系统管理员、DevOps 人员、补丁制作者等都能开发内核扩展。我们在 eBPF '24 上展示的论文强调了这一工具在大众化内核编程和促进创新方面的潜力。
 
-We invite you to explore Kgent and see how it can transform your approach to kernel development. For more details, check out our [eBPF'24 paper](https://dl.acm.org/doi/10.1145/3672197.3673434) and visit our [GitHub repository](https://github.com/eunomia-bpf/KEN). For additional details, refer to the earlier Arxiv version: [KEN: Kernel Extensions using Natural Language](https://arxiv.org/abs/2312.05531). For a more usable and simplified tool, check out [GPTtrace](https://github.com/eunomia-bpf/GPTtrace). You can also try the GPTtrace simplified web demo [here](https://github.com/eunomia-bpf/GPTtrace-web).
+我们邀请您探索 Kgent，看看它如何能改变您进行内核开发的方式。有关更多详细信息，请查看我们的 [eBPF'24 论文](https://dl.acm.org/doi/10.1145/3672197.3673434)和访问我们的 [GitHub 代码库](https://github.com/eunomia-bpf/KEN)。欲了解更多，请参阅之前的 Arxiv 版本：[KEN: Kernel Extensions using Natural Language](https://arxiv.org/abs/2312.05531)。此外，您可以在这里试用更易用和简化的工具 [GPTtrace](https://github.com/eunomia-bpf/GPTtrace) 。也可以尝试 [GPTtrace 的简化网页版示例](https://github.com/eunomia-bpf/GPTtrace-web)。
 
-By lowering the barrier to entry for writing eBPF programs, Kgent is promoting innovation and enhancing system capabilities, one natural language prompt at a time.
+通过降低编写 eBPF 程序的门槛，Kgent 正在推动创新并增强系统功能，每次自然语言提示一次。

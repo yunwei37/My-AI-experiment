@@ -1,8 +1,6 @@
-Translate the following content from English to Chinese:
+# 本地推理 llama3 使用 llama.cpp 和 CPU
 
-# Local inference llama3 with llama.cpp and CPU
-
-My 4090 has been sold..so I only have this in the old computer:
+我的 4090 已经卖掉了，所以在旧电脑上只有这个：
 
 ```console
 $ sudo nvidia-smi
@@ -28,17 +26,17 @@ Sun Sep  1 06:13:48 2024
 +---------------------------------------------------------------------------------------+
 ```
 
-It's only 6GB VRAM...
+只有 6GB 的显存……
 
-Anyway, I have 32GB memory, let's try CPU inference with llama3!
+不过，我有 32GB 的内存，让我们尝试用 CPU 来推理 llama3！
 
-## 1. download model
+## 1. 下载模型
 
-Let's download the model from <https://huggingface.co/lmstudio-community/Meta-Llama-3.1-8B-Instruct-GGUF?show_file_info=Meta-Llama-3.1-8B-Instruct-Q3_K_L.gguf>
+从 <https://huggingface.co/lmstudio-community/Meta-Llama-3.1-8B-Instruct-GGUF?show_file_info=Meta-Llama-3.1-8B-Instruct-Q3_K_L.gguf> 下载模型
 
-It's Meta-Llama-3.1-8B with 3 bit quantization.
+这是 Meta-Llama-3.1-8B 进行 3 位量化的模型。
 
-## 2. install llama.cpp
+## 2. 安装 llama.cpp
 
 ```sh
 git clone https://github.com/ggerganov/llama.cpp
@@ -46,9 +44,9 @@ cd llama.cpp
 make
 ```
 
-This will build the CPU version of llama.cpp. See <https://github.com/ggerganov/llama.cpp/blob/master/docs/build.md> for more details.
+这将构建 llama.cpp 的 CPU 版本。更多详情请见 <https://github.com/ggerganov/llama.cpp/blob/master/docs/build.md>。
 
-## 3. run inference
+## 3. 运行推理
 
 ```console
 $ ./llama.cpp/llama-simple -m Downloads/Meta-Llama-3.1-8B-Instruct-Q3_K_L.gguf -p "Can you write me a poem about santa cruz?" -n 300
@@ -160,49 +158,48 @@ llama_new_context_with_model: graph splits = 1
 
 main: n_predict = 300, n_ctx = 131072, n_kv_req = 300
 
-<|begin_of_text|>Can you write me a poem about santa cruz??
-Here is a poem about Santa Cruz:
-Santa Cruz, a town by the sea
-Where redwoods tower, and the ocean's glee
-Meets the waves that crash on the shore
-A place where wonder waits, and magic's in store
+<|begin_of_text|>你能为我写一首关于圣克鲁兹的诗吗？
+这是一首关于圣克鲁兹的诗：
+圣克鲁兹，海边的小镇
+红杉林立，海洋欢腾
+浪花拍打在岸边
+惊奇在等待，魔法在眼前
 
-The boardwalk beckons, a colorful sight
-Games and treats, a joyful delight
-The smell of saltwater taffy fills the air
-As laughter and excitement are everywhere
+滨海步道招手，色彩斑斓
+游戏和美食，欢乐无限
+咸味太妃糖的香气弥漫
+笑声和兴奋无处不在
 
-The mountains rise high, a verdant green
-Where hikers roam, and nature's secrets are seen
-The rivers flow, a winding stream
-Where fish and wildlife thrive, and the wild things beam
+高耸的山脉，绿色苍翠
+徒步者徜徉，自然的秘密可见
+河流蜿蜒，水流涓涓
+鱼和野生动物茁壮生长，野性中充满光彩
 
-Santa Cruz, a place of enchantment and play
-Where the spirit of adventure comes out to stay
-A town that's full of life, and a heart that's true
-A place where dreams come alive, and magic shines through. 
+圣克鲁兹，魅力与游戏并存之地
+冒险的精神常驻于此
+充满生命的城镇，拥有真实的心
+梦想在这里成真，魔法在此辉映。
 
-I hope you enjoy it! Let me know if you have any other requests. 
+希望你喜欢！如果你有其他请求，请告诉我。
 
-Here is a revised version of the poem, with a few changes to make it more concise and flowing:
+这是修订版的诗，进行了一些修改使其更为简洁流畅：
 
-Santa Cruz, a town by the sea
-Where redwoods tower, and the ocean's glee
-Meets the waves that crash on the shore
-A place where wonder waits, and magic's in store
+圣克鲁兹，海边之城
+红杉挺立，海洋欢欣
+浪迎岸，奇迹在盼
+惊奇在等待，魔法在眼前
 
-The boardwalk's colorful lights shine bright
-Games and treats, a joyful delight
-Saltwater taffy scents the salty air
+滨海步道灯光绚烂
+游戏和美食，欢乐无限
+咸味太妃糖香气弥漫
 
+main: 在 34.22 秒内解码了 289 个标记，速度为 8.44 t/s
 
-main: decoded 289 tokens in 34.22 s, speed: 8.44 t/s
-
-llama_print_timings:        load time =    5114.71 ms
-llama_print_timings:      sample time =      48.04 ms /   290 runs   (    0.17 ms per token,  6036.76 tokens per second)
-llama_print_timings: prompt eval time =     536.32 ms /    11 tokens (   48.76 ms per token,    20.51 tokens per second)
-llama_print_timings:        eval time =   33864.35 ms /   289 runs   (  117.18 ms per token,     8.53 tokens per second)
-llama_print_timings:       total time =   39337.08 ms /   300 tokens
+llama_print_timings:        加载时间 =    5114.71 ms
+llama_print_timings:      采样时间 =      48.04 ms /   290 次运行   (    0.17 ms 每个标记,  6036.76 个标记每秒)
+llama_print_timings: 提示评估时间 =     536.32 ms /    11 个标记 (   48.76 ms 每个标记,    20.51 个标记每秒)
+llama_print_timings:        评估时间 =   33864.35 ms /   289 次运行   (  117.18 ms 每个标记,     8.53 个标记每秒)
+llama_print_timings:       总时间 =   39337.08 ms /   300 个标记
 ```
 
-Seems nice! The CPU inference is not that slow, and the poem is quite good!
+看起来不错！CPU 推理速度还不算太慢，诗写得也很好！

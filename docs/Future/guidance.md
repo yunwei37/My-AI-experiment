@@ -1,80 +1,78 @@
-Translate the following content from Chinese to English:
-
-# guidance: 自然语言的编程语言
+# Guidance: A Programming Language for Natural Language
 
 TLDR:
 
-*微软最近*发布了一个名为 *guidance* 的指导语言,用于控制 *LLM*s 的行为。该语言具有高度的灵活性和可定制性,提供了一种方便且可靠的方法来管理LLMs的相关工作。Guidance 解决了以下的问题：
+*Recently, Microsoft* released a guiding language called *Guidance* designed to control the behavior of *LLMs* (Large Language Models). This language offers high flexibility and customization, providing a convenient and reliable way to manage tasks related to LLMs. Guidance addresses the following issues:
 
-- 确保生成正确的 YAML 或者 JSON 格式，或者其他任意的格式，同时节约 token 费用
-- 相比 langchain 的 Python 代码，用更简单的 DSL，实现多步输出更为复杂和精确的结果
+- Ensures the generation of correct YAML or JSON formats, or any other arbitrary formats, while saving on token costs
+- Allows for simpler DSL compared to Python code in LangChain to achieve more complex and precise results through multi-step outputs
 
-"Guidance"和"LangChain"都是为了帮助用户更有效地利用大型语言模型（Large Language Models, LLMs）而设计的，他们在某些功能性的方面有些类似，但是具体的实现思路、使用体验有很大的不同，Guidance 有点类似于“自然语言编程”的一种表现形式，把精确的 DSL 和模糊的大模型结果结合起来，获取更好的综合表现。
+"Guidance" and "LangChain" are both designed to help users effectively utilize Large Language Models (LLMs). They share some functional similarities, but their implementation ideas and user experiences differ significantly. Guidance resembles a form of "natural language programming," combining precise DSL with the output from large models for a holistic performance.
 
-下面是关于这两个项目的一些分析：
+Here is an analysis of these two projects:
 
 ### Guidance
 
-"Guidance"是一个用于控制大型语言模型的指导语言。它的主要目标是使用户能够更有效、更高效地控制现代语言模型，而不是通过传统的提示或链式控制【5†source】【6†source】。
+"Guidance" is a guiding language for controlling large language models. Its main goal is to allow users to control modern language models more efficiently and effectively, rather than through traditional prompts or chain-based controls.
 
-它的主要功能包括：
+Its main features include:
 
-- 提供简单直观的语法，基于Handlebars模板
-- 支持多种生成、选择、条件、工具使用等丰富的输出结构
-- 支持在Jupyter/VSCode Notebooks中像playground一样进行流式处理
-- 提供智能种子生成缓存
-- 支持基于角色的聊天模型（例如，ChatGPT）
-- 与Hugging Face模型的易于集成，包括指导加速、优化提示边界的令牌治疗，以及使用正则表达式模式指南来强制格式【7†source】。
+- Provides a simple and intuitive syntax based on Handlebars templates
+- Supports a rich variety of generation, selection, conditional, and tool usage output structures
+- Allows streaming processing in Jupyter/VSCode Notebooks like a playground
+- Offers intelligent seed generation caching
+- Supports role-based chat models (e.g., ChatGPT)
+- Easy integration with Hugging Face models, including guidance acceleration, token treatment for optimized prompt boundary, and using regex pattern guidelines to enforce formatting
 
-Guidance 的**用例包含：**
+Guidance use cases include:
 
-1. **丰富的输出结构：** **`guidance`** 允许在执行过程中交错生成和提示，使得输出结构更加精确，同时也可以生成清晰和可解析的结果。例如，它可以用于识别给定句子是否包含了时代错误（因为时间周期不重叠而不可能的陈述）。使用**`guidance`**，可以通过一个简单的两步提示实现这个任务，其中包含了一个人工制作的思维链条序列**[1](https://github.com/microsoft/guidance)**。
-2. **保证有效的语法：** **`guidance`** 可以保证语言模型生成的输出遵循特定的格式，这对于将语言模型的输出用作其他系统的输入非常重要。例如，如果我们想用语言模型生成一个 JSON 对象，我们需要确保输出是有效的 JSON。使用**`guidance`**，我们可以同时加速推理速度并确保生成的 JSON 总是有效的。以下是一个使用**`guidance`**生成具有完美语法的游戏角色配置文件的示例**[1](https://github.com/microsoft/guidance)**。
-3. **基于角色的聊天模型：** **`guidance`** 支持通过角色标签自动映射到当前 LLM 的正确令牌或 API 调用的现代聊天式模型，如 ChatGPT 和 Alpaca。README 中提供了是一个展示如何使用基于角色的指导程序实现简单的多步推理和计划的示例**[1](https://github.com/microsoft/guidance)**。
+1. **Rich Output Structures:** **`Guidance`** allows interleaving of generation and prompting during execution, making output structures more precise while generating clear and parsable results. For example, it can identify whether a given sentence contains an anachronism (a statement that is impossible due to non-overlapping time periods). Using **`guidance`**, this task can be achieved through a simple two-step prompt that includes a hand-crafted chain of thought sequence.
+2. **Ensuring Effective Syntax:** **`Guidance`** can ensure that the output generated by language models adheres to a specific format, which is crucial when using the output of a language model as input for other systems. For instance, if we want the language model to generate a JSON object, we need to ensure that the output is valid JSON. With **`guidance`**, we can accelerate inference speed and ensure the generated JSON is always valid. Here’s an example of using **`guidance`** to produce a game character profile with perfect syntax.
+3. **Role-based Chat Models:** **`Guidance`** supports modern chat models like ChatGPT and Alpaca by automatically mapping role labels to the correct tokens or API calls of the current LLM. The README provides an example of using role-based guidance to achieve simple multi-step reasoning and planning.
 
 ### LangChain
 
-"LangChain"是一个软件开发框架，旨在简化使用大型语言模型（LLMs）创建应用程序的过程。它的用例与语言模型的用例大致相同，包括文档分析和总结、聊天机器人、代码分析等。
+"LangChain" is a software development framework designed to simplify the process of creating applications using large language models (LLMs). Its use cases largely align with those of language models, including document analysis and summarization, chatbots, code analysis, etc.
 
-"LangChain"的主要功能包括：
+LangChain's main features include:
 
-**📃 LLM和提示：**
+**📃 LLM and Prompt:**
 
-这包括提示管理、提示优化、所有LLM的通用界面以及用于处理LLM的常用工具。
+This includes prompt management, prompt optimization, a universal interface for all LLMs, and common tools for handling LLMs.
 
-**🔗 链：**
+**🔗 Chains:**
 
-链超越了单个LLM调用，涉及到调用序列（无论是调用LLM还是不同的工具）。LangChain提供了链的标准接口、与其他工具的大量集成以及常见应用的端到端链。
+Chains go beyond a single LLM invocation and involve sequences of calls (whether invoking LLMs or different tools). LangChain provides standard interfaces for chains, extensive integration with other tools, and end-to-end chains for common applications.
 
-**📚 数据增强生成：**
+**📚 Data Augmented Generation:**
 
-数据增强生成涉及到特定类型的链，首先与外部数据源进行交互，以获取用于生成步骤的数据。例如，长文本摘要和对特定数据源的问题/回答。
+Data augmented generation involves a specific type of chain that first interacts with external data sources to gather data for the generation step. Examples include summarizing long texts and answering questions based on specific data sources.
 
-**🤖 代理：**
+**🤖 Agents:**
 
-代理涉及LLM做出决策，选择行动，看到观察结果，并重复该过程直到完成。LangChain为代理提供了标准接口、一组可供选择的代理以及端到端代理的示例。
+Agents involve LLMs making decisions, selecting actions, observing results, and repeating the process until completion. LangChain provides standard interfaces for agents, a set of agents to choose from, and end-to-end examples of agents.
 
-**🧠 记忆：**
+**🧠 Memory:**
 
-记忆是指在链/代理的调用之间保持状态。LangChain为记忆提供了标准接口、一组记忆实现以及使用记忆的链/代理示例。
+Memory refers to maintaining the state between calls of chains/agents. LangChain offers standard interfaces for memory, a set of memory implementations, and examples of chains/agents that use memory.
 
-**🧐 评估：**
+**🧐 Evaluation:**
 
-[BETA]生成模型以传统指标难以评估。一种新的评估方法是使用语言模型本身进行评估。LangChain提供了一些提示/链来协助进行此项工作。
+[BETA] Generative models are challenging to evaluate with traditional metrics. A novel evaluation method is to use the language model itself for evaluation. LangChain provides some prompts/chains to assist with this task.
 
-### Guidance与LangChain的比较
+### Comparison of Guidance and LangChain
 
-"Guidance"和"LangChain"都是为了帮助用户更好地使用和控制大型语言模型。两者的主要区别在于它们的关注点和使用场景。
+"Guidance" and "LangChain" both aim to enhance the use and control of large language models. The primary difference lies in their focus and usage scenarios.
 
-"Guidance"主要关注于如何更有效地控制语言模型的生成过程，提供了一种更自然的方式来组织生成、提示和逻辑控制的流程。这主要适用于需要在一个连续的流程中交替使用生成、提示和逻辑控制的场景，例如，基于聊天的应用或者需要生成有特定结构的文本的应用。
+"Guidance" focuses on more effectively controlling the generation process of language models, providing a more natural way to organize the flows of generation, prompting, and logical control. This is mainly suitable for scenarios where generation, prompting, and logical control are interleaved in a continuous process, such as chat-based applications or applications requiring text with specific structure.
 
-"LangChain"则是一个更全面的框架，它提供了一套完整的工具和接口，用于开发和部署基于大型语言模型的应用。它包括了从数据获取、处理，到模型调用，再到结果呈现的一整套流程。所以，如果你想要开发一个完整的基于语言模型的应用，"LangChain"可能是一个更好的选择。
+"LangChain," on the other hand, is a more comprehensive framework that offers a complete set of tools and interfaces for developing and deploying applications based on large language models. It includes the whole process from data acquisition, processing, model invocation, to result presentation. So, if you aim to develop a complete application based on language models, "LangChain" might be a better choice.
 
-所以，这两个项目的相关性在于它们都是服务于大型语言模型的，但是它们的侧重点和应用场景是不同的。具体使用哪一个，主要取决于你的具体需求和使用场景。
+Thus, while these two projects relate to large language models, their focus and application scenarios differ. The choice depends on your specific needs and usage scenarios.
 
-### Guidance example JSON
+### Guidance Example JSON
 
-生成精确的 JSON 结果：
+Generating precise JSON results:
 
 ```jsx
 # we use LLaMA here, but any GPT-style model will do
@@ -107,22 +105,22 @@ character_maker(
 )
 ```
 
-- 能保证 JSON 不会出错
-- 能节约大量的 token 费用，生成时间和价格大约都只有原先直接生成 YAML 的一半
+- Ensures the JSON is error-free
+- Saves a significant amount of token cost, making generation time and price about half of directly generating YAML
 
-使用 LLaMA 2B 时，上述提示通常需要 5.6000 秒多一点即可在 A7 GPU 上完成。如果我们要运行适合为单次调用的相同提示（今天的标准做法），则需要大约 5 秒才能完成（其中 4 秒是令牌生成，1 秒是提示处理）。*这意味着指导加速比此提示的标准方法提高了 2 倍。*实际上，确切的加速系数取决于特定提示的格式和模型的大小（模型越大，受益越大）。目前也仅支持 transformer LLM的加速。
+Using LLaMA 2B, the above prompt usually takes a bit more than 5.6 seconds to complete on an A7 GPU. If we were to run the same prompt suitable for a single invocation (the standard practice today), it would take about 5 seconds to complete (4 seconds for token generation, 1 second for prompt processing). *This means the guidance acceleration results in a 2x speedup over the standard approach for this prompt.* The exact speedup factor depends on the specific prompt format and model size (the larger the model, the greater the benefit). Currently, acceleration is only supported for transformer LLMs.
 
-注意，这种格式控制不仅对于 jSON 有效，对于任意的其他语言或者格式，例如 YAML 等都是有效的，对于开发复杂应用或者生成 DSL 来说，会有很大的帮助。
+Note, this formatting control is effective for not just JSON, but for any other languages or formats such as YAML. It can be greatly beneficial for developing complex applications or generating DSL.
 
-一个更复杂的例子，同时也包含使用 **`{{#select}}...{{or}}...{{/select}}`** 命令进行控制流的选择：
+A more complex example, which also involves using the **`{{#select}}...{{or}}...{{/select}}`** command for control flow selection:
 
-```
+```python
 import guidance
 
 # set the default language model used to execute guidance programs
 guidance.llm = guidance.llms.OpenAI("text-davinci-003")
 
-# define the few shot examples
+# define the few-shot examples
 examples = [
     {'input': 'I wrote about shakespeare',
     'entities': [{'entity': 'I', 'time': 'present'}, {'entity': 'Shakespeare', 'time': '16th century'}],
@@ -163,28 +161,24 @@ out = structure_program(
 )
 ```
 
-这段代码的主要目标是定义和执行一个使用 guidance 的程序，该程序处理一个指定问题：给出一个句子，告诉我这个句子是否包含了一个时间错误（即基于与实体相关联的时间周期，这件事是否可能发生）。
+This code aims to define and execute a program using guidance that tackles a specific problem: Given a sentence, tell me whether it contains an anachronism (i.e., whether it could have happened based on the time periods associated with the entities).
 
-首先，通过 `import guidance` 语句导入 guidance 库。
+Firstly, the `import guidance` statement imports the guidance library.
 
-然后，设定了默认使用的大型语言模型（LLM）`guidance.llm = guidance.llms.OpenAI("text-davinci-003")`。在这种情况下，使用的是 OpenAI 的 "text-davinci-003" 模型。
+Then, it sets the default Large Language Model (LLM) used, `guidance.llm = guidance.llms.OpenAI("text-davinci-003")`. In this case, it uses OpenAI's "text-davinci-003" model.
 
-定义了一组“少量示例”（few-shot examples），这些示例展示了模型如何处理该问题。每个示例都包含一个句子（`input`），句子中涉及的实体及其时间信息（`entities`），推理（`reasoning`）以及是否存在时间错误的答案（`answer`）。
+A set of "few-shot examples" are defined, showing how the model handles the problem. Each example consists of a sentence (`input`), the entities involved and their time information (`entities`), the reasoning (`reasoning`), and whether an anachronism is present (`answer`).
 
-之后，定义了一个 guidance 程序（`structure_program`）。这个程序首先展示了少量示例，然后处理一个实际的问题。引导程序使用 Handlebars 模板语法来编写。例如，使用 `{{#each examples}}` 和 `{{~/each}}` 可以遍历所有示例。此外，还使用了 `{{gen}}` 命令来生成文本，并使用 `{{#select}}` 和 `{{/select}}` 命令来做出选择。
+Next, a guidance program (`structure_program`) is defined. This program first displays the few-shot examples and then tackles a real question. The guidance program uses Handlebars template syntax for scripting. For example, `{{#each examples}}` and `{{~/each}}` iterate over the examples. The `{{gen}}` command is used to generate text, and the `{{#select}}` and `{{/select}}` commands are used for making selections.
 
-最后，执行这个程序。作为输入，提供了少量示例（`examples`）和一个实际问题（`input`）。执行的结果（`out`）是一个执行程序对象，可以进一步处理或分析。
+Finally, the program is executed. The input includes the few-shot examples (`examples`) and a real problem (`input`). The execution result (`out`) is an executed program object that can be further processed or analyzed.
 
-整体上，这个例子展示了如何使用 guidance 库来处理一个特定问题。这个库使得对大型语言模型的控制更为高效和有效，不仅可以生成文本，还可以做出逻辑决策。
+Overall, this example shows how to use the guidance library to address a specific problem. The library makes controlling large language models more efficient and effective, allowing not only for text generation but logical decision-making as well.
 
-### Guidance 的原理
+### Principles of Guidance
 
-**`guidance`**是一个用于控制大型语言模型（LLMs，例如 GPT-3 或 GPT-4）的库。它的设计初衷是使语言模型的控制更为高效和有效。这是通过编写引导程序（guidance programs）实现的，这些程序允许你将文本生成、提示以及逻辑控制交织在一起，形成一个与语言模型处理文本的方式相匹配的连续流程**[1](https://github.com/microsoft/guidance)**。
+**`Guidance`** is a library for controlling Large Language Models (LLMs) like GPT-3 or GPT-4. It is designed to make controlling language models more efficient and effective. This is achieved through writing guidance programs that allow you to interleave text generation, prompting, and logic control into a continuous flow that matches how language models process text.
 
-引导程序基于Handlebars模板语言的简单、直观语法，但具有一些独特的功能。它们有一个与语言模型处理令牌顺序直接对应的独特线性执行顺序。这意味着在执行过程中的任何时刻，都可以使用语言模型来生成文本（使用**`{{gen}}`**命令）或进行逻辑控制流决策（使用**`{{#select}}...{{or}}...{{/select}}`**命令）。生成和提示的交织可以使输出结构更精确，从而提高准确性，同时也产生清晰、可解析的结果**[1](https://github.com/microsoft/guidance)**。
+Guidance programs use simple and intuitive syntax based on the Handlebars template language but have some unique features. They have a unique linear execution order that directly corresponds to the token sequence handled by the language model. This means at any point during execution, the language model can be used to generate text (using the **`{{gen}}`** command) or to make logic control flow decisions (using the **`{{#select}}...{{or}}...{{/select}}`** command). The interleaving of generation and prompting can make the output structure more precise, improving accuracy while also producing clear and parsable results.
 
-`guidance`通过一个令牌备份模型，然后允许模型向前移动，同时限制它仅生成前缀与最后一个令牌匹配的令牌，从而消除这些偏差。这种“令牌修复”过程消除了令牌边界偏差，并允许自然地完成任何提示。
-
-### 参考资料
-
-<https://github.com/microsoft/guidance>
+Guidance employs a token backup model and allows the model to move forward while restricting it to generate tokens that only match the prefix of the last token, thus eliminating these biases. This "token fixing" process eliminates token boundary bias and allows any prompt to be naturally completed.

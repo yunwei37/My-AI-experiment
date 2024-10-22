@@ -1,17 +1,37 @@
 {
-  "published": [],
-  "files-to-translate": [
-    "My-AI-experiment/docs/index.zh.md",
-    "My-AI-experiment/docs/Writing/Feel-human.zh.md",
-    "My-AI-experiment/docs/Future/history.md",
-    "My-AI-experiment/docs/Future/future-hostory.zh.md",
-    "My-AI-experiment/docs/Future/natual-language-program.zh.md",
-    "My-AI-experiment/docs/Future/plugin.md",
-    "My-AI-experiment/docs/Future/ai-os.md",
-    "My-AI-experiment/docs/Future/guidance.md",
-    "My-AI-experiment/docs/Prompt-engineering/gpt-best-practice.md",
-    "My-AI-experiment/docs/Notes/inference-locally.zh.md",
-    "My-AI-experiment/docs/Agents/kgent.zh.md",
-    "My-AI-experiment/docs/Agents/copilot.md"
+  "files-to-translate": [],
+  "published_zh": [
+    "index.zh.md",
+    "Writing/Feel-human.zh.md",
+    "Future/history.zh.md",
+    "Future/openai-canvas.zh.md",
+    "Future/natual-language-program.zh.md",
+    "Future/future-hostory.zh.md",
+    "Future/plugin.zh.md",
+    "Future/ai-os.zh.md",
+    "Future/guidance.zh.md",
+    "Prompt-engineering/gpt-best-practice.zh.md",
+    "Prompt-engineering/prompt-dead.zh.md",
+    "Notes/inference-locally.zh.md",
+    "Agents/kgent.zh.md",
+    "Agents/copilot.zh.md",
+    "Agents/swarm.zh.md"
+  ],
+  "published_en": [
+    "index.md",
+    "Writing/Feel-human.md",
+    "Future/future-hostory.md",
+    "Future/ai-os.md",
+    "Future/openai-canvas.md",
+    "Future/history.md",
+    "Future/plugin.md",
+    "Future/natual-language-program.md",
+    "Future/guidance.md",
+    "Prompt-engineering/gpt-best-practice.md",
+    "Prompt-engineering/prompt-dead.md",
+    "Notes/inference-locally.md",
+    "Agents/swarm.md",
+    "Agents/copilot.md",
+    "Agents/kgent.md"
   ]
 }

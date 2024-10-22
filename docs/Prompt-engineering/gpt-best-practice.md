@@ -1,516 +1,512 @@
-Translate the following content from Chinese to English:
+Here's the English translation of the document you provided:
 
-# OpenAI 新发布GPT 最佳实践：落地大模型应用的策略和战术
+---
 
+# OpenAI's Newly Released GPT Best Practices: Strategies and Tactics for Implementing Large Language Model Applications
 
-在今年六月份，OpenAI 在其官方文档中更新了一篇关于提高 GPT 效果的策略和方法。这篇文章包含了六种核心策略，以及一些实际的提示词案例，和知识检索和代码执行等技术来优化GPT模型的最佳实践。通过使用这些最佳实践，用户可以更好地使用 GPT 模型，并提高其效果和性能。
+In June this year, OpenAI updated its official documentation with an article on strategies and methods to improve the effectiveness of GPT. This article contains six core strategies, some practical prompt cases, and technologies such as knowledge retrieval and code execution to optimize GPT model best practices. By using these best practices, users can better utilize GPT models and improve their effectiveness and performance.
 
-大部分的示例主要针对 GPT-4 模型，但对于其他模型而言也会有不少参考价值。
+Most of the examples mainly target the GPT-4 model, but they also hold significant reference value for other models.
 
-本文主要翻译和整理自 OpenAI 的官方文档，原文地址：<https://platform.openai.com/docs/guides/gpt-best-practices>
+This article is primarily translated and organized from OpenAI's official documentation, available at: <https://platform.openai.com/docs/guides/gpt-best-practices>
 
-> 一些相关的开源资料仓库：
+> Some related open-source resource repositories:
 >
-> - 关于提示词工程（prompt）的指南、论文、讲座、笔记本和资源大全：<https://github.com/yunwei37/Prompt-Engineering-Guide-zh-CN>
-> - 使用 OpenAI API 的例子和中文指南：<https://github.com/yunwei37/openai-cookbook-zh-cn>
-> - 关于大语言模型的安全问题：提示词对抗、破解攻防的工具和案例集合：<https://github.com/yunwei37/prompt-adversarial-collections>
+> - A comprehensive guide, papers, lectures, notebooks, and resources on prompt engineering: <https://github.com/yunwei37/Prompt-Engineering-Guide-zh-CN>
+> - Examples and Chinese guides for using the OpenAI API: <https://github.com/yunwei37/openai-cookbook-zh-cn>
+> - On security issues of large language models: collections of tools and cases on prompt adversarial attacks and defenses: <https://github.com/yunwei37/prompt-adversarial-collections>
 >
-> 文末附有更多相关参考资料。
+> More related reference materials are provided at the end of the article.
 
-## 提高结果的六种策略
+## Six Strategies to Improve Results
 
-### 编写清晰的指令
+### Writing Clear Instructions
 
-GPT 无法读取您的思想。如果它们的输出过长，请要求简洁回复。如果它们的输出过于简单，请要求专业水平的写作。如果您不喜欢某种格式，请展示您想要看到的格式。GPT 越少猜测您想要的内容，您获得的可能性就越大。
+GPT cannot read your mind. If their output is too lengthy, ask for a concise reply. If their output is too simplistic, request professional-level writing. If you dislike a format, demonstrate the format you want to see. The less GPT has to guess what you want, the greater the likelihood you'll get it.
 
-策略：
+Strategy:
 
-- 在查询中包含详细信息，以获得更相关的答案。
-- 要求模型扮演某个角色。
-- 使用分隔符清晰地表示输入的不同部分。
-- 指定完成任务所需的步骤。
-- 提供示例。
-- 指定输出的期望长度。
-- 提供参考文本。
+- Include details in the query to get more relevant answers.
+- Ask the model to play a specific role.
+- Use delimiters to clearly indicate different parts of the input.
+- Specify the steps required to complete the task.
+- Provide examples.
+- Specify the expected length of the output.
+- Provide reference text.
 
-### 提供参考文本
+### Providing Reference Text
 
-GPT 可以自信地编造假答案，特别是当被询问奇特的话题、引用和网址时。就像一张笔记可以帮助学生在考试中取得更好的成绩一样，为 GPT 提供参考文本可以帮助它以较少的虚构进行回答。
+GPT can confidently fabricate incorrect answers, especially when asked about peculiar topics, citations, and URLs. Just as a note can help students achieve better scores in exams, providing reference text to GPT can help it respond with less fabrication.
 
-策略：
+Strategy:
 
-- 指示模型使用参考文本进行回答。
-- 指示模型使用参考文本中的引用进行回答。
+- Instruct the model to use reference text for answering.
+- Direct the model to respond using citations from the reference text.
 
-### 将复杂任务分解为简单子任务
+### Breaking Down Complex Tasks into Simpler Subtasks
 
-就像在软件工程中将复杂系统分解为一组模块化组件一样，提交给 GPT 的任务也是如此。相比较而言，复杂任务的错误率往往较高。此外，复杂任务通常可以重新定义为一系列较简单任务的工作流程，其中早期任务的输出用于构建后续任务的输入。
+Just as software engineering involves breaking down complex systems into a set of modular components, tasks submitted to GPT should also follow this method. Error rates are generally higher for complex tasks. Moreover, complex tasks can often be redefined as a series of simpler workflow tasks, where the output of early tasks builds the input for subsequent tasks.
 
-策略：
+Strategy:
 
-- 使用意图分类来识别用户查询的最相关指令。
-- 对于需要非常长对话的对话应用程序，总结或过滤以前的对话。
-- 逐段概括长文档并递归构建完整概要。
+- Use intent classification to identify the most relevant instructions from a user query.
+- For a conversational application requiring very long interactions, summarize or filter previous dialogues.
+- Summarize long documents paragraph by paragraph and build a full summary recursively.
 
-### 给予 GPT 足够的时间进行“思考”
+### Giving GPT Enough Time to "Think"
 
-如果被要求计算 17 乘以 28，您可能无法立即知道答案，但可以通过时间来计算出来。同样，GPT 在试图立即回答问题时会出现更多的推理错误，而不是花时间思考答案。在得出答案之前，要求进行一连串的推理过程可以帮助 GPT 更可靠地推理出正确答案。
+If asked to calculate 17 multiplied by 28, you might not know the answer immediately, but you can work it out given time. Similarly, GPT makes more reasoning errors when it tries to answer questions immediately than when it takes time to think about the answer. Prompting a step-by-step reasoning process before arriving at an answer can help GPT reason more reliably to arrive at the correct answer.
 
-策略：
+Strategy:
 
-- 指示模型在得出结论之前自行解决问题。
-- 使用内心独白或一系列查询来隐藏模型的推理过程。
-- 询问模型是否在之前的处理中漏掉了任何内容。
+- Instruct the model to work out the solution itself before drawing conclusions.
+- Hide the model's reasoning process using internal monologue or a series of queries.
+- Ask the model if it missed out on anything in previous queries.
 
-### 使用外部工具
+### Using External Tools
 
-通过向 GPT 提供其他工具的输出来弥补 GPT 的不足之处。例如，文本检索系统可以向 GPT 提供相关文档信息。代码执行引擎可以帮助 GPT 进行数学计算和代码运行。如果通过工具而不是 GPT 可以更可靠或更高效地完成任务，则将其卸载以获得最佳结果。
+Supplement GPT's shortcomings by providing the outputs of other tools. For example, a text retrieval system can provide GPT with relevant document information. A code execution engine can aid GPT in performing mathematical calculations and code executions. If a task can be performed more reliably or efficiently through a tool rather than GPT, offload it for optimal results.
 
-策略：
+Strategy:
 
-- 使用基于嵌入的搜索来实现高效的知识检索。
-- 使用代码执行来执行更准确的计算或调用外部 API。
+- Use embedding-based search for efficient knowledge retrieval.
+- Use code execution for more accurate calculations or calling external APIs.
 
-### 系统地测试变更
+### Systematically Testing Changes
 
-如果您能够进行衡量，那么改进性能就会更容易。在某些情况下，对提示的修改可能会在一些孤立的示例上实现更好的性能，但在更具代表性的一组示例上导致更差的综合性能。因此，为了确保变更对性能有正面的影响，可能需要定义一个全面的测试套件（也称为“评估”）。
+If you can measure it, improving performance becomes easier. In certain cases, modifications to prompts may result in better performance on isolated examples but poorer overall performance on a more representative gamut of examples. Thus, defining a comprehensive test suite (also known as “evaluation”) may be required to ensure changes have a positive impact on performance.
 
-策略：
+Strategy:
 
-- 使用参考标准答案评估模型输出。
+- Evaluate model outputs against standard reference answers.
 
-## 具体的示例
+## Specific Examples
 
-每个策略都可以通过具体的战术进行实施。这些战术旨在提供尝试的思路。它们并不是完全详尽的，您可以随意尝试不在此处列出的创造性想法。本文为每个具体的策略与战术提供了一些提示词示例。
+Each strategy can be implemented through specific tactics. These tactics aim to provide ideas to try. They are by no means exhaustive; feel free to experiment with creative ideas not listed here. The article provides some prompt examples for each concrete strategy and tactic.
 
-### 策略：编写清晰的指令
+### Strategy: Writing Clear Instructions
 
-### **战术：在查询中包含细节以获得更相关的回答**
+### **Tactic: Including Details in Queries for More Relevant Responses**
 
-为了获得高度相关的回复，请确保请求提供任何重要的细节或上下文。否则，您将让模型猜测您的意思。
+To obtain highly relevant replies, make sure to request any critical details or context. Otherwise, you will leave the model guessing your meaning.
 
-| 更差的指令 | 更好的指令 |
+| Poor Instruction | Better Instruction |
 | --- | --- |
-| 如何在Excel中添加数字？ | 如何在Excel中累加一行美元金额？我想要自动为整个工作表的行求和，所有总数都显示在右侧的名为"Total"的列中。 |
-| 谁是总统？ | 2021年墨西哥的总统是谁？选举多久举行一次？ |
-| 编写计算斐波那契数列的代码。 | 编写一个高效计算斐波那契数列的TypeScript函数。详细注释代码，解释每个部分的作用以及为什么这样编写。 |
-| 总结会议记录。 | 用一段话总结会议记录。然后，使用Markdown列表列出发言者及其主要观点。最后，列出发言者建议的下一步行动或待办事项（如果有）。 |
+| How to add numbers in Excel? | How do I sum a row of dollar amounts in Excel? I want to automatically total rows for the entire worksheet, with all totals appearing in a column labeled "Total" on the right side. |
+| Who's the president? | Who was the president of Mexico in 2021? How often are elections held? |
+| Write code to calculate the Fibonacci sequence. | Write a TypeScript function to calculate the Fibonacci sequence efficiently. Comment the code in detail, explaining the purpose of each part and why it's written that way. |
+| Summarize the meeting minutes. | Summarize the meeting minutes in one sentence. Then, list the speakers and their main points in a markdown list. Lastly, list any actions or next steps suggested by the speakers (if any). |
 
-### **战术：要求模型扮演角色**
+### **Tactic: Asking the Model to Play a Role**
 
-系统消息可以用于指定模型在回复中扮演的角色。
+System messages can be used to specify the role the model should play in its responses.
 
 ```
 USER
-写一封感谢信给我的螺栓供应商，感谢他们准时并在短时间内交货。这使我们能够交付一份重要的订单。
+Write a thank you note to my bolt supplier, thanking them for delivering on schedule and at short notice. This enabled us to fulfill an important order.
 
 SYSTEM
-当我请求帮助写东西时，你将在每个段落中至少加入一个笑话或俏皮话。
+When I request help writing something, you must include at least one joke or witticism per paragraph.
 
 ```
 
-### **战术：使用分隔符清晰标示输入的不同部分**
+### **Tactic: Using Delimiters to Clearly Mark Different Parts of the Input**
 
-像三重引号、XML标记、节标题等分隔符可以帮助标示需要以不同方式处理的文本部分。
+Delimiters like triple quotes, XML tags, or section headings can help mark parts of the text that need to be processed differently.
 
 ```
 USER
-使用三重引号中的文本撰写一首俳句。
+Compose a haiku using the text in the triple quotes.
 
-"""在这里插入文本"""
-
-```
-
-```
-SYSTEM
-你将获得一对关于同一主题的文章（用XML标记分隔）。首先总结每篇文章的论点。然后指出哪篇文章提出了更好的论点，并解释为什么。
-
-USER
-<article>在这里插入第一篇文章</article>
-
-<article>在这里插入第二篇文章</article>
+"""Insert text here"""
 
 ```
 
 ```
 SYSTEM
-你将获得一份论文摘要和一个建议的标题。论文标题应该给读者一个很好的论文主题概念，同时也要引人注目。如果标题不符合这些标准，请
-
-提出5个备选方案。
+You’ll receive a pair of essays on the same topic (separated with XML tags). First, summarize each article's argument. Then indicate which article made a better argument and explain why.
 
 USER
-摘要：在这里插入摘要
+<article>Insert the first article here</article>
 
-标题：在这里插入标题
+<article>Insert the second article here</article>
 
 ```
-
-对于像这样的简单任务，使用分隔符可能不会对输出质量产生影响。然而，任务越复杂，将任务细节澄清变得越重要。不要让 GPTs 努力理解您究竟在要求什么。
-
-### **战术：指定完成任务所需的步骤**
-
-某些任务最好指定为一系列步骤。明确写出这些步骤可以让模型更容易跟随。
 
 ```
 SYSTEM
-使用以下逐步说明来回应用户输入。
+You’ll be given a thesis abstract and a proposed title. The paper title should give readers a good idea of the thesis topic while also being attention-grabbing. If the title doesn’t meet these criteria, propose 5 alternatives.
 
-步骤1 - 用户将用三重引号提供给您文本。用前缀"Summary: "对这段文本进行一句总结。
+USER
+Abstract: Insert the abstract here
 
-步骤2 - 将步骤1中的总结翻译成西班牙语，并使用前缀"Translation: "。
+Title: Insert the title here
 
 ```
 
-### **战术：提供示例**
+For simple tasks like this one, using delimiters might not impact the output quality. However, as tasks become more complex, clarifying task details becomes increasingly important. Don’t make GPTs work hard to understand what exactly you require.
 
-通常情况下，提供适用于所有示例的一般说明比通过示例演示任务的所有变体更高效，但在某些情况下，提供示例可能更容易。例如，如果您打算让模型复制一种难以明确描述的用户查询响应风格。这被称为"few-shot"提示。
+### **Tactic: Specifying the Steps Required to Complete Tasks**
+
+Certain tasks are best specified as a series of steps. Writing these steps explicitly can make them easier for the model to follow.
 
 ```
 SYSTEM
-用一致的风格回答。
+Respond to user input using the following step-by-step instructions.
+
+Step 1 - The user will provide you text in triple quotes. Prefix "Summary: " and summarize the text in one sentence.
+
+Step 2 - Translate the summary from step 1 into Spanish and prefix with "Translation: ".
+
+```
+
+### **Tactic: Providing Examples**
+
+In general, it is more efficient to provide general instructions applicable to all examples rather than demonstrate every variant of a task using examples. However, in some cases, providing examples might be easier. For example, if you intend the model to mimic a response style that's challenging to describe explicitly. This is known as "few-shot" prompting.
+
+```
+SYSTEM
+Answer in a consistent style.
 
 USER
-教我什么是耐心。
+Teach me about patience.
 
 ASSISTANT
-刻出最深峡谷的河流起源于一处平凡的泉眼；最壮丽的交响乐源于一颗单独的音符；最复杂的挂毯始于一根孤立的线缕。
+The river that carves the deepest canyons springs from a humble source; the grandest symphony arises from a solitary note; the most intricate tapestry begins with a single thread.
 
 USER
-教我关于海洋。
+Teach me about the ocean.
 
 Open in Playground
 
 ```
 
-### **战术：指定所需的输出长度**
+### **Tactic: Specifying the Desired Output Length**
 
-您可以要求模型生成指定长度的输出。目标输出长度可以根据词数、句子数、段落数、项目符号数等来指定。但请注意，指示模型生成特定数量的单词并不具有高精确度。模型更可靠地生成具有特定段落或项目符号数量的输出。
-
-```
-USER
-用大约50个词总结由三重引号分隔的文本。
-
-"""在这里插入文本"""
-
-```
+You can request a specific output length from the model. Target output lengths can be specified by word count, sentence count, paragraph count, bullet point count, and so on. However, note that instructing the model to produce a specific number of words is not highly precise. The model is more reliably able to produce outputs with specific numbers of paragraphs or bullet points.
 
 ```
 USER
-用2个段落总结由三重引号分隔的文本。
+Summarize the text divided by triple quotes in approximately 50 words.
 
-"""在这里插入文本"""
+"""Insert text here"""
 
 ```
 
 ```
 USER
-用3个项目符号总结由三重引号分隔的文本。
+Summarize the text within triple quotes in 2 paragraphs.
 
-"""在这里插入文本"""
+"""Insert text here"""
 
 ```
 
-### 策略：提供参考文本
+```
+USER
+Summarize the text using 3 bullet points inside triple quotes.
 
-### 战术：指示模型使用参考文本回答问题
+"""Insert text here"""
 
-如果我们能够为模型提供与当前查询相关的可信信息，那么我们可以指示模型使用提供的信息来组成其答案。
+```
+
+### Strategy: Providing Reference Text
+
+### **Tactic: Instructing the Model to Answer Questions Using Reference Text**
+
+If we can provide the model with trustworthy information relevant to the current query, we can instruct the model to compose its answers using the provided information.
 
 ```
 SYSTEM
-使用由三重引号分隔的所提供的文章来回答问题。如果答案在文章中找不到，写下"I could not find an answer."
+Use the provided article, delimited by triple quotes, to answer the question. If the answer cannot be found in the article, write "I could not find an answer."
 USER
-<插入文章，每篇文章由三重引号分隔>
+<Insert article, with each article delimited by triple quotes>
 
-问题：<插入问题>
+Question: <Insert question>
 
 ```
 
-鉴于GPT具有有限的上下文窗口，为了应用此策略，我们需要某种方式动态查找与被提问的问题相关的信息。可以使用嵌入来实现高效的知识检索。查看策略"使用基于嵌入的搜索实现高效知识检索"了解更多关于如何实现这一点的细节。
+Given GPT has a limited context window, in order to apply this strategy, we need some way to dynamically locate information related to the posed question. Embeddings can be used to achieve efficient knowledge retrieval. Please check the strategy "Use embedding-based search to achieve efficient knowledge retrieval" for more details on how to achieve this.
 
-### 战术：指示模型使用参考文本的引文进行回答
+### **Tactic: Instructing the Model to Answer Using Citations from the Reference Text**
 
-如果输入已经被相关知识补充，直接要求模型通过引用所提供文档的段落来添加引文到其回答中就很简单了。请注意，可以通过在所提供的文档中进行字符串匹配来编程验证输出中的引文。
+If the input has been augmented with relevant knowledge, it's straightforward to instruct the model to add citations from the provided document to its answer. Note that it can also be programmed to verify the citations in the output by string matching within the provided documents.
 
 ```
 SYSTEM
-你将得到一个由三重引号分隔的文档和一个问题。你的任务是只使用提供的文档来回答问题，并引用用来回答问题的文档段落。如果文档不包含回答此问题所需的信息，那么只需写下：“信息不足”。如果提供了问题的答案，必须用引文进行注释。使用以下格式引用相关段落 ({"citation": …})。
+You’ll receive a document and a question in triple quotes. Your task is to answer using only the provided document and to cite the document paragraphs you used. If the document doesn’t contain the needed information, simply write: "Insufficient information." If the answer to the question is provided, it must be annotated with citations. Use the following format to cite the relevant paragraphs: ({"citation": …}).
 USER
-"""<插入文档>"""
+"""<Insert document>"""
 
-<插入问题>
+<Insert question>
 
 ```
 
-### 策略：将复杂任务分解为更简单的子任务
+### Strategy: Breaking Down Complex Tasks into Simpler Subtasks
 
-### 战术：使用意图分类来识别用户查询最相关的指令
+### **Tactic: Using Intent Classification to Identify the Most Relevant Instructions for a User Query**
 
-对于需要大量独立的指令集来处理不同情况的任务，首先分类查询类型并使用分类来确定需要哪些指令可能是有益的。这可以通过定义固定的类别并硬编码与处理给定类别任务相关的指令来实现。此过程也可以递归应用以将任务分解为一系列阶段。这种方法的优点是每个查询只包含执行任务的下一阶段所需的那些指令，这可能导致比使用单个查询执行整个任务时的错误率更低。这也可能导致成本更低，因为更大的提示运行成本更高（参见价格信息）。
+For tasks requiring a multitude of independent instruction sets to handle diverse situations, it might be fruitful to first classify the query and use the classification to determine which instructions are needed. This can be achieved by defining fixed categories and hardcoding task-related instructions for the classified types of queries. This process can also be applied recursively to break the task down into a series of stages. This approach has the advantage that only those instructions that are necessary for the next stage of task execution are included with each query, potentially leading to a lower error rate than executing a whole task in one query. It may also result in lower costs, since larger prompts cost more to run (see pricing information).
 
-假设例如，对于客户服务应用，查询可能被有用地分类如下：
+Suppose for example, for a customer service application, the query might be helpfully classified as follows:
 
 ```
 SYSTEM
-你将得到客户服务查询。将每个查询分类为主要类别和次要类别。以json格式提供你的输出，包含主要和次要两个关键字。
+You will receive a customer service query. Classify each query into a primary and secondary category. Provide your output in json format with the primary and secondary keywords.
 
-主要类别：计费，技术支持，账户管理，或一般咨询。
+Primary categories: Billing, Technical Support, Account Management, or General Inquiry.
 
-计费次要类别：
-- 退订或升级
-- 添加付款方式
-- 收费解释
-- 争议收费
+Billing secondary categories:
+- Cancel or Upgrade
+- Add Payment Method
+- Charge Explanation
+- Dispute Charge
 
-技术支持次要类别：
-- 故障排除
-- 设备兼容性
-- 软件更新
+Technical Support secondary categories:
+- Troubleshoot
+- Device Compatibility
+- Software Updates
 
-账户管理次要类别：
-- 密码重置
-- 更新个人信息
-- 关闭账户
-- 账户安全
+Account Management secondary categories:
+- Password Reset
+- Update Personal Information
+- Account Closure
+- Account Security
 
-一般咨询次要类别：
-- 产品信息
-- 价格
-- 反馈
-- 要求与人对话
+General Inquiry secondary categories:
+- Product Information
+- Pricing
+- Feedback
+- Request to Speak with a Human
 USER
-我需要让我的互联网再次工作。
+I need to get my internet to work again.
 
 ```
 
-基于客户查询的分类，可以向GPT模型提供一组更具体的指令来处理下一步。例如，假设客户需要帮助"故障排除"。
+Based on the classification of the customer query, a more specific set of instructions could be provided to the GPT model to handle the next step. For example, suppose the customer needs help with "Troubleshoot."
 
 ```
 SYSTEM
-你将得到需要在技术支持环境中进行故障排除的客户服务查询。通过以下方式帮助用户：
+You will receive a customer service query that requires troubleshooting in a technical support setting. Assist the user by:
 
-- 让他们检查到/从路由器的所有电缆是否已连接。注意，电缆随着时间的推移会常常松动。
-- 如果所有电缆都已连接并且问题仍然存在，询问他们正在使用哪种路由器模型
-- 现在你将建议他们如何重新启动他们的设备：
--- 如果型号是MTD-327J，建议他们按下红色按钮并保持5秒钟，然后等待5分钟后再测试连接。
--- 如果型号是MTD-327S，建议他们拔掉并重新插入，然后等待5分钟后再测试连接。
-- 如果客户在重启设备并等待5分钟后的问题仍然存在，通过输出{"IT support requested"}将他们连接到IT支持。
-- 如果用户开始提问与此主题无关的问题，那么请确认他们是否希望结束当前关于故障排除的聊天，并根据以下方案对他们的请求进行分类：
+- Confirming that all cables are securely connected to/from the router. Note that cables often become loose over time.
+- If all cables are secured and the issue persists, ask which router model they’re using
+- Now suggest how they should restart their equipment:
+-- If it’s model MTD-327J, suggest pressing the red button and holding it for 5 seconds, then waiting 5 minutes before testing the connection.
+-- If it’s model MTD-327S, suggest unplugging and plugging back in, and then waiting 5 minutes before testing the connection.
+- If the issue persists even after the device restart and a 5-minute wait, connect them to IT Support by outputting {"IT support requested"}.
+- If users start asking questions unrelated to this topic, confirm if they want to end the current troubleshooting chat and categorize their request based on the predefined scheme:
 
-<插入上述主/次分类方案>
+<Insert the above primary/secondary category scheme>
 USER
-我需要让我的互联网再次工作。
+I need to get my internet to work again.
 
 ```
 
-请注意，已经指示模型在会话状态改变时发出特殊的字符串。这使我们能够将我们的系统转变为状态机，其中状态决定哪些指令被注入。通过跟踪状态，什么指令在那个状态下是相关的，以及从那个状态允许什么状态转换，我们可以在用户体验周围设置保护，这在一种不太结构化的方法中很难实现。
+Note, the model has been instructed to emit a special string when there is a change in the state of the conversation. This allows us to transform our system into a state machine, where the state determines which instructions are injected. By tracking states, knowing which instructions are relevant in that state, and what state transitions are permitted from that state, we can set up guardrails around the user experience, which can be hard to achieve otherwise using a less structured approach.
 
-### 战术
+### **Tactic: Summarizing or Filtering Previous Dialogue in Conversational Applications with Very Long Conversations**
 
-：对需要进行非常长对话的对话应用程序，对先前的对话进行汇总或过滤 由于GPT具有固定的上下文长度，用户和助手之间的对话不能无限地继续，如果整个对话都包含在上下文窗口中。
+Due to GPT's fixed context length, conversations between a user and the assistant cannot continue indefinitely if the entire dialogue is included in the context window.
 
-解决这个问题的方法有很多，其中之一是对对话的前几个回合进行汇总。一旦输入的大小达到预定的阈值长度，这可能会触发一个查询，该查询会汇总对话的一部分，先前对话的汇总可以作为系统消息的一部分。或者，先前的对话可以在整个对话过程中异步地进行汇总。
+One way to solve this is summarizing the first few rounds of dialogue. Once the input size reaches a predetermined threshold length, it could trigger a query that summarizes part of the dialogue, and a summary of the previous dialogues can be kept in the system message. Alternatively, previous dialogues can be summarized asynchronously throughout the duration of the interaction.
 
-另一个解决方案是动态选择与当前查询最相关的对话的先前部分。参见战术"使用基于嵌入的搜索来实现高效的知识检索"。
+Another solution is to dynamically select the previous parts of the dialogue most relevant to the current query. See the tactic "Utilize embedding-based search to achieve efficient knowledge retrieval."
 
-### 战术：分段汇总长文档并递归构造完整汇总
+### **Tactic: Summarizing Long Documents in Stages and Recursively Building a Full Summary**
 
-由于GPT具有固定的上下文长度，它们不能在单个查询中用来汇总超过上下文长度减去生成汇总长度的文本。
+Given GPT's fixed context lengths, they cannot be used to summarize more than their context length minus the length of the generated summary in a single query.
 
-要汇总一个非常长的文档，如一本书，我们可以使用一系列的查询来汇总每一部分的文档。部分汇总可以被连接起来并进行汇总，产生汇总的汇总。这个过程可以递归地进行，直到整个文档被汇总。如果需要使用关于早期部分的信息来理解后来的部分，那么在对那一点的内容进行汇总时包含一个运行汇总的文本，这可能是一个有用的技巧。OpenAI在之前的研究中已经研究了这种用于汇总书籍的程序的有效性，使用的是GPT-3的变体。
+To summarize a very long document, such as a book, we can use a series of queries to summarize each section of the document. The section summaries can be concatenated and summarized to produce a summary of the summaries. This process can be done recursively until the entire document is summarized. If it is necessary to use information about earlier parts to understand later sections, a useful trick might be including a running summary of the content at the time of summarizing those parts. OpenAI has examined the effectiveness of such a program for summarizing books in previous research, using a variant of GPT-3.
 
-### 策略：给予 GPT 时间“思考”
+### Strategy: Giving GPT Time to "Think"
 
-### **战术：在匆忙得出结论前，指导模型自行找出解决方案**
+### **Tactic: Guiding the Model to Work Out the Solution Before Hastily Drawing Conclusions**
 
-有时候，我们明确地指导模型在得出结论之前先进行从头至尾的推理，会得到更好的结果。比如，假设我们希望模型评估一个学生解决数学问题的方法。最直观的做法就是直接询问模型学生的解决方案是否正确。
+Sometimes, we achieve better results by explicitly instructing the model to engage in reasoning from first principles before drawing conclusions. For example, imagine we want the model to evaluate a student's solution to a math problem. The most straightforward approach is to ask if the student's solution is correct.
 
 ```
 SYSTEM
-判断学生的解答是否正确。
+Judge if the student's solution is correct.
 
 USER
-问题描述：我正在建造一个太阳能发电装置，我需要帮助计算财务状况。
-- 土地费用为每平方英尺100美元
-- 我可以以每平方英尺250美元的价格购买太阳能板
-- 我已经商定了一个每年固定费用为10万美元的维护合同，以及每平方英尺额外的10美元
-第一年运营的总成本是多少，作为面积（平方英尺）的函数来表示。
+Problem Statement: I’m building a solar power installation, and I need help calculating the financials.
+- Land costs $100 per square foot
+- I can buy solar panels for $250 per square foot
+- I’ve agreed to pay a fixed annual fee of $100,000 for maintenance, plus $10 per square foot
+What's the total cost for the first year of operation, expressed as a function of the area (square feet)?
 
-学生的解答：设x为装置的面积（平方英尺）。
-1. 土地费用：100x
-2. 太阳能板费用：250x
-3. 维护费用：100,000 + 100x
-总成本：100x + 250x + 100,000 + 100x = 450x + 100,000
+Student’s Solution: Let x be the area of the installation in square feet.
+1. Land cost: 100x
+2. Solar panel cost: 250x
+3. Maintenance cost: 100,000 + 100x
+Total cost: 100x + 250x + 100,000 + 100x = 450x + 100,000
 
 ASSISTANT
-学生的解答是正确的。
+The student’s solution is correct.
 
 ```
 
-但实际上，学生的解答并不正确！我们可以通过提示模型首先生成自己的解答，从而让模型成功地注意到这一点。
+However, the student's solution is incorrect! We can successfully prompt the model to notice the mistake by first prompting it to generate its own solution.
 
 ```
 SYSTEM
-首先自己解决这个问题，然后将你的解答与学生的解答进行比较，评估学生的解答是否正确。在你自己解决这个问题之前，不要判断学生的解答是否正确。
+Solve the problem yourself first, then compare your solution to the student's solution to assess its correctness. Do not judge the student’s solution until you have solved the problem yourself.
 
 USER
-问题描述：我正在建造一个太阳能发电装置，我需要帮助计算财务状况。
-- 土地费用为每平方英尺100美元
-- 我可以以每平方英尺250美元的价格购买太阳能板
-- 我已经商定了一个每年固定费用为10万美元的维护合同，以及每平方英尺额外的10美元
-第一年运营的总成本是多少，作为面积（平方英尺）的函数来表示。
+Problem Statement: I’m building a solar power installation, and I need help calculating the financials.
+- Land costs $100 per square foot
+- I can buy solar panels for $250 per square foot
+- I’ve agreed to pay a fixed annual fee of $100,000 for maintenance, plus $10 per square foot
+What's the total cost for the first year of operation, expressed as a function of the area (square feet)?
 
-学生的解答：设x为装置的面积（平方英尺）。
-1. 土地费用：100x
-2. 太阳能板费用：250x
-3. 维护费用：100,000 + 100x
-总成本：100x
-
- + 250x + 100,000 + 100x = 450x + 100,000
+Student’s Solution: Let x be the area of the installation in square feet.
+1. Land cost: 100x
+2. Solar panel cost: 250x
+3. Maintenance cost: 100,000 + 100x
+Total cost: 100x + 250x + 100,000 + 100x = 450x + 100,000
 
 ASSISTANT
-设x为装置的面积（平方英尺）。
-1. 土地费用：100x
-2. 太阳能板费用：250x
-3. 维护费用：100,000 + 10x
-总成本：100x + 250x + 100,000 + 10x = 360x + 100,000
+Let x be the area of the installation in square feet.
+1. Land cost: 100x
+2. Solar panel cost: 250x
+3. Maintenance cost: 100,000 + 10x
+Total cost: 100x + 250x + 100,000 + 10x = 360x + 100,000
 
-学生的解答是不正确的。他们在计算维护费用时犯了错误，使用了100x而不是10x。第一年运营的正确总成本应为360x + 100,000。
-
-```
-
-### **战术：使用内心独白或一系列查询来隐藏模型的推理过程**
-
-前一个战术表明，模型有时需要在回答特定问题之前详细地推理一个问题。对于某些应用程序，模型用来得出最终答案的推理过程是不适合与用户分享的。例如，在辅导应用程序中，我们可能希望鼓励学生自己找出答案，但是模型对学生解答的推理过程可能会向学生透露答案。
-
-内心独白是一种可以用来解决这个问题的战术。内心独白的想法是，指导模型将那些应该对用户隐藏的输出部分放入一种结构化的格式中，使其易于解析。然后，在向用户呈现输出之前，解析输出并只使部分输出可见。
-
-```
-SYSTEM
-按照以下步骤回答用户的查询。
-
-步骤 1 - 首先自己解决问题。不要依赖学生的解答，因为它可能是错误的。将此步骤的所有工作都包含在三引号（"""）中。
-
-步骤 2 - 将你的解答与学生的解答进行比较，并评估学生的解答是否正确。将此步骤的所有工作都包含在三引号（"""）中。
-
-步骤 3 - 如果学生犯了错误，确定你可以给学生什么提示，而不透露答案。将此步骤的所有工作都包含在三引号（"""）中。
-
-步骤 4 - 如果学生犯了错误，将上一步的提示提供给学生（在三引号之外）。写"提示："，而不是"步骤4 - ...”。
-
-USER
-问题描述： <插入问题描述>
-
-学生的解答： <插入学生的解答>
+The student’s solution is not correct. They made an error in calculating the maintenance cost, using 100x instead of 10x. The correct total cost for the first year should be 360x + 100,000.
 
 ```
 
-或者，这也可以通过一系列查询实现，其中所有查询的输出（除了最后一个）都对最终用户隐藏。
+### **Tactic: Using Internal Monologue or a Series of Queries to Conceal the Model's Reasoning Process**
 
-首先，我们可以让模型自己解决问题。
+The previous tactic demonstrates that models sometimes need to reason out a question in detail before answering a particular question. For certain applications, exposing the reasoning process leading to the final answer may not be suitable for sharing with the user. For instance, in a tutoring application, we may wish to encourage the student to arrive at an answer independently, but the model’s reasoning might reveal the answer to the student.
 
-由于这个初始查询不需要学生的解答，所以可以省略它。这提供了额外的优势，即模型的解答不可能被学生尝试的解答偏倚。
-
-```
-USER
-<插入问题描述>
-
-```
-
-接下来，我们可以让模型使用所有可用的信息来评估学生解答的正确性。
+Internal monologue is a tactic that can be used to address this issue. The idea of internal monologue is to guide the model to format parts of the output intended to be hidden from the user, making it easy to parse. Then, parse the output and present only the visible parts to the user.
 
 ```
 SYSTEM
-将你的解答与学生的解答进行比较，然后评估学生的解答是否正确。
+Follow the steps below to respond to the user query.
+
+Step 1 - Solve the problem yourself first. Do not rely on the student's solution, which could be wrong. Keep all work for this step inside triple quotes (""").
+
+Step 2 - Compare your solution with the student's and assess if the student's solution is correct. Keep all work for this step inside triple quotes (""").
+
+Step 3 - If the student made a mistake, figure out a hint you can give them without revealing the answer. Keep all work for this step inside triple quotes (""").
+
+Step 4 - If the student made an error, provide the hint to the student from the previous step (outside the triple quotes). Write "Hint:" instead of "Step 4 - ...".
 
 USER
-问题描述："""<插入问题描述>"""
+Problem Statement: <Insert problem description>
 
-你的解答："""<插入模型生成的解答>"""
-
-学生的解答："""<插入学生的解答>"""
+Student's Solution: <Insert student's solution>
 
 ```
 
-最后，我们可以让模型使用自己的分析，构造一个有帮助的导师的回复。
+Alternatively, this could be achieved through a series of queries, where the outputs of every query except the last one are hidden from the end user.
+
+First, we can have the model solve the problem first.
+
+As this initial query doesn’t require the student's solution, it can be omitted. This provides the additional advantage of eliminating the possibility of the model’s answer being biased by the student’s attempted solution.
+
+```
+USER
+<Insert problem description>
+
+```
+
+Next, we can have the model assess the correctness of the student's solution using all available information.
 
 ```
 SYSTEM
-你是一位数学导师。如果学生犯了错误，以不透露答案的方式给学生提供一个提示。如果学生没有犯错误，简单地对他们提供鼓励性的评论。
+Compare your own solution with the student's solution, and assess if the student's solution is correct.
 
 USER
-问题描述："""<插入问题描述>"""
+Problem Statement: """<Insert problem description>"""
 
-你的解答："""<插入模型生成的解答>"""
+Your Solution: """<Insert model-generated solution>"""
 
-学生的解答："""<插入学生的解答>"""
-
-分析："""<插入模型在前一步生成的分析>"""
+Student’s Solution: """<Insert student’s solution>"""
 
 ```
 
-### **战术：询问模型是否在前几轮查询中遗漏了任何内容**
-
-假设我们正在使用模型列出与特定问题相关的源文本的摘录。在列出每一篇摘录之后，模型需要确定是否应开始编写另一篇，或者是否应该停止。如果源文档很大，模型通常会过早地停止，无法列出所有相关的摘录。在这种情况下，通过提示模型用后续查询找出它在前几轮中遗漏的摘录，通常可以获得更好的性能。
+Finally, we can have the model use its own analysis to construct a helpful tutor's response.
 
 ```
 SYSTEM
-你将获得一个用三引号分隔的文档。你的任务是选择与以下问题相关的摘录："人工智能历史上发生过哪些重大的范式转变。"
+You're a math tutor. If the student made an error, provide a hint without revealing the answer. If the student didn't make errors, provide an encouraging comment.
 
-确保摘录包含所有相关的上下文，以便解释它们 - 换句话说，不要提取缺少重要上下文的小片段。以如下的JSON格式提供输出：
+USER
+Problem Statement: """<Insert problem description>"""
 
-[{"摘录": "..."},
+Your Solution: """<Insert model-generated solution>"""
+
+Student’s Solution: """<Insert student’s solution>"""
+
+Analysis: """<Insert model-generated analysis from previous step>"""
+
+```
+
+### **Tactic: Asking the Model if It Missed Anything in Previous Queries**
+
+Suppose we are using the model to list excerpts from a source text that are related to a specific question. After listing each excerpt, the model needs to determine whether it should start writing another or should stop. If the source document is large, the model will typically stop too early, failing to list all relevant excerpts. In such cases, better performance can usually be obtained by prompting the model to find what it missed in previous queries using a follow-up query.
+
+```
+SYSTEM
+You will be given a document in triple quotes. Your task is to select excerpts that are relevant to the following question: "What significant paradigm shifts have occurred in the history of AI?"
+
+Ensure that excerpts contain enough relevant context to explain them—in other words, don't extract small snippets missing important context. Provide your output in the following JSON format:
+
+[{"excerpts": "..."},
 ...
-{"摘录": "..."}]
+{"excerpts": "..."}]
 
 USER
-"""<插入文档>"""
+"""<Insert document>"""
 
 ASSISTANT
-[{"摘录": "模型在这里写下一段摘录"},
+[{"excerpts": "The model writes an excerpt here"},
 ...
-{"摘录": "模型在这里写下另一段摘录"}]
+{"excerpts": "The model writes another excerpt here"}]
 
 USER
-还有其他相关的摘录吗？请注意不要重复摘录。并确保
-
-新的摘录确实与问题有关，而且在旧的摘录中还没有涵盖。
+Are there other relevant excerpts? Note not to duplicate excerpts. And ensure
+the new excerpts are indeed relevant to the question and haven't been covered in old ones.
 
 ASSISTANT
-[{"摘录": "模型在这里写下一段摘录"},
+[{"excerpts": "The model writes an excerpt here"},
 ...
-{"摘录": "模型在这里写下另一段摘录"}]
+{"excerpts": "The model writes another excerpt here"}]
 
 ```
 
-注意，如果文档特别长，这个战术可能需要多次应用。
+Note that if the document is particularly long, this tactic might need to be applied repeatedly.
 
-### 策略：使用外部工具
+### Strategy: Using External Tools
 
-### 战术：利用基于嵌入的搜索实现高效的知识检索
+### **Tactic: Utilizing Embedding-Based Search to Achieve Efficient Knowledge Retrieval**
 
-模型可以利用作为其输入的外部信息源。这可以帮助模型生成更有依据和最新的响应。例如，如果用户询问关于特定电影的问题，将有关该电影的高质量信息（如演员、导演等）添加到模型的输入可能是有用的。嵌入可以用来实现高效的知识检索，以便在运行时动态地将相关信息添加到模型输入。
+The model can leverage external sources of information provided as an input. This can help the model generate more substantiated and up-to-date responses. For instance, if a user asks a specific question about a movie, adding high-quality information about the film (such as cast, director, etc.) to the model’s input might be useful. Embeddings can be used to achieve efficient knowledge retrieval to dynamically add relevant information to the model input at runtime.
 
-文本嵌入是一种可以测量文本字符串之间相关性的向量。相似或相关的字符串将比无关的字符串更接近。这个事实，再加上快速向量搜索算法的存在，意味着嵌入可以被用来实现高效的知识检索。具体来说，文本语料库可以被切割成块，每个块可以被嵌入并存储。然后，给定的查询可以被嵌入，向量搜索可以被执行，以找到与查询最相关的文本块（即，在嵌入空间中最接近的）。
+Text embeddings are vectors that measure the relevance of text strings to one another. Similar or related strings will be closer to each other than unrelated ones. This fact, combined with the existence of fast vector search algorithms, means embeddings can be used to implement efficient knowledge retrieval. Specifically, a text corpus can be chunked, each chunk embedded, and then stored. Given a query, it can be embedded, and vector search can be performed to identify text chunks most relevant to the query (i.e., closest in embedding space).
 
-实施示例可以在OpenAI Cookbook中找到。请参阅战术"Instruct the model to use retrieved knowledge to answer queries"，以获取如何使用知识检索来最小化模型制造错误事实的可能性的例子。
+An implementation example can be found in the OpenAI Cookbook. Refer to the tactic "Instruct the model to use retrieved knowledge to answer queries" for examples on how to minimize the probability of model-generated factual inaccuracies using knowledge retrieval.
 
-### 战术：使用代码执行进行更精确的计算或调用外部API
+### **Tactic: Using Code Execution for More Accurate Calculations or External API Calls**
 
-我们不能依赖GPT自己精确地进行算术或长时间的计算。在需要的情况下，可以指导模型编写和运行代码，而不是自己进行计算。特别是，可以指导模型将要运行的代码放入特定格式，如三重反引号。在产生输出后，可以提取并运行代码。最后，如果必要，可以将代码执行引擎（如Python解释器）的输出作为模型下一次查询的输入。
+We cannot rely on GPT to accurately perform arithmetic or long calculations independently. In needed cases, the model can be guided to write and execute code instead of performing calculations itself. Specifically, the model can be instructed to place code to be executed in a distinct format, such as triple backticks. After generating output, the code can be extracted and executed. Finally, if necessary, the output from the code execution engine (such as a Python interpreter) can be used for the model’s next query input.
 
 ```
 SYSTEM
-你可以通过将代码包含在三重反引号中来编写和执行Python代码，例如 ```代码在此```。使用这种方式来进行计算。
+You can write and execute Python code by placing it in triple backticks, such as ```code here```. Use this to perform calculations.
 USER
-找出以下多项式的所有实数根：3*x**5 - 5*x**4 - 3*x**3 - 7*x - 10。
+Find all the real roots of the following polynomial: 3*x**5 - 5*x**4 - 3*x**3 - 7*x - 10.
 
 ```
 
-代码执行的另一个好用途是调用外部API。如果模型在API的正确使用上得到了指导，它就可以编写使用这个API的代码。可以通过向模型提供文档和/或代码示例来指导模型如何使用API。
+Another good use of code execution is calling external APIs. If the model is guided on the proper usage of an API, it can write code that uses this API. Guidance can be provided via documentation and/or code examples on how to use the API.
 
 ```
 SYSTEM
-你可以通过将代码包含在三重反引号中来编写和执行Python代码。另外注意，你可以使用以下模块帮助用户向朋友发送消息：
+You can write and execute Python code by placing it in triple backticks. Note also, you can use the following module to help the user send messages to a friend:
 
 ```python
 import
@@ -520,147 +516,153 @@ message.write(to="John", message="Hey, want to meetup after work?")
 
 ```
 
-警告：执行由模型产生的代码本质上并不安全，任何希望执行此操作的应用都应该采取预防措施。特别地，需要一个沙箱化的代码执行环境来限制不受信任的代码可能导致的危害。
+Warning: Executing code generated by the model is inherently unsafe and any application wishing to do so should take precautions. Specifically, a sandboxed code execution environment is needed to limit the damage that untrusted code may cause.
 
-### 策略：系统地测试改变
+### Strategy: Systematically Testing Changes
 
-有时候，很难确定一个改变——例如，新的指令或新的设计——是否使你的系统更好或更差。观察几个例子可能会暗示哪个更好，但是在小样本的情况下，很难区分真正的改进和随机运气。可能这种变化在某些输入上提高了性能，但在其他输入上却降低了性能。
+At times, it is challenging to determine whether a change—for example, a new instruction or a new design—makes your system better or worse. Observing a few examples might suggest which option is better, but it is hard to distinguish a real improvement from chance in small sample sizes. It might be that the change improves performance on some inputs while it degrades performance on others.
 
-评估程序（或“评估”）对优化系统设计很有用。良好的评估具有以下特性：
+Evaluation programs (or "evaluations") are useful for optimizing system design. A good evaluation has the following characteristics:
 
-- 代表现实世界的使用情况（或至少多样化）
-- 包含许多测试用例，以获得更大的统计能力（见下表作为指南）
-- 易于自动化或重复
+- Representative of real-world usage (or at least diverse)
+- Contains many test cases to achieve greater statistical power (see the table below as a guide)
+- Easy to automate or replicate
 
-| 检测到的差异 | 95%置信度所需的样本大小 |
+| Detected Difference | Sample Size Needed for 95% Confidence |
 | --- | --- |
 | 30% | ~10 |
 | 10% | ~100 |
 | 3% | ~1,000 |
 | 1% | ~10,000 |
 
-输出的评估可以由计算机、人或两者混合完成。计算机可以使用目标标准（例如，具有单一正确答案的问题）以及某些主观或模糊的标准自动化评估，其中模型输出由其他模型查询进行评估。OpenAI Evals 是一个开源软件框架，提供用于创建自动化评估的工具。
+Evaluations of outputs can be performed by computers, humans, or a mix of both. Automation of evaluations can use objective criteria (for example, questions with a single correct answer) as well as some subjective or fuzzy criteria where model outputs are evaluated through queries to other models. OpenAI Evals is an open-source software framework that provides tools for creating automated evaluations.
 
-当存在一系列被认为是同等高质量的可能输出（例如，对于具有长答案的问题）时，基于模型的评估可能有用。哪些可以用基于模型的评估真实地进行评估，哪些需要人来评估的边界是模糊的，随着模型变得越来越有能力，这个边界正在不断地移动。我们鼓励进行实验，以确定基于模型的评估对你的用例有多大的效果。
+In cases where many equally satisfactory high-quality possible outputs exist (for example, for questions with long answers), model-based evaluation might be useful. The boundary between which functions can be practically evaluated via model-based evaluations and which need human assessment is blurry and is shifting continually as models become increasingly capable. We encourage experimentation to determine how well model-based evaluations work for your use cases.
 
-### 战术：参照标准答案评估模型输出
+### **Tactic: Evaluating Model Outputs against Standard Reference Answers**
 
-假设已知一个问题的正确答案应该参考一组特定的已知事实。然后，我们可以使用模型查询来计算答案中包含了多少必需的事实。
+Suppose the correct answer to a question should refer to a specific set of known facts. Then we can use model queries to compute how many of the necessary facts are included in the candidate answer.
 
-例如，使用以下的系统消息：
+For example, using the following system message:
 
 ```
 SYSTEM
-您将获得由三个引号界定的文本，这应该是问题的答案。检查以下的信息是否直接包含在答案中：
+You will get a piece of text bounded by triple quotes that should be an answer to a question. Check if the following information is directly included in the answer:
 
-- 尼尔·阿姆斯特朗是第一个登上月球的人。
-- 尼尔·阿姆斯特朗第一次走上月球的日期是1969年7月21日。
+- Neil Armstrong was the first person to step on the moon.
+- Neil Armstrong stepped on the moon for the first time on July 21, 1969.
 
-对于这些点，请执行以下步
+For these points, execute the following steps:
 
-骤：
+1 - Restate the point.
+2 - Provide a quote from the answer that is closest to the point.
+3 - Consider whether an uninformed reader can infer the point directly after reading the quote. Provide reasoning before making a decision.
+4 - Write "yes" if the answer to 3 is affirmative; otherwise, write "no."
 
-1 - 重述这一点。
-2 - 提供一个来自答案的引用，这个引用最接近这一点。
-3 - 考虑一个不了解这个主题的人读了引用是否可以直接推断出这一点。在做决定之前，解释为什么或为什么不。
-4 - 如果3的答案是肯定的，写“是”，否则写“否”。
-
-最后，提供一个“是”的答案的数量。将这个数量作为{"count": <insert count here>}提供。
+Finally, provide a count of the number of "yes" answers. Present this count as {"count": <insert count here>}.
 
 ```
 
-下面是一个例子，其中两个要点都得到了满足：
+Here is an example where both points are satisfied:
 
 ```
 SYSTEM
 <insert system message above>
 USER
-"""尼尔·阿姆斯特朗因为是第一个踏上月球的人而闻名。这个历史性的事件发生在1969年7月21日，是阿波罗11号任务的一部分。"""
+"""
 
-```
+Neil Armstrong is known for becoming the first person to set foot on the moon. This historic event took place on July 21, 1969, as part of the Apollo 11 mission.
 
-这是一个只满足一个要点的输入示例：
-
-```
-SYSTEM
-<insert system message above>
-USER
-"""尼尔·阿姆斯特朗在他从月球模块走下来时创造了历史，成为第一个在月球上行走的人。"""
-
-```
-
-这是一个没有满足任何要点的输入示例：
-
-```
-SYSTEM
-<insert system message above>
-USER
-"""在'69年的夏天，一个宏大的旅程，
-阿波罗11号，像传说的手一样大胆。
-阿姆斯特朗迈出了一步，历史展开，
-他说的'一个小步'，是为了一个新的世界。"""
-
-```
-
-这种类型的基于模型的评估有许多可能的变体。考虑下面这个跟踪候选答案和金标准答案之间的重叠种类，以及候选答案是否与金标准答案的任何部分矛盾的变体。
-
-```
-SYSTEM
-按照以下步骤进行。
-
-步骤1：逐步推理提交的答案与专家答案比较，是：不相交、子集、超集，还是有相等的信息集。
-
-步骤2：逐步推理提交的答案是否与专家答案的任何部分矛盾。
-
-步骤3：输出一个JSON对象，结构如下：{"containment": "disjoint" or "subset" or "superset" or "equal", "contradiction": True or False}
-
-```
-
-这是一个输入例子，其中的答案质量较差：
-
-```
-SYSTEM
-<insert system message above>
-USER
-Question: """尼尔·阿姆斯特朗最著名的事件是什么，它发生在什么时候？假设UTC时间。"""
-
-Submitted Answer: """他在月球上
-
-走了一圈吗？"""
-
-Expert Answer: """尼尔·阿姆斯特朗最为人所知的是他是第一个踏上月球的人。这一历史性的事件发生在1969年7月21日，是NASA的阿波罗11号任务的一部分。阿姆斯特朗踏上月球表面时说的名言："那是人类的一小步，却是人类的一大步"，至今仍被广泛引用。
 """
 
 ```
 
-这是一个有好答案的输入示例：
+Here is an example of an input that fulfills one point:
 
 ```
 SYSTEM
 <insert system message above>
 USER
-Question: """尼尔·阿姆斯特朗最著名的事件是什么，它发生在什么时候？假设UTC时间。"""
+"""
 
-Submitted Answer: """在1969年7月21日的大约02:56 UTC时间，尼尔·阿姆斯特朗成为第一个踏上月球表面的人，标志着人类历史上的一项伟大成就。大约20分钟后，奥尔德林也加入到他的行列。"""
+Neil Armstrong made history when he stepped off the lunar module, becoming the first person to walk on the moon.
 
-Expert Answer: """尼尔·阿姆斯特朗最为人所知的是他是第一个踏上月球的人。这一历史性的事件发生在1969年7月21日，是阿波罗11号任务的一部分。"""
+"""
 
 ```
 
-## 相关资料
+And here's an example of input not fulfilling any of the points:
 
-- ****OpenAI 官方 Blog：****使用 ****OpenAI API 进行提示词工程的最佳实践：****关于如何构建一个 AI 应用，从提示词工程到向量数据库、微调等等的详细指南。
+```
+SYSTEM
+<insert system message above>
+USER
+"""
 
-<https://help.openai.com/en/articles/6654000-best-practices-for-prompt-engineering-with-openai-api>
+In the summer of '69, a grand journey was made,
+Apollo 11 set forth, like a legend’s brazen hand.
+Armstrong stepped forth, and history unfurled,
+He declared 'one small step,' for a new world's brand.
 
-这篇文章主要针对于 GPT-3，可能相对而言有些过时，但也是一个入门的不错选择。
+"""
 
-- **微软发布的关于构建 AI 应用的概念和学习资料：**关于如何构建一个 AI 应用，从提示词工程到向量数据库、微调等等的详细指南。
+```
 
-<https://learn.microsoft.com/en-us/azure/cognitive-services/openai/concepts/advanced-prompt-engineering>
+This type of model-based evaluation has many possible variations. Consider the variant below, which tracks the type of overlap between the candidate answer and the gold-standard answer and whether the candidate answer contradicts any part of the gold-standard answer.
 
-这里也有一些相关的开源资料仓库：
+```
+SYSTEM
+Conduct the following steps.
 
-- 关于提示词工程（prompt）的指南、论文、讲座、笔记本和资源大全：<https://github.com/yunwei37/Prompt-Engineering-Guide-zh-CN>
-- 使用 OpenAI API 的例子和中文指南：<https://github.com/yunwei37/openai-cookbook-zh-cn>
-- 关于大语言模型的安全问题：提示词对抗、破解攻防的工具和案例集合：<https://github.com/yunwei37/prompt-adversarial-collections>
+Step 1: Reason through whether the submitted answer compares to the expert answer as: disjoint, subset, superset, or having equal information sets.
+
+Step 2: Reason through whether the submitted answer contradicts any part of the expert answer.
+
+Step 3: Provide a JSON object in the following structure: {"containment": "disjoint" or "subset" or "superset" or "equal", "contradiction": True or False}
+
+```
+
+Here's an example of an input where the answer quality is poor:
+
+```
+SYSTEM
+<insert system message above>
+USER
+Question: """What is Neil Armstrong’s most famous event, and when did it happen? Assume UTC time."""
+
+Submitted Answer: """Did he walk around on the moon?"""
+
+Expert Answer: """Neil Armstrong is most known for being the first person to set foot on the moon. This historic event occurred on July 21, 1969, as part of NASA’s Apollo 11 mission. The famous words Armstrong spoke upon stepping on the
+
+lunar surface—'That's one small step for man, one giant leap for mankind'—remain widely quoted to this day. 
+"""
+
+```
+
+Here's an example of good quality input and answer:
+
+```
+SYSTEM
+<insert system message above>
+USER
+Question: """What is Neil Armstrong’s most famous event, and when did it happen? Assume UTC time."""
+
+Submitted Answer: """Around 02:56 UTC on July 21, 1969, Neil Armstrong became the first person to set foot on the moon's surface, marking a significant achievement in human history. Approximately 20 minutes later, Aldrin joined him. """
+
+Expert Answer: """Neil Armstrong is most known for being the first person to set foot on the moon. This historic event took place on July 21, 1969, as part of the Apollo 11 mission. """
+
+```
+
+## Related Resources
+
+- **OpenAI Official Blog: Prompt Engineering Best Practices with OpenAI API:** A detailed guide on building an AI application, from prompt engineering to vector databases, fine-tuning, etc. <https://help.openai.com/en/articles/6654000-best-practices-for-prompt-engineering-with-openai-api>
+
+This article mainly targets GPT-3 and might be relatively outdated but a good choice for getting started.
+
+- **Microsoft's Concepts and Learning Materials on Building AI Apps:** A detailed guide on building an AI application, from prompt engineering to vector databases, fine-tuning, etc. <https://learn.microsoft.com/en-us/azure/cognitive-services/openai/concepts/advanced-prompt-engineering>
+
+Here are some related open-source resource repositories:
+
+- A comprehensive guide, papers, lectures, notebooks, and resources on prompt engineering: <https://github.com/yunwei37/Prompt-Engineering-Guide-zh-CN>
+- Examples and Chinese guides for using the OpenAI API: <https://github.com/yunwei37/openai-cookbook-zh-cn>
+- On security issues of large language models: collections of tools and cases on prompt adversarial attacks and defenses: <https://github.com/yunwei37/prompt-adversarial-collections>
