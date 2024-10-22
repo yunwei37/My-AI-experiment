@@ -16,29 +16,41 @@ Curated insights on AI, from hands-on experiments to thought-provoking discussio
 
 ## Contents
 
-- [AGI is around the corner and bringing chaos, opportunity and uncertainty](index.md)
+- [首页](index.zh.md)
+- [Home](index.md)
 - Writing
+  - [厌倦了AI技术写作？以下是让你的文章更具人情味的方法](Writing/Feel-human.zh.md)
   - [Tired of AI Tech Writing? Here’s How to Make Your Posts More Human](Writing/Feel-human.md)
-- Prompt-engineering
-  - [Prompt Engineering is Dead, Long Live AI Engineering](Prompt-engineering/prompt-dead.md)
-  - [OpenAI 新发布GPT 最佳实践：落地大模型应用的策略和战术](Prompt-engineering/gpt-best-practice.md)
-  - [提示工程已死，AI工程万岁](Prompt-engineering/prompt-dead.zh.md)
 - Future
-  - [ai os](Future/ai-os.md)
-  - [Are AI similar to the computers in 1950s? Look back in histry](Future/history.md)
+  - [Are AI similar to the computers in 1950s? Look back in histry](Future/history.zh.md)
   - [What Will We Remember from the 2020s? Looking Back in history and Thinking Forward](Future/future-hostory.md)
-  - [guidance: 自然语言的编程语言](Future/guidance.md)
   - [如何重新定义与AI的互动？Canvas能带来什么改变？](Future/openai-canvas.zh.md)
+  - [AI OS](Future/ai-os.md)
   - [Rethinking AI Interaction: OpenAI's Canvas and the Future of User Engagement](Future/openai-canvas.md)
+  - [Are AI Similar to Computers in the 1950s? A Look Back in History](Future/history.md)
+  - [Sure, here is the translation of the content into Chinese:](Future/natual-language-program.zh.md)
+  - [AI Plugins: The Future of Browsers, Front-end, and Interaction](Future/plugin.md)
   - [自然语言编程: 从 AutoGPT 往前迈的一小步](Future/natual-language-program.md)
-  - [AI 插件：未来的浏览器、前端与交互](Future/plugin.md)
-- Agents
-  - [GitHub Copilot 背后的 AI 编码技术：如何让 GPT 更好地理解你的代码](Agents/copilot.md)
-  - [Simplifying Kernel Programming: The LLM-Powered eBPF Tool](Agents/kgent.md)
-  - [多智能体系统是人工智能的未来吗？探讨OpenAI的Swarm实验](Agents/swarm.zh.md)
-  - [Are Multi-Agent Systems the Future of AI? A Look at OpenAI’s Swarm Experiment](Agents/swarm.md)
+  - [我们会从2020年代记住什么？回顾历史，展望未来](Future/future-hostory.zh.md)
+  - [AI 插件：未来的浏览器、前端与交互](Future/plugin.zh.md)
+  - [ai os](Future/ai-os.zh.md)
+  - [Guidance: A Programming Language for Natural Language](Future/guidance.md)
+  - [guidance: 自然语言的编程语言](Future/guidance.zh.md)
+- Prompt-engineering
+  - [OpenAI 新发布GPT 最佳实践：落地大模型应用的策略和战术](Prompt-engineering/gpt-best-practice.zh.md)
+  - [Here's the English translation of the document you provided:](Prompt-engineering/gpt-best-practice.md)
+  - [Prompt Engineering is Dead, Long Live AI Engineering](Prompt-engineering/prompt-dead.md)
+  - [提示工程已死，AI工程万岁](Prompt-engineering/prompt-dead.zh.md)
 - Notes
   - [Local inference llama3 with llama.cpp and CPU](Notes/inference-locally.md)
+  - [本地推理 llama3 使用 llama.cpp 和 CPU](Notes/inference-locally.zh.md)
+- Agents
+  - [简化内核编程：由 LLM 驱动的 eBPF 工具](Agents/kgent.zh.md)
+  - [Are Multi-Agent Systems the Future of AI? A Look at OpenAI’s Swarm Experiment](Agents/swarm.md)
+  - [The AI Coding Technology Behind GitHub Copilot: How to Make GPT Understand Your Code Better](Agents/copilot.md)
+  - [Simplifying Kernel Programming: The LLM-Powered eBPF Tool](Agents/kgent.md)
+  - [GitHub Copilot 背后的 AI 编码技术：如何让 GPT 更好地理解你的代码](Agents/copilot.zh.md)
+  - [多智能体系统是人工智能的未来吗？探讨OpenAI的Swarm实验](Agents/swarm.zh.md)
 
 ## Connect with me
 

@@ -1,37 +1,200 @@
 {
   "files-to-translate": [],
-  "published_zh": [
-    "index.zh.md",
-    "Writing/Feel-human.zh.md",
-    "Future/history.zh.md",
-    "Future/openai-canvas.zh.md",
-    "Future/natual-language-program.zh.md",
-    "Future/future-hostory.zh.md",
-    "Future/plugin.zh.md",
-    "Future/ai-os.zh.md",
-    "Future/guidance.zh.md",
-    "Prompt-engineering/gpt-best-practice.zh.md",
-    "Prompt-engineering/prompt-dead.zh.md",
-    "Notes/inference-locally.zh.md",
-    "Agents/kgent.zh.md",
-    "Agents/copilot.zh.md",
-    "Agents/swarm.zh.md"
-  ],
-  "published_en": [
-    "index.md",
-    "Writing/Feel-human.md",
-    "Future/future-hostory.md",
-    "Future/ai-os.md",
-    "Future/openai-canvas.md",
-    "Future/history.md",
-    "Future/plugin.md",
-    "Future/natual-language-program.md",
-    "Future/guidance.md",
-    "Prompt-engineering/gpt-best-practice.md",
-    "Prompt-engineering/prompt-dead.md",
-    "Notes/inference-locally.md",
-    "Agents/swarm.md",
-    "Agents/copilot.md",
-    "Agents/kgent.md"
-  ]
+  "passages": {
+    "index.md": {
+      "published": [
+        "medium",
+        "dev.to"
+      ],
+      "keywords": [
+        "AI",
+        "technology",
+        "future",
+        "experiments",
+        "insights"
+      ]
+    },
+    "Writing/Feel-human.md": {
+      "published": [
+        "medium",
+        "dev.to"
+      ],
+      "keywords": [
+        "content",
+        "writing",
+        "blogging",
+        "persona",
+        "branding"
+      ]
+    },
+    "Future/future-hostory.md": {
+      "published": [
+        "medium",
+        "dev.to"
+      ],
+      "keywords": [
+        "AI",
+        "AGI",
+        "computing",
+        "applications",
+        "networks"
+      ]
+    },
+    "Future/ai-os.md": {
+      "published": [
+        "medium",
+        "dev.to"
+      ],
+      "keywords": [
+        "AI",
+        "Computing",
+        "Evolution",
+        "Knowledge",
+        "Resources"
+      ]
+    },
+    "Future/openai-canvas.md": {
+      "published": [
+        "medium",
+        "dev.to"
+      ],
+      "keywords": [
+        "AI",
+        "Canvas",
+        "Interaction",
+        "Technology",
+        "Engagement"
+      ]
+    },
+    "Future/history.md": {
+      "published": [
+        "medium",
+        "dev.to"
+      ],
+      "keywords": [
+        "AI",
+        "Computers",
+        "Technology",
+        "Programming",
+        "History"
+      ]
+    },
+    "Future/plugin.md": {
+      "published": [
+        "medium",
+        "dev.to"
+      ],
+      "keywords": [
+        "AI",
+        "Plugins",
+        "Future",
+        "APIs",
+        "Software"
+      ]
+    },
+    "Future/natual-language-program.md": {
+      "published": [
+        "medium",
+        "dev.to"
+      ],
+      "keywords": [
+        "AI",
+        "AutoGPT",
+        "programming",
+        "AIagent",
+        "software"
+      ]
+    },
+    "Future/guidance.md": {
+      "published": [
+        "medium",
+        "dev.to"
+      ],
+      "keywords": [
+        "Guidance",
+        "LangChain",
+        "LLMs",
+        "DSL",
+        "JSON"
+      ]
+    },
+    "Prompt-engineering/gpt-best-practice.md": {
+      "published": [
+        "medium",
+        "dev.to"
+      ],
+      "keywords": [
+        "GPT",
+        "OpenAI",
+        "prompt",
+        "strategies",
+        "model"
+      ]
+    },
+    "Prompt-engineering/prompt-dead.md": {
+      "published": [
+        "medium",
+        "dev.to"
+      ],
+      "keywords": [
+        "AIEngineering",
+        "AIModels",
+        "PromptEngineering",
+        "Integration",
+        "Innovation"
+      ]
+    },
+    "Notes/inference-locally.md": {
+      "published": [
+        "medium",
+        "dev.to"
+      ],
+      "keywords": [
+        "inference",
+        "llama3",
+        "CPU",
+        "model",
+        "quantization"
+      ]
+    },
+    "Agents/swarm.md": {
+      "published": [
+        "medium",
+        "dev.to"
+      ],
+      "keywords": [
+        "AI",
+        "Swarm",
+        "Multiagent",
+        "Collaboration",
+        "OpenAI"
+      ]
+    },
+    "Agents/copilot.md": {
+      "published": [
+        "medium",
+        "dev.to"
+      ],
+      "keywords": [
+        "AI",
+        "Codex",
+        "Copilot",
+        "prompts",
+        "context"
+      ]
+    },
+    "Agents/kgent.md": {
+      "published": [
+        "medium",
+        "dev.to"
+      ],
+      "keywords": [
+        "Kernel",
+        "Programming",
+        "LanguageModel",
+        "eBPF",
+        "Innovation"
+      ]
+    }
+  }
 }

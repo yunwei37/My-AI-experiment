@@ -75,12 +75,14 @@
 你作为作家的身份是什么？是权威专家、好奇的学习者，还是充满热情的引导者？定义你的形象有助于创建一种一致的声音，让读者识别并信任你。当你的个性闪耀时，读者更有可能参与评论，并回头而再。
 
 **好处：**
+
 - **信任与权威：** 一致的声音建立信任，使你成为行业中的权威。
 - **参与度：** 展现个性鼓励读者评论、分享，并期待更多内容。
 - **一致性：** 明确的形象确保所有文章的语调和风格统一。
 
 **示例：**
 如果你在写关于eBPF的文章：
+
 - 作为一名**专家**，你会深入技术细节，提供解决方案和最佳实践。
 - 作为一名**学习者**，你会分享自己的旅程，包括面临的挑战和获得的成功。
 
@@ -89,6 +91,7 @@
 给你的博客系列一个独特的品牌，能帮助创造读者中的期待和忠诚度。它能让你的内容更有组织性且便于跟随。一个强大的系列品牌为每篇新文章设定了明确的期待，并吸引读者反复回来。
 
 **好处：**
+
 - **设定期待：** 读者知道系列中的每篇文章会包含什么。
 - **忠实观众：** 品牌化的系列鼓励读者回来阅读每一个新篇章。
 - **组织性：** 便于读者跟随或重温之前的文章。
@@ -124,7 +127,7 @@
 
 ## 参考
 
-- https://intellectualead.com/chatgpt-write-like-human/
-- https://www.longshot.ai/blog/ways-to-make-content-sound-human
-- https://www.reddit.com/r/ChatGPTPro/comments/1cb4mhy/how_to_create_100_human_written_content_with/
-- https://www.littleflamecreative.com/blog/human-copywriting-ai-content
+- <https://intellectualead.com/chatgpt-write-like-human/>
+- <https://www.longshot.ai/blog/ways-to-make-content-sound-human>
+- <https://www.reddit.com/r/ChatGPTPro/comments/1cb4mhy/how_to_create_100_human_written_content_with/>
+- <https://www.littleflamecreative.com/blog/human-copywriting-ai-content>
