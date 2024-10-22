@@ -15,9 +15,7 @@ theme:
     - navigation.expand
     - navigation.path
     - navigation.top
-  theme:
   palette:
-
     # Palette toggle for automatic mode
     - media: "(prefers-color-scheme)"
       toggle:
@@ -37,17 +35,28 @@ theme:
       toggle:
         icon: material/brightness-4
         name: Switch to system preference
+  language: en
 plugins:
   - search
   - social
-  - git-authors
-  - git-revision-date-localized:
-      enable_creation_date: true
   - rss:
       match_path: ".*"
       date_from_meta:
         as_creation: date.created
         as_update: date.updated
+  - i18n:
+      docs_structure: suffix
+      languages:
+        - locale: en
+          default: true
+          name: English
+          build: true
+        - locale: zh
+          name: Chinese
+          build: true
+  - git-authors
+  - git-revision-date-localized:
+      enable_creation_date: true
 extra:
   analytics:
     provider: google
@@ -56,6 +65,13 @@ extra:
   - icon: /fontawesome/regular/envelope
     name: send me an email
     link: mailto:yunwei37@gmail.com
+  alternate:
+    - name: English
+      link: /en/ 
+      lang: en
+    - name: Chinese
+      link: /zh/
+      lang: zh
 hooks:
   - hooks/socialmedia.py
 markdown_extensions:

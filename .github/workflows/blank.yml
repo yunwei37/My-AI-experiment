@@ -26,12 +26,12 @@ jobs:
           restore-keys: |
             mkdocs-material-
       - run: pip install mkdocs-material "mkdocs-material[imaging]" mkdocs-git-authors-plugin mkdocs-git-revision-date-localized-plugin
-      - run: pip install mkdocs-rss-plugin
+      - run: pip install mkdocs-rss-plugin  mkdocs-static-i18n[material]
       - run: sudo apt-get install libcairo2-dev
       # New steps start here
-      - name: Generate and update TOC
+      - name: Generate and update TOC, generate and config other things
         run: |
-          .github/replace.sh
+          .github/manage/manage.sh
       - name: Commit changes
         run: |
           git add README.md docs/index.md
