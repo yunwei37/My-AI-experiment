@@ -1,0 +1,3 @@
+[submodule ".github/manage"]
+	path = .github/manage
+	url = https://github.com/yunwei37/mkdocs-scripts
