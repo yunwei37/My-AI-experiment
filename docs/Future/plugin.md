@@ -25,3 +25,5 @@ Future software development will involve two types of people: those who use AI t
 **Conclusion**:
 
 We are stepping into a new AI era where AI plugins will fundamentally change our browsing habits and front-end development. It is not just a technological transformation but a revolution in thinking. In this revolution, everyone has the opportunity to be a participant and innovator.
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

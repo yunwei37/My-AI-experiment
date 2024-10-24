@@ -156,3 +156,5 @@ Under the assumption of significant advancement in AI capabilities, allowing the
 ### Summary
 
 These general concepts, in the context of significant AI capability development, can effectively address challenges related to computing power and resource consumption, helping AI systems optimize tasks such as knowledge acquisition, translation, and processing. Through prudent resource scheduling, caching, deduplication, compression, and other mechanisms, AI systems can meet real-time and complexity requirements while maximizing the reduction of computational waste, enhancing overall efficiency.
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

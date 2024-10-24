@@ -156,3 +156,6 @@
 ### 总结
 
 这些通用概念在AI能力极大发展的情况下，能够有效应对算力和资源消耗的挑战，并帮助AI系统优化知识获取、翻译和处理任务。通过合理的资源调度、缓存、去重、压缩等机制，AI系统可以在满足实时性和复杂性要求的同时，最大限度减少算力的浪费，提升整体效率。
+
+
+> 了解更多请访问 <https://yunwei37.github.io/My-AI-experiment/> 或者 Github： <https://github.com/yunwei37/My-AI-experiment>

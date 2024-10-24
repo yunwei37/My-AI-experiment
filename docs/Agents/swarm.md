@@ -142,3 +142,6 @@ The future is bright, but also complex. **Swarm** offers us a glimpse into whatâ
 ---
 
 *Project link: [https://github.com/openai/swarm](https://github.com/openai/swarm)*
+
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

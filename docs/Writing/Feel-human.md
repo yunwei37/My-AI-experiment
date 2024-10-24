@@ -129,3 +129,6 @@ Making your blog posts feel human instead of AI-generated takes a bit of effort,
 - https://www.reddit.com/r/ChatGPTPro/comments/1cb4mhy/how_to_create_100_human_written_content_with/
 - https://www.littleflamecreative.com/blog/human-copywriting-ai-content
 
+
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

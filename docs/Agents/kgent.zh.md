@@ -81,3 +81,5 @@ Kgent 正在通过将 eBPF 程序创作面向更广泛的受众，从而改变�
 我们邀请您探索 Kgent，看看它如何能改变您进行内核开发的方式。有关更多详细信息，请查看我们的 [eBPF'24 论文](https://dl.acm.org/doi/10.1145/3672197.3673434)和访问我们的 [GitHub 代码库](https://github.com/eunomia-bpf/KEN)。欲了解更多，请参阅之前的 Arxiv 版本：[KEN: Kernel Extensions using Natural Language](https://arxiv.org/abs/2312.05531)。此外，您可以在这里试用更易用和简化的工具 [GPTtrace](https://github.com/eunomia-bpf/GPTtrace) 。也可以尝试 [GPTtrace 的简化网页版示例](https://github.com/eunomia-bpf/GPTtrace-web)。
 
 通过降低编写 eBPF 程序的门槛，Kgent 正在推动创新并增强系统功能，每次自然语言提示一次。
+
+> 了解更多请访问 <https://yunwei37.github.io/My-AI-experiment/> 或者 Github： <https://github.com/yunwei37/My-AI-experiment>

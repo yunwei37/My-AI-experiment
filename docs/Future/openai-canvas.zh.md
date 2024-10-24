@@ -62,3 +62,6 @@ Canvas不仅仅是一个新功能，它代表了一个全新的互动时代。�
 
 - [OpenAI推出Canvas: https://openai.com/index/introducing-canvas/](https://openai.com/index/introducing-canvas/)
 - [Hacker News社区讨论: https://news.ycombinator.com/item?id=41732634](https://news.ycombinator.com/item?id=41732634)
+
+
+> 了解更多请访问 <https://yunwei37.github.io/My-AI-experiment/> 或者 Github： <https://github.com/yunwei37/My-AI-experiment>

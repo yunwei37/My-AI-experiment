@@ -50,3 +50,6 @@ For simple tasks, keeping prompts straightforward is enough. Overcomplicating th
 So, let's move beyond getting stuck on crafting the perfect prompt. Instead, let's focus on building systems that make the most of AI's capabilities. After all, the goal is to solve problems and create innovative solutions, not just to talk to machines.
 
 **Long live AI engineering!**
+
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

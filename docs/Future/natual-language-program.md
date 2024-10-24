@@ -206,3 +206,5 @@ Goals:
 
 > Software (1.0) is eating the world, and now AI (Software 2.0) is eating software.
 >
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

@@ -199,3 +199,5 @@ AutoGPT是一个实验性的开源应用，它使用 GPT-4 语言模型来自动
 
 > Software (1.0) is eating the world, and now AI (Software 2.0) is eating software.
 >
+
+> 了解更多请访问 <https://yunwei37.github.io/My-AI-experiment/> 或者 Github： <https://github.com/yunwei37/My-AI-experiment>

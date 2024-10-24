@@ -204,3 +204,6 @@ llama_print_timings:       total time =   39337.08 ms /   300 tokens
 ```
 
 Seems nice! The CPU inference is not that slow, and the poem is quite good!
+
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

@@ -1,10 +1,14 @@
 {
+  "platforms": [
+    "medium",
+    "devto"
+  ],
   "files-to-translate": [],
   "passages": {
     "index.md": {
       "published": [
         "medium",
-        "dev.to"
+        "devto"
       ],
       "keywords": [
         "AI",
@@ -12,12 +16,13 @@
         "future",
         "experiments",
         "insights"
-      ]
+      ],
+      "endactionnotice": true
     },
     "Writing/Feel-human.md": {
       "published": [
         "medium",
-        "dev.to"
+        "devto"
       ],
       "keywords": [
         "content",
@@ -25,12 +30,13 @@
         "blogging",
         "persona",
         "branding"
-      ]
+      ],
+      "endactionnotice": true
     },
     "Future/future-hostory.md": {
       "published": [
         "medium",
-        "dev.to"
+        "devto"
       ],
       "keywords": [
         "AI",
@@ -38,12 +44,13 @@
         "computing",
         "applications",
         "networks"
-      ]
+      ],
+      "endactionnotice": true
     },
     "Future/ai-os.md": {
       "published": [
         "medium",
-        "dev.to"
+        "devto"
       ],
       "keywords": [
         "AI",
@@ -51,12 +58,13 @@
         "Evolution",
         "Knowledge",
         "Resources"
-      ]
+      ],
+      "endactionnotice": true
     },
     "Future/openai-canvas.md": {
       "published": [
         "medium",
-        "dev.to"
+        "devto"
       ],
       "keywords": [
         "AI",
@@ -64,12 +72,13 @@
         "Interaction",
         "Technology",
         "Engagement"
-      ]
+      ],
+      "endactionnotice": true
     },
     "Future/history.md": {
       "published": [
         "medium",
-        "dev.to"
+        "devto"
       ],
       "keywords": [
         "AI",
@@ -77,12 +86,13 @@
         "Technology",
         "Programming",
         "History"
-      ]
+      ],
+      "endactionnotice": true
     },
     "Future/plugin.md": {
       "published": [
         "medium",
-        "dev.to"
+        "devto"
       ],
       "keywords": [
         "AI",
@@ -90,12 +100,13 @@
         "Future",
         "APIs",
         "Software"
-      ]
+      ],
+      "endactionnotice": true
     },
     "Future/natual-language-program.md": {
       "published": [
         "medium",
-        "dev.to"
+        "devto"
       ],
       "keywords": [
         "AI",
@@ -103,12 +114,13 @@
         "programming",
         "AIagent",
         "software"
-      ]
+      ],
+      "endactionnotice": true
     },
     "Future/guidance.md": {
       "published": [
         "medium",
-        "dev.to"
+        "devto"
       ],
       "keywords": [
         "Guidance",
@@ -116,12 +128,13 @@
         "LLMs",
         "DSL",
         "JSON"
-      ]
+      ],
+      "endactionnotice": true
     },
     "Prompt-engineering/gpt-best-practice.md": {
       "published": [
         "medium",
-        "dev.to"
+        "devto"
       ],
       "keywords": [
         "GPT",
@@ -129,12 +142,13 @@
         "prompt",
         "strategies",
         "model"
-      ]
+      ],
+      "endactionnotice": true
     },
     "Prompt-engineering/prompt-dead.md": {
       "published": [
         "medium",
-        "dev.to"
+        "devto"
       ],
       "keywords": [
         "AIEngineering",
@@ -142,12 +156,13 @@
         "PromptEngineering",
         "Integration",
         "Innovation"
-      ]
+      ],
+      "endactionnotice": true
     },
     "Notes/inference-locally.md": {
       "published": [
         "medium",
-        "dev.to"
+        "devto"
       ],
       "keywords": [
         "inference",
@@ -155,12 +170,13 @@
         "CPU",
         "model",
         "quantization"
-      ]
+      ],
+      "endactionnotice": true
     },
     "Agents/swarm.md": {
       "published": [
         "medium",
-        "dev.to"
+        "devto"
       ],
       "keywords": [
         "AI",
@@ -168,12 +184,13 @@
         "Multiagent",
         "Collaboration",
         "OpenAI"
-      ]
+      ],
+      "endactionnotice": true
     },
     "Agents/copilot.md": {
       "published": [
         "medium",
-        "dev.to"
+        "devto"
       ],
       "keywords": [
         "AI",
@@ -181,12 +198,13 @@
         "Copilot",
         "prompts",
         "context"
-      ]
+      ],
+      "endactionnotice": true
     },
     "Agents/kgent.md": {
       "published": [
         "medium",
-        "dev.to"
+        "devto"
       ],
       "keywords": [
         "Kernel",
@@ -194,7 +212,53 @@
         "LanguageModel",
         "eBPF",
         "Innovation"
-      ]
+      ],
+      "endactionnotice": true
+    },
+    "index.zh.md": {
+      "endactionnotice": true
+    },
+    "Writing/Feel-human.zh.md": {
+      "endactionnotice": true
+    },
+    "Future/history.zh.md": {
+      "endactionnotice": true
+    },
+    "Future/openai-canvas.zh.md": {
+      "endactionnotice": true
+    },
+    "Future/natual-language-program.zh.md": {
+      "endactionnotice": true
+    },
+    "Future/future-hostory.zh.md": {
+      "endactionnotice": true
+    },
+    "Future/plugin.zh.md": {
+      "endactionnotice": true
+    },
+    "Future/ai-os.zh.md": {
+      "endactionnotice": true
+    },
+    "Future/guidance.zh.md": {
+      "endactionnotice": true
+    },
+    "Prompt-engineering/gpt-best-practice.zh.md": {
+      "endactionnotice": true
+    },
+    "Prompt-engineering/prompt-dead.zh.md": {
+      "endactionnotice": true
+    },
+    "Notes/inference-locally.zh.md": {
+      "endactionnotice": true
+    },
+    "Agents/kgent.zh.md": {
+      "endactionnotice": true
+    },
+    "Agents/copilot.zh.md": {
+      "endactionnotice": true
+    },
+    "Agents/swarm.zh.md": {
+      "endactionnotice": true
     }
   }
 }

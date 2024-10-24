@@ -82,3 +82,6 @@ Kgent is revolutionizing the way we approach kernel programming by making eBPF p
 We invite you to explore Kgent and see how it can transform your approach to kernel development. For more details, check out our [eBPF'24 paper](https://dl.acm.org/doi/10.1145/3672197.3673434) and visit our [GitHub repository](https://github.com/eunomia-bpf/KEN). For additional details, refer to the earlier Arxiv version: [KEN: Kernel Extensions using Natural Language](https://arxiv.org/abs/2312.05531). For a more usable and simplified tool, check out [GPTtrace](https://github.com/eunomia-bpf/GPTtrace). You can also try the GPTtrace simplified web demo [here](https://github.com/eunomia-bpf/GPTtrace-web).
 
 By lowering the barrier to entry for writing eBPF programs, Kgent is promoting innovation and enhancing system capabilities, one natural language prompt at a time.
+
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

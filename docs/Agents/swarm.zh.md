@@ -139,3 +139,5 @@ AI的下一步不仅仅是更大的模型——而是这些模型如何与专门
 ---
 
 *项目链接：[https://github.com/openai/swarm](https://github.com/openai/swarm)*
+
+> 了解更多请访问 <https://yunwei37.github.io/My-AI-experiment/> 或者 Github： <https://github.com/yunwei37/My-AI-experiment>

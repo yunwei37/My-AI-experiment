@@ -188,3 +188,5 @@ Resources Related to Copilot Reverse Engineering:
 
 *   https://github.com/thakkarparth007/copilot-explorer
 *   https://github.com/saschaschramm/github-copilot
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

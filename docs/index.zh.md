@@ -44,3 +44,5 @@
 
 - [LinkedIn](https://www.linkedin.com/in/yunwei37/)
 - [X/Twitter](https://x.com/yunwei37)
+
+> 了解更多请访问 <https://yunwei37.github.io/My-AI-experiment/> 或者 Github： <https://github.com/yunwei37/My-AI-experiment>

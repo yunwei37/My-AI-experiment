@@ -92,3 +92,5 @@ The 1950s were a pivotal period in the history of computer science, witnessing a
 ### VI. Conclusion
 
 The 1950s marked an important period where computer science transitioned from theory to practice and from the laboratory to commercial applications. Research focused on hardware development, creation of programming languages, establishment of computation theory, and expansion of application areas. Key events like the introduction of UNIVAC I, the birth of Fortran, and the holding of the Dartmouth Conference highlighted important milestones toward maturity in computer science. Meanwhile, contributions from significant figures laid the foundation for its development. Despite facing numerous technical limitations and challenges, the 1950s provided a solid groundwork for the rapid technological advancements that followed, profoundly impacting modern computer science and information technology development.
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

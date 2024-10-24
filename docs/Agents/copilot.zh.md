@@ -202,3 +202,5 @@ Copilot 逆向工程相关资料：
 
 *   https://github.com/thakkarparth007/copilot-explorer
 *   https://github.com/saschaschramm/github-copilot
+
+> 了解更多请访问 <https://yunwei37.github.io/My-AI-experiment/> 或者 Github： <https://github.com/yunwei37/My-AI-experiment>

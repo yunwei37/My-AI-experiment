@@ -64,3 +64,6 @@ As we continue to explore and develop AI technologies, it's crucial to focus on 
 
 - [OpenAI Introduces Canvas](https://openai.com/index/introducing-canvas/)
 - [Community Discussions on Hacker News](https://news.ycombinator.com/item?id=41732634)
+
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

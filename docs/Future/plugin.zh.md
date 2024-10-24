@@ -25,3 +25,6 @@ UNIX 的哲学是“做一件事，做得好”。而在今天，这种哲学正
 **结论**：
 
 我们正在步入一个全新的 AI 时代，在这个时代中，AI 插件将彻底改变我们的上网习惯和前端开发方式。它不仅仅是一个技术的变革，更是一场思维方式的革命。而在这场革命中，每个人都有机会成为参与者和创新者。
+
+
+> 了解更多请访问 <https://yunwei37.github.io/My-AI-experiment/> 或者 Github： <https://github.com/yunwei37/My-AI-experiment>

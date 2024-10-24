@@ -89,3 +89,5 @@
 随着我们不断推进AI的潜力，很明显我们今天的选择将深刻塑造未来五十年。虽然我们没有所有答案，但提出正确的问题有助于引导我们走向一个AI不仅是工具而是创新平台的未来，覆盖每个行业和生活的各个方面。
 
 那么，你认为我们的未来会走向何方？
+
+> 了解更多请访问 <https://yunwei37.github.io/My-AI-experiment/> 或者 Github： <https://github.com/yunwei37/My-AI-experiment>

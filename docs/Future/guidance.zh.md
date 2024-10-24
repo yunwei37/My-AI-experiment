@@ -186,3 +186,6 @@ out = structure_program(
 ### 参考资料
 
 <https://github.com/microsoft/guidance>
+
+
+> 了解更多请访问 <https://yunwei37.github.io/My-AI-experiment/> 或者 Github： <https://github.com/yunwei37/My-AI-experiment>

@@ -131,3 +131,6 @@
 - <https://www.longshot.ai/blog/ways-to-make-content-sound-human>
 - <https://www.reddit.com/r/ChatGPTPro/comments/1cb4mhy/how_to_create_100_human_written_content_with/>
 - <https://www.littleflamecreative.com/blog/human-copywriting-ai-content>
+
+
+> 了解更多请访问 <https://yunwei37.github.io/My-AI-experiment/> 或者 Github： <https://github.com/yunwei37/My-AI-experiment>

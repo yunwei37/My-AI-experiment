@@ -662,3 +662,6 @@ Expert Answer: """尼尔·阿姆斯特朗最为人所知的是他是第一个踏
 - 关于提示词工程（prompt）的指南、论文、讲座、笔记本和资源大全：<https://github.com/yunwei37/Prompt-Engineering-Guide-zh-CN>
 - 使用 OpenAI API 的例子和中文指南：<https://github.com/yunwei37/openai-cookbook-zh-cn>
 - 关于大语言模型的安全问题：提示词对抗、破解攻防的工具和案例集合：<https://github.com/yunwei37/prompt-adversarial-collections>
+
+
+> 了解更多请访问 <https://yunwei37.github.io/My-AI-experiment/> 或者 Github： <https://github.com/yunwei37/My-AI-experiment>

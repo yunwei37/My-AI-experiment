@@ -203,3 +203,5 @@ llama_print_timings:       总时间 =   39337.08 ms /   300 个标记
 ```
 
 看起来不错！CPU 推理速度还不算太慢，诗写得也很好！
+
+> 了解更多请访问 <https://yunwei37.github.io/My-AI-experiment/> 或者 Github： <https://github.com/yunwei37/My-AI-experiment>

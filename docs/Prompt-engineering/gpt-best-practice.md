@@ -666,3 +666,5 @@ Here are some related open-source resource repositories:
 - A comprehensive guide, papers, lectures, notebooks, and resources on prompt engineering: <https://github.com/yunwei37/Prompt-Engineering-Guide-zh-CN>
 - Examples and Chinese guides for using the OpenAI API: <https://github.com/yunwei37/openai-cookbook-zh-cn>
 - On security issues of large language models: collections of tools and cases on prompt adversarial attacks and defenses: <https://github.com/yunwei37/prompt-adversarial-collections>
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

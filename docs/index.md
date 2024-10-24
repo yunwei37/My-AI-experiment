@@ -56,3 +56,6 @@ Curated insights on AI, from hands-on experiments to thought-provoking discussio
 
 - [LinkedIn](https://www.linkedin.com/in/yunwei37/)
 - [X/Twitter](https://x.com/yunwei37)
+
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

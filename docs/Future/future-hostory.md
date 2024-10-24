@@ -89,3 +89,6 @@ The 2020s will likely be remembered as a decade where AI transitioned from theor
 As we push the boundaries of AI and its potential, it’s clear that our choices today will profoundly shape the next fifty years. While we don’t have all the answers, asking the right questions helps guide us toward a future where AI isn’t just a tool—it’s a platform for innovation across every industry and aspect of daily life.
 
 So, where do you think we’re headed?
+
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>
