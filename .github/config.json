@@ -216,49 +216,154 @@
       "endactionnotice": true
     },
     "index.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "AI",
+        "Prompt",
+        "Agents",
+        "Blog",
+        "Future"
+      ]
     },
     "Writing/Feel-human.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "Blogging",
+        "Humanization",
+        "Storytelling",
+        "Engagement",
+        "Branding"
+      ]
     },
     "Future/history.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "AI",
+        "HPC",
+        "AGI",
+        "Retrospective",
+        "Computing"
+      ]
     },
     "Future/openai-canvas.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "AI",
+        "Canvas",
+        "Interaction",
+        "OpenAI",
+        "Technology"
+      ]
     },
     "Future/natual-language-program.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "AI",
+        "NLP",
+        "AutoGPT",
+        "programming",
+        "software"
+      ]
     },
     "Future/future-hostory.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "AI",
+        "AGI",
+        "computing",
+        "AIapplications",
+        "innovation"
+      ]
     },
     "Future/plugin.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "AI",
+        "插件",
+        "浏览器",
+        "前端",
+        "交互"
+      ]
     },
     "Future/ai-os.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "AI",
+        "Knowledge",
+        "Decisionmaking",
+        "Innovation",
+        "Communication"
+      ]
     },
     "Future/guidance.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "Guidance",
+        "LangChain",
+        "LLMs",
+        "DSL",
+        "JSON"
+      ]
     },
     "Prompt-engineering/gpt-best-practice.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "OpenAI",
+        "GPT",
+        "策略",
+        "技术",
+        "模型"
+      ]
     },
     "Prompt-engineering/prompt-dead.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "AI",
+        "engineering",
+        "systems",
+        "automation",
+        "interaction"
+      ]
     },
     "Notes/inference-locally.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "推理",
+        "模型",
+        "CPU",
+        "推理速度",
+        "GitHub"
+      ]
     },
     "Agents/kgent.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "Kernel",
+        "Programming",
+        "eBPF",
+        "Language",
+        "Tools"
+      ]
     },
     "Agents/copilot.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "AI",
+        "Coding",
+        "GPT",
+        "Transformation",
+        "Contextual"
+      ]
     },
     "Agents/swarm.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "Swarm",
+        "AI",
+        "OpenAI",
+        "AutoGen",
+        "crewAI"
+      ]
     }
   }
 }
