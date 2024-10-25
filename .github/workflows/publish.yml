@@ -37,5 +37,5 @@
            python .github/manage/publish.py
        - name: Commit changes
          run: |
-          git add README.md docs/index.md
+          git add .
           git diff --quiet && git diff --staged --quiet || (git commit -m "Update published" && git push)
