@@ -13,10 +13,8 @@
        - uses: actions/checkout@v4
          with:
            recursive: true
-       - name: Configure Git Credentials
+       - name: submodule update
          run: |
-          git config user.name github-actions[bot]
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           git submodule update --init --recursive
          
        - name: Set up Python
@@ -35,7 +33,12 @@
            PUBLISH_AS_DRAFT: 'false'  # Or 'false' if you want to publish directly
          run: |
            python .github/manage/publish.py
-       - name: Commit changes
+       - name: Commit and Push Changes
          run: |
-          git add .
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Update published" && git push)
+           git config --global user.email "yunwei356@gmail.com"
+           git config --global user.name "yunwei37"
+           git add .
+           git diff --quiet && git diff --staged --quiet || (git commit -m "Update published" && git push)
+         env:
+           GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
