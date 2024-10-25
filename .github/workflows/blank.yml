@@ -37,8 +37,8 @@ jobs:
           .github/manage/manage.sh
       - name: Commit changes
         run: |
-          git add README.md docs/index.md
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Update table of contents" && git push)
+          git add .
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Update for modify contents" && git push)
       # New steps end here
       - run: mkdocs gh-deploy --force
 
