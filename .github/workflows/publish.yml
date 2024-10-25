@@ -3,7 +3,7 @@
    on:
      schedule:
        # Runs at 00:30 UTC every day
-       - cron: '01 01 * * *'
+       - cron: '55 05 * * *'
 
    jobs:
      publish:
