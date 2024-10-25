@@ -21,6 +21,7 @@
     },
     "Writing/Feel-human.md": {
       "published": [
+        "medium",
         "devto"
       ],
       "keywords": [
@@ -76,8 +77,7 @@
     },
     "Future/history.md": {
       "published": [
-        "medium",
-        "devto"
+        "medium"
       ],
       "keywords": [
         "AI",
