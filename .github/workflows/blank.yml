@@ -41,3 +41,10 @@ jobs:
           git diff --quiet && git diff --staged --quiet || (git commit -m "Update table of contents" && git push)
       # New steps end here
       - run: mkdocs gh-deploy --force
+
+      - name: Run publish script
+        env:
+          PUBLISHER_API_KEY: ${{ secrets.PUBLISHER_API_KEY }}
+          PUBLISH_AS_DRAFT: 'true'  # Or 'false' if you want to publish directly
+        run: |
+          python .github/manage/publish.py
