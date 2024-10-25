@@ -3,16 +3,22 @@
    on:
      schedule:
        # Runs at 00:30 UTC every day
-       - cron: '45 0 * * *'
+       - cron: '38 0 * * *'
 
    jobs:
      publish:
        runs-on: ubuntu-latest
 
        steps:
-       - name: Checkout repository
-         uses: actions/checkout@v3
-
+       - uses: actions/checkout@v4
+         with:
+           recursive: true
+       - name: Configure Git Credentials
+         run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git submodule update --init --recursive
+         
        - name: Set up Python
          uses: actions/setup-python@v4
          with:
@@ -29,3 +35,7 @@
            PUBLISH_AS_DRAFT: 'false'  # Or 'false' if you want to publish directly
          run: |
            python .github/manage/publish.py
+       - name: Commit changes
+         run: |
+          git add README.md docs/index.md
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Update published" && git push)
