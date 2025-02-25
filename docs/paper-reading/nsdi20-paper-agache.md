@@ -190,3 +190,5 @@ The comprehensive list of references can be found in the original [NSDI '20 Fire
 ---
 
 *Note: This blog post is a detailed exploration and summary of the Firecracker paper and aims to provide insights into its contributions to serverless computing and virtualization technologies. For an in-depth understanding, readers are encouraged to consult the original research paper.*
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

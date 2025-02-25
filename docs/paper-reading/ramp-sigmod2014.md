@@ -125,3 +125,5 @@ The 2014 paper on RAMP Transactions by Bailis et al. marks a significant stride 
 **References:**
 
 Bailis, P., Fekete, A., Ghodsi, A., Hellerstein, J. M., & Stoica, I. (2014). Scalable Atomic Visibility with RAMP Transactions. *SIGMOD Conference Proceedings*. [DOI:10.1145/2588555.2588562](https://doi.org/10.1145/2588555.2588562)
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

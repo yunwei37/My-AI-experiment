@@ -97,3 +97,5 @@ For developers grappling with the complexities of multi-library parallelism, Lit
 
 **References:**
 Pan, H., Hindman, B., & Asanović, K. (2010). *Composing Parallel Software Efficiently with Lithe*. PLDI’10, June5–10, 2010, Toronto, Ontario, Canada.
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

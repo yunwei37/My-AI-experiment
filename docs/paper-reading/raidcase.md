@@ -159,3 +159,5 @@ The **timely publication in 1988** captured the essence of a technological cross
 4. Joy, B. (1985). Presentation at ISSCC '85 panel session, Feb. 1985.
 5. Siewiorek, D. P., Bell, C. G., & Newell, A. (1982). "Computer Structures: Principles and Examples," p. 46.
 6. Other references as cited in the original paper.
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

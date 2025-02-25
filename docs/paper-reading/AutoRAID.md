@@ -161,3 +161,5 @@ Wilkes, J., Golding, R., Staelin, C., & Sullivan, T. (1996). The HP AutoRAID Hie
 ---
 
 *Note: This blog post is inspired by and summarizes the seminal work presented in the HP AutoRAID research paper from 1996, providing insights into its design, functionality, and impact on storage system advancements.*
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

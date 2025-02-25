@@ -104,3 +104,5 @@ Michael Stonebraker's "Operating System Support for Database Management" remains
 ---
 
 *Note: This blog post synthesizes and interprets key points from Michael Stonebraker's 1981 paper to provide a comprehensive understanding of its contributions and enduring significance in the realm of database management systems.*
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

@@ -84,3 +84,5 @@ For those interested in exploring the detailed mechanics and performance metrics
 ---
 
 *This blog post is a comprehensive overview of the research paper "Millions of Tiny Databases" presented at NSDI ’20. It synthesizes the paper's content, highlights key innovations, and contextualizes its significance within the broader field of distributed systems.*
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

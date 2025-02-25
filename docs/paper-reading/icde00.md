@@ -127,3 +127,5 @@ As databases continue to underpin critical applications across industries, the p
 **References:**
 1. Adya, A., Liskov, B., & O’Neil, P. (2000). Generalized Isolation Level Definitions. In Proceedings of the IEEE International Conference on Data Engineering, San Diego, CA.
 2. Additional references as mentioned in the original paper.
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

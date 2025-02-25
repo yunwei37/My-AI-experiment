@@ -8,3 +8,6 @@ Just add each addtional info of by adding 1-2 sentence in the most relevant part
 Here are some details about addtional info, and follows a article/blog post that you 
 should incorporate the content into:
 ======================================== 
+
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

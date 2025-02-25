@@ -81,3 +81,5 @@ For developers, system administrators, and tech enthusiasts alike, understanding
 **References:**
 
 Lee, C., Sim, D., Hwang, J.-Y., & Cho, S. (2015). *F2FS: A New File System for Flash Storage*. In *Proceedings of the 13th USENIX Conference on File and Storage Technologies (FAST ’15)*. [Link to Paper](https://www.usenix.org/conference/fast15/technical-sessions/presentation/lee)
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

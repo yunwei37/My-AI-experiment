@@ -3,7 +3,60 @@
     "medium",
     "devto"
   ],
-  "files-to-translate": [],
+  "files-to-translate": [
+    "docs/prompts/refgeneral.zh.md",
+    "docs/prompts/summary.zh.md",
+    "docs/prompts/addcontent.zh.md",
+    "docs/prompts/translate.zh.md",
+    "docs/prompts/humanize.zh.md",
+    "docs/prompts/keysentence.zh.md",
+    "docs/prompts/story.zh.md",
+    "docs/prompts/cleanup.zh.md",
+    "docs/prompts/longdigest.zh.md",
+    "docs/prompts/shortdigest.zh.md",
+    "docs/prompts/addbrand.zh.md",
+    "docs/prompts/storyo1.zh.md",
+    "docs/prompts/refpaper.zh.md",
+    "docs/prompts/longdigestfull.zh.md",
+    "docs/paper-reading/ramp-sigmod2014.zh.md",
+    "docs/paper-reading/lrvm.zh.md",
+    "docs/paper-reading/osdb.zh.md",
+    "docs/paper-reading/p412-bugnion.zh.md",
+    "docs/paper-reading/Aries.zh.md",
+    "docs/paper-reading/Hunt.zh.md",
+    "docs/paper-reading/spark-nsdi12-final138.zh.md",
+    "docs/paper-reading/DRF-NSDI11.zh.md",
+    "docs/paper-reading/p23-adya.zh.md",
+    "docs/paper-reading/UNIX-annotated.zh.md",
+    "docs/paper-reading/Haystack.zh.md",
+    "docs/paper-reading/klein-sosp09.zh.md",
+    "docs/paper-reading/chandra07paxos.zh.md",
+    "docs/paper-reading/p1-berenson.zh.md",
+    "docs/paper-reading/raidcase.zh.md",
+    "docs/paper-reading/sba-usenix05.zh.md",
+    "docs/paper-reading/p287-haerder.zh.md",
+    "docs/paper-reading/kaffes:syrup.zh.md",
+    "docs/paper-reading/a1-graefe.zh.md",
+    "docs/paper-reading/waldspurger.zh.md",
+    "docs/paper-reading/Elephants_SEC2017.zh.md",
+    "docs/paper-reading/SystemR-comments.zh.md",
+    "docs/paper-reading/Granularity%20of%20Locks%20and%20Degrees%20of%20Consistency%20RJ%201654.zh.md",
+    "docs/paper-reading/osdi18-moritz.zh.md",
+    "docs/paper-reading/ghost.zh.md",
+    "docs/paper-reading/pldi285-pan.zh.md",
+    "docs/paper-reading/fast15-paper-lee.zh.md",
+    "docs/paper-reading/baumann-sosp09.zh.md",
+    "docs/paper-reading/sigmaos.zh.md",
+    "docs/paper-reading/engler95exokernel.zh.md",
+    "docs/paper-reading/p27-santana.zh.md",
+    "docs/paper-reading/icde00.zh.md",
+    "docs/paper-reading/2003-xensosp.zh.md",
+    "docs/paper-reading/AutoRAID.zh.md",
+    "docs/paper-reading/vldb09-583.zh.md",
+    "docs/paper-reading/nsdi20-paper-brooker.zh.md",
+    "docs/paper-reading/zeldovich-histar.zh.md",
+    "docs/paper-reading/nsdi20-paper-agache.zh.md"
+  ],
   "passages": {
     "index.md": {
       "published": [
@@ -364,6 +417,370 @@
         "AutoGen",
         "crewAI"
       ]
+    },
+    "prompts/refgeneral.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "prompts/summary.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "prompts/addcontent.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "prompts/translate.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "prompts/humanize.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "prompts/keysentence.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "prompts/story.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "prompts/cleanup.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "prompts/longdigest.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "prompts/shortdigest.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "prompts/addbrand.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "prompts/storyo1.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "prompts/refpaper.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "prompts/longdigestfull.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "paper-reading/ramp-sigmod2014.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "paper-reading/lrvm.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "paper-reading/osdb.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "paper-reading/p412-bugnion.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "paper-reading/Aries.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "paper-reading/Hunt.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "paper-reading/spark-nsdi12-final138.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "paper-reading/DRF-NSDI11.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "paper-reading/p23-adya.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "paper-reading/UNIX-annotated.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "paper-reading/Haystack.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "paper-reading/klein-sosp09.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "paper-reading/chandra07paxos.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "paper-reading/p1-berenson.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "paper-reading/raidcase.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "paper-reading/sba-usenix05.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "paper-reading/p287-haerder.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "paper-reading/kaffes:syrup.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "paper-reading/a1-graefe.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "paper-reading/waldspurger.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "paper-reading/Elephants_SEC2017.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "paper-reading/SystemR-comments.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "paper-reading/Granularity%20of%20Locks%20and%20Degrees%20of%20Consistency%20RJ%201654.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "paper-reading/osdi18-moritz.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "paper-reading/ghost.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "paper-reading/pldi285-pan.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "paper-reading/fast15-paper-lee.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "paper-reading/baumann-sosp09.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "paper-reading/sigmaos.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "paper-reading/engler95exokernel.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "paper-reading/p27-santana.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "paper-reading/icde00.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "paper-reading/2003-xensosp.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "paper-reading/AutoRAID.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "paper-reading/vldb09-583.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "paper-reading/nsdi20-paper-brooker.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "paper-reading/zeldovich-histar.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "paper-reading/nsdi20-paper-agache.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "prompts/longdigest.zh.md": {
+      "endactionnotice": true
+    },
+    "prompts/refpaper.zh.md": {
+      "endactionnotice": true
+    },
+    "prompts/storyo1.zh.md": {
+      "endactionnotice": true
+    },
+    "prompts/addcontent.zh.md": {
+      "endactionnotice": true
+    },
+    "prompts/keysentence.zh.md": {
+      "endactionnotice": true
+    },
+    "prompts/summary.zh.md": {
+      "endactionnotice": true
+    },
+    "prompts/humanize.zh.md": {
+      "endactionnotice": true
+    },
+    "prompts/cleanup.zh.md": {
+      "endactionnotice": true
+    },
+    "prompts/translate.zh.md": {
+      "endactionnotice": true
+    },
+    "prompts/addbrand.zh.md": {
+      "endactionnotice": true
+    },
+    "prompts/story.zh.md": {
+      "endactionnotice": true
+    },
+    "prompts/longdigestfull.zh.md": {
+      "endactionnotice": true
+    },
+    "prompts/shortdigest.zh.md": {
+      "endactionnotice": true
+    },
+    "prompts/refgeneral.zh.md": {
+      "endactionnotice": true
+    },
+    "paper-reading/a1-graefe.zh.md": {
+      "endactionnotice": true
+    },
+    "paper-reading/Haystack.zh.md": {
+      "endactionnotice": true
+    },
+    "paper-reading/AutoRAID.zh.md": {
+      "endactionnotice": true
+    },
+    "paper-reading/DRF-NSDI11.zh.md": {
+      "endactionnotice": true
+    },
+    "paper-reading/pldi285-pan.zh.md": {
+      "endactionnotice": true
+    },
+    "paper-reading/2003-xensosp.zh.md": {
+      "endactionnotice": true
+    },
+    "paper-reading/zeldovich-histar.zh.md": {
+      "endactionnotice": true
+    },
+    "paper-reading/p1-berenson.zh.md": {
+      "endactionnotice": true
+    },
+    "paper-reading/p287-haerder.zh.md": {
+      "endactionnotice": true
+    },
+    "paper-reading/kaffes:syrup.zh.md": {
+      "endactionnotice": true
+    },
+    "paper-reading/waldspurger.zh.md": {
+      "endactionnotice": true
+    },
+    "paper-reading/Hunt.zh.md": {
+      "endactionnotice": true
+    },
+    "paper-reading/ramp-sigmod2014.zh.md": {
+      "endactionnotice": true
+    },
+    "paper-reading/nsdi20-paper-brooker.zh.md": {
+      "endactionnotice": true
+    },
+    "paper-reading/p23-adya.zh.md": {
+      "endactionnotice": true
+    },
+    "paper-reading/icde00.zh.md": {
+      "endactionnotice": true
+    },
+    "paper-reading/sigmaos.zh.md": {
+      "endactionnotice": true
+    },
+    "paper-reading/osdi18-moritz.zh.md": {
+      "endactionnotice": true
+    },
+    "paper-reading/baumann-sosp09.zh.md": {
+      "endactionnotice": true
+    },
+    "paper-reading/nsdi20-paper-agache.zh.md": {
+      "endactionnotice": true
+    },
+    "paper-reading/p412-bugnion.zh.md": {
+      "endactionnotice": true
+    },
+    "paper-reading/vldb09-583.zh.md": {
+      "endactionnotice": true
+    },
+    "paper-reading/Aries.zh.md": {
+      "endactionnotice": true
+    },
+    "paper-reading/fast15-paper-lee.zh.md": {
+      "endactionnotice": true
+    },
+    "paper-reading/raidcase.zh.md": {
+      "endactionnotice": true
+    },
+    "paper-reading/sba-usenix05.zh.md": {
+      "endactionnotice": true
+    },
+    "paper-reading/osdb.zh.md": {
+      "endactionnotice": true
+    },
+    "paper-reading/SystemR-comments.zh.md": {
+      "endactionnotice": true
+    },
+    "paper-reading/Granularity%20of%20Locks%20and%20Degrees%20of%20Consistency%20RJ%201654.zh.md": {
+      "endactionnotice": true
+    },
+    "paper-reading/UNIX-annotated.zh.md": {
+      "endactionnotice": true
+    },
+    "paper-reading/Elephants_SEC2017.zh.md": {
+      "endactionnotice": true
+    },
+    "paper-reading/spark-nsdi12-final138.zh.md": {
+      "endactionnotice": true
+    },
+    "paper-reading/p27-santana.zh.md": {
+      "endactionnotice": true
+    },
+    "paper-reading/lrvm.zh.md": {
+      "endactionnotice": true
+    },
+    "paper-reading/engler95exokernel.zh.md": {
+      "endactionnotice": true
+    },
+    "paper-reading/klein-sosp09.zh.md": {
+      "endactionnotice": true
+    },
+    "paper-reading/ghost.zh.md": {
+      "endactionnotice": true
+    },
+    "paper-reading/chandra07paxos.zh.md": {
+      "endactionnotice": true
     }
   }
 }

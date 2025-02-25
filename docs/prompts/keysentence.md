@@ -16,3 +16,5 @@ Do not use '...' or any other short forms, include the full and complete sentenc
 
 The Paper and summary is below:
 ===========================================================================
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

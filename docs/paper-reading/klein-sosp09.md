@@ -180,3 +180,5 @@ As we move forward, the lessons from seL4 will inspire further innovations in sy
 ---
 
 **Note**: Formal verification remains a specialized and resource-intensive endeavor. However, projects like seL4 exemplify its immense potential in ensuring the utmost reliability and security in critical software systems.
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

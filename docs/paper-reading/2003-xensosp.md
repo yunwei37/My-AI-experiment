@@ -87,3 +87,5 @@ The "Xen and the Art of Virtualization" paper is a testament to the ingenuity of
 As we witness the ever-growing demands of cloud computing, IoT devices, and distributed systems, the principles and architectures pioneered by Xen continue to resonate. Its emphasis on efficient resource management and high-performance isolation remains as relevant today as it was two decades ago, underscoring the timelessness of its foundational contributions.
 
 For enthusiasts and professionals eager to delve deeper into virtualization, revisiting this paper offers invaluable lessons and insights that continue to shape the future of computing infrastructures.
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

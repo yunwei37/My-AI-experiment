@@ -215,3 +215,5 @@ The 1974 Bell Labs paper by Dennis M. Ritchie and Ken Thompson is more than a te
 ---
 
 **Acknowledgments:** Inspired by the foundational work of Dennis M. Ritchie and Ken Thompson, and recognizing the collaborative spirit that propelled UNIX to prominence.
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

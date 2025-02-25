@@ -164,3 +164,5 @@ Additionally, exploring related systems and protocols like Chubby, Paxos, and Ap
 ---
 
 > *This blog post aims to elucidate the foundational concepts and contributions of ZooKeeper as presented in the research paper. Whether you're a seasoned developer or a curious enthusiast, understanding ZooKeeper's architecture and capabilities can significantly enhance your approach to building and managing distributed systems.*
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

@@ -100,3 +100,5 @@ Embracing such innovations not only paves the way for more efficient systems but
 # References
 
 - Humphries, J. T., Natu, N., Chaugule, A., Weisse, O., Rhoden, B., Don, J., ... & Kozyrakis, C. (2021). ghOSt: Fast & Flexible User-Space Delegation of Linux Scheduling. In **Proceedings of the ACM SIGOPS 28th Symposium on Operating Systems Principles (SOSP ’21)**.
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

@@ -110,3 +110,5 @@ The 2015 paper by Santana et al. effectively highlights the precarious balance b
 **References:**
 
 Santana, R., Rangaswami, R., Tarasov, V., & Hildebrand, D. (2015). *A Fast and Slippery Slope for File Systems*. In **INFLOW’15**, October 4–7, Monterey, CA. [DOI Link](http://dx.doi.org/10.1145/2819001.2819003)
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

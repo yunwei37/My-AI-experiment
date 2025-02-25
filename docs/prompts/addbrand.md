@@ -10,3 +10,6 @@ overly promotional. Make sure the tone aligns with an informative and helpful bl
 Here are some details about my brand/product, and follows a article/blog post that you 
 should incorporate the branded content into:
 ========================================
+
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

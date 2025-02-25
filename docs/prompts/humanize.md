@@ -13,3 +13,6 @@ It's very important to be natural, the style and tone should be:
 
 The content is as follows:
 ===============================================================
+
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

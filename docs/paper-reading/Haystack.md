@@ -102,3 +102,5 @@ For further exploration of object storage systems and their evolution, the follo
 3. [Amazon S3 Documentation](#)
 
 *Note: The above references are placeholders. Replace `[#]` with actual URLs or citation details as needed.*
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

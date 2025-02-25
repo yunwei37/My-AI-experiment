@@ -133,3 +133,5 @@ As computing demands continue to surge, frameworks like Syrup will be instrument
 2. Additional references as cited in the original paper.
 
 *Note: For a comprehensive understanding and detailed implementation insights, readers are encouraged to refer directly to the [Syrup paper](https://doi.org/10.1145/3477132.3483548).*
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

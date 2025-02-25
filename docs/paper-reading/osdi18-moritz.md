@@ -95,3 +95,5 @@ For those looking to explore Ray further, the project is open-source and activel
 ---
 
 *This blog post is inspired by the research paper "Ray: A Distributed Framework for Emerging AI Applications" by Philipp Moritz and colleagues, presented at OSDI ’18. The insights shared herein are based on the comprehensive evaluation and architectural discussions outlined in the paper.*
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

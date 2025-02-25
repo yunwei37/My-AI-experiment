@@ -87,3 +87,5 @@ Today, the concepts of lock granularity and consistency remain integral to datab
 ## Final Thoughts
 
 *"Granularity of Locks and Degrees of Consistency in a Shared Data Base"* is more than a research paper; it's a cornerstone in the edifice of database systems. By meticulously addressing the interplay between lock granularity and data consistency, Gray and his colleagues equipped database architects with the tools to design systems that are both efficient and reliable. As we navigate the complexities of today's data-intensive applications, revisiting such seminal works offers timeless insights and underscores the enduring relevance of foundational research.
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

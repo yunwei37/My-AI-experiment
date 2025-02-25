@@ -101,3 +101,5 @@ For those interested in exploring more about concurrency control mechanisms and 
 **Acknowledgements**
 
 The insights and data presented in this blog are derived from the original research paper by Atul Adya, Robert Gruber, Barbara Liskov, and Umesh Maheshwari. Their groundbreaking work continues to inspire advancements in the field of distributed databases.
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

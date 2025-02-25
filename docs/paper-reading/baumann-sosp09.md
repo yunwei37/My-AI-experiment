@@ -116,3 +116,5 @@ For those interested in a deep dive into the multikernel architecture and the Ba
 ---
 
 *Note: This blog post synthesizes and explains the key concepts from the provided research paper excerpt. For a comprehensive understanding, readers are encouraged to consult the original paper.*
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

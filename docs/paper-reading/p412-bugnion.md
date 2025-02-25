@@ -107,3 +107,5 @@ Furthermore, as hardware architectures evolve towards even greater parallelism w
 **Final Thoughts**
 
 "Disco: Running Commodity Operating Systems on Scalable Multiprocessors" stands as a testament to innovative thinking in system software design. By revisiting and refining the concept of virtual machine monitors, Bugnion and his colleagues provided a **timeless solution** to the perennial challenge of aligning operating system capabilities with advancing hardware architectures. As we continue to navigate the complexities of modern computing, the lessons from Disco remain invaluable, guiding us towards more **scalable**, **efficient**, and **flexible** system designs.
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

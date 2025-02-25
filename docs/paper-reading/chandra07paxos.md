@@ -186,3 +186,5 @@ For practitioners and researchers alike, the paper is a testament to the necessi
 [^2]: Burrows, M. (2006). *The Chubby lock service for loosely-coupled distributed systems*. USENIX Symposium on Operating Systems Design and Implementation.
 
 [^3]: Chang, F., Dean, J., Ghemawat, S., Hsieh, W. C., Wallach, D. A., Burrows, M., ... & Gruber, R. (2006). *Bigtable: A distributed storage system for structured data*. USENIX Symposium on Operating Systems Design and Implementation.
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

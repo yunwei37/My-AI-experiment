@@ -23,3 +23,6 @@ It shoud be as detail as possible, especially mind the numbers and results.
 The raw content is follow:
 
 ===========================================================================
+
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

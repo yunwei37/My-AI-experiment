@@ -211,3 +211,5 @@ The "History and Evaluation of System R" paper is more than a historical documen
 ---
 
 *For further reading, consider exploring the references cited in the original paper, which provide deeper technical insights and contextual understanding of System R's development and impact.*
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

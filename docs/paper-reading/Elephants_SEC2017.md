@@ -125,3 +125,5 @@ As edge computing continues to grow, innovations like VM handoff will play a cru
 
 - Ha, K., Abe, Y., Eiszler, T., Chen, Z., Hu, W., Amos, B., ... & Satyanarayanan, M. (2017). You Can Teach Elephants to Dance: Agile VM Handoff for Edge Computing. *Proceedings of the 2017 ACM Symposium on Edge Computing (SEC’17)*.
 - Additional references as cited in the original paper.
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

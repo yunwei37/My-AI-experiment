@@ -119,3 +119,5 @@ For researchers and practitioners delving into system reliability, understanding
 ---
 
 *This blog post is inspired by the research paper "Lightweight Recoverable Virtual Memory" by Satyanarayanan et al., published in February 1994. For an in-depth understanding, readers are encouraged to refer to the original publication.*
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

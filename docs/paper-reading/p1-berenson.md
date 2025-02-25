@@ -95,3 +95,5 @@ The critique presented in this paper has had lasting impacts on how database sys
 ### **Final Thoughts**
 
 Understanding the nuances of isolation levels is crucial for database administrators and developers aiming to design reliable and efficient systems. The 1995 SIGMOD paper by Berenson et al. serves as a foundational critique that challenges us to think beyond established standards and continuously seek improvements in database concurrency control. As database technologies advance, revisiting such seminal works ensures that we build upon a solid framework of knowledge, addressing both existing challenges and emerging complexities in data management.
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

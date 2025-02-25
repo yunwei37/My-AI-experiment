@@ -99,3 +99,5 @@ Prabhakaran, V., Arpaci-Dusseau, A. C., & Arpaci-Dusseau, R. H. (2005). *Analysi
 ---
 
 *Note: This blog post is based on the content from the provided research paper text. For a comprehensive understanding, readers are encouraged to refer directly to the original paper.*
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

@@ -15,3 +15,6 @@ The plan should cover all keywords or topic you want to search, each is a step. 
 are relevant to the paper or topic, helpful or interesting to the reader.
 
 =================================================
+
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

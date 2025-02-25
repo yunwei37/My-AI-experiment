@@ -96,3 +96,5 @@ The authors suggest future research directions, such as optimizing resource frag
 **References**
 
 For those interested in delving deeper, the original paper [Dominant Resource Fairness: Fair Allocation of Multiple Resource Types](https://example.com) provides comprehensive insights, proofs, and experimental data. Additionally, exploring related works on max-min fairness, CEEI, and resource allocation policies can further enhance understanding of this critical domain.
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

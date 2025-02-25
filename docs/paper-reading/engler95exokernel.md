@@ -553,3 +553,5 @@ Engler, D. R., Kaashoek, M. F., & O’Toole, J. Jr. (1995). Exokernel: An Operat
 # Conclusion
 
 The exokernel architecture, as introduced by Dawson R. Engler, M. Frans Kaashoek, and James O’Toole Jr., offers a transformative approach to operating system design. By decoupling resource protection from management and delegating control to application-level libraries, exokernels provide a foundation for high-performance, flexible, and customizable operating systems. The extensive performance evaluations presented in their research underscore the benefits of this minimalist approach, paving the way for innovative OS designs that prioritize both efficiency and adaptability. While exokernels may not have become mainstream in commercial OS deployments, their influence is evident in subsequent research and specialized systems that seek to optimize resource management for diverse application needs.
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

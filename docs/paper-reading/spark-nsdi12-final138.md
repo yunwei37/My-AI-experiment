@@ -81,3 +81,5 @@ In today's data-driven world, the principles outlined in the RDDs paper continue
 # Tags
 
 Cluster Computing, Big Data, Apache Spark, Resilient Distributed Datasets, RDDs, Fault Tolerance, In-Memory Computing, Data Processing Frameworks
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

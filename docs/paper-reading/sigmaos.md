@@ -133,3 +133,5 @@ As cloud-native applications continue to evolve, systems like SigmaOS will be pi
 - [Kubernetes](https://kubernetes.io/)
 
 *This blog post is based on the research paper "[Unifying serverless and microservice tasks with SigmaOS](https://www.usenix.org/conference/sosp24/presentation/szekely)" presented by Ariel Szekely, Adam Belay, Robert Morris, and M. Frans Kaashoek from MIT CSAIL in November 2023.*
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

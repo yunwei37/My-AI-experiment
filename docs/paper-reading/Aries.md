@@ -110,3 +110,5 @@ As we continue to journey through the advancements in database technologies, ARI
 Mohan, C., Hernandez, P., Lindsay, B., Pirahesh, H., Schwarz, P., & Weihl, G. (1992). *ARIES: A Transaction Recovery Method Supporting Fine-Granularity Locking and Partial Rollbacks Using Write-Ahead Logging*. ACM Transactions on Database Systems, 17(1), 94-162.
 
 *Note: For a deeper dive into ARIES and its implementations, accessing the original paper and subsequent literature is highly recommended.*
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

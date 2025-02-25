@@ -135,3 +135,5 @@ In an era where systems are increasingly complex and diverse in their demands, L
 *Reference:*
 
 Waldspurger, C. A., & Weihl, W. E. (1992). *Lottery Scheduling: Flexible Proportional-Share Resource Management*. MIT Laboratory for Computer Science.
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>

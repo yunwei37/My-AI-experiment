@@ -174,3 +174,5 @@ Haerder, T., & Reuter, A. (1983). *Principles of Transaction-Oriented Database R
 ---
 
 *Thank you for joining us on this journey through one of the seminal papers in database recovery. Stay tuned for more deep dives into the technologies that shape our digital world!*
+
+> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>
