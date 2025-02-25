@@ -1,0 +1,5 @@
+.env
+__pycache__/
+input.txt
+output.txt
+results/

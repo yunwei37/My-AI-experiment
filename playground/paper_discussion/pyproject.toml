@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "paper_discussion"
+version = "0.1.0"
+description = "paper_discussion using crewAI"
+authors = ["Your Name <you@example.com>"]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<=3.13"
+crewai = { extras = ["tools"], version = ">=0.67.1,<1.0.0" }
+
+
+[tool.poetry.scripts]
+paper_discussion = "paper_discussion.main:run"
+run_crew = "paper_discussion.main:run"
+train = "paper_discussion.main:train"
+replay = "paper_discussion.main:replay"
+test = "paper_discussion.main:test"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

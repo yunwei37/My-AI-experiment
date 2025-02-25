@@ -1,0 +1,150 @@
+# summary_task:
+#   description: >
+#     Read the paper and summarize the main topics and findings.
+#   expected_output: >
+#     A summary of the main topics and findings of the paper, include the following parts:
+#     1. The estimated date of publication.
+#     2. The historical background of the paper when it was published.
+#     3. Clearly understand the paper's main argument, what problem it is trying to solve?
+#     4. What's the most insteresting, novel ideas or insights in the paper? What makes it different when it was published? be detailed at this part.
+#     5. The contribution of the paper to the field.
+#     6. the methodology used, all the experiments conducted, the results obtained, and the 
+#     key findings. It should be as detail as possible, and include any numerical results. 
+#     If there seems not enough numerical information of the experiments results, you should search for it.
+#     7. Identify any strengths and weaknesses, 
+#     8. Tthe broader implications of the work in the context of
+#     its field and historical background at the point of publication. What's the impact of the paper on the field?
+#     Formatted as markdown without '```'
+#   agent: professor
+#   output_file: summary.md
+
+# key_sentences_task:
+#   description: >
+#     Identify key sentences or paragraph from the paper that support the main topics and findings.
+#   expected_output: >
+#     A list of key sentences from the paper that support the main topics and findings, include the following parts:
+#     1. The key sentences or paragraph that support the main argument of the paper.
+#     2. The key sentences or paragraph that support the most interesting, novel ideas or insights in the paper. 
+#         You should provide 3-5 key sentences for the most interesting, novel ideas or insights.
+#     4. The key sentences or paragraph that support the methodology used.
+#     5. The key sentences or paragraph that support the results obtained.
+#     6. The key sentences or paragraph that support the key findings.
+#     All sentence should include the section of the paper where the key sentences are located.
+#     Also include any sentences that you think are important, insightful or intresting, 
+#     even if they don't directly support the main topics and findings. Try to include as many key sentences as possible,
+#     about 20 key sentences.
+#   agent: professor
+#   output_file: key_sentences.md
+
+discussion_task:
+  description: >
+    Prepare questions to lead a discussion on the paper with the students.
+    As a professor, you will prepare 8 key questions that have insight to guide the discussion, 
+    ask students about the questions, and let them discuss questions with you and their peers. 
+    You should have high level questions, which are more general and related to the
+    main topics of the paper, and low level questions, which are more specific
+    and related to the details of the paper. It should be 4 high level questions and 4 low level questions.
+    You will provide insights, clarify any confusion, and encourage students to think critically
+    about the paper. You will also encourage students to ask deep and probing questions
+    related to their research interests, and encourage them to answer questions using information
+    from their research, like the recent developments in the field.
+    The summary and the key sentences are below. You questions should not include anything that can be directly found 
+    in the summary and key sentences, it should be from your own understanding and perspective.
+    ========================================
+    {summary_and_key_sentences}
+  expected_output: >
+    A list of 8 key questions that will guide the discussion, including 4 high level questions and 4 low level questions.
+    Each question should be insightful and thought-provoking, and should open up new avenues of discussion. The questions
+    Should not be just factual, but should encourage students to think critically and analytically about the paper.
+    The answer cannot and should not be found directly in the summary and key sentences, or anywhere else in the paper.
+    You can also include some guidance on how to answer the questions, and what kind of information or insights you are looking for.
+    Try to asign the questions to 4 different students, include interest in DB systems, MLsys, Arch/OS, and Distributed systems/Network.
+    Each student should answer 1 high level question and 1 low level question.
+    Formatted as markdown without '```'
+  agent: professor
+  output_file: discussion.md
+
+answer_task:
+  description: >
+    Answer questions from the professor based on the paper and your interests.
+    You should follow the steps below:
+    
+    1. Get the 2 questions from the professor.
+    2. Write a detailed answer to each question, including any relevant information, 
+        insights. It don't need to be full and complete, but should be detailed around one key points.
+        It should be from your own understanding and perspective, different from and not included 
+        in the summary and key sentences.
+    3. Try to come up with 1 new questions that you think is insightful and interesting,
+        You do not need to answer this question.
+    4. Write a detail record of the discussion, questions and answers in markdown. you should cite 
+        and provide the full section or sentence in the paper 
+        that you are referring to in your answer.
+    
+    Once you have answered the questions, you should discuss the answer with your peers and the professor immediately
+    to find more insights from their answers, and include the discussion, any and all detail in the answer.
+
+    The summary and the key sentences are below. You answer should not include anything that can be directly found 
+    in the summary and key sentences, it should be from your own understanding and perspective.
+    ========================================
+    {summary_and_key_sentences}
+  expected_output: >
+    A record of the discussion, including:
+    1. One sentence for your throughs on the paper, reflect your interests and insights, and another sentence for
+        the most interesting part of the paper you think. You can also introduce yourself and your research interests breifly.
+    2. The questions itself, including the 2 question from the professor.
+    3. Your answers to the 2 questions. your answer should be detailed and insightful, and should include any relevant information, 
+        insights, and references to the paper. If needed, you can search the original paper to find the sentence 
+        to support your answer. You answer should be around one key point, and should be detailed 
+        enough to provide a clear and comprehensive answer to the question.
+        You shoud also include the discussion detail with your peers and the professor in the answer.
+    4. A new question that you think is insightful and interesting, you do not need to answer this question.
+    The QA and discussion record should be conversational style and include insights and interesting things
+    from you own perspective.
+    It should not be just factual in paper.
+
+new_question_task:
+  description: >
+    Answer questions from the peers based on the paper and your interests.
+    You should follow the steps below:
+    
+    1. Get the 1 question from the peer.
+    2. Write a detailed answer to the question, including any relevant information, 
+        insights. It don't need to be full and complete, but should be detailed around one key points.
+        It should be from your own understanding and perspective, different from and not included 
+        in the summary and key sentences.
+    3. Try to come up with 1 another new questions that you think is insightful and interesting,
+        It should be different from the question you come up with in the previous task.
+        Try to answer this question and discuss with your peers and the professor.
+    4. Write a detail record of the discussion, questions and answers in markdown. you should cite 
+        and provide the full section or sentence in the paper 
+        that you are referring to in your answer.
+    
+    Once you have answered the questions, you should discuss the answer with your peers and the professor immediately
+    to find more insights from their answers, and include the discussion, any and all detail in the answer.
+  expected_output: >
+    A record of the discussion, including:
+    1. Any new throughs on the paper, reflect your interests and insights? Should be different from your previous throughs.
+    2. The questions itself, including the 1 question from the peer and the 1 question you come up with.
+    3. Your answers. your answer should be detailed and insightful, and should include any relevant information, 
+        insights, and references to the paper. Try to search the original paper to find the answer and sentence 
+        to support your answer. You answer should be around one key point, and should be detailed 
+        enough to provide a clear and comprehensive answer to the question.
+        You shoud also include the discussion detail with your peers and the professor in the answer.
+    4. Anything interesting or insightful that you want to share related to your interests or the paper.
+    The QA and discussion record should be conversational style and include insights.
+
+conclusion_task:
+  description: >
+    Write a conclusion of the discussion. You should include the main takeaways from the discussion, any new insights or perspectives gained, and any
+    unresolved questions or areas for further research. You should also reflect on the overall experience and
+    what you learned from the discussion. You can also provide some answers to the questions that are not answered enough.
+  expected_output: >
+    A conclusion and summary of the discussion, should be as detail as possible, include the following parts:
+    1. summarizing the key points and insights gained from the discussion.
+    2. Reflecting on the overall experience and what you learned from the discussion.
+    3. Identifying any unresolved questions or areas for further research.
+    4. Providing some answers to the questions that are not answered enough.
+    It can be paragraph style instead of bullet points, be detailed and insightful.
+    Formatted as markdown without '```'
+  agent: professor
+  output_file: conclusion.md
