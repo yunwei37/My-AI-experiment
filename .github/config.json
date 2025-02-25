@@ -55,7 +55,11 @@
     "docs/paper-reading/vldb09-583.zh.md",
     "docs/paper-reading/nsdi20-paper-brooker.zh.md",
     "docs/paper-reading/zeldovich-histar.zh.md",
-    "docs/paper-reading/nsdi20-paper-agache.zh.md"
+    "docs/paper-reading/nsdi20-paper-agache.zh.md",
+    "docs/prompts/person/promptv2.zh.md",
+    "docs/prompts/person/promptv1.zh.md",
+    "docs/prompts/person/basic_random_gen.zh.md",
+    "docs/prompts/person/README.zh.md"
   ],
   "passages": {
     "index.md": {
@@ -780,6 +784,34 @@
       "endactionnotice": true
     },
     "paper-reading/chandra07paxos.zh.md": {
+      "endactionnotice": true
+    },
+    "prompts/person/promptv2.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "prompts/person/promptv1.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "prompts/person/basic_random_gen.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "prompts/person/README.md": {
+      "published": [],
+      "endactionnotice": true
+    },
+    "prompts/person/README.zh.md": {
+      "endactionnotice": true
+    },
+    "prompts/person/basic_random_gen.zh.md": {
+      "endactionnotice": true
+    },
+    "prompts/person/promptv2.zh.md": {
+      "endactionnotice": true
+    },
+    "prompts/person/promptv1.zh.md": {
       "endactionnotice": true
     }
   }

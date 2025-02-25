@@ -1,3 +1,5 @@
+Translate the following content from English to Chinese:
+
 ## Random Profile Generator - Prompt Workflow
 
 ### **Step 1: User Selection of Basic Independent Variables**
@@ -220,4 +222,4 @@ Summary of Workflow
 This step-by-step approach ensures the generated profile is diverse, detailed, and logically coherent while allowing the user to have control over key decisions throughout the process. It integrates real-world trends to maintain relevance in the character’s background and aspirations.
 
 
-> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>
+> 了解更多请访问 <https://yunwei37.github.io/My-AI-experiment/> 或者 Github： <https://github.com/yunwei37/My-AI-experiment>

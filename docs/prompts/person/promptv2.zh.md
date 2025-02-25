@@ -1,3 +1,5 @@
+Translate the following content from English to Chinese:
+
 **Task Overview:**
 
 We are enhancing the comprehensive prompt to instruct individuals to craft detailed personal backgrounds, experiences, and stories for fictional new graduate students in computer science. To increase diversity and richness in the content, we are introducing additional control variables such as academic performance level, family background, grades, personality traits, and more. These variables will allow for a wider range of narratives that reflect various personal circumstances and experiences.
@@ -295,4 +297,4 @@ Meet **Rohan Mehta**, an ambitious computer science graduate from a small town i
 
 The narrative should be engaging, authentic, and rich in detail, serving as a realistic background for a new graduate in computer science. All information must be fictional and used solely for internal testing purposes.
 
-> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>
+> 了解更多请访问 <https://yunwei37.github.io/My-AI-experiment/> 或者 Github： <https://github.com/yunwei37/My-AI-experiment>

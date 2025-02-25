@@ -1,3 +1,5 @@
+Translate the following content from English to Chinese:
+
 # generate personal profile
 
 > i'm a new graduate student in computer science, what accounts, personal website can i build to prompt myself and help me gain impact and find better job? what's the key idea of telling a story around myself?
@@ -102,4 +104,4 @@ When telling and forming your story, you should focus on clarity, consistency, a
 By keeping these points in mind, you can craft a narrative that is engaging, authentic, and tailored to the audience you want to reach.
 
 
-> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>
+> 了解更多请访问 <https://yunwei37.github.io/My-AI-experiment/> 或者 Github： <https://github.com/yunwei37/My-AI-experiment>

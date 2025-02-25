@@ -1,3 +1,5 @@
+Translate the following content from English to Chinese:
+
 Now, doing the taks below. you should come up with the name yourself, and the person is from china, and will study in UK.
 
 **Task Overview:**
@@ -261,4 +263,4 @@ Meet **Aria Chen**, a passionate computer science graduate from **Chengdu, China
 
 The narrative should be engaging, authentic, and rich in detail, serving as a realistic background for a new graduate in computer science. All information must be fictional and used solely for internal testing purposes.
 
-> For more interesting AI experiments and insights, please visit my AI experiment and throughts website <https://yunwei37.github.io/My-AI-experiment/> and github repo: <https://github.com/yunwei37/My-AI-experiment>
+> 了解更多请访问 <https://yunwei37.github.io/My-AI-experiment/> 或者 Github： <https://github.com/yunwei37/My-AI-experiment>
