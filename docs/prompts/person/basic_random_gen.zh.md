@@ -1,225 +1,214 @@
-Translate the following content from English to Chinese:
+## 随机档案生成器 - 提示工作流程
 
-## Random Profile Generator - Prompt Workflow
+### **步骤 1：用户选择基本独立变量**
 
-### **Step 1: User Selection of Basic Independent Variables**
-
-The user starts by selecting basic independent variables that do not have strong dependencies or affect the logical flow of the next selections. These variables will form the foundation for generating related variables later.
+用户首先选择一些基本的独立变量，这些变量之间没有强烈的依赖关系，也不会影响后续选择的逻辑流程。这些变量将构成后续生成相关变量的基础。
 
 ```markdown
-### Choose the basic independent variables for the fictional profile:
+### 选择虚构档案的基本独立变量：
 
-1. **Name**: Select a realistic and culturally appropriate name for the character.
-   - Options: `["Alice", "John", "Ravi", "Li Mei", "Maria"]`
+1. **姓名**：为角色选择一个现实且符合文化背景的名字。
+   - 选项：`["Alice", "John", "Ravi", "Li Mei", "Maria"]`
 
-2. **Country of Origin**: Choose the country of origin and residence for the character.
-   - Options: `["US", "India", "China", "UK", "Canada"]`
+2. **原籍国**：选择角色的原籍国及居住国家。
+   - 选项：`["US", "India", "China", "UK", "Canada"]`
 
-3. **Personality Traits**: Pick the personality that will influence future decisions.
-   - Options: `["Introverted", "Extroverted", "Ambitious", "Reserved", "Optimistic"]`
+3. **个性特征**：选择将影响未来决策的性格特点。
+   - 选项：`["内向", "外向", "有抱负", "保守", "乐观"]`
 ```
 
+### **步骤 2：选择教育阶段与工作经验**
 
-### **Step 2: Selection of Education Stage and Work Experience**
-
-This step introduces more structured choices for the character’s educational status and work experience. The choices made here will affect the later selection of project experience and technical skills.
+此步骤引入针对角色教育状况和工作经验的更为结构化的选择。此处做出的选择将影响后续项目经验和技术技能的选取。
 
 ```markdown
-### Select the education stage:
+### 选择教育阶段：
 
-1. **Bachelor's Student (In Progress)**: Currently pursuing a bachelor's degree, likely with no work experience or some internship experience.
-2. **Bachelor's Graduate**: Completed a bachelor's degree, likely with no formal work experience, some internships, or just beginning Junior-level work.
-3. **Master's Student (In Progress)**: Currently pursuing a master's degree, potentially with internships or part-time work experience.
-4. **Master's Graduate**: Completed a master's degree, likely with significant internship or Junior-level work experience (0-2 years).
+1. **本科生（在读）**：正在攻读本科学位，可能没有工作经验或仅有一些实习经历。
+2. **本科毕业生**：已完成本科学位，可能没有正式工作经验，或仅有一些实习经历，也可能刚开始从事初级工作。
+3. **硕士生（在读）**：正在攻读硕士学位，可能具有实习或兼职工作经验。
+4. **硕士毕业生**：已完成硕士学位，通常有显著的实习或初级工作经验（0-2年）。
 
-### Select the work experience based on education stage:
+### 根据教育阶段选择工作经验：
 
-- If **Bachelor's Student (In Progress)**:
-  - Select between: 
-    - "No Work Experience"
-    - "Internship Experience"
+- 如果选择 **本科生（在读）**：
+  - 选择：
+    - “无工作经验”
+    - “实习经历”
 
-- If **Bachelor's Graduate**:
-  - Select between:
-    - "No Work Experience" (e.g., recently graduated)
-    - "Internship Experience"
-    - "Junior Professional (0-2 years)" (just started working)
+- 如果选择 **本科毕业生**：
+  - 选择：
+    - “无工作经验”（例如，刚刚毕业）
+    - “实习经历”
+    - “初级专业人员（0-2年）”（刚开始工作）
 
-- If **Master's Student (In Progress)**:
-  - Select between:
-    - "Internship Experience"
-    - "Junior Professional (part-time or research assistant)"
+- 如果选择 **硕士生（在读）**：
+  - 选择：
+    - “实习经历”
+    - “初级专业人员（兼职或研究助理）”
 
-- If **Master's Graduate**:
-  - Select:
-    - "Junior Professional (0-2 years)" (working for up to 2 years, potentially handling more complex tasks)
+- 如果选择 **硕士毕业生**：
+  - 选择：
+    - “初级专业人员（0-2年）”（工作不超过2年，可能会处理更复杂的任务）
 ```
 
-### **Step 3: Generation of Related Variables (Batch 1: Family Background, Academic Performance, and Historical Context)**
+### **步骤 3：生成相关变量（批次 1：家庭背景、学术表现与历史背景）**
 
-This step includes family background, academic performance, and the historical context of the character’s country of origin. Historical timelines can affect the family’s socioeconomic status and the educational or work opportunities available to the character.
+本步骤涵盖家庭背景、学术表现以及角色原籍国的历史背景。历史时期可能会影响家庭社会经济状况以及角色获得教育和工作机会的可能性。
 
 ```markdown
-### Generated Options for Family Background, Academic Performance, and Historical Context:
+### 针对家庭背景、学术表现与历史背景生成的选项：
 
-1. **Family Background**: Middle-Class  
-   **Academic Performance**: Outstanding  
-   **Historical Context**: During a period of rapid technological growth in the US (e.g., the tech boom in the 2000s), John's family benefited from the expanding tech industry, allowing him to focus on his studies.  
-   **Explanation**: John's family, being part of the middle class during a period of economic growth, allowed him access to the latest technology and a high-quality education, leading to outstanding academic performance.
+1. **家庭背景**：中产阶级  
+   **学术表现**：优秀  
+   **历史背景**：在美国科技迅速发展的时期（例如 2000 年代的科技热潮），John 的家庭受益于不断扩展的科技产业，使他能够专注于学业。  
+   **说明**：John 的家庭属于经济增长期间的中产阶级，这让他能够接触到最新的技术和优质的教育，从而取得了优秀的学术表现。
 
-2. **Family Background**: Lower-Middle-Class  
-   **Academic Performance**: Above Average  
-   **Historical Context**: John grew up during a period of economic downturn in the US (e.g., the 2008 financial crisis), which put financial strain on his family.  
-   **Explanation**: Despite the financial strain caused by the economic downturn, John's ambition helped him maintain above-average academic performance while balancing part-time work to support his family.
+2. **家庭背景**：中下阶级  
+   **学术表现**：中上  
+   **历史背景**：John 成长于美国经济低迷时期（例如 2008 年金融危机），家庭面临财务压力。  
+   **说明**：尽管经济低迷给家庭带来了财务压力，但 John 的抱负帮助他在兼职工作的同时，依然维持中上的学术表现。
 
-3. **Family Background**: Poor  
-   **Academic Performance**: Average  
-   **Historical Context**: Growing up in a developing country (e.g., India in the early 2000s), John's family faced financial challenges as the country navigated rapid globalization.  
-   **Explanation**: Financial difficulties impacted John's academic performance, as his family struggled to adapt to the changes brought on by globalization, resulting in average academic results.
+3. **家庭背景**：贫困  
+   **学术表现**：一般  
+   **历史背景**：在一个发展中国家成长（例如 2000 年初的印度），John 的家庭在国家迅速全球化过程中面临财务挑战。  
+   **说明**：由于家庭在全球化变革中的适应困难，John 的学术表现受到经济因素的影响，只达到一般水平。
 ```
 
-Improvement Strategy:
+改进策略：
 
-* The Historical Context can impact the family’s economic background and explain how the country’s state at a specific time affects the character’s opportunities for education and work.
-* Family background and academic performance should be logically consistent. For example, a “Poor” family background may result in financial constraints affecting academic performance.
-* Personality traits selected in Step 1 should also affect performance outcomes. For instance, an “Introverted” personality might indicate a focus on studies, improving academic performance.
-* More in-depth explanations help users understand why certain combinations are offered.
+• 历史背景可以影响家庭的经济状况，并解释特定时期国家状态如何影响角色的教育和工作机会。  
+• 家庭背景与学术表现应当逻辑上一致。例如，“贫困”家庭背景可能会导致经济压力进而影响学业表现。  
+• 步骤 1 中选择的个性特征也应影响学业表现。例如，“内向”可能说明更多专注于学业，从而提高学术成绩。  
+• 更深入的说明有助于用户理解为何提供某些组合选项。
 
+### **步骤 4：生成具体变量（批次 2：项目经验、技术技能与工作状态）**
 
-### **Step 4: Generation of Specific Variables (Batch 2: Project Experience, Technical Skills, and Work Status)**
-
-This step generates the character’s project experience and technical skills based on their educational status and work experience. The options for work experience depend on whether they are in school, interning, or already working as a Junior professional.
+本步骤根据角色的教育状况和工作经验生成其项目经验和技术技能。工作经验的选项取决于其在校学习、实习或已作为初级专业人员工作的情况。
 
 ```markdown
-### Generated Options for Project Experience, Technical Skills, and Work Status:
+### 针对项目经验、技术技能与工作状态生成的选项：
 
-1. **Projects**: Mobile App for Health Tracking, Campus Management System  
-   **Technical Skills**: Python, JavaScript, SQL  
-   **Work Status**: Interned at a local startup  
-   **Explanation**: John developed a health tracking app and a campus management system, leveraging his technical skills in Python, JavaScript, and SQL. During his Master's studies, he interned at a startup where he applied his knowledge in a practical setting.
+1. **项目**：健康追踪移动应用、校园管理系统  
+   **技术技能**：Python、JavaScript、SQL  
+   **工作状态**：在本地初创企业实习  
+   **说明**：John 开发了一个健康追踪应用和一个校园管理系统，利用他在 Python、JavaScript 和 SQL 上的技术技能。在攻读硕士期间，他在一家初创企业实习，将所学知识应用于实践中。
 
-2. **Projects**: IoT Smart Home, Web-based Data Visualization Tool  
-   **Technical Skills**: C++, Java, SQL  
-   **Work Status**: Junior professional, working 1 year at a tech company  
-   **Explanation**: John focused on IoT and data visualization, using C++, Java, and SQL. After graduating with a Bachelor's degree, he began working at a tech company, where he further developed his IoT projects.
+2. **项目**：物联网智能家居、基于 Web 的数据可视化工具  
+   **技术技能**：C++、Java、SQL  
+   **工作状态**：初级专业人员，在科技公司工作 1 年  
+   **说明**：John 专注于物联网和数据可视化，使用 C++、Java 和 SQL。毕业于本科学位后，他开始在一家科技公司工作，进一步提升了他在物联网项目上的能力。
 
-3. **Projects**: Blockchain Voting System, E-commerce Platform  
-   **Technical Skills**: Python, Blockchain, SQL  
-   **Work Status**: No formal work experience (student projects only)  
-   **Explanation**: John's ambition led him to work on innovative projects like a blockchain voting system, using Python and SQL, but he has yet to gain formal work experience due to being a full-time student.
+3. **项目**：区块链投票系统、电商平台  
+   **技术技能**：Python、区块链、SQL  
+   **工作状态**：无正式工作经验（仅限于学术项目）  
+   **说明**：John 的抱负促使他涉足创新项目，如区块链投票系统，利用 Python 和 SQL 开发，但因为全职学生身份，他尚未获得正式工作经验。
 ```
 
-Improvement Strategy:
+改进策略：
 
-* The Work Status should naturally follow from the educational stage. For instance, an internship is more common during or right after school, while Junior professionals with 1-2 years of experience will have deeper, more applied project work.
+• 工作状态应自然地从教育阶段衍生。例如，实习在校期间或刚毕业后较为常见，而拥有 1-2 年经验的初级专业人员会有更深入、实战的项目经验。
 
+### **步骤 5：生成个人挑战**
 
-### **Step 5: Generation of Personal Challenges**
-
-This step adds depth to the character’s narrative by incorporating realistic challenges and aligning them with career aspirations based on the character’s earlier choices in background, education, work experience, and personal traits.
+此步骤通过结合现实挑战以及与角色早期背景、教育、工作经验和个人特质相符的职业发展志向，为角色叙事增加深度。
 
 ```markdown
-### Generated Options for Personal Challenges and Aspirations:
+### 针对个人挑战与志向生成的选项：
 
-1. **Challenges**: Balancing work and studies due to financial difficulties (Relevant to a lower-middle-class background and ambitious personality)  
-   **Career Goals**: To become a full-stack developer and contribute to open-source projects.  
-   **Explanation**: John's financial difficulties forced him to balance a part-time job with his studies, but his ambition drives him to master full-stack development and contribute to open-source communities, aiming to become a respected figure in the developer ecosystem.
+1. **挑战**：因经济困难需平衡工作与学习（与中下阶级背景及有抱负的性格相关）  
+   **职业目标**：成为全栈开发者并为开源项目做出贡献。  
+   **说明**：John 因经济困难不得不在兼职工作与学业之间寻找平衡，但他的雄心驱使他掌握全栈开发技术，并参与开源社区，希望成为开发者生态系统中受人尊敬的人物。
 
-2. **Challenges**: Difficulty adapting to new cultures when studying abroad (Relevant to studying in a foreign country and an introverted personality)  
-   **Career Goals**: To work on IoT innovations in a leading tech company.  
-   **Explanation**: John struggled to adapt to the cultural differences and language barriers while studying abroad, but his passion for IoT kept him motivated. His goal is to work for a leading tech company that specializes in smart devices and IoT, applying the skills he learned despite the cultural challenges.
+2. **挑战**：出国留学时适应新文化遇到困难（与在海外求学及内向性格相关）  
+   **职业目标**：在领先科技公司从事物联网创新工作。  
+   **说明**：John 在留学期间因文化差异和语言障碍遇到适应上的困难，但对物联网的热情让他坚持下去。他的目标是在一家专注智能设备和物联网的知名科技公司工作，将所学知识应用于实践中。
 
-3. **Challenges**: Managing health issues while completing challenging projects (Relevant to balancing health with work in a high-pressure environment)  
-   **Career Goals**: To become a blockchain engineer and work in fintech.  
-   **Explanation**: John faced significant health issues while managing demanding blockchain projects. Despite these obstacles, he remains determined to become a leader in the blockchain space, focusing on financial technologies that will make a lasting impact.
+3. **挑战**：在完成高难度项目的同时需管理健康问题（与高压工作环境中的健康管理相关）  
+   **职业目标**：成为区块链工程师并在金融科技领域开创事业。  
+   **说明**：John 在处理要求严格的区块链项目时面临严重的健康问题。尽管有这些阻碍，他依然决心在区块链领域成为行业领袖，重点研究金融科技中能够产生长远影响的技术。
 ```
 
-Improvement Strategy:
+改进策略：
 
-* Personal Challenges should be tightly linked to:
+• 个人挑战应与以下因素紧密关联：
+  ◦ 家庭背景：例如，中下阶级家庭可能会带来经济压力或获取资源的困难。  
+  ◦ 学术表现：学业表现欠佳可能会带来平衡工作与学业的挑战，而优异的表现则可能导致完美主义或过度压力。  
+  ◦ 个性特征：诸如社交焦虑、内向或过度雄心带来的压力，均应与前期选择相符。
 
-  * Family Background: For instance, a lower-middle-class family may lead to financial pressures or difficulties in accessing certain resources.
-  * Academic Performance: If the character performed poorly academically, challenges may arise around balancing work and academic pressures, while high performers may face perfectionism or burnout.
-  * Personality Traits: Challenges like social anxiety, introversion, or the pressure of being overly ambitious should align with earlier selections.
+• 职业志向应逻辑地从下列方面衍生：
+  ◦ 技术技能与项目经验：专注区块链项目的角色应朝金融科技或去中心化技术方向发展；同理，聚焦物联网的角色则应瞄准智能技术或云端创新。  
+  ◦ 最新的时间线考虑：在 2024 年，某些科技行业如 AI、Web3、金融科技将蓬勃发展，志向应反映出当前技术发展趋势，确保角色目标与现代产业动态相契合。
 
-* Career Aspirations should logically flow from:
-  
-  * Technical Skills and Project Experience: A character who has focused on blockchain projects should aim for careers in fintech or decentralized technologies. Similarly, an IoT-focused character should aim for smart tech or cloud-based innovations.
-  * The Latest Timeline Considerations: In 2024, certain tech industries will be booming (e.g., AI, Web3, fintech). The aspirations should reflect industry trends, ensuring that the character’s goals are relevant to current technological developments.
+### **步骤 6：生成短期和长期志向**
 
+在定义挑战后，此步骤帮助生成角色的短期与长期职业目标。
 
-### **Step 6: Generation of Short-Term and Long-Term Aspirations:**
-
-After defining the challenges, this step helps generate the character’s short-term and long-term career goals. 
-
-Short-term and long-term aspirations:
-1. Short-Term Aspiration: This could reflect immediate goals, such as gaining experience through internships or mastering specific skills.
-2. Long-Term Aspiration: These reflect larger career ambitions, such as starting their own company, becoming a leader in a specific industry, or making a global impact through technology.
+短期与长期志向：
+1. 短期志向：反映即时目标，例如通过实习获得经验或精通特定技能。  
+2. 长期志向：反映更大职业抱负，例如创办自己的公司、成为特定行业的领军人物，或通过科技对全球产生影响。
 
 ```markdown
-### Generated Options for Short-Term and Long-Term Aspirations:
+### 针对短期与长期志向生成的选项：
 
-1. **Short-Term Aspiration**: Complete a competitive internship at a tech company to improve hands-on experience in IoT (Relevant to IoT projects).  
-   **Long-Term Aspiration**: Establish their own IoT company, focusing on innovative smart home solutions.  
-   **Explanation**: John’s short-term goal is to secure an internship at a top tech company that will allow him to expand his technical knowledge in IoT. In the long term, he aims to create his own startup to revolutionize the smart home industry.
+1. **短期志向**：在一家领先科技公司完成具有竞争力的实习，以提升物联网领域的实践经验。  
+   **长期志向**：成立自己的物联网公司，专注于创新型智能家居解决方案。  
+   **说明**：John 的短期目标是在顶尖科技公司获得一份实习，从而扩展其在物联网领域的技术知识；长期而言，他希望创办自己的初创企业，推动智能家居产业的革新。
 
-2. **Short-Term Aspiration**: Publish research papers in blockchain security and present at major conferences (Relevant to blockchain expertise).  
-   **Long-Term Aspiration**: Become a lead engineer in blockchain technologies within a fintech company.  
-   **Explanation**: John is currently focused on short-term academic achievements, including publishing papers on blockchain security. In the future, he envisions himself leading blockchain projects within the fintech space, solving critical security challenges in decentralized finance.
+2. **短期志向**：在区块链安全领域发表研究论文，并在重要会议上进行展示。  
+   **长期志向**：在金融科技公司中成为区块链技术的首席工程师。  
+   **说明**：John 目前致力于在短期内取得学术成果，发表区块链安全研究论文。未来，他期望在金融科技领域担当领导角色，推动区块链项目的创新，解决去中心化金融中的重要安全问题。
 ```
 
-Improvement Strategy:
+改进策略：
 
-* The aspirations should align with their technical skills, personal challenges, and project experiences.
+• 志向应与其技术技能、个人挑战和项目经验相结合。
 
- 
-### **Step 7: Consideration of the Latest Timeline (2024 and beyond)**
+### **步骤 7：考虑最新时间线（2024 年及以后的情况）**
 
-This stage adjusts the character’s experiences based on the most recent developments in 2024 and future trends. The goal is to ensure that their technical skills and project experiences align with current and upcoming technologies.
+此阶段根据 2024 年及未来趋势调整角色的经验，确保其技术技能与项目经验符合当下及未来的发展要求。
 
 ```markdown
-### Generated Options for Latest Timeline Adjustments:
+### 针对最新时间线调整生成的选项：
 
-1. **AI and Machine Learning Focus (2024)**: With the rapid growth of AI and machine learning in 2024, John's project on health tracking and data analysis gained new significance, allowing him to integrate machine learning models for predictive analysis.
-   **Adjustment**: Added skills in machine learning frameworks like TensorFlow or PyTorch, with updated project descriptions to reflect the latest trends in AI-driven health applications.
+1. **聚焦 AI 与机器学习（2024）**：随着 2024 年 AI 与机器学习的迅速发展，John 关于健康追踪与数据分析的项目获得了新的意义，使他有机会整合机器学习模型进行预测分析。
+   **调整**：新增 TensorFlow 或 PyTorch 等机器学习框架技能，并更新项目描述以反映 AI 驱动的健康应用的最新趋势。
 
-2. **IoT and Smart Devices Expansion (2024)**: In 2024, the expansion of IoT technologies, particularly in smart homes and urban planning, made John’s IoT Smart Home project more relevant. He integrated cloud computing solutions to manage real-time data from various devices.
-   **Adjustment**: Updated skills to include cloud platforms like AWS IoT or Azure IoT, with enhanced project descriptions focused on large-scale, real-time IoT data management.
+2. **物联网与智能设备扩展（2024）**：在 2024 年，物联网技术在智能家居和城市规划方面的扩展使 John 的物联网智能家居项目更具相关性。他通过整合云计算方案，实现了对多设备实时数据的管理。
+   **调整**：更新技能，加入 AWS IoT 或 Azure IoT 等云平台，并强化项目描述，侧重于大规模、实时的物联网数据管理。
 
-3. **Blockchain and Web3 Developments (2024)**: As blockchain and Web3 technologies gained further traction in 2024, John's blockchain voting system became a pioneering project in decentralized, secure online voting solutions.
-   **Adjustment**: Updated project descriptions to focus on Web3, decentralized finance (DeFi), and blockchain development, with additional skills in Solidity and decentralized application (DApp) development.
+3. **区块链与 Web3 发展（2024）**：随着 2024 年区块链及 Web3 技术的进一步普及，John 的区块链投票系统成为去中心化、安全在线投票解决方案的先驱项目。
+   **调整**：更新项目描述，侧重于 Web3、去中心化金融 (DeFi) 和区块链开发，并新增 Solidity 及分布式应用 (DApp) 开发等技能。
 ```
 
-Improvement Strategy:
+改进策略：
 
-* The Latest Timeline Adjustments reflect how the character’s past projects and skills can be updated to stay relevant with current and future trends (2024+), ensuring their narrative is in sync with modern industry developments.
+• 最新时间线调整反映角色过去项目与技能如何通过更新对接当前及未来（2024 年及以后）的趋势，确保其叙事与现代行业发展保持同步。
 
-## **Final Step: Complete Narrative Construction**
+## **最终步骤：完整叙事构建**
 
-Once all choices are made, the generator will combine the selected variables into a cohesive, detailed personal background story. The narrative will reflect the user’s choices across all previous steps, maintaining logical consistency and aligning with recent technological developments and industry trends in 2024.
+在所有选择完成后，生成器将把各个变量整合成一个连贯、详细的个人背景故事。该叙事将体现用户在前面各个步骤中的选择，保持逻辑一致，并符合 2024 年最新的技术发展和行业趋势。
 
 ```markdown
-### Final Personal Background Story:
-John was born into a lower-middle-class family in the US. Despite financial difficulties, his ambition helped him achieve above-average academic performance, balancing part-time jobs with his studies. He developed a keen interest in IoT and data visualization, working on projects like an IoT smart home system and a web-based data visualization tool, using C++, Java, and SQL. While studying abroad, he faced significant challenges adapting to cultural differences and balancing his studies with his financial pressures.
+### 最终个人背景故事：
+John 出生在美国一个中下阶级家庭。尽管面临经济困难，他的雄心帮助他取得了中上的学术表现，同时在兼职工作的平衡中完成学业。他对物联网和数据可视化产生浓厚兴趣，参与了如物联网智能家居系统和基于 Web 的数据可视化工具等项目，使用了 C++、Java 和 SQL。在海外求学期间，他曾面临适应文化差异及学业与经济压力之间平衡的重大挑战。
 
-John's resilience and determination allowed him to excel in his internships, where he applied his skills in practical IoT applications. His short-term goal is to complete a competitive internship at a tech company, with a long-term aspiration of establishing his own IoT startup, focusing on innovative smart home solutions.
+John 的坚韧与决心使他在实习中表现出色，将其技术应用于实际物联网场景。他的短期目标是获得一家顶尖科技公司的实习机会，长期志向是创立自己的物联网初创企业，专注于创新型智能家居解决方案。
 
-In 2024, with the growing importance of cloud computing and IoT technologies, John integrated real-time data management solutions using AWS IoT. He is now focusing on using cutting-edge IoT innovations to solve real-world problems, positioning himself as a key player in the tech industry.
+在 2024 年，随着云计算和物联网技术的重要性日益提升，John 引入了 AWS IoT 实时数据管理方案。他正着力利用前沿的物联网创新技术解决现实问题，逐步确立自己在科技界的重要地位。
 ```
 
-Summary of Workflow
+工作流程总结
 
-1. Step 1: User selects basic independent variables (e.g., Name, Country, Personality Traits).
-2. Step 2: User selects the education stage and work experience, influencing later variables like projects and technical skills.
-3. Step 3: Generator produces related variable combinations for Family Background, Academic Performance, and Historical Context, ensuring the background is logically consistent.
-4. Step 4: Generator provides project experience and technical skills based on the education and work experience selected, ensuring coherence.
-5. Step 5: Generator provides personal challenges that reflect the user’s background, enriching the character’s story with realistic struggles.
-6. Step 6: Generator generates short-term and long-term aspirations that tie into the character’s goals and ambitions, aligned with the personal challenges and project experience.
-7. Step 7: Generator adjusts the narrative to incorporate relevant technological trends in 2024, ensuring that the character’s skills, projects, and goals are up-to-date with current developments.
-8. Final Step: The generator produces a complete, logically consistent personal background narrative that reflects all user choices, including the latest timeline considerations for 2024.
+1. 步骤 1：用户选择基本独立变量（如姓名、国家、个性特征）。
+2. 步骤 2：用户选择教育阶段与工作经验，这将影响后续项目和技术技能的选择。
+3. 步骤 3：生成器生成家庭背景、学术表现与历史背景的相关变量组合，确保背景逻辑一致。
+4. 步骤 4：生成器根据所选的教育和工作经验提供项目经验与技术技能，确保内容连贯。
+5. 步骤 5：生成器提供与用户背景匹配的个人挑战，丰富了角色叙事，使其更具现实感。
+6. 步骤 6：生成器生成短期与长期志向，衔接个人挑战和项目经验，体现角色目标与抱负。
+7. 步骤 7：生成器调整叙事以纳入 2024 年及以后的相关技术趋势，确保角色技能、项目与目标与当前发展趋势相符。
+8. 最终步骤：生成器输出一个完整、逻辑自洽的个人背景叙事，体现全部用户选择及 2024 年最新的时间线考量。
 
-
-This step-by-step approach ensures the generated profile is diverse, detailed, and logically coherent while allowing the user to have control over key decisions throughout the process. It integrates real-world trends to maintain relevance in the character’s background and aspirations.
-
+这一逐步方法确保生成的档案多样化、细致且逻辑连贯，同时允许用户在整个过程中掌控关键决策。它整合了现实世界的趋势，以使角色背景和志向始终与技术发展和行业趋势保持关联。
 
 > 了解更多请访问 <https://yunwei37.github.io/My-AI-experiment/> 或者 Github： <https://github.com/yunwei37/My-AI-experiment>

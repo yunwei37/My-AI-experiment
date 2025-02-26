@@ -1,22 +1,18 @@
-Translate the following content from English to Chinese:
+这是一篇论文的摘要，你需要搜索所有相关的信息，包括：
 
-This is the summary of paper, you need to search for all related information, include:
+1. 论文本身的链接  
+2. 论文中关键思想的未来发展方向是什么？不要搜索论文名称，而是搜索关键思想。  
+3. 论文摘要中提到的参考文献、相关项目或支持性材料。不要包含论文名称，而是搜索摘要中提到的相关材料。  
+4. 论文或项目的当前状态。请以关键词或项目名称搜索，以了解其当前状态，而非使用全称。  
+5. 所属更大领域的最新进展。搜索时不要包含论文名称，而要搜索论文中的关键主题。
 
-1. The link to the paper itself
-2. What's the future of the key ideas in the paper? Do not search for the paper name, search for the key ideas.
-2. The reference, related projects or supporting material mentioned in the paper summary. Do not include the paper name, search for related materials mentioned in the summart.
-3. The current status of the paper or project. Search the Keywords or project name to find the current status, instead of the full name.
-4. The current advance in the larger field of it. Do not include paper name when search for this part, search for key topics in the paper.
+你应该有一个计划：
 
-You shoud have a plan:
+1. 每对搜索关键词构成计划中的一个步骤。每个步骤仅执行一次搜索。如果有多个关键词，应该分别在不同的步骤中搜索。  
+2. 在每个步骤中，使用材料中提到的关键词进行一次查询，搜索对应的参考链接。
 
-1. each keyword pair you want to search is a step in the plan. each step should only exec search once. if you have multiple keywords, you should search them in seperate steps.
-2. in each step, search the keyword pair for the reference links in one query using the key word find in the material
-
-The plan should cover all keywords or topic you want to search, each is a step. Try to include all things and links you think 
-are relevant to the paper or topic, helpful or interesting to the reader.
+该计划应涵盖你想搜索的所有关键词或主题，每个都作为一个步骤。尽量包括所有你认为与论文或主题相关、有帮助或有趣的内容和链接。
 
 =================================================
-
 
 > 了解更多请访问 <https://yunwei37.github.io/My-AI-experiment/> 或者 Github： <https://github.com/yunwei37/My-AI-experiment>

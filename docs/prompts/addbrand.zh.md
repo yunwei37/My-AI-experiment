@@ -1,17 +1,6 @@
-Translate the following content from English to Chinese:
+下面是一篇博客或文章。请帮助我在文章中巧妙地融入与我的品牌或产品相关的原生广告内容，使其自然、不具侵入性，并且与文章内容密切相关，同时让读者了解到我的品牌。嵌入的品牌内容应具有情境性，在适当的时候以我的品牌或产品作为例子，并在结尾处包含一个简短的行动号召，但不要过于宣传。请确保整体语气与一篇既信息丰富又具有帮助性的博客文章一致。
 
-Below is a blog or article. 
-Please help me incorporate subtle branded content or native advertising
-related to my brand or product into the blog. 
-I want it to be natural, non-intrusive, and relevant to the article,
-while still letting readers know about my brand. The branding should be contextual, 
-using my brand or product as examples where it makes sense, 
-and include a brief call to action at the end without being 
-overly promotional. Make sure the tone aligns with an informative and helpful blog post.
-
-Here are some details about my brand/product, and follows a article/blog post that you 
-should incorporate the branded content into:
+以下是关于我的品牌/产品的一些详细信息，请在后续的文章或博客中融入这些品牌内容：
 ========================================
-
 
 > 了解更多请访问 <https://yunwei37.github.io/My-AI-experiment/> 或者 Github： <https://github.com/yunwei37/My-AI-experiment>

@@ -1,106 +1,104 @@
-Translate the following content from English to Chinese:
+# ghOSt：通过用户空间委派革新 Linux 调度
 
-# ghOSt: Revolutionizing Linux Scheduling with User-Space Delegation
+在数据中心不断演变的格局中，资源管理的效率和灵活性至关重要。传统的内核调度器虽然功能强大，但也存在一些局限，这些局限会阻碍最佳性能、扩展性和安全性的实现。由 Google 和斯坦福大学的 Jack Tigar Humphries 等人提出的**ghOSt**，是一种开创性框架，其详细介绍发表于 2021 年的研究论文《ghOSt: Fast & Flexible User-Space Delegation of Linux Scheduling》。该论文在 ACM SIGOPS 第28届操作系统原理研讨会 (SOSP ‘21) 上发表，ghOSt 为 Linux 环境下的调度提供了一种变革性的新途径，旨在满足现代数据中心日益细化的需求。
 
-In the ever-evolving landscape of data centers, the efficiency and flexibility of resource management are paramount. Traditional kernel schedulers, while robust, present limitations that hinder optimal performance, scalability, and security. Enter **ghOSt**, a groundbreaking framework introduced in the 2021 research paper titled *"ghOSt: Fast & Flexible User-Space Delegation of Linux Scheduling"* by Jack Tigar Humphries and colleagues from Google and Stanford University. Published at the ACM SIGOPS 28th Symposium on Operating Systems Principles (SOSP ‘21), ghOSt offers a transformative approach to scheduling in Linux environments, aiming to address the nuanced demands of modern data centers.
+## 理解核心问题
 
-## Understanding the Core Problem
+操作系统在管理应用程序如何使用 CPU 资源方面发挥着至关重要的作用。内核调度器作为一个基础组件，负责决定在任一时刻哪些线程在特定的 CPU 上运行。然而，随着数据中心工作负载的迅速增加和应用程序种类的多样化，内核调度器往往难以迅速、高效地适应这种变化。正如论文中所述：
 
-Operating systems play a crucial role in managing how applications utilize CPU resources. The kernel scheduler, a fundamental component, decides which threads run on which CPUs at any given moment. However, with the rapid expansion of data center workloads and the diversity of applications, kernel schedulers often struggle to adapt promptly and efficiently. As the paper states:
+“最近的研究表明，在定制数据平面操作系统中使用专门的调度策略可以在数据中心中提供令人信服的性能表现……然而，由于在应用粒度上部署定制操作系统映像是不切实际的，因此这一方法难以实现。”
 
-> "Recent research suggests bespoke scheduling policies, within custom dataplane operating systems, can provide compelling performance results in data centers... However, these have proven difficult to realize as it is impractical to deploy a custom OS image(s) at an application granularity."
+这揭示了一个关键挑战：内核调度器的僵化性阻碍了针对特定工作负载或安全需求量身定制的高性能调度策略的部署。
 
-This highlights a critical challenge: the rigidity of kernel schedulers impedes the deployment of specialized, high-performance scheduling policies tailored to specific workloads or security needs.
+## 介绍 ghOSt：用户空间调度器
 
-## Introducing ghOSt: The User-Space Scheduler
+**ghOSt**（读作 “ghost”）是一种创新性的基础设施，它旨在将内核调度决策委派给用户空间的进程。通过这种方式，调度逻辑与内核得以解耦，从而提供前所未有的灵活性和控制能力。作者在论文中对 ghOSt 的主要目标做了如下描述：
 
-**ghOSt** (pronounced "ghost") is an innovative infrastructure designed to delegate kernel scheduling decisions to user-space processes. By doing so, it decouples the scheduling logic from the kernel, offering unprecedented flexibility and control. The authors outline ghOSt's primary objectives as follows:
+“ghOSt 在 Linux 环境中提供了通用的调度策略委派到用户空间进程……在应用之间隔离共享的处理器状态。”
 
-> "ghOSt provides general-purpose delegation of scheduling policies to userspace processes in a Linux environment... isolating shared processor state between applications."
+在本质上，ghOSt 的工作机制是让用户空间代理基于线程和 CPU 当前的状态做出调度决策，然后指导内核如何执行。这种分离方案允许开发者无需修改内核本身，就能实现、测试和部署复杂的调度策略。
 
-At its heart, ghOSt operates by having user-space agents make scheduling decisions based on the current state of threads and CPUs, then instructing the kernel on how to proceed. This separation allows developers to implement, test, and deploy complex scheduling policies without the need to modify the kernel itself.
+## 设计与实现：ghOSt 的工作原理
 
-## Design and Implementation: How ghOSt Works
+ghOSt 框架具备几项显著的特点，使其脱颖而出：
 
-The ghOSt framework presents several key features that set it apart:
-
-1. **State Encapsulation and Communication**: ghOSt encapsulates the scheduling state and communicates it efficiently between the kernel and user-space agents using a transaction-based API.
+1. **状态封装与通信**：ghOSt 将调度状态进行封装，并通过基于事务的 API 高效地在内核与用户空间代理之间传递信息。
    
-   > "The policy definition resides in userspace, and ghOSt must allow new policies to be deployed, updated, rolled-back, or even crash without incurring the machine-reboot costs."
+   “调度策略定义位于用户空间，ghOSt 必须允许新的策略能够被部署、更新、回滚，甚至在崩溃时也不会导致机器重启的代价。”
 
-2. **Scheduling Models**: It supports a variety of scheduling models, including per-CPU and centralized models. This adaptability ensures that ghOSt can cater to diverse scheduling strategies, from simple load balancing to complex, multi-tenancy-aware policies.
+2. **调度模型**：它支持各种调度模型，包括每 CPU 独立调度和集中式调度。这种适应性确保 ghOSt 能够满足从简单负载均衡到复杂多租户感知策略的多样化调度需求。
 
-3. **Minimal Overhead**: One of ghOSt's standout achievements is its low overhead. The paper reports:
+3. **低开销**：ghOSt 的一大亮点在于其小巧的开销。论文中报告称：
    
-   > "ghOSt’s scheduling overheads are small and range from 265ns for message delivery to 1,772ns end-to-end latency for scheduling decisions."
+   “ghOSt 的调度开销很小，从消息传递的 265 纳秒到调度决策端到端延迟 1,772 纳秒不等。”
 
-   These figures are particularly impressive when compared to traditional kernel schedulers, which often suffer from higher latencies and greater processing times for similar operations.
+   与传统内核调度器相比，这些数字尤为令人印象深刻，因为传统调度器在类似操作上往往存在更高的延迟和更长的处理时间。
 
-4. **Security Enhancements**: ghOSt enhances security by isolating scheduling logic in user space, reducing the kernel's attack surface and mitigating risks from hardware vulnerabilities like Spectre and Meltdown.
+4. **安全性提升**：通过将调度逻辑隔离到用户空间，ghOSt 降低了内核的攻击面，有效缓解了诸如 Spectre 和 Meltdown 之类的硬件漏洞风险。
 
-## Evaluating ghOSt: Performance and Scalability
+## 评估 ghOSt：性能与可扩展性
 
-The authors conducted extensive evaluations to benchmark ghOSt against existing schedulers such as the Linux Completely Fair Scheduler (CFS) and bespoke schedulers like Shinjuku and Shenango. Key findings include:
+作者通过大量评测将 ghOSt 与现有的调度器进行了对比，包括 Linux 完全公平调度器 (CFS) 及类似 Shinjuku 和 Shenango 等专用调度器。主要发现包括：
 
-- **Throughput and Latency**: ghOSt matched or outperformed Shinjuku in throughput while significantly improving tail latency. For instance, under multi-tenant scenarios, ghOSt achieved a 1.6× increase in throughput and a 17× reduction in request tail latency.
+- **吞吐量与延迟**：ghOSt 在吞吐量上与 Shinjuku 匹敌，甚至在尾部延迟上取得了显著改善。例如，在多租户场景下，ghOSt 实现了 1.6 倍的吞吐量提升和 17 倍的请求尾部延迟降低。
 
-- **Scalability**: The framework demonstrated impressive scalability, handling over 2 million threads per second, ensuring that even as data center workloads grow, ghOSt remains robust and efficient.
+- **可扩展性**：该框架展示了令人印象深刻的扩展能力，每秒处理超过 200 万个线程，确保即使数据中心工作负载不断增长，ghOSt 依然能够保持高效稳定。
 
-- **Flexibility in Policy Implementation**: Developers could implement complex scheduling policies in just a few hundred lines of user-space code, a stark contrast to the thousands of lines typically required for kernel scheduler modifications.
+- **策略实现的灵活性**：开发者仅需用几百行用户空间代码就能实现复杂的调度策略，而传统内核调度器的修改通常需要成千上万行代码。
 
-## Practical Applications and Real-World Deployments
+## 实际应用与真实部署
 
-ghOSt isn't just a theoretical construct; it's designed for real-world applicability. The authors showcase its deployment in various Google production workloads, including Google Snap and Google Search. In these scenarios, ghOSt facilitated rapid deployment of core-isolation policies, isolated untrusted threads from shared processor states, and allowed for non-disruptive policy optimizations across vast server fleets.
+ghOSt 并非仅仅是一个理论构想，而是面向实际应用而设计的。作者展示了其在 Google 生产环境中的部署实例，例如 Google Snap 和 Google Search。在这些场景中，ghOSt 实现了核心隔离策略的快速部署，隔离了不可信线程与共享处理器状态，以及在大规模服务器集群中实现了不间断的策略优化。
 
-For instance, in the **GoogleSnap** workload, ghOSt:
+例如，在 **GoogleSnap** 工作负载中，ghOSt：
 
-> "lead to about a 40-45% reduction in tail latency for query types A and B, mitigated by ensuring every physical core only runs threads belonging to the same CPU."
+“使查询类型 A 和 B 的尾部延迟降低了约 40-45%，这一改善得益于确保每个物理核心只运行属于同一 CPU 的线程。”
 
-This underscores ghOSt's capability to enhance performance while maintaining system stability and security.
+这充分彰显了 ghOSt 在提升性能的同时，也兼顾了系统稳定性和安全性。
 
-## Security Implications: Beyond Performance
+## 安全影响：超越性能
 
-In light of recent hardware vulnerabilities like L1TF/MDS, ghOSt's design offers significant security benefits. By isolating the scheduling logic in user space and ensuring that untrusted threads don't share processor states with critical threads, ghOSt inherently reduces the risk surface for such exploits.
+鉴于 L1TF/MDS 等近期硬件漏洞的出现，ghOSt 的设计在安全性上提供了显著优势。通过将调度逻辑隔离到用户空间，并确保不可信线程不会与关键线程共享处理器状态，ghOSt 本质上降低了此类攻击的风险面。
 
-The paper elaborates:
+论文详细阐述道：
 
-> "By using ghOSt instead of the kernel scheduler, had to rapidly deploy new core-isolation policies, isolating shared processor state between applications... while enabling policy optimization and fault isolation for our data center workloads."
+“通过使用 ghOSt 替代内核调度器，我们能够快速部署新的核心隔离策略，将应用之间的共享处理器状态隔离开……同时为数据中心工作负载实现策略优化和故障隔离。”
 
-This approach not only fortifies systems against known vulnerabilities but also provides a flexible framework to adapt to emerging threats without necessitating kernel-level changes.
+这种方法不仅强化了系统应对已知漏洞的能力，还提供了一个灵活的框架，使得在不修改内核的情况下也能适应新兴威胁。
 
-## Comparing ghOSt to Related Work
+## 与相关工作比较
 
-ghOSt stands out among its contemporaries due to its unique blend of flexibility, performance, and security. Compared to schedulers like Shinjuku, Shenango, and Caladan, ghOSt offers:
+ghOSt 之所以在同类技术中脱颖而出，是因为它在灵活性、性能和安全性上的独特结合。与 Shinjuku、Shenango 和 Caladan 等调度器相比，ghOSt 提供了：
 
-- **Higher Flexibility**: User-space delegation allows for more dynamic and easily updatable scheduling policies.
-- **Lower Overhead**: Minimal latency and efficient message handling ensure that ghOSt doesn't bottleneck system performance.
-- **Enhanced Security**: User-space isolation aligns well with modern security paradigms, offering a robust defense against kernel-level exploits.
+- **更高的灵活性**：用户空间的委派让调度策略能够更加动态、便于更新。
+- **更低的开销**：极低的延迟和高效的信息传递确保 ghOSt 不会成为系统性能的瓶颈。
+- **增强的安全性**：用户空间的隔离符合现代安全理念，为防御内核级漏洞提供了坚实防线。
 
-Moreover, ghOSt's open-source approach, with both kernel and user-space components available on GitHub, fosters community collaboration and further innovation.
+此外，ghOSt 开源了内核和用户空间组件，并在 GitHub 上公开，促进了社区协作和进一步创新。
 
-## Future Directions and Potential Enhancements
+## 未来方向与潜在改进
 
-While ghOSt presents a significant advancement in Linux scheduling, the research opens avenues for future exploration:
+虽然 ghOSt 在 Linux 调度方面已经取得了重大突破，但该研究也为未来探索提供了新思路：
 
-- **Enhanced Policy Development**: With policies becoming easier to implement, the community can innovate and contribute novel scheduling strategies tailored to specific application needs.
-- **Integration with Emerging Hardware Technologies**: As hardware continues to evolve, ghOSt can adapt to leverage new architectures and accelerators, ensuring sustained performance gains.
-- **Broader Adoption Beyond Data Centers**: While designed with data centers in mind, ghOSt's benefits can extend to other environments requiring high scalability and performance, such as edge computing and large-scale scientific computing.
+- **增强策略开发**：随着策略实现变得更加简便，社区可以开发并贡献出针对特定应用需求的全新调度策略。
+- **与新兴硬件技术的整合**：随着硬件不断进化，ghOSt 能够适应新架构和加速器的应用，从而确保持续的性能提升。
+- **超越数据中心的更广泛采用**：尽管 ghOSt 主要面向数据中心，但其优势同样适用于其他需要高扩展性和高性能的领域，如边缘计算和大规模科学计算。
 
-## Conclusion
+## 结论
 
-The introduction of ghOSt marks a pivotal moment in operating system scheduler design. By delegating scheduling decisions to user space, ghOSt addresses the inherent limitations of kernel schedulers, delivering enhanced performance, scalability, and security. Its practical applicability demonstrated in Google’s production environments further validates its efficacy, positioning ghOSt as a cornerstone for future scheduling innovations in Linux-based systems.
+ghOSt 的推出标志着操作系统调度器设计的一个关键转折点。通过将调度决策委派到用户空间，ghOSt 针对内核调度器固有的局限性提出了有效解决方案，实现了性能、可扩展性和安全性的整体提升。在 Google 生产环境中的成功应用进一步证明了 ghOSt 的有效性，使其成为未来 Linux 系统调度创新的基石。
 
-As data centers continue to burgeon and applications demand increasingly granular and efficient resource management, frameworks like ghOSt will be indispensable in navigating the complexities of modern computing infrastructure.
+随着数据中心持续扩张以及应用对资源管理越来越细粒度和高效的需求，如 ghOSt 这样的框架将在应对现代计算基础设施复杂性方面发挥不可或缺的作用。
 
-For those interested in delving deeper into ghOSt's implementation and contributions, the authors have generously open-sourced their work:
+对于那些希望深入了解 ghOSt 实现细节及其贡献的人员，作者已慷慨开源了他们的工作：
 
-- **Kernel Code**: [ghOSt Kernel Code](https://github.com/google/ghost-kernel)
-- **Userspace Code**: [ghOSt Userspace Code](https://github.com/google/ghost-userspace)
+- **内核代码**：[ghOSt Kernel Code](https://github.com/google/ghost-kernel)
+- **用户空间代码**：[ghOSt Userspace Code](https://github.com/google/ghost-userspace)
 
-Embracing such innovations not only paves the way for more efficient systems but also fosters a collaborative ecosystem where advancements can be rapidly iterated and deployed.
+拥抱这样的创新不仅为构建更高效的系统铺平道路，也促进了一个能够快速迭代和部署新进展的协作生态系统。
 
-# References
+# 参考文献
 
 - Humphries, J. T., Natu, N., Chaugule, A., Weisse, O., Rhoden, B., Don, J., ... & Kozyrakis, C. (2021). ghOSt: Fast & Flexible User-Space Delegation of Linux Scheduling. In **Proceedings of the ACM SIGOPS 28th Symposium on Operating Systems Principles (SOSP ’21)**.
 
-> 了解更多请访问 <https://yunwei37.github.io/My-AI-experiment/> 或者 Github： <https://github.com/yunwei37/My-AI-experiment>
+> 了解更多请访问 <https://yunwei37.github.io/My-AI-experiment/> 或者 GitHub： <https://github.com/yunwei37/My-AI-experiment>

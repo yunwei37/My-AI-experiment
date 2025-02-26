@@ -1,131 +1,129 @@
-Translate the following content from English to Chinese:
+# 你也能教大象跳舞：敏捷虚拟机交接推动边缘计算革命
 
-# You Can Teach Elephants to Dance: Revolutionizing Edge Computing with Agile VM Handoff
+在不断演进的计算领域中，**边缘计算**正逐渐成为一个关键范式，它将计算和数据存储迁移到数据产生源附近。这种靠近数据源的方法可以降低延迟、提升性能并节省带宽，使其在增强现实、可穿戴设备和实时分析等应用中不可或缺。然而，边缘计算面临的一个重大挑战是如何在分布式环境中、尤其是带宽受限的广域网（WAN）环境下高效地进行**虚拟机（VM）迁移**。
 
-In the ever-evolving landscape of computing, **edge computing** has emerged as a pivotal paradigm, bringing computation and data storage closer to the sources of data generation. This proximity reduces latency, enhances performance, and conserves bandwidth, making it indispensable for applications like augmented reality, wearable devices, and real-time analytics. However, one of the significant challenges in edge computing is the efficient **migration of virtual machines (VMs)** across distributed environments, especially over wide area networks (WANs) with limited bandwidth.
+由Kiryong Ha等人撰写的开创性研究论文《[你也能教大象跳舞：针对边缘计算的敏捷虚拟机交接](https://dl.acm.org/doi/10.1145/3132211.3134453)》正是在加州圣何塞举行的**SEC’17**会议上发布的。本文提出了一种名为**虚拟机交接**的全新机制，旨在优化边缘计算场景下的虚拟机迁移。
 
-Enter the groundbreaking research paper titled ["You Can Teach Elephants to Dance: Agile VM Handoff for Edge Computing"](https://dl.acm.org/doi/10.1145/3132211.3134453) by Kiryong Ha et al., presented at the **SEC’17** conference in San Jose, California. This paper introduces a novel mechanism named **VM handoff**, designed to optimize VM migration for edge computing scenarios.
+## 理解问题：边缘计算中的虚拟机迁移
 
-## Understanding the Problem: VM Migration in Edge Computing
+**实时虚拟机迁移**的概念，即在不中断虚拟机运行的情况下，将其从一个物理主机迁移到另一个主机，长期以来一直是数据中心管理的基石。然而，传统的实时迁移技术**并不适用于典型边缘计算环境中动态且带宽受限的情况**。文中描述的经典方法会导致显著的**停机时间**以及**总完成时间**（即从开始迁移到虚拟机在目标端完全恢复运行的时间）。
 
-The concept of **live VM migration**, where a running VM is moved from one physical host to another without disrupting its operation, has been a cornerstone in data center management. However, traditional live migration techniques are **not optimized for the dynamic and bandwidth-constrained environments typical of edge computing**. The classic approach, as described in the paper, involves significant **downtime** and **total completion time** (the duration from initiating the migration to the VM fully resuming operation at the destination).
+作者强调：
 
-The authors highlight that:
+> “在许多边缘计算场景中，敏捷性至关重要。例如，一个突如其来的热点流量可能会使一个小型云粒超载，从而迫使系统临时适应不断变化的网络带宽和处理负载，需要将当前部分工作负载临时迁移到另一个云粒或云端。”
 
-> _"There are many edge computing situations in which agility is valuable. For example, an unexpected flash crowd may overload a small cloudlet and make it necessary to temporarily adapt to varying network bandwidth and processing load, loads a small cloudlet and make it necessary to temporarily adapt to varying network bandwidth and processing load, makes it necessary to temporarily move some parts of the current workload to another cloudlet or the cloud."_ 
+这段话强调了为适应边缘环境中不断变化的情况，**快速且响应迅速的虚拟机迁移机制**是多么必要。
 
-This statement underscores the necessity for a **rapid and responsive VM migration mechanism** tailored for the fluid conditions of edge environments.
+## 引入虚拟机交接：更快、更敏捷的迁移方案
 
-## Introducing VM Handoff: A Faster, More Agile Migration
+论文中提出的**虚拟机交接**是一种多功能原语，它扩展了传统实时迁移的功能，但经过高度优化以适应边缘计算环境。与传统方法相比，传统方法可能需要几分钟才能迁移一个8 GB的虚拟机，而虚拟机交接则能在**大约一分钟内**完成迁移，所适用的WAN带宽范围在5到25 Mbps之间。
 
-The paper presents **VM handoff** as a versatile primitive that extends the functionality of classic live migration but is **highly optimized for edge computing**. Unlike traditional methods that can take several minutes to migrate an 8 GB VM, VM handoff achieves this in **about a minute** over WAN bandwidths ranging from 5 to 25 Mbps.
+> “虚拟机交接能在大约一分钟内迁移一个运行中的8 GB虚拟机，其停机时间仅为几十秒。”
 
-> _"VM handoff migrates a running 8 GB VM in about a minute, with downtime of a few tens of seconds."_
+### 虚拟机交接的主要创新点
 
-### Key Innovations of VM Handoff
-
-1. **Data Reduction Techniques**: VM handoff employs multiple data reduction strategies, including **delta encoding**, **deduplication**, and **compression**, to minimize the volume of data transmitted during migration.
+1. **数据压缩技术**：虚拟机交接采用了多种数据压缩手段，包括**差异编码**、**重复数据删除**和**压缩**，以尽可能减少迁移过程中需要传输的数据量。
    
-2. **Pipelined Processing**: By implementing a **parallelized computational pipeline**, the system maximizes throughput, ensuring that data transfers keep the network as busy as possible without overloading the processing resources.
+2. **流水线处理**：系统通过实现一个**并行计算流水线**来最大化吞吐量，确保数据传输在充分利用网络带宽的同时，不会过载处理资源。
 
-3. **Dynamic Adaptation**: VM handoff continuously monitors **network bandwidth** and **cloudlet load**, dynamically adjusting its operating parameters to maintain optimal performance under varying conditions.
+3. **动态适应**：虚拟机交接持续监控**网络带宽**和**云粒负载**，并动态调整运行参数以在各种情况下保持最佳性能。
 
-4. **Agility**: The mechanism is designed to enable rapid reaction to changing operational conditions, crucial for edge computing where environments are often unpredictable.
+4. **敏捷性**：这一机制的设计旨在能够迅速应对不断变化的操作条件，这在经常变化且不可预测的边缘计算环境中尤为重要。
 
-## Diving Deeper: How VM Handoff Works
+## 深入探讨：虚拟机交接的工作原理
 
-To comprehend the efficiency of VM handoff, it's essential to explore its design and implementation details:
+为了理解虚拟机交接的高效性，必须探讨其设计和实现细节：
 
-### **Tracking Changes and Minimizing Data Transfer**
+### **跟踪变更与最小化数据传输**
 
-VM handoff leverages the Linux FUSE (Filesystem in Userspace) interface to **track modified disk blocks and memory pages** efficiently. This tracking allows the system to identify and transmit only the differences between the source and destination VM states.
+虚拟机交接利用Linux FUSE（Userspace Filesystem）接口来高效地**跟踪磁盘块和内存页的修改**。这种跟踪方式使系统能够识别并仅传输源虚拟机状态与目标状态之间的差异。
 
-> _"To determine which blocks to transmit, we need to track differences between a VM instance and its base image."_
+> “为了确定需要传输哪些块，我们需要跟踪虚拟机实例与其基础镜像之间的差异。”
 
-### **Data Reduction Pipeline**
+### **数据压缩流水线**
 
-The captured differences undergo a series of processing stages:
+捕获到的差异数据会经过一系列处理阶段：
 
-1. **Delta Encoding**: Modified data chunks are compared against a pre-cached base VM image, and only the differences are encoded using algorithms like **xdelta3**, **bsdiff**, or **XOR**.
+1. **差异编码**：将修改后的数据块与预先缓存的基础虚拟机镜像进行比较，并仅对差异部分进行编码，所使用的算法包括**xdelta3**、**bsdiff**或**异或（XOR）**。
 
-2. **Deduplication**: By identifying and eliminating duplicate data chunks, VM handoff significantly reduces the amount of data that needs to be transmitted.
+2. **重复数据删除**：通过识别并去除重复的数据块，虚拟机交接能大幅减少需要传输的数据量。
 
-3. **Compression**: The remaining data is compressed using algorithms such as **GZIP**, **BZIP2**, or **LZMA**, further shrinking the transmission size.
+3. **数据压缩**：剩余的数据会使用诸如**GZIP**、**BZIP2**或**LZMA**之类的算法进行压缩，从而进一步减小传输数据量。
 
-4. **Pipelining**: These stages are executed in a pipelined manner, allowing simultaneous processing and transmission, which enhances overall throughput.
+4. **流水线处理**：这些处理阶段以流水线方式执行，实现了并行处理和传输，进而提升总体吞吐量。
 
-> _"The cumulative reduction achieved by this pipeline can be substantial."_
+> “这一流水线所实现的累计数据压缩效果可能是相当显著的。”
 
-### **Dynamic Adaptation Heuristics**
+### **动态适应启发式**
 
-VM handoff employs an **analytic model** to determine the optimal balance between data processing and transmission. This model considers:
+虚拟机交接采用了一个**分析模型**来确定数据处理与传输之间的最佳平衡。该模型考虑了：
 
-- **Processing Throughput (P)**: The rate at which the system can process and encode data.
-- **Network Throughput (R)**: The available network bandwidth for data transmission.
+- **处理吞吐量（P）**：系统处理和编码数据的速率。
+- **网络吞吐量（R）**：数据传输时可用的网络带宽。
 
-By continuously assessing these metrics, VM handoff adapts its operational mode to **maximize system throughput**, ensuring that both processing and network resources are utilized efficiently.
+通过不断评估这些指标，虚拟机交接能够调整其工作模式以 **最大化系统吞吐量**，从而确保处理和网络资源都能得到高效利用。
 
-> _"Based on this model, we develop a heuristic for dynamically adapting the operating mode to maximize system throughput."_
+> “基于这一模型，我们提出了一种动态调整操作模式以最大化系统吞吐量的启发式方法。”
 
-## Experimental Validation: VM Handoff vs. Traditional Methods
+## 实验验证：虚拟机交接 vs. 传统方法
 
-The authors conducted comprehensive experiments to evaluate VM handoff's performance against traditional live migration and Docker-based migration approaches under various network conditions.
+作者进行了全面的实验，对比了虚拟机交接与传统实时迁移以及基于Docker的迁移方案在各种网络条件下的表现。
 
-### **Performance Metrics**
+### **性能指标**
 
-1. **Total Completion Time**: The total duration from initiating the migration to the VM fully resuming operation.
-2. **Downtime**: The period during which the VM is unresponsive.
-3. **Data Volume Transferred**: The amount of data transmitted over the network during migration.
+1. **总完成时间**：从启动迁移到虚拟机在目标端完全恢复运行所经历的总时间。
+2. **停机时间**：虚拟机处于不可响应状态的时间段。
+3. **传输数据量**：迁移过程中在网络上传输的数据总量。
 
-### **Key Findings**
+### **主要发现**
 
-- **Faster Migration**: VM handoff consistently outperformed classic live migration, achieving migrations in **under two minutes** even at low bandwidths like 5 Mbps, compared to several minutes for traditional methods.
+- **迁移速度更快**：虚拟机交接在低带宽（如5 Mbps）的情况下也能在**两分钟以内**完成迁移，而传统方法则需要几分钟。
 
-  > _"By dynamically returning the balance in the face of frequent bottleneck shifts between cloudlet processing and network transmission, VM handoff is more than an order of magnitude faster than move some parts of the current workload to another cloudlet livemigration."_
+  > “通过在云粒处理与网络传输之间频繁的瓶颈转变中动态调整平衡，虚拟机交接比传统实时迁移快了一个数量级以上。”
 
-- **Reduced Downtime**: While traditional live migration focuses on minimizing downtime, VM handoff prioritizes **total completion time**, balancing both processing and transmission to ensure a swift overall migration.
+- **停机时间减少**：虽然传统实时迁移主要关注减少停机时间，虚拟机交接则在兼顾数据处理与传输的情况下，更注重整体迁移的**总完成时间**，实现快速整体迁移。
 
-- **Scalability and Agility**: VM handoff demonstrated robust performance across various workloads and network conditions, adapting seamlessly to changes without significant degradation in performance.
+- **可扩展性和敏捷性**：虚拟机交接在各种工作负载和网络条件下均表现出稳健的性能，并能在环境变化时无缝自适应而不会明显降低性能。
 
-### **Comparison with Alternatives**
+### **与替代方案的比较**
 
-When benchmarked against Docker-based migrations, VM handoff showed superior performance, especially in scenarios requiring low-latency interactions.
+在与基于Docker的迁移进行对标时，虚拟机交接显示出更优的性能，尤其是在需要低延迟交互的场景中。
 
-> _"Although Docker does not natively support migration of a running container, a form of migration can be achieved with Checkpoint/Restore in Userspace (CRIU)... VM handoff achieves its improvement through preferential substitution of cloudlet computation for data transmission volume."_
+> “尽管Docker本身不支持运行中容器的迁移，通过用户空间检查点/恢复（CRIU）可以实现一种形式的迁移……虚拟机交接通过优先利用云粒计算而非数据传输量的方式实现了性能提升。”
 
-Moreover, VM handoff maintained **manageable downtime** and **acceptable total completion times**, making it viable for real-world edge computing applications where rapid and reliable VM migrations are essential.
+此外，虚拟机交接维持了**可控的停机时间**和**令人满意的总完成时间**，使其在对快速可靠虚拟机迁移要求极高的实际边缘计算应用中具有切实的可行性。
 
-## Significance and Implications for Edge Computing
+## 边缘计算的意义与影响
 
-The introduction of VM handoff marks a significant advancement in managing VM migrations within edge computing frameworks. By addressing the **limitations of traditional live migration techniques** in bandwidth-constrained and dynamic environments, VM handoff paves the way for more resilient and responsive edge infrastructures.
+虚拟机交接的引入标志着在边缘计算框架中管理虚拟机迁移的重大进步。通过解决传统实时迁移技术在带宽受限和动态环境下的局限性，虚拟机交接为构建更具弹性和响应迅速的边缘基础设施铺平了道路。
 
-### **Practical Applications**
+### **实际应用**
 
-- **Augmented Reality (AR)**: Seamless migration of VMs ensures that AR applications remain responsive and interactive, even when moving between different network conditions or cloudlet locations.
+- **增强现实（AR）**：虚拟机无缝迁移确保了增强现实应用在不同网络条件或云粒定位间依然能保持响应性和互动性。
   
-- **Wearable Devices**: For applications requiring real-time data processing, VM handoff enables the back-end services to migrate swiftly, maintaining low latency and high performance.
+- **可穿戴设备**：对于需要实时数据处理的应用，虚拟机交接使后端服务能够迅速迁移，从而保持低延迟和高性能。
   
-- **Smart Cities**: Edge computing forms the backbone of smart city applications, where VM handoff can facilitate the dynamic allocation of resources across numerous distributed nodes.
+- **智慧城市**：边缘计算作为智慧城市应用的基础，通过虚拟机交接可以在众多分布式节点间动态分配资源。
 
-### **Future Directions**
+### **未来发展方向**
 
-While VM handoff presents a robust solution, future research could explore:
+虽然虚拟机交接已展现出强劲的解决方案，未来的研究方向还可探讨：
 
-- **Integration with Containerization**: Combining the agility of container-based deployments with VM handoff could further enhance flexibility and efficiency.
+- **与容器化技术的整合**：结合容器部署的敏捷性与虚拟机交接，能够进一步提升系统的灵活性和效率。
   
-- **Security Enhancements**: As VMs traverse across networks, ensuring **data integrity and security** during migration remains paramount.
+- **安全性增强**：随着虚拟机在网络中的穿梭，确保迁移过程中的**数据完整性和安全性**始终至关重要。
   
-- **Optimizing for Heterogeneous Environments**: Tailoring VM handoff to accommodate diverse hardware and network configurations could broaden its applicability.
+- **针对异构环境的优化**：针对不同硬件和网络配置定制虚拟机交接，提高其在多样化环境下的适用性。
 
-## Conclusion
+## 总结
 
-The paper "You Can Teach Elephants to Dance: Agile VM Handoff for Edge Computing" introduces a **revolutionary approach** to VM migration tailored for the unique demands of edge computing. By **optimizing data reduction**, **pipelined processing**, and **dynamic adaptation**, VM handoff significantly reduces migration times and enhances agility, positioning it as a vital tool for modern edge computing applications.
+论文《你也能教大象跳舞：针对边缘计算的敏捷虚拟机交接》提出了一种**革命性的方法**，专为满足边缘计算特有需求而设计。通过**优化数据压缩**、**流水线处理**和**动态适应**，虚拟机交接显著缩短了迁移时间并增强了敏捷性，使其成为现代边缘计算应用中的重要工具。
 
-As edge computing continues to grow, innovations like VM handoff will play a crucial role in ensuring that distributed systems remain **efficient**, **responsive**, and **resilient** in the face of ever-changing operational landscapes.
+随着边缘计算的不断发展，类似虚拟机交接这样的创新将对确保分布式系统在不断变化的操作环境中保持**高效**、**响应迅速**和**具备弹性**发挥至关重要的作用。
 
-# References
+# 参考文献
 
-- Ha, K., Abe, Y., Eiszler, T., Chen, Z., Hu, W., Amos, B., ... & Satyanarayanan, M. (2017). You Can Teach Elephants to Dance: Agile VM Handoff for Edge Computing. *Proceedings of the 2017 ACM Symposium on Edge Computing (SEC’17)*.
-- Additional references as cited in the original paper.
+- Ha, K., Abe, Y., Eiszler, T., Chen, Z., Hu, W., Amos, B., ... & Satyanarayanan, M. (2017). 你也能教大象跳舞：针对边缘计算的敏捷虚拟机交接. *2017 ACM边缘计算研讨会（SEC’17）论文集*.
+- 以及原论文中引用的其他参考文献。
 
-> 了解更多请访问 <https://yunwei37.github.io/My-AI-experiment/> 或者 Github： <https://github.com/yunwei37/My-AI-experiment>
+> 了解更多请访问 <https://yunwei37.github.io/My-AI-experiment/> 或者 Github：<https://github.com/yunwei37/My-AI-experiment>

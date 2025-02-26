@@ -1,165 +1,163 @@
-Translate the following content from English to Chinese:
+# 理解 RAID：革新磁盘存储性能与可靠性
 
-# Understanding RAID: Revolutionizing Disk Storage Performance and Reliability
+20 世纪 80 年代末，随着计算能力和内存容量的激增，一个关键瓶颈浮现出来：磁盘存储。此时，加州大学伯克利分校的 David A. Patterson、Garth Gibson 和 Randy H. Katz 联合发表了具有里程碑意义的论文——**《为低廉磁盘冗余阵列（RAID）辩护》**。该论文发表于 **1988 年**，其开创性的工作提出了 RAID 这一范式，彻底改变了数据存储系统的设计方式，实现了性能、可靠性与成本效益之间的平衡。
 
-In the late 1980s, as computing power and memory capacities burgeoned, a critical bottleneck emerged: disk storage. Enter the seminal paper, **"A Case for Redundant Arrays of Inexpensive Disks (RAID)"** by David A. Patterson, Garth Gibson, and Randy H. Katz from the University of California, Berkeley. Published in **1988**, this groundbreaking work introduced RAID, a paradigm that fundamentally transformed how data storage systems are designed, balancing performance, reliability, and cost-effectiveness.
+## 目录
 
-## Table of Contents
-
-1. [Introduction](#introduction)
-2. [Background: The Computing Landscape of the 1980s](#background)
-3. [The I/O Crisis: Balancing CPU, Memory, and Storage](#io-crisis)
-4. [The Proposition: RAID as a Solution](#proposition)
-5. [RAID Levels: A Structured Approach](#raid-levels)
-6. [Reliability Challenges and Solutions](#reliability-challenges)
-7. [Detailed Analysis of RAID Levels](#detailed-analysis)
-8. [Implications and Legacy of RAID](#implications)
-9. [Conclusion](#conclusion)
+1. [引言](#引言)
+2. [背景：1980 年代的计算环境](#背景)
+3. [I/O 危机：CPU、内存与存储的平衡](#io-危机)
+4. [提议：将 RAID 作为解决方案](#提议)
+5. [RAID 级别：结构化的方法](#raid-级别)
+6. [可靠性挑战与解决方案](#可靠性-挑战)
+7. [RAID 级别详细解析](#raid-级别详细解析)
+8. [RAID 的意义与影响](#raid-的意义与影响)
+9. [结论](#结论)
 
 ---
 
-## Introduction
+## 引言
 
-The late 20th century witnessed exponential growth in CPU speeds and memory capacities, propelling advancements in various computing applications. However, **"A Case for RAID of Inexpensive Disks (RAID)"** highlighted a critical oversight: **disk storage performance and reliability were not keeping pace** with other system components. This discrepancy threatened to undermine the overall system efficiency and cost-effectiveness.
+20 世纪末，CPU 速度与内存容量呈指数级增长，推动了各类计算应用的不断进步。然而，**《为低廉磁盘冗余阵列（RAID）辩护》**指出了一个关键的忽视点：**磁盘存储的性能与可靠性并未跟上其他系统组件的发展**。这种不平衡关系威胁到了整个系统的效率和成本效益。
 
-**Original Abstract Excerpt:**
-> "Magnetic disk technology developed for personal computers, offers an attractive alternative to SLED, promising improvements of an order of magnitude in performance, reliability, power consumption, and scalability."
+**原始摘要摘录：**
+> “为个人电脑开发的磁盘技术，提供了一种有吸引力的 SLED 替代方案，有望在性能、可靠性、功耗和可扩展性方面实现数量级的提升。”
 
-The authors advocated for RAID arrays—collections of inexpensive disks working in tandem—to bridge this gap, offering significant enhancements over traditional **Single Large Expensive Disks (SLEDs)**.
+作者倡导采用 RAID 阵列，即将多块低成本磁盘组合在一起协同工作，以弥补这一差距，并在性能和可靠性上大幅优于传统的 **单一大型昂贵磁盘（SLEDs）**。
 
-## Background: The Computing Landscape of the 1980s
+## 背景：1980 年代的计算环境
 
-During the era leading up to the publication of the RAID paper, the computing world was grappling with rapidly advancing CPU and memory technologies. CPUs were improving at a staggering rate, with performance doubling approximately every two years. Similarly, memory capacities were expanding, keeping pace with the demands of increasingly complex applications.
+在 RAID 论文发表前夕，计算领域正面临着 CPU 和内存技术的飞速发展。CPU 的性能以惊人的速度提升，大约每两年便翻倍一次。与此同时，内存容量也在不断扩展，以满足越来越复杂的应用需求。
 
-**Original Paragraph Insight:**
-> "The performance improvement of SLED has been modest."
+**原始段落观点：**
+> “SLED 的性能改进是温和的。”
 
-Despite these advancements, **disk storage**, particularly single large expensive disks, struggled to keep up. Their capacity grew, but not in line with the exponential growth of CPUs and memory. This imbalance led to inefficiencies, as **"bits that can be stored per square inch"** improved, but **access times** remained sluggish, constrained by mechanical limitations like seek and rotation delays.
+尽管有这些进步，**磁盘存储**——特别是单一的大型昂贵磁盘——却难以跟上。它们的容量虽然在增加，但增速远不及 CPU 和内存的指数式增长。这种不平衡导致了低效现象，尽管**每平方英寸可存储的比特数**在增加，但由于受制于机械限制（如寻道和旋转延迟），**访问时间**依然缓慢。
 
-## The I/O Crisis: Balancing CPU, Memory, and Storage
+## I/O 危机：CPU、内存与存储的平衡
 
-The core issue addressed in the RAID paper is what the authors termed the **"Pending I/O Crisis."** As CPU and memory speeds soared, the **I/O operations**—the reading and writing of data to and from disk storage—could not keep pace. This imbalance meant that even the fastest CPUs would often sit idle, waiting for data to be fetched from slower magnetic disks.
+RAID 论文聚焦的核心问题就是作者们所称的**“待解决 I/O 危机”**。随着 CPU 和内存速度的飙升，**I/O 操作**——即将数据读写到磁盘存储中——却无法跟上这一速度。这种失衡使得即便是最快的 CPU 也常常因等待数据从相对较慢的磁盘读取而处于空闲状态。
 
-**Original Concept Highlight:**
-> "A fast CPU does not a fast system make."
+**原始概念强调：**
+> “快速的 CPU 并不意味着系统高速运转。”
 
-This statement underscores the necessity for **balanced system performance**. Without matching advancements in storage technology, investments in CPU and memory would yield diminishing returns.
+这句话凸显了实现**系统性能均衡**的必要性。如果不在存储技术上取得相应进步，大量投入在 CPU 和内存上的成本将收效甚微。
 
-## The Proposition: RAID as a Solution
+## 提议：将 RAID 作为解决方案
 
-To address the I/O crisis, Patterson, Gibson, and Katz proposed **RAID (Redundant Arrays of Inexpensive Disks)**. The fundamental idea was to **aggregate multiple low-cost, lower-performance disks** to function as a single, high-performance, and highly reliable storage system.
+为应对 I/O 危机，Patterson、Gibson 和 Katz 提出了 **RAID（低廉磁盘冗余阵列）** 的概念。其基本思想是将**多块低成本、低性能的磁盘聚合在一起**，使其作为一个单一的高性能、高可靠性的存储系统来运行。
 
-**Original Proposal Summary:**
-> "We propose that data storage systems should exploit many inexpensive disks instead of a few expensive ones, combining their individual capacities, performance, and reliability to create a more robust and efficient system."
+**原始提议概要：**
+> “我们建议数据存储系统应利用多块低廉磁盘而非少数昂贵磁盘，通过整合它们各自的容量、性能和可靠性，构建一个更强大、更高效的系统。”
 
-By leveraging **redundancy**, RAID not only aimed to **enhance performance** through parallelism but also to **improve reliability** by mitigating the risk of individual disk failures.
+通过利用**冗余**，RAID 不仅旨在通过并行操作**提升性能**，更希望通过降低单个磁盘故障的风险来**增强系统可靠性**。
 
-## RAID Levels: A Structured Approach
+## RAID 级别：结构化的方法
 
-The paper introduces **five levels of RAID**, each designed to address specific aspects of performance and reliability. These levels range from simple disk mirroring to more complex configurations involving parity and striping.
+论文介绍了**五种 RAID 级别**，每个级别都针对特定的性能和可靠性需求。这些级别从简单的磁盘镜像到更为复杂的校验和分条配置不等。
 
-**Original Text Reference:**
-> "This paper introduces five levels of RAID, giving their relative cost/performance, and practice between 1967 and 1979 the disk capacity of the average IBM data processing system more than kept up with its main memory."
+**原始文本引用：**
+> “本文介绍了五种 RAID 级别，讨论了它们的成本/性能相对关系，并指出在 1967 到 1979 年间，平均 IBM 数据处理系统的磁盘容量基本能够跟上主存的步伐。”
 
-By categorizing RAID into different levels, the authors provided a **modular framework** that could be adapted to various application needs, balancing factors like cost, performance, reliability, and storage capacity.
+通过将 RAID 分为不同级别，作者们提供了一个**模块化架构**，可以根据不同应用的需求灵活调整，平衡成本、性能、可靠性和存储容量等因素。
 
-## Reliability Challenges and Solutions
+## 可靠性挑战与解决方案
 
-One of the significant hurdles in adopting RAID was **enhancing reliability** without incurring prohibitive costs. Single disks, especially those that were inexpensive and widely used in personal computers, had inherently lower reliability compared to their large, enterprise-grade counterparts.
+采用 RAID 的一大难题在于如何在不产生高昂成本的前提下**提升可靠性**。单个磁盘，尤其是那些在个人电脑中被广泛使用的低成本磁盘，其可靠性本质上远低于那些大型企业级产品。
 
-**Original Paragraph Insight:**
-> "The unreliability of disks forces computer systems managers to make backup versions of information quite frequently in case of failure."
+**原始段落观点：**
+> “磁盘的不可靠性迫使计算机系统管理员频繁备份数据，以防故障发生。”
 
-The solution lay in **redundant configurations**. By incorporating **extra "check" disks** that store redundant information, RAID systems could **recover data** seamlessly in the event of a disk failure, thereby **minimizing downtime** and **data loss**.
+解决方案在于采用**冗余配置**。通过加入额外的“校验”磁盘来存储冗余信息，RAID 系统可以在磁盘发生故障时**无缝恢复数据**，从而**最小化停机时间**和**数据丢失**。
 
-**Original Concept Statement:**
-> "RAID is based on the principle of storing data redundantly across multiple disks, enabling the system to recover from failures by reconstructing the lost data from the remaining disks."
+**原始概念陈述：**
+> “RAID 基于将数据冗余存储于多块磁盘中的原理，使系统能够通过剩余盘重构丢失数据来应对故障。”
 
-## Detailed Analysis of RAID Levels
+## RAID 级别详细解析
 
-### RAID Level 0: Striping (Introduced for Performance)
+### RAID 0：条带化（为性能而设计）
 
-While not explicitly detailed in the provided text, RAID Level 0 involves **striping** data across multiple disks to enhance performance. However, it offers **no redundancy**, meaning a single disk failure results in data loss.
+虽然在原文中未做详细描述，RAID 0 涉及将数据**条带化**存储于多块磁盘，从而提升性能。但同时它**不提供冗余**，一旦任一磁盘发生故障，将会导致数据丢失。
 
-### RAID Level 1: Mirroring (Basic Redundancy)
+### RAID 1：镜像（基本冗余）
 
-**Original Text Excerpt:**
-> "Mirrored disks are a traditional approach for improving reliability of magnetic disks. This is the most expensive option we consider since all disks are duplicated."
+**原始文本摘录：**
+> “采用磁盘镜像是提高磁盘可靠性的传统方法。这是我们考虑中成本最高的选项，因为所有磁盘都需要成对复制。”
 
-In this configuration, **each data disk is paired with an identical mirror**. This setup ensures that if one disk fails, the system can immediately switch to its mirror, providing **continuous data availability**.
+在这种配置下，**每块数据磁盘都有一个相同的镜像**。这种设置确保了在某块磁盘失效时，系统可以立即切换到其镜像，确保**数据持续可用**。
 
-**Key Metrics:**
-- **Useable Storage Capacity:** 50%
-- **Reliability Overhead Cost:** 100%
+**关键指标：**
+- **可用存储容量：** 50%
+- **可靠性成本开销：** 100%
 
-### RAID Level 2: Hamming Code for ECC
+### RAID 2：利用海明码进行 ECC
 
-This level introduces **Error Correcting Codes (ECC)** to detect and correct **soft errors** within disk sectors. By leveraging **Hamming Codes**, RAID Level 2 can **automatically correct** single-bit errors and **detect** double-bit errors without impacting performance.
+该级别引入了**错误更正码（ECC）**，用于检测和纠正磁盘扇区内的**软错误**。通过利用**海明码**，RAID 2 能够自动纠正单比特错误并检测双比特错误，而不会影响性能。
 
-**Original Text Insight:**
-> "By storing a whole transfer unit in a single sector, we can detect errors on an individual read without accessing any other disk."
+**原始文本见解：**
+> “通过在单个扇区中存储整个传输单元，我们可以在单次读取中检测到错误，而无需访问其他磁盘。”
 
-**Key Metrics:**
-- **Useable Storage Capacity:** 71%
-- **Reliability Overhead Cost:** 40%
+**关键指标：**
+- **可用存储容量：** 71%
+- **可靠性成本开销：** 40%
 
-### RAID Level 3: Single Check Disk Per Group
+### RAID 3：每组一个校验磁盘
 
-RAID Level 3 uses a **dedicated parity disk** within each group of disks. This parity disk stores information that allows the system to **reconstruct data** in case of a disk failure.
+RAID 3 在每组磁盘中使用了**专用校验磁盘**。该校验磁盘存储的信息可在磁盘故障时帮助系统**重构数据**。
 
-**Original Text Reference:**
-> "One redundant parity disk is needed to detect an error."
+**原始文本引用：**
+> “需要一个冗余校验磁盘来检测错误。”
 
-**Key Metrics:**
-- **Useable Storage Capacity:** 83%
-- **Reliability Overhead Cost:** 10%
+**关键指标：**
+- **可用存储容量：** 83%
+- **可靠性成本开销：** 10%
 
-### RAID Level 4: Independent Reads/Writes
+### RAID 4：独立读写
 
-To enhance **performance**, RAID Level 4 allows for **independent reads and writes** to different disks within the array. This configuration aims to parallelize I/O operations, thereby reducing latency and improving throughput.
+为了提升**性能**，RAID 4 允许对阵列中不同磁盘进行**独立读取和写入**。这种配置旨在并行化 I/O 操作，从而降低延迟并提高吞吐量。
 
-**Original Concept Highlight:**
-> "In level 4 RAID, unlike level 3, the parity calculation is much simpler since only one I/O at a time per group is needed."
+**原始概念强调：**
+> “在 RAID 4 中，与 RAID 3 不同，每组仅需一次 I/O 操作，因此校验计算更为简单。”
 
-**Key Metrics:**
-- **Useable Storage Capacity:** 91%
-- **Reliability Overhead Cost:** 10%
+**关键指标：**
+- **可用存储容量：** 91%
+- **可靠性成本开销：** 10%
 
-### RAID Level 5: Distributed Parity
+### RAID 5：分布式校验
 
-RAID Level 5 advances the concept of parity by **distributing the parity information across all disks** in the array, rather than dedicating a single disk. This distribution eliminates the parity bottleneck and **balances the load**, leading to improved performance and reliability.
+RAID 5 在校验概念上更进一步，通过将校验信息**分散到所有磁盘**中，而不再专用于某一块磁盘。这种分布方式消除了校验瓶颈，并**平衡了工作负载**，从而提高了性能和可靠性。
 
-**Original Text Excerpt:**
-> "RAID level 5 spreads the data and check information across all the disks—including the check disks."
+**原始文本摘录：**
+> “RAID 5 将数据和校验信息分布在所有磁盘上——包括校验盘。”
 
-**Key Metrics:**
-- **Useable Storage Capacity:** 96%
-- **Reliability Overhead Cost:** 4%
+**关键指标：**
+- **可用存储容量：** 96%
+- **可靠性成本开销：** 4%
 
-## Implications and Legacy of RAID
+## RAID 的意义与影响
 
-The introduction of RAID had profound implications for data storage systems. By **aggregating inexpensive disks**, RAID made it feasible to build **high-performance, reliable, and cost-effective storage solutions** that were scalable to the needs of both emerging **supercomputers** and **transaction-processing systems**.
+RAID 的引入对数据存储系统产生了深远的影响。通过**聚合低廉的磁盘**，RAID 使得构建**高性能、可靠且成本效益优异的存储解决方案**成为可能，这些解决方案既适用于新兴的**超级计算机**，也适用于**事务处理系统**。
 
-**Original Text Reflection:**
-> "RAIDs offer significant advantages for the same cost, providing improvements in performance, reliability, power consumption, and scalability."
+**原始文本反思：**
+> “RAID 在相同成本下提供了显著优势，在性能、可靠性、功耗以及可扩展性方面均有提升。”
 
-Over time, RAID became a **standard feature in enterprise storage systems**, evolving alongside technological advancements. Modern RAID implementations owe their foundational principles to this pioneering work, demonstrating the paper's lasting impact on the field.
+随着时间的推移，RAID 成为了企业级存储系统的**标准配置**，并随着技术不断进步而演变。现代 RAID 实现正是基于这一奠基性工作，其基本原理至今仍对存储架构产生着深远影响。
 
-## Conclusion
+## 结论
 
-**"A Case for Redundant Arrays of Inexpensive Disks (RAID)"** presented a transformative approach to data storage, addressing the critical imbalance between CPU/memory advancements and disk storage capabilities. By intelligently combining multiple low-cost disks into a unified array, RAID bridged the performance and reliability gap, setting the stage for the sophisticated storage solutions we rely on today.
+**《为低廉磁盘冗余阵列（RAID）辩护》**为数据存储提出了一种革命性的思路，有效地解决了 CPU/内存发展与磁盘存储能力之间存在的严重不平衡问题。通过智能地将多块低价磁盘组合成一个统一的阵列，RAID 弥补了性能和可靠性之间的差距，为我们今天所依赖的先进存储解决方案奠定了基础。
 
-The **timely publication in 1988** captured the essence of a technological crossroads, offering a scalable and robust solution that continues to influence storage architectures decades later. As data continues to grow exponentially, the principles laid out in this paper remain as relevant as ever, underscoring the ingenuity and foresight of Patterson, Gibson, and Katz.
+这篇**发表于 1988 年**的论文抓住了技术发展的关键时刻，提供了一个既具可扩展性又稳健的解决方案，其影响延续至今。在数据量呈爆炸式增长的今天，论文中确立的原则依然适用，彰显出 Patterson、Gibson 和 Katz 的远见和创新精神。
 
 ---
 
-## References
+## 参考文献
 
-1. Patterson, D. A., Gibson, G., & Katz, R. H. (1988). **A Case for Redundant Arrays of Inexpensive Disks (RAID)**. *Proceedings of the IEEE*.
-2. Moore, G. E. (1975). "Progress in Digital Integrated Electronics," *Proc. IEEE Digital Integrated Electronic Device Meeting*(1975), p. 11.
-3. Bell, C. G. (1984). "The Mini and Micro Industries," *IEEE Computer*, Vol. 17, No. 10, Oct. 1984.
-4. Joy, B. (1985). Presentation at ISSCC '85 panel session, Feb. 1985.
-5. Siewiorek, D. P., Bell, C. G., & Newell, A. (1982). "Computer Structures: Principles and Examples," p. 46.
-6. Other references as cited in the original paper.
+1. Patterson, D. A., Gibson, G., & Katz, R. H. (1988). **《为低廉磁盘冗余阵列（RAID）辩护》**. *IEEE 会议论文集*.
+2. Moore, G. E. (1975). “Progress in Digital Integrated Electronics,” *Proc. IEEE Digital Integrated Electronic Device Meeting*(1975), p. 11.
+3. Bell, C. G. (1984). “The Mini and Micro Industries,” *IEEE Computer*, 第 17 卷，第 10 期, 1984 年 10 月.
+4. Joy, B. (1985). ISSCC '85 小组讨论会汇报, 1985 年 2 月.
+5. Siewiorek, D. P., Bell, C. G., & Newell, A. (1982). “Computer Structures: Principles and Examples,” 第 46 页.
+6. 其他参考文献详见原论文。
 
 > 了解更多请访问 <https://yunwei37.github.io/My-AI-experiment/> 或者 Github： <https://github.com/yunwei37/My-AI-experiment>

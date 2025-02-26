@@ -4,61 +4,33 @@
     "devto"
   ],
   "files-to-translate": [
-    "docs/prompts/refgeneral.zh.md",
     "docs/prompts/summary.zh.md",
-    "docs/prompts/addcontent.zh.md",
     "docs/prompts/translate.zh.md",
-    "docs/prompts/humanize.zh.md",
     "docs/prompts/keysentence.zh.md",
-    "docs/prompts/story.zh.md",
     "docs/prompts/cleanup.zh.md",
-    "docs/prompts/longdigest.zh.md",
     "docs/prompts/shortdigest.zh.md",
-    "docs/prompts/addbrand.zh.md",
     "docs/prompts/storyo1.zh.md",
-    "docs/prompts/refpaper.zh.md",
     "docs/prompts/longdigestfull.zh.md",
-    "docs/paper-reading/ramp-sigmod2014.zh.md",
     "docs/paper-reading/lrvm.zh.md",
-    "docs/paper-reading/osdb.zh.md",
     "docs/paper-reading/p412-bugnion.zh.md",
-    "docs/paper-reading/Aries.zh.md",
     "docs/paper-reading/Hunt.zh.md",
-    "docs/paper-reading/spark-nsdi12-final138.zh.md",
     "docs/paper-reading/DRF-NSDI11.zh.md",
-    "docs/paper-reading/p23-adya.zh.md",
     "docs/paper-reading/UNIX-annotated.zh.md",
-    "docs/paper-reading/Haystack.zh.md",
     "docs/paper-reading/klein-sosp09.zh.md",
-    "docs/paper-reading/chandra07paxos.zh.md",
     "docs/paper-reading/p1-berenson.zh.md",
-    "docs/paper-reading/raidcase.zh.md",
     "docs/paper-reading/sba-usenix05.zh.md",
-    "docs/paper-reading/p287-haerder.zh.md",
     "docs/paper-reading/kaffes:syrup.zh.md",
-    "docs/paper-reading/a1-graefe.zh.md",
     "docs/paper-reading/waldspurger.zh.md",
-    "docs/paper-reading/Elephants_SEC2017.zh.md",
     "docs/paper-reading/SystemR-comments.zh.md",
-    "docs/paper-reading/Granularity%20of%20Locks%20and%20Degrees%20of%20Consistency%20RJ%201654.zh.md",
     "docs/paper-reading/osdi18-moritz.zh.md",
-    "docs/paper-reading/ghost.zh.md",
     "docs/paper-reading/pldi285-pan.zh.md",
-    "docs/paper-reading/fast15-paper-lee.zh.md",
     "docs/paper-reading/baumann-sosp09.zh.md",
-    "docs/paper-reading/sigmaos.zh.md",
     "docs/paper-reading/engler95exokernel.zh.md",
-    "docs/paper-reading/p27-santana.zh.md",
     "docs/paper-reading/icde00.zh.md",
-    "docs/paper-reading/2003-xensosp.zh.md",
     "docs/paper-reading/AutoRAID.zh.md",
-    "docs/paper-reading/vldb09-583.zh.md",
     "docs/paper-reading/nsdi20-paper-brooker.zh.md",
-    "docs/paper-reading/zeldovich-histar.zh.md",
     "docs/paper-reading/nsdi20-paper-agache.zh.md",
-    "docs/prompts/person/promptv2.zh.md",
     "docs/prompts/person/promptv1.zh.md",
-    "docs/prompts/person/basic_random_gen.zh.md",
     "docs/prompts/person/README.zh.md"
   ],
   "passages": {
@@ -424,395 +396,1179 @@
     },
     "prompts/refgeneral.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "AI",
+        "Technology",
+        "Programming",
+        "MachineLearning",
+        "Innovation"
+      ]
     },
     "prompts/summary.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "AI",
+        "Experiments",
+        "Insights",
+        "GitHub",
+        "Innovation"
+      ]
     },
     "prompts/addcontent.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "AIexperiments",
+        "ArtificialIntelligence",
+        "Innovation",
+        "TechInsights",
+        "GitHub"
+      ]
     },
     "prompts/translate.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "人工智能",
+        "实验",
+        "洞察",
+        "网站",
+        "开源"
+      ]
     },
     "prompts/humanize.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "AI",
+        "Experiments",
+        "Thoughts",
+        "Github",
+        "Projects"
+      ]
     },
     "prompts/keysentence.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "AI",
+        "Experiments",
+        "Insights",
+        "GitHub",
+        "Thoughts"
+      ]
     },
     "prompts/story.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "AI",
+        "Research",
+        "Technology",
+        "Experiments",
+        "Innovation"
+      ]
     },
     "prompts/cleanup.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "AI",
+        "Experiments",
+        "Insights",
+        "Thoughts",
+        "GitHub"
+      ]
     },
     "prompts/longdigest.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "AI",
+        "PaperReview",
+        "Research",
+        "ComputerScience",
+        "Experiments"
+      ]
     },
     "prompts/shortdigest.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "AI",
+        "Experiment",
+        "OpenSource",
+        "Research",
+        "Technology"
+      ]
     },
     "prompts/addbrand.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "AI",
+        "Branding",
+        "Experiments",
+        "Innovation",
+        "Insights"
+      ]
     },
     "prompts/storyo1.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "AI",
+        "Experiments",
+        "Insights",
+        "Website",
+        "GitHub"
+      ]
     },
     "prompts/refpaper.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "AI",
+        "Research",
+        "Experiments",
+        "Projects",
+        "Innovation"
+      ]
     },
     "prompts/longdigestfull.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "AI",
+        "Experiment",
+        "GitHub",
+        "Research",
+        "Seminar"
+      ]
     },
     "paper-reading/ramp-sigmod2014.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "RAMPTransactions",
+        "DistributedDatabases",
+        "Scalability",
+        "AtomicVisibility",
+        "Performance"
+      ]
     },
     "paper-reading/lrvm.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "TransactionalMemory",
+        "FaultTolerance",
+        "UnixSystems",
+        "WriteAheadLogging",
+        "Performance"
+      ]
     },
     "paper-reading/osdb.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "DatabaseManagement",
+        "OperatingSystems",
+        "BufferManagement",
+        "FileSystems",
+        "CrashRecovery"
+      ]
     },
     "paper-reading/p412-bugnion.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "Scalability",
+        "Virtualization",
+        "Multiprocessors",
+        "Disco",
+        "Performance"
+      ]
     },
     "paper-reading/Aries.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "ARIES",
+        "TransactionRecovery",
+        "WriteAheadLogging",
+        "DatabaseSystems",
+        "FineGranularityLocking"
+      ]
     },
     "paper-reading/Hunt.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "ZooKeeper",
+        "DistributedSystems",
+        "WaitFree",
+        "Coordination",
+        "Performance"
+      ]
     },
     "paper-reading/spark-nsdi12-final138.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "ApacheSpark",
+        "RDDs",
+        "BigData",
+        "ClusterComputing",
+        "FaultTolerance"
+      ]
     },
     "paper-reading/DRF-NSDI11.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "DominantResourceFairness",
+        "MultiResourceAllocation",
+        "CloudComputing",
+        "ResourceManagement",
+        "Fairness"
+      ]
     },
     "paper-reading/p23-adya.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "Distributed",
+        "Concurrency",
+        "Database",
+        "Validation",
+        "Simulation"
+      ]
     },
     "paper-reading/UNIX-annotated.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "UNIX",
+        "BellLabs",
+        "OperatingSystems",
+        "SoftwareDesign",
+        "TechHistory"
+      ]
     },
     "paper-reading/Haystack.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "Scalability",
+        "Storage",
+        "Optimization",
+        "Performance",
+        "Architecture"
+      ]
     },
     "paper-reading/klein-sosp09.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "seL4",
+        "FormalVerification",
+        "Microkernel",
+        "TheoremProving",
+        "Security"
+      ]
     },
     "paper-reading/chandra07paxos.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "Paxos",
+        "Consensus",
+        "FaultTolerance",
+        "DistributedSystems",
+        "Engineering"
+      ]
     },
     "paper-reading/p1-berenson.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "Isolation",
+        "Concurrency",
+        "SQL",
+        "Snapshot",
+        "Locking"
+      ]
     },
     "paper-reading/raidcase.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "RAID",
+        "Storage",
+        "Performance",
+        "Reliability",
+        "Redundancy"
+      ]
     },
     "paper-reading/sba-usenix05.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "journaling",
+        "filesystem",
+        "performance",
+        "analysis",
+        "optimization"
+      ]
     },
     "paper-reading/p287-haerder.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "Database",
+        "Recovery",
+        "Transaction",
+        "Logging",
+        "Checkpoint"
+      ]
     },
     "paper-reading/kaffes:syrup.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "Syrup",
+        "Scheduling",
+        "Optimization",
+        "eBPF",
+        "Performance"
+      ]
     },
     "paper-reading/a1-graefe.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "BTree",
+        "Logging",
+        "Recovery",
+        "Database",
+        "ACID"
+      ]
     },
     "paper-reading/waldspurger.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "LotteryScheduling",
+        "ResourceManagement",
+        "Multithreading",
+        "ProportionalShare",
+        "Scalability"
+      ]
     },
     "paper-reading/Elephants_SEC2017.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "EdgeComputing",
+        "VMMigration",
+        "VMHandoff",
+        "DataReduction",
+        "DynamicAdaptation"
+      ]
     },
     "paper-reading/SystemR-comments.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "SystemR",
+        "Relational",
+        "SQL",
+        "Optimization",
+        "Concurrency"
+      ]
     },
     "paper-reading/Granularity%20of%20Locks%20and%20Degrees%20of%20Consistency%20RJ%201654.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "LockGranularity",
+        "Consistency",
+        "Concurrency",
+        "DatabaseSystems",
+        "LockingProtocol"
+      ]
     },
     "paper-reading/osdi18-moritz.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "RayFramework",
+        "DistributedAI",
+        "ReinforcementLearning",
+        "Scalability",
+        "DynamicScheduling"
+      ]
     },
     "paper-reading/ghost.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "Linux",
+        "ghOSt",
+        "Scheduling",
+        "Performance",
+        "Security"
+      ]
     },
     "paper-reading/pldi285-pan.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "ParallelComputing",
+        "SoftwareEngineering",
+        "PerformanceOptimization",
+        "Multicore",
+        "ResourceManagement"
+      ]
     },
     "paper-reading/fast15-paper-lee.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "F2FS",
+        "FlashStorage",
+        "FileSystems",
+        "Performance",
+        "SSD"
+      ]
     },
     "paper-reading/baumann-sosp09.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "Multikernel",
+        "Scalability",
+        "Multicore",
+        "Architecture",
+        "Barrelfish"
+      ]
     },
     "paper-reading/sigmaos.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "SigmaOS",
+        "Serverless",
+        "Microservices",
+        "CloudComputing",
+        "Containers"
+      ]
     },
     "paper-reading/engler95exokernel.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "Exokernel",
+        "OSArchitecture",
+        "ResourceManagement",
+        "Performance",
+        "VirtualMemory"
+      ]
     },
     "paper-reading/p27-santana.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "FileSystems",
+        "Performance",
+        "Scalability",
+        "Storage",
+        "Emulation"
+      ]
     },
     "paper-reading/icde00.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "TransactionIsolation",
+        "ConcurrencyControl",
+        "ConflictSerializability",
+        "ImplementationIndependence",
+        "PortableLevels"
+      ]
     },
     "paper-reading/2003-xensosp.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "Xen",
+        "Virtualization",
+        "Paravirtualization",
+        "Performance",
+        "Scalability"
+      ]
     },
     "paper-reading/AutoRAID.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "HPautoRAID",
+        "RAID",
+        "Storage",
+        "DataMigration",
+        "Performance"
+      ]
     },
     "paper-reading/vldb09-583.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "WriteAheadLogging",
+        "SegmentBasedRecovery",
+        "ARIES",
+        "DatabaseSystems",
+        "DistributedSystems"
+      ]
     },
     "paper-reading/nsdi20-paper-brooker.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "DistributedSystems",
+        "CloudComputing",
+        "Databases",
+        "Scalability",
+        "Availability"
+      ]
     },
     "paper-reading/zeldovich-histar.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "OperatingSystems",
+        "Cybersecurity",
+        "InformationFlow",
+        "Containers",
+        "KernelDesign"
+      ]
     },
     "paper-reading/nsdi20-paper-agache.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "Firecracker",
+        "Serverless",
+        "Virtualization",
+        "MicroVM",
+        "Cloud"
+      ]
     },
     "prompts/longdigest.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "论文",
+        "计算机",
+        "实验",
+        "评价",
+        "探讨"
+      ]
     },
     "prompts/refpaper.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "链接",
+        "思想",
+        "文献",
+        "状态",
+        "进展"
+      ]
     },
     "prompts/storyo1.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "论文",
+        "解读",
+        "讨论",
+        "博客",
+        "科研"
+      ]
     },
     "prompts/addcontent.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "博客",
+        "新产品",
+        "科技",
+        "整合",
+        "营销"
+      ]
     },
     "prompts/keysentence.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "计算机科学",
+        "论文分析",
+        "研究方法",
+        "实验结果",
+        "关键发现"
+      ]
     },
     "prompts/summary.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "计算机科学",
+        "人工智能",
+        "论文",
+        "实验",
+        "数据"
+      ]
     },
     "prompts/humanize.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "改写",
+        "写作",
+        "自然风格",
+        "对话体",
+        "实验"
+      ]
     },
     "prompts/cleanup.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "文本提取",
+        "PDF解析",
+        "格式化",
+        "数据清洗",
+        "可读性提升"
+      ]
     },
     "prompts/translate.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "人工智能",
+        "实验",
+        "开源",
+        "Github",
+        "项目"
+      ]
     },
     "prompts/addbrand.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "原生广告",
+        "内容营销",
+        "博客写作",
+        "品牌推广",
+        "情境营销"
+      ]
     },
     "prompts/story.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "论文",
+        "解读",
+        "研究",
+        "方法",
+        "趋势"
+      ]
     },
     "prompts/longdigestfull.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "论文",
+        "评论",
+        "计算机科学",
+        "科研",
+        "研讨"
+      ]
     },
     "prompts/shortdigest.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "计算机科学",
+        "论文评论",
+        "学术研究",
+        "个人心得",
+        "科技创新"
+      ]
     },
     "prompts/refgeneral.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "人工智能",
+        "大数据",
+        "编程",
+        "区块链",
+        "云计算"
+      ]
     },
     "paper-reading/a1-graefe.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "B树",
+        "日志记录",
+        "恢复",
+        "数据库",
+        "事务"
+      ]
     },
     "paper-reading/Haystack.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "Facebook",
+        "Haystack",
+        "对象存储",
+        "元数据",
+        "优化"
+      ]
     },
     "paper-reading/AutoRAID.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "存储系统",
+        "RAID技术",
+        "自动化",
+        "性能优化",
+        "数据冗余"
+      ]
     },
     "paper-reading/DRF-NSDI11.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "云计算",
+        "数据中心",
+        "资源分配",
+        "公平性",
+        "调度算法"
+      ]
     },
     "paper-reading/pldi285-pan.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "并行",
+        "多核",
+        "资源调度",
+        "性能优化",
+        "软件架构"
+      ]
     },
     "paper-reading/2003-xensosp.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "Xen",
+        "虚拟化",
+        "半虚拟化",
+        "资源管理",
+        "云计算"
+      ]
     },
     "paper-reading/zeldovich-histar.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "操作系统",
+        "安全",
+        "信息流",
+        "容器",
+        "内核"
+      ]
     },
     "paper-reading/p1-berenson.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "数据库",
+        "隔离级别",
+        "事务",
+        "并发控制",
+        "快照隔离"
+      ]
     },
     "paper-reading/p287-haerder.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "事务",
+        "数据库",
+        "恢复",
+        "日志",
+        "检查点"
+      ]
     },
     "paper-reading/kaffes:syrup.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "调度",
+        "自定义",
+        "性能",
+        "优化",
+        "操作系统"
+      ]
     },
     "paper-reading/waldspurger.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "彩票调度",
+        "资源管理",
+        "多线程",
+        "比例共享",
+        "随机调度"
+      ]
     },
     "paper-reading/Hunt.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "ZooKeeper",
+        "分布式",
+        "协调",
+        "一致性",
+        "容错"
+      ]
     },
     "paper-reading/ramp-sigmod2014.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "分布式数据库",
+        "RAMP事务",
+        "原子性",
+        "一致性",
+        "扩展性"
+      ]
     },
     "paper-reading/nsdi20-paper-brooker.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "分布式",
+        "数据库",
+        "高可用性",
+        "扩展性",
+        "云计算"
+      ]
     },
     "paper-reading/p23-adya.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "分布式数据库",
+        "乐观并发控制",
+        "宽松同步时钟",
+        "并发控制",
+        "模拟实验"
+      ]
     },
     "paper-reading/icde00.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "数据库",
+        "事务",
+        "隔离级别",
+        "并发控制",
+        "串行化"
+      ]
     },
     "paper-reading/sigmaos.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "无服务器",
+        "微服务",
+        "云计算",
+        "SigmaOS",
+        "容器"
+      ]
     },
     "paper-reading/osdi18-moritz.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "分布式",
+        "人工智能",
+        "强化学习",
+        "可扩展性",
+        "容错性"
+      ]
     },
     "paper-reading/baumann-sosp09.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "多内核",
+        "操作系统",
+        "分布式",
+        "扩展性",
+        "多核"
+      ]
     },
     "paper-reading/nsdi20-paper-agache.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "Firecracker",
+        "无服务器",
+        "虚拟化",
+        "云计算",
+        "安全性"
+      ]
     },
     "paper-reading/p412-bugnion.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "虚拟化",
+        "多处理器",
+        "操作系统",
+        "可扩展",
+        "虚拟机"
+      ]
     },
     "paper-reading/vldb09-583.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "预写日志",
+        "分段恢复",
+        "数据库",
+        "分布式",
+        "性能"
+      ]
     },
     "paper-reading/Aries.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "ARIES",
+        "事务恢复",
+        "预写日志",
+        "数据库",
+        "细粒度锁定"
+      ]
     },
     "paper-reading/fast15-paper-lee.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "F2FS",
+        "闪存",
+        "文件系统",
+        "性能",
+        "优化"
+      ]
     },
     "paper-reading/raidcase.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "RAID",
+        "磁盘",
+        "存储",
+        "性能",
+        "可靠性"
+      ]
     },
     "paper-reading/sba-usenix05.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "文件系统",
+        "日志",
+        "性能优化",
+        "存储",
+        "系统分析"
+      ]
     },
     "paper-reading/osdb.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "数据库",
+        "操作系统",
+        "缓冲池",
+        "文件系统",
+        "崩溃恢复"
+      ]
     },
     "paper-reading/SystemR-comments.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "SystemR",
+        "SQL",
+        "数据库",
+        "优化",
+        "并发"
+      ]
     },
     "paper-reading/Granularity%20of%20Locks%20and%20Degrees%20of%20Consistency%20RJ%201654.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "数据库",
+        "锁粒度",
+        "一致性",
+        "多模式",
+        "并发性"
+      ]
     },
     "paper-reading/UNIX-annotated.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "UNIX",
+        "操作系统",
+        "架构",
+        "文件系统",
+        "简洁"
+      ]
     },
     "paper-reading/Elephants_SEC2017.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "边缘计算",
+        "虚拟机交接",
+        "数据压缩",
+        "流水线处理",
+        "动态适应"
+      ]
     },
     "paper-reading/spark-nsdi12-final138.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "Spark",
+        "RDDs",
+        "大数据",
+        "集群计算",
+        "容错"
+      ]
     },
     "paper-reading/p27-santana.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "文件系统",
+        "存储",
+        "性能",
+        "扩展性",
+        "仿真"
+      ]
     },
     "paper-reading/lrvm.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "虚拟内存",
+        "容错",
+        "事务",
+        "日志",
+        "系统"
+      ]
     },
     "paper-reading/engler95exokernel.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "操作系统",
+        "外核",
+        "系统架构",
+        "性能优化",
+        "资源管理"
+      ]
     },
     "paper-reading/klein-sosp09.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "操作系统",
+        "内核",
+        "形式化",
+        "安全",
+        "微内核"
+      ]
     },
     "paper-reading/ghost.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "ghOSt",
+        "Linux",
+        "调度",
+        "性能",
+        "数据中心"
+      ]
     },
     "paper-reading/chandra07paxos.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "Paxos",
+        "容错",
+        "分布式",
+        "一致性",
+        "工程"
+      ]
     },
     "prompts/person/promptv2.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "Storytelling",
+        "ComputerScience",
+        "Education",
+        "Diversity",
+        "Resilience"
+      ]
     },
     "prompts/person/promptv1.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "ComputerScience",
+        "Education",
+        "Research",
+        "Internship",
+        "Innovation"
+      ]
     },
     "prompts/person/basic_random_gen.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "PromptEngineering",
+        "ProfileGenerator",
+        "WorkflowAutomation",
+        "TechTrends",
+        "NarrativeDesign"
+      ]
     },
     "prompts/person/README.md": {
       "published": [],
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "PersonalBranding",
+        "Networking",
+        "TechPortfolio",
+        "Storytelling",
+        "CareerGrowth"
+      ]
     },
     "prompts/person/README.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "个人品牌",
+        "职业发展",
+        "技术博客",
+        "开源",
+        "个人成长"
+      ]
     },
     "prompts/person/basic_random_gen.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "档案生成器",
+        "角色建模",
+        "流程设计",
+        "技术趋势",
+        "职业规划"
+      ]
     },
     "prompts/person/promptv2.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "计算机科学",
+        "留学",
+        "教育",
+        "科研",
+        "成长"
+      ]
     },
     "prompts/person/promptv1.zh.md": {
-      "endactionnotice": true
+      "endactionnotice": true,
+      "keywords": [
+        "留学",
+        "背景",
+        "教育",
+        "技能",
+        "项目"
+      ]
     }
   }
 }

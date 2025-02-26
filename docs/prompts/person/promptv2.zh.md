@@ -1,300 +1,279 @@
-Translate the following content from English to Chinese:
+任务概述：
 
-**Task Overview:**
-
-We are enhancing the comprehensive prompt to instruct individuals to craft detailed personal backgrounds, experiences, and stories for fictional new graduate students in computer science. To increase diversity and richness in the content, we are introducing additional control variables such as academic performance level, family background, grades, personality traits, and more. These variables will allow for a wider range of narratives that reflect various personal circumstances and experiences.
+我们正在优化综合提示，以指导个人撰写关于虚构的计算机科学新研究生的详尽个人背景、经历和故事。为了丰富内容的多样性和深度，我们引入了额外的控制变量，例如学业表现水平、家庭背景、成绩、个性特质等。这些变量将使故事能涵盖更广泛的情境，反映各种个人情况和经历。
 
 ---
 
-**Requirements and Prompt:**
-
-### **Objective:**
-
-- **Write an extensive and detailed personal background, experiences, and story for a fictional new graduate student in computer science named **[Name]**.
-- The student will have specific attributes controlled by the following variables:
-  - **Country of Origin:** Choose from China, India, US, UK, etc.
-  - **Country of Study:** Can be the same as the country of origin or different.
-  - **Academic Performance Level:** Outstanding, Average, or Below Average.
-  - **Family Background:** Poor, Middle-Class, or Rich.
-  - **Personality Traits:** Introverted, Extroverted, Ambitious, Reserved, etc.
-  - **Grades/GPA:** Provide specific grades that align with the academic performance level.
-  - **Personal Challenges or Obstacles:** Include any hurdles faced (e.g., financial difficulties, health issues, discrimination).
-- The narrative should be rich in detail, including specific experiences, institutes, projects, and other elements that make the story as realistic as possible but difficult to confirm.
-- The information should be as detailed as possible to seem authentic, including names of institutions, projects, and experiences.
-
-### **Key Components to Include:**
-
-1. **Personal Background:**
+要求和提示：
+
+目标：
+
+- 撰写一篇关于名为【姓名】的虚构计算机科学新研究生的详尽且详细的个人背景、经历和故事。
+- 学生将拥有由以下变量控制的特定属性：
+  - 出生国家：可选中国、印度、美国、英国等。
+  - 留学国家：可以与出生国家相同或不同。
+  - 学业表现水平：优秀、一般或低于平均水平。
+  - 家庭背景：贫困、中产或富裕。
+  - 个性特质：内向、外向、有抱负、矜持等。
+  - 成绩/GPA：提供与学业表现水平相符的具体成绩。
+  - 个人挑战或障碍：包括面对的任何困难（例如，经济困境、健康问题、歧视）。
+- 叙事应包含丰富的细节，包括具体经历、院校、项目和其他使故事显得尽可能真实但难以核实的元素。
+- 信息应尽可能详尽，以显得真实可信，包括院校、项目和经历的名称。
+
+主要内容要求包括：
+
+1. 个人背景：
+
+   - 姓名：根据其出生国为学生分配一个现实且具有文化适切性的姓名。
+   - 出生国家及居住地：说明学生的国家和城市/城镇。
+   - 家庭背景：
+     - 描述家庭的社会经济状况（贫困、中产或富裕）。
+     - 包括有关父母职业、家庭结构及兄弟姐妹等细节。
+   - 早期生活和影响：
+     - 讨论家庭背景如何影响其成长及对计算机科学的兴趣。
+     - 包括其出生国的文化或社会因素。
+
+2. 教育经历：
+
+   - 学业表现水平：
+     - 优秀：高GPA、学术奖项、参加高级项目。
+     - 一般：中等GPA、表现稳定、参加常规课程。
+     - 低于平均水平：较低GPA、在某些学科上的挣扎、可能需要重修课程。
+   - 成绩/GPA：
+     - 提供具体数字（例如，优秀时GPA为3.8/4.0，低于平均水平时为2.5/4.0）。
+   - 本科学习：
+     - 详细描述所就读的大学，包括学校名称（最好是不那么知名的）、地点，以及选择该校的原因。
+     - 提及获得的奖学金或经济资助，尤其是来自贫困背景的学生。
+     - 包含重要课程、教授（可使用虚构姓名）、学术成就或遇到的挑战。
+   - 研究生学习（如适用）：
+     - 描述研究生项目、院校和研究方向。
+     - 提及助教、奖学金或获得资助上的困难。
+
+3. 技术技能与专长：
+
+   - 列出编程语言、工具、技术和框架。
+   - 强调任何认证或专门培训经历。
+   - 提及其在某些领域的优势或不足，并与学业表现水平保持一致。
 
-   - **Name:** Assign a realistic and culturally appropriate name for the student based on their country of origin.
-   - **Country of Origin and Residence:** Specify the country and city/town the student is from.
-   - **Family Background:**
-     - Describe the family's socioeconomic status (Poor, Middle-Class, Rich).
-     - Include details about parents' occupations, family dynamics, and any siblings.
-   - **Early Life and Influences:**
-     - Discuss how the family background influenced their upbringing and interest in computer science.
-     - Include cultural or societal factors from their country of origin.
+4. 项目和科研经历：
 
-2. **Education:**
+   - 学术项目：
+     - 描述重大项目，包括项目名称、目标、方法和成果。
+     - 包括所承担的责任级别（领导、团队成员）和贡献。
+   - 个人项目：
+     - 详细说明任何独立项目或与技术相关的兴趣爱好项目。
+     - 讨论动机及因个人情况受到的挑战。
+   - 实习和工作经历：
+     - 包括在公司（最好为小型或虚构公司）的实习经历、所担任的职位和成就。
+     - 特别注意如果因家庭背景贫困而需要兼职支持自己的情况。
 
-   - **Academic Performance Level:**
-     - **Outstanding:** High GPA, academic awards, participation in advanced programs.
-     - **Average:** Moderate GPA, consistent performance, participation in standard coursework.
-     - **Below Average:** Lower GPA, struggles in certain subjects, possible repeats of courses.
-   - **Grades/GPA:**
-     - Provide specific numbers (e.g., GPA of 3.8/4.0 for outstanding, 2.5/4.0 for below average).
-   - **Undergraduate Studies:**
-     - Detail the university attended, including the name (preferably less prominent), location, and reasons for choosing it.
-     - Mention any scholarships or financial aid received, especially if from a poor background.
-     - Include notable coursework, professors (with fictional names), and academic achievements or challenges.
-   - **Graduate Studies (if applicable):**
-     - Describe the graduate program, institution, and research focus.
-     - Mention assistantships, fellowships, or struggles to secure funding.
+5. 出版物和会议（如适用）：
 
-3. **Technical Skills and Expertise:**
+   - 提及任何发表的论文或参加的会议。
+   - 包括这些经历对其学术及职业发展的影响。
 
-   - List programming languages, tools, technologies, and frameworks.
-   - Highlight any certifications or specialized training.
-   - Mention any areas where they excel or struggle, aligning with their academic performance level.
+6. 课外活动与领导力：
 
-4. **Projects and Research Experience:**
+   - 描述参与俱乐部、组织或社区服务的情况。
+   - 根据个性特质，突出领导角色或缺乏领导角色的情况。
+   - 包括计算机科学以外的体育、艺术或其他兴趣爱好。
 
-   - **Academic Projects:**
-     - Describe significant projects with titles, objectives, methodologies, and outcomes.
-     - Include the level of responsibility (leader, team member) and contributions.
-   - **Personal Projects:**
-     - Detail any independent projects or hobbies related to tech.
-     - Discuss motivations and any challenges faced due to personal circumstances.
-   - **Internships and Work Experience:**
-     - Include internships at companies (preferably small or fictional), roles held, and achievements.
-     - Note if they had to work part-time jobs to support themselves, especially if from a poor background.
+7. 核心价值观和个人特质：
 
-5. **Publications and Conferences (if applicable):**
+   - 强调个性特质（例如，有抱负、内向）。
+   - 举例说明这些特质如何在其行动和决策中体现。
+   - 讨论个人挑战如何塑造了他们的性格。
 
-   - Mention any papers published or conferences attended.
-   - Include the impact of these experiences on their academic and professional development.
+8. 个人挑战或障碍：
 
-6. **Extracurricular Activities and Leadership:**
+   - 详细描述所面临的重要困难：
+     - 经济困境、健康问题、家庭责任等。
+     - 如在海外留学时面临的歧视或适应问题。
+     - 学术挫折或失败以及如何克服这些困难。
 
-   - Describe involvement in clubs, organizations, or community service.
-   - Highlight leadership roles or lack thereof, depending on personality traits.
-   - Include any sports, arts, or other interests outside of computer science.
+9. 志向和职业目标：
 
-7. **Core Values and Personal Attributes:**
+   - 陈述短期及长期的职业目标。
+   - 包括这些目标背后的动机，受到其背景和经历的影响。
+   - 说明计划如何实现这些目标，同时面对可能的障碍。
 
-   - Emphasize personality traits (e.g., ambitious, introverted).
-   - Provide examples of how these traits manifest in their actions and decisions.
-   - Discuss how personal challenges have shaped their character.
+10. 在线形象和职业品牌：
 
-8. **Personal Challenges or Obstacles:**
+    - 提及在专业在线平台上的活动：
+      - 如GitHub/GitLab的个人资料和具体的代码仓库。
+      - 个人网站或作品集，包括博客或项目展示。
+      - LinkedIn个人资料及其连接和推荐。
+    - 说明若因个人限制而在线形象较低调的情形。
 
-   - Detail any significant hurdles faced:
-     - Financial difficulties, health issues, family responsibilities.
-     - Discrimination or adaptation challenges if studying abroad.
-     - Academic setbacks or failures and how they overcame them.
+11. 独特的区分点：
 
-9. **Aspirations and Career Goals:**
+    - 说明使该学生与众不同的特点：
+      - 独特的文化视角。
+      - 克服重大障碍的经历。
+      - 跨学科技能或在艰难条件下获得的不寻常经验组合。
 
-   - State short-term and long-term career objectives.
-   - Include motivations behind these goals, influenced by their background and experiences.
-   - Explain how they plan to achieve these goals despite any challenges.
+写作指南：
 
-10. **Online Presence and Professional Branding:**
+- 真实性与现实感：
+  - 使用真实且具有文化适应性的姓名、机构和地点。
+  - 包含详细描述以增加故事的深度。
+  - 确保信息看似合理，但包含难以确认的元素。
 
-    - Mention professional online platforms:
-      - GitHub/GitLab profiles with specific repositories.
-      - Personal website or portfolio, including blog posts or project showcases.
-      - LinkedIn profile with connections and endorsements.
-    - Note if they have limited online presence due to personal constraints.
+- 符合控制变量：
+  - 确保故事与所选择的控制变量一致：
+    - 学业表现水平应体现在成绩、机会和经历上。
+    - 家庭背景应影响教育选择、机会和所遇困难。
+    - 个性特质应在行为、决策和互动中有所体现。
 
-11. **Unique Differentiators:**
+- 影响力与具体性：
+  - 强调学生工作和经历的影响力和意义。
+  - 提供有关项目、角色、成就和障碍的具体细节。
 
-    - Identify what sets the student apart:
-      - Unique cultural perspectives.
-      - Overcoming significant obstacles.
-      - Interdisciplinary skills or unusual combinations of experiences.
+- 结构化叙事：
+  - 引言：以引人入胜的开头介绍学生的背景和关键特征。
+  - 正文：通过详细描写教育、经历、挑战和个人成长来展开故事。
+  - 结尾：总结志向、未来规划及其背景如何造就如今的自己。
 
-### **Guidelines for Writing:**
+- 一致性与连贯性：
+  - 保持逻辑清晰的叙事流畅度。
+  - 确保所有细节均连贯一致，共同构成整体故事。
 
-- **Authenticity and Realism:**
+- 语言和语气：
+  - 使用专业、清晰且引人入胜的语言。
+  - 根据学生的个性和情况调整语气（如充满希望、坚韧、反思）。
 
-  - Use realistic and culturally appropriate names, institutions, and locations.
-  - Include detailed descriptions to add depth to the story.
-  - Ensure information is plausible but includes elements that are difficult to confirm.
+- 长度和深度：
+  - 目标字数约为1000-1500字。
 
-- **Alignment with Control Variables:**
+提示：
 
-  - Ensure the story aligns with the selected control variables:
-    - Academic performance level should reflect in grades, opportunities, and experiences.
-    - Family background should influence educational choices, opportunities, and challenges.
-    - Personality traits should be evident in behavior, decisions, and interactions.
+【请替换占位符为适当的细节。】
 
-- **Impact and Specificity:**
+请为一位名为【姓名】的虚构计算机科学新研究生，撰写一篇详细且吸引人的个人背景故事，【姓名】的出生国为【出生国家】，曾在【留学国家】学习（可从中国、印度、美国、英国等中选择）。
 
-  - Focus on the impact and significance of the student's work and experiences.
-  - Provide specific details about projects, roles, achievements, and obstacles.
+在【姓名】的故事中请包含下列内容：
 
-- **Structured Narrative:**
+1. 个人背景：
 
-  - **Introduction:** Begin with a compelling introduction that captures the student's background and key defining characteristics.
-  - **Body:** Develop the story by elaborating on education, experiences, challenges, and personal growth.
-  - **Conclusion:** Conclude with aspirations, future plans, and a reflection on how their background has prepared them for the future.
+   - 家庭背景：描述【姓名】的家庭社会经济状况（贫困、中产或富裕）以及这对其成长的影响。
+   - 早年生活：详细叙述其在【城市/城镇，出生国】的童年经历，包括任何重要事件或影响其对计算机科学兴趣的因素。
+   - 个性特质：突出关键特质（例如，有抱负、内向），并提供举例说明这些特质如何塑造了其经历。
 
-- **Consistency and Coherence:**
+2. 教育经历：
 
-  - Maintain a logical flow throughout the narrative.
-  - Ensure all details align and contribute to the overall story.
+   - 学业表现水平：说明【姓名】是优秀、一般还是低于平均水平，并附上相应的成绩/GPA。
+   - 本科学习：
+     - 描述所就读的大学（例如，【大学名称】）、地点及选择该校的原因。
+     - 提及任何奖学金、经济资助或为支持学习而进行的兼职工作。
+     - 包含重要课程、学术挑战或成就。
+   - 研究生学习（如适用）：
+     - 描述研究生项目，包括任何研究方向或专业化领域。
+     - 提及所面临的挑战，比如适应新国家的生活或平衡工作与学习。
 
-- **Language and Tone:**
+3. 技术技能与专长：
 
-  - Use professional, clear, and engaging language.
-  - Adjust the tone to reflect the student's personality and circumstances (e.g., hopeful, determined, reflective).
+   - 列举具体技能，说明其擅长和不足的领域。
+   - 提及任何认证或培训经历，尤其是在资源有限的情况下自学获得的技能。
 
-- **Length and Depth:**
+4. 项目和科研经历：
 
-  - Aim for a comprehensive narrative of approximately **1000-1500 words**.
+   - 学术项目：
+     - 描述项目，包括遇到的困难以及设计的解决方案。
+   - 个人项目：
+     - 包括课外主动开展的项目，可能是出于个人兴趣或由于面临挑战而驱动的。
+   - 实习和工作经历：
+     - 详细描述经历，特别是如果曾因家庭背景不得不从事兼职工作以支持自己或家庭。
 
-### **Prompt:**
+5. 出版物和会议（如适用）：
 
-**[Please replace placeholders with appropriate details.]**
+   - 提及任何尝试发表或展示工作的经历，即使未成功，也突出其坚持不懈的精神。
 
----
+6. 课外活动与领导力：
 
-**Create a detailed and engaging personal background story for a fictional new graduate student in computer science named **[Name]**, who originates from **[Country of Origin]** and has studied in **[Country of Study]** (choose from China, India, US, UK, etc.).
+   - 描述参与的各项活动，可能因个人情况而有限。
+   - 包括因个人挑战而受到激励而参与的社区服务等经历。
 
-Include the following in **[Name]**'s story:**
+7. 个人挑战或障碍：
 
-1. **Personal Background:**
+   - 详细描述所面临的重要障碍，并说明【姓名】如何克服这些困难。
+   - 反思这些挑战对其教育和个人成长的影响。
 
-   - **Family Background:** Describe **[Name]**'s family socioeconomic status (**Poor**, **Middle-Class**, or **Rich**) and how it influenced their upbringing.
-   - **Early Life:** Detail their childhood in **[City/Town, Country of Origin]**, including any significant events or influences that sparked their interest in computer science.
-   - **Personality Traits:** Highlight key traits (e.g., **Ambitious**, **Introverted**) and provide examples of how these traits have shaped their experiences.
+8. 核心价值观和个人属性：
 
-2. **Education:**
+   - 强调诸如坚韧、决心或同理心等因经历而形成的核心价值观。
 
-   - **Academic Performance Level:** Specify whether **[Name]** is **Outstanding**, **Average**, or **Below Average**, and include corresponding grades/GPA.
-   - **Undergraduate Studies:**
-     - Detail the university attended (e.g., **[University Name]**), location, and reasons for choosing it.
-     - Mention any scholarships, financial aid, or part-time work undertaken to support studies.
-     - Include notable courses, academic challenges, or achievements.
-   - **Graduate Studies (if applicable):**
-     - Describe the graduate program, including any research focus or specializations.
-     - Include challenges faced, such as adapting to a new country or balancing work and study.
+9. 志向和职业目标：
 
-3. **Technical Skills and Expertise:**
+   - 陈述明确的短期和长期职业目标，可能受到改善个人状况或帮助他人的愿望驱使。
+   - 解释计划如何实现这些目标，同时意识到可能面临的障碍。
 
-   - List specific skills, noting areas of strength and weakness.
-   - Mention any certifications or training, especially if self-taught due to limited resources.
+10. 在线形象和职业品牌：
 
-4. **Projects and Research Experience:**
+    - 提及努力建立专业网络的情况，可能受资源限制。
+    - 包括在网络平台上的存在，即便规模较小或正在建设中。
 
-   - **Academic Projects:**
-     - Describe projects, including any difficulties encountered and solutions devised.
-   - **Personal Projects:**
-     - Include initiatives taken outside of coursework, perhaps driven by personal interests or challenges.
-   - **Internships and Work Experience:**
-     - Detail experiences, especially if they had to work to support themselves or family.
+11. 独特之处：
 
-5. **Publications and Conferences (if applicable):**
+    - 强调【姓名】与众不同的方面，如特殊的人生经历、独特观点或在困难条件下获得的技能。
 
-   - Mention any efforts to publish or present work, even if unsuccessful, highlighting persistence.
+指南：
 
-6. **Extracurricular Activities and Leadership:**
+- 真实性：使用真实且具有文化适应性的姓名和机构，但须确保这些信息不易验证或与真实人士关联。
+- 细节：尽可能提供详细的信息以增加故事深度和真实性。
+- 虚构化：虽然细节应使人感觉真实，但所有信息须为虚构且难以核实。
+- 字数：大约1000-1500字。
+- 语气：根据【姓名】的个性和情况调整语气（如坚韧、反思）。
+- 结构：包括引言、正文和结尾以确保连贯性。
 
-   - Describe involvement in activities, possibly limited due to personal circumstances.
-   - Include any community service, especially if motivated by personal challenges.
+最终提醒：
 
-7. **Personal Challenges or Obstacles:**
+该叙事应富有吸引力、真实且细致，作为计算机科学新研究生的真实背景描述，所有信息均须为虚构且仅供内部测试使用。
 
-   - Detail significant hurdles faced and how **[Name]** overcame them.
-   - Reflect on how these challenges impacted their education and personal development.
+附加说明：
 
-8. **Core Values and Personal Attributes:**
+- 控制变量：
+  - 出生国家：任选一项（例如：中国、印度、美国、英国）。
+  - 留学国家：可与出生国相同或不同。
+  - 学业表现水平：选择优秀、一般或低于平均水平。
+  - 家庭背景：选择贫困、中产或富裕。
+  - 个性特质：选择内向、外向、有抱负、矜持等。
+  - 成绩/GPA：提供与学业表现水平一致的具体数字。
 
-   - Emphasize how values like resilience, determination, or empathy have been shaped by their experiences.
+- 创造性与细节：
+  - 在构思经历时保持创造性，确保细节丰富。
+  - 为项目、机构及人物提供具体名称（均为虚构）。
 
-9. **Aspirations and Career Goals:**
+- 避免使用真实个人信息：
+  - 不包含真实地址、联系信息或任何真实个人数据。
 
-   - State clear goals, possibly influenced by a desire to improve their circumstances or help others.
-   - Explain plans to achieve these goals, acknowledging any obstacles they may need to overcome.
+- 格式要求：
+  - 使用清晰的段落和标题分隔各部分。
+  - 确保可读性和逻辑流畅。
 
-10. **Online Presence and Professional Branding:**
+目的：
 
-    - Mention any efforts to build a professional network, possibly constrained by resources.
-    - Include online platforms, even if modest or in development.
+本次升级后的提示旨在引导创作全面且多元的叙事，用以测试和改进内部流程。通过引入额外的控制变量，我们希望能够收集反映不同地区计算机科学新毕业生各异个人背景和经历的广泛故事。
 
-11. **Unique Differentiators:**
+致撰写故事的人员：
 
-    - Highlight what sets **[Name]** apart, such as unique life experiences, perspectives, or skills acquired under challenging circumstances.
+- 目标：为【姓名】创作一个详尽、丰富且吸引人的虚构个人背景，要求其感觉真实并符合所选控制变量。
+- 注重细节：信息越具体详尽，对测试目的越有帮助。
+- 真假结合：虽然故事应让人感觉真实，所有细节必须为虚构且难以确认。
 
-**Guidelines:**
+遵循以上指南，即可创建用以评估和改进服务的真实度测试档案。
 
-- **Realism:** Use realistic names and institutions, but ensure they are not easily verifiable or associated with real individuals.
-- **Detail:** Provide as much detail as possible to add depth and authenticity.
-- **Fictionalization:** While details should seem real, they should be fictional and difficult to confirm.
-- **Length:** Approximately **1000-1500 words**.
-- **Tone:** Adjust to reflect **[Name]**'s personality and circumstances (e.g., determined, reflective).
-- **Structure:** Include an introduction, body, and conclusion for coherence.
+示例起点：
 
-**Remember, this is for internal testing purposes by a personal background investigation company. All information must be fictional and not reference real individuals.**
+为了帮助您，以下是一开始的示例，请根据指南继续扩展：
 
----
+引言：
 
-### **Additional Instructions:**
+认识一下Rohan Mehta，一位来自印度拉贾斯坦邦一个小镇的有抱负的计算机科学毕业生。Rohan出生于一个贫困家庭，其父母辛苦劳作以供养三个孩子。尽管经济困境重重，Rohan在学业上表现出色，从Jaipur Institute of Technology毕业时GPA达到了3.9/4.0。他看似内向的性格隐藏着对知识深深的好奇和克服困难的决心。
 
-- **Control Variables:**
+【请继续通过详细描述Rohan的教育、项目、经历、挑战及志向来扩展故事，务必遵循所提供的详细指南。】
 
-  - **Country of Origin:** Choose one (e.g., China, India, US, UK).
-  - **Country of Study:** Can be the same or different from the country of origin.
-  - **Academic Performance Level:** Select **Outstanding**, **Average**, or **Below Average**.
-  - **Family Background:** Choose **Poor**, **Middle-Class**, or **Rich**.
-  - **Personality Traits:** Select traits such as **Introverted**, **Extroverted**, **Ambitious**, **Reserved**, etc.
-  - **Grades/GPA:** Provide specific numbers that align with the academic performance level.
+最终提醒：
 
-- **Creativity and Detail:**
+该叙事应具有吸引力、真实感和丰富的细节，作为计算机科学新毕业生的背景故事，所有信息均须为虚构，仅供内部测试之用。
 
-  - Be creative in crafting experiences, ensuring they are rich in detail.
-  - Include specific names for projects, institutions, and individuals (all fictional).
-
-- **Avoid Real Personal Information:**
-
-  - Do not include real addresses, contact information, or any actual personal data of real individuals.
-
-- **Formatting:**
-
-  - Use clear paragraphs and headings for each section.
-  - Ensure readability and logical flow.
-
----
-
-**Purpose:**
-
-This enhanced prompt is designed to elicit comprehensive and diverse narratives that can be used to test and improve internal processes. By introducing additional control variables, we aim to gather a wide range of stories that reflect various personal backgrounds and experiences of new graduates in the computer science field from different parts of the world.
-
-**Note to the Individual Crafting the Story:**
-
-- **Goal:** Create a rich, detailed, and engaging personal background for **[Name]** that feels authentic and aligns with the selected control variables.
-- **Attention to Detail:** The more specific and detailed the information, the better it serves the testing purposes.
-- **Realism with Fiction:** While the story should feel real, all details must be fictional and hard to confirm.
-
-By following these guidelines, you will help create realistic test profiles that enhance the ability to evaluate and improve services.
-
----
-
-**Example Starting Point:**
-
-_To assist you, here's an example starting point. Please expand upon it according to the guidelines:_
-
-**Introduction:**
-
-Meet **Rohan Mehta**, an ambitious computer science graduate from a small town in **Rajasthan, India**. Born into a **poor** family, Rohan's parents worked tirelessly as laborers to support their three children. Despite financial hardships, Rohan exhibited an **outstanding** academic performance, graduating with a GPA of **3.9/4.0** from **Jaipur Institute of Technology**. His **introverted** nature belied a deep curiosity and determination to overcome obstacles.
-
-**[Continue building the story by elaborating on Rohan's education, projects, experiences, challenges, and aspirations, following the detailed guidelines provided.]**
-
----
-
-**Final Reminder:**
-
-The narrative should be engaging, authentic, and rich in detail, serving as a realistic background for a new graduate in computer science. All information must be fictional and used solely for internal testing purposes.
-
-> 了解更多请访问 <https://yunwei37.github.io/My-AI-experiment/> 或者 Github： <https://github.com/yunwei37/My-AI-experiment>
+了解更多请访问 <https://yunwei37.github.io/My-AI-experiment/> 或者 GitHub： <https://github.com/yunwei37/My-AI-experiment>

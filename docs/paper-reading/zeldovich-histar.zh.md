@@ -1,176 +1,174 @@
-Translate the following content from English to Chinese:
+# 在 HiStar 中明确信息流：深入探讨安全操作系统
 
-# Making Information Flow Explicit in HiStar: A Deep Dive into Secure Operating Systems
+在不断演变的计算领域中，安全仍然是一个至关重要的问题。从个人数据泄露到复杂的恶意软件攻击，信息的完整性和机密性始终受到威胁。为应对这些挑战，需要在系统架构的基础层面上寻求创新的解决方案。HiStar 正是在这种背景下应运而生——一种创新的操作系统，其设计理念在于彻底变革信息流控制，最大限度减少对信任的依赖。本文基于 Nickolai Zeldovich、Silas Boyd-Wickizer、Eddie Kohler 和 David Mazieres（来自斯坦福和加州大学洛杉矶分校）所著的研究论文《在 HiStar 中明确信息流》进行深入解析。该论文于 2023 年发表，将 HiStar 展示为传统操作系统的强大替代方案，其核心在于在不牺牲性能的前提下实现安全性。
 
-In the evolving landscape of computing, security remains a paramount concern. From personal data breaches to sophisticated malware attacks, the integrity and confidentiality of information are consistently under threat. Addressing these challenges requires innovative solutions at the foundational levels of system architecture. Enter HiStar—a pioneering operating system conceptualized to revolutionize information flow control and minimize trust dependencies. This blog post delves into the research paper titled **"Making Information Flow Explicit in HiStar"** by Nickolai Zeldovich, Silas Boyd-Wickizer, Eddie Kohler, and David Mazieres from Stanford and UCLA. Published in 2023, this paper presents HiStar as a robust alternative to traditional operating systems, emphasizing security without compromising performance.
-
-## Table of Contents
-1. [Introduction](#introduction)
-2. [Background: Information Flow Control and Security](#background)
-3. [HiStar: Architecture and Core Features](#histarch)
-   - [Information Flow Control](#inflo)
-   - [Containers and Taint Labels](#containers)
-   - [Kernel Design](#kernel)
-4. [Applications of HiStar](#applications)
-   - [Untrusted Virus Scanner](#virus)
-   - [User Authentication](#authentication)
-   - [VPN Isolation](#vpn)
-5. [Performance Benchmarks](#performance)
-6. [Related Work](#related)
-7. [Limitations and Future Work](#limitations)
-8. [Conclusion](#conclusion)
+## 目录
+1. [简介](#introduction)
+2. [背景：信息流控制与安全](#background)
+3. [HiStar：架构与核心特性](#histarch)
+   - [信息流控制](#inflo)
+   - [容器与污染标签](#containers)
+   - [内核设计](#kernel)
+4. [HiStar 的应用](#applications)
+   - [不可信的病毒扫描器](#virus)
+   - [用户认证](#authentication)
+   - [VPN 隔离](#vpn)
+5. [性能基准测试](#performance)
+6. [相关工作](#related)
+7. [局限性与未来工作](#limitations)
+8. [结论](#conclusion)
 
 <a name="introduction"></a>
-## Introduction
+## 简介
 
-Modern operating systems like Linux and Windows have become increasingly complex, with vast amounts of code running at various privilege levels. This complexity inherently introduces vulnerabilities, as evidenced by numerous high-profile security breaches. The paper introduces **HiStar**, a novel operating system designed to "minimize the amount of code that must be trusted" by enforcing strict information flow control. HiStar aims to "allow users to specify precise data security policies without unduly limiting the structure of applications," offering a secure and performant Unix-like environment.
+现代操作系统（如 Linux 和 Windows）变得日益复杂，涉及大量在不同权限级别下运行的代码。这种复杂性本质上会引入漏洞，正如众多高调安全漏洞事件所展示的那样。论文介绍了 **HiStar**——一种全新的操作系统，其设计理念是通过实施严格的信息流控制来“最大限度地减少必须被信任的代码量”。HiStar 的目标是“允许用户在不对应用结构施加过度限制的情况下，精确定义数据安全策略”，从而为用户提供一个既安全又高性能的类似 Unix 环境。
 
 <a name="background"></a>
-## Background: Information Flow Control and Security
+## 背景：信息流控制与安全
 
-**Information Flow Control (IFC)** is a security paradigm that regulates how information moves within a system to prevent unauthorized access and data leakage. Traditional operating systems implement security through mechanisms like user permissions and access control lists (ACLs). However, these systems often rely on a significant amount of trusted code, increasing the attack surface.
+**信息流控制（IFC）**是一种安全理念，其目的是规范信息在系统内的流动，以防止未授权访问和数据泄露。传统操作系统通过用户权限和访问控制列表（ACL）等机制来实施安全策略，但这些系统通常依赖于大量被信任的代码，从而扩大了攻击面。
 
-**Mandatory Access Control (MAC)** and **Capability Systems** are two key frameworks in this domain. MAC enforces security policies uniformly across all subjects and objects, while capability systems use tokens or keys to grant specific access rights. HiStar builds upon these concepts, introducing a more granular and explicit control over information flows, aiming to reduce reliance on trusted code components.
+在这一领域，**强制访问控制（MAC）**和**能力系统**是两个关键框架。MAC 统一地对所有主体和客体实施安全策略，而能力系统则使用令牌或密钥授予特定访问权限。HiStar 便是在这些概念的基础上进一步发展，提出了对信息流进行更加细粒度和明确控制的方案，旨在降低对被信任代码组件的依赖。
 
 <a name="histarch"></a>
-## HiStar: Architecture and Core Features
+## HiStar：架构与核心特性
 
-HiStar's architecture is meticulously designed to enforce security through explicit control of information flows, minimizing trust dependencies. The system introduces several innovative concepts, including containers, taint labels, and a streamlined kernel design.
+HiStar 的架构经过精心设计，其核心在于通过明确信息流来实现安全，从而最大限度地减少信任依赖。系统引入了容器、污染标签以及简化的内核设计等多项创新概念。
 
-### Information Flow Control
+### 信息流控制
 
-At the heart of HiStar's security model is **strict information flow control**. The paper states:
+HiStar 安全模型的核心是 **严格的信息流控制**。论文中指出：
 
-> "HiStar enforces security by controlling how information flows through the system. Hence, one can reason about which components of a system may affect which others and how, without having to understand those components themselves."
+> “HiStar 通过控制信息在系统中的流动来实现安全。因此，人们可以推理出系统中哪些组件可能影响其他组件以及影响的方式，而无需深入了解这些组件本身。”
 
-This approach allows developers and administrators to define precise policies governing data movement, ensuring that sensitive information remains protected from unauthorized access or manipulation.
+这种方法使开发者和管理员能够定义精确的数据流策略，确保敏感信息不会因未经授权的访问或操作而遭到泄露或篡改。
 
-### Containers and Taint Labels
+### 容器与污染标签
 
-HiStar introduces the concept of **containers**—hierarchical abstractions that manage object allocations and enforce quotas. Each object in the system possesses a **taint label**, a pivotal feature that dictates its level of trust and access permissions.
+HiStar 引入了 **容器** 的概念，这是一种用于管理对象分配和强制配额的层次化抽象。系统中的每个对象都具有一个 **污染标签**，这一关键特性决定了对象的信任等级和访问权限。
 
-From the paper:
+论文中写道：
 
-> "A label specifies, for each category of taint, whether the object has untainting privileges for that category and how tainted the object is in that category."
+> “一个标签为每个污染类别指定了该对象在此类别中是否具有取消污染的权限，以及该对象在该类别中的污染程度。”
 
-This labeling mechanism allows HiStar to track and control the flow of information across different system components meticulously. For instance, in the **virus scanner example**, the scanner's output is managed through a wrapper program that ensures data integrity without risking data leakage:
+这种标签机制使 HiStar 能够精确跟踪和控制不同系统组件之间的信息流。例如，在 **病毒扫描器示例** 中，扫描器的输出通过一个包裹程序来管理，从而确保数据完整性，同时避免数据泄漏：
 
-> "HiStar provides hierarchical control over object allocation and deallocation through a container abstraction."
+> “HiStar 通过容器抽象提供了对对象分配和释放的分层控制。”
 
-### Kernel Design
+### 内核设计
 
-The **HiStar kernel** is intentionally designed to be minimalistic and highly secure. Comprising approximately 15,200 lines of C code and 150 lines of assembly, the kernel emphasizes simplicity and verifiability.
+**HiStar 内核** 的设计刻意追求简洁和高度安全。内核大约由 15,200 行 C 代码和 150 行汇编代码组成，其设计理念强调简单性和易验证性。
 
-Key points from the paper include:
+论文中的关键要点包括：
 
-- **Single-Level Store**: Unlike traditional systems that differentiate between kernel and user space, HiStar employs a single-level store approach, simplifying memory management and enhancing security.
-- **Gate Mechanism**: Gates in HiStar act as protected control transfers, facilitating secure inter-process communications (IPC) without exposing internal system calls.
-- **Taint Levels**: The kernel manages taint levels using a lattice-based approach, ensuring that information flows adhere to defined security policies.
+- **单级存储**：与传统系统将内核与用户空间区分开不同，HiStar 采用了单级存储方法，从而简化了内存管理并提升了安全性。
+- **门控机制**：HiStar 中的门控机制充当受保护的控制转移工具，能够在不暴露内部系统调用的情况下实现安全的进程间通信（IPC）。
+- **污染级别**：内核采用基于格（lattice）的方式管理污染级别，确保信息流符合预定义的安全策略。
 
 <a name="applications"></a>
-## Applications of HiStar
+## HiStar 的应用
 
-HiStar's architecture is versatile, enabling secure implementations of various applications that are typically vulnerable in conventional operating systems.
+HiStar 的架构具有多样性，可安全地实现各类在传统操作系统中容易受到攻击的应用。
 
-### Untrusted Virus Scanner
+### 不可信的病毒扫描器
 
-One of the standout applications highlighted in the paper is the implementation of an **untrusted virus scanner**. Traditional virus scanners like ClamAV contain extensive codebases, making them susceptible to vulnerabilities. HiStar addresses this by isolating the scanner in an untrusted environment:
+论文中强调的一个突出应用是“不可信的病毒扫描器”的实现。传统的病毒扫描器（如 ClamAV）通常包含庞大的代码基础，容易受到漏洞攻击。HiStar 通过在一个不可信的环境中隔离病毒扫描器来解决这一问题：
 
-> "ClamAV’s vulnerabilities could periodically be updated on short notice to counter new threats, in which case users would face the unfortunate choice of running either an outdated virus scanner or an unaudited one."
+> “ClamAV 的漏洞可能会频繁更新以应对新的威胁，这使得用户不得不在运行过时的病毒扫描器和未经审核的扫描器之间做出不幸的选择。”
 
-By running the virus scanner in an isolated container with strict information flow policies, HiStar ensures that even if the scanner is compromised, the impact is contained, preventing data leaks or unauthorized data access.
+通过在具有严格信息流策略的隔离容器中运行病毒扫描器，HiStar 确保即使扫描器遭到破坏，其影响也能被控制，从而防止数据泄露或未授权数据访问。
 
-### User Authentication
+### 用户认证
 
-HiStar revolutionizes the user authentication process by removing the need for highly trusted processes. Instead of relying on superuser privileges to validate authentication requests, HiStar allows users to supply their own authentication services with minimal trust requirements.
+HiStar 革新了用户认证过程，彻底消除了对高度可信进程的依赖。传统操作系统需要依靠超级用户权限来验证认证请求，而 HiStar 允许用户提供自己的认证服务，并且只需极少的信任要求。
 
-From the paper:
+论文中写道：
 
-> "HiStar authenticates users without any highly-trusted processes, and allows users to supply their own authentication services."
+> “HiStar 在没有任何高度可信进程的情况下进行用户认证，并允许用户提供自己的认证服务。”
 
-This decentralized approach enhances security by reducing the reliance on a central point of trust, making it harder for attackers to compromise the entire authentication system.
+这种去中心化的方法通过减少对集中信任点的依赖，从而增强了安全性，使攻击者更难以破坏整个认证系统。
 
-### VPN Isolation
+### VPN 隔离
 
-Virtual Private Networks (VPNs) are critical for secure communications, but they often rely on firewalls and tunnel interfaces that can be compromised. HiStar's architecture offers robust VPN isolation by tracking the provenance of network data and enforcing strict information flow rules.
+虚拟专用网络（VPN）对于安全通信至关重要，但它们通常依赖于防火墙和隧道接口，这些组件有可能被攻破。HiStar 的架构通过跟踪网络数据的来源并执行严格的信息流规则，实现了对 VPN 的强力隔离。
 
-The paper illustrates:
+论文举例说明：
 
-> "In HiStar, the update process runs with the privilege to write the ClamAV executable and virus database; however, it cannot access private userdata."
+> “在 HiStar 中，更新进程拥有写入 ClamAV 可执行文件和病毒数据库的权限；然而，它无法访问私人用户数据。”
 
-This ensures that network data remains isolated, preventing malware or other threats from bridging the gap between secure and insecure network segments.
+这确保了网络数据保持隔离，防止恶意软件或其他威胁在安全和不安全的网络段之间搭起桥梁。
 
 <a name="performance"></a>
-## Performance Benchmarks
+## 性能基准测试
 
-A common critique of security-focused systems is the potential performance overhead. However, the paper on HiStar presents **benchmark results** demonstrating competitive performance relative to traditional operating systems like Linux and OpenBSD.
+对安全系统的常见批评之一是其可能带来的性能开销。然而，关于 HiStar 的论文展示了**基准测试结果**，表明其性能与传统操作系统（如 Linux 和 OpenBSD）相当。
 
-Key observations include:
+关键观察包括：
 
-- **IPC Benchmark**: HiStar performs better than Linux but is slightly slower than OpenBSD.
-- **File Operations**: For small file operations, HiStar's performance is comparable to Linux, while large file operations show similar results between HiStar and Linux due to current implementation limitations.
-- **Fork/Exec Benchmark**: HiStar exhibits slower performance in process creation compared to Linux and OpenBSD, attributed to the absence of certain optimizations like zero memory pages.
+- **进程间通信（IPC）基准测试**：HiStar 的表现优于 Linux，但略逊于 OpenBSD。
+- **文件操作**：对于小文件操作，HiStar 的性能与 Linux 相当，而对于大文件操作，由于当前实现的局限，HiStar 与 Linux 的表现相似。
+- **Fork/Exec 基准测试**：在进程创建方面，HiStar 的性能比 Linux 和 OpenBSD 慢，这归因于缺乏某些优化（例如零内存页）。
 
-Despite these challenges, the paper emphasizes that HiStar's performance overhead is minimal and the system remains practical for real-world applications.
+尽管面临这些挑战，论文强调 HiStar 的性能开销很小，系统在实际应用中依然是可行的。
 
 <a name="related"></a>
-## Related Work
+## 相关工作
 
-HiStar builds upon a rich history of research in secure operating systems and information flow control:
+HiStar 建立在关于安全操作系统和信息流控制的丰富研究历史之上：
 
-- **Asbestos**: The immediate predecessor to HiStar, Asbestos provided a foundation for explicit information flow control, which HiStar enhances by introducing decentralized tainting and user-level policy enforcement.
-- **SELinux and EROS**: These systems implement MAC and capability-based security, respectively. HiStar differentiates itself by allowing fine-grained, application-specific policies without central administration.
-- **Singularity**: Developed by Microsoft Research, Singularity focuses on reliability and security through a managed code environment. While similar in striving for minimal trusted code, HiStar offers a more flexible labeling system.
+- **Asbestos**：作为 HiStar 的直接前身，Asbestos 为明确信息流控制奠定了基础，而 HiStar 则通过引入去中心化的污染处理和用户级策略执行将其进一步扩展。
+- **SELinux 和 EROS**：这两个系统分别实现了 MAC 和基于能力的安全机制。HiStar 的不同之处在于它允许无需中央管理即可实现细粒度、特定应用的策略。
+- **Singularity**：由微软研究院开发的 Singularity 通过托管代码环境关注可靠性和安全性。虽然两者都追求减少信任代码，但 HiStar 提供了更灵活的标签系统。
 
-Unlike these systems, HiStar's emphasis on explicit information flow and minimal trusted code components sets it apart, offering a unique blend of security and performance.
+与这些系统不同，HiStar 对明确信息流和最小化信任代码组件的重视使其独树一帜，提供了安全性和性能兼备的独特解决方案。
 
 <a name="limitations"></a>
-## Limitations and Future Work
+## 局限性与未来工作
 
-While HiStar presents a compelling security model, the paper acknowledges several **limitations**:
+尽管 HiStar 提出了一个引人注目的安全模型，论文也承认了几项**局限性**：
 
-1. **Lack of Superuser**: HiStar operates without a traditional superuser role. Administrative tasks require secure, convention-based practices rather than inherent system privileges, which might complicate certain operations.
+1. **缺乏超级用户**：HiStar 运行时没有传统意义上的超级用户。管理任务需要依靠安全的、基于约定的做法，而不是内置的系统特权，这可能会使某些操作变得更加复杂。
    
-   > "HiStar has no superuser. A number of previous systems have limited, partitioned, or virtualized superuser privileges without an underlying operating system."
+   > “HiStar 没有超级用户。许多以前的系统虽然限制、划分或虚拟化了超级用户特权，但都基于一个底层操作系统。”
 
-2. **Feature Gaps**: Certain functionalities common in Unix-like systems, such as tracking file access times or supporting POSIX capabilities, are either missing or require alternative implementations in HiStar.
+2. **功能缺口**：某些在类 Unix 系统中常见的功能，例如跟踪文件访问时间或支持 POSIX 能力，或许在 HiStar 中缺失或需要通过替代方式实现。
    
-   > "HiStar resembles Unix, but it also lacks several useful features and changes the semantics of some operations."
+   > “HiStar 类似于 Unix，但也缺少一些有用的功能，并且改变了一些操作的语义。”
 
-3. **Covert Channels**: Despite stringent information flow controls, HiStar is not immune to covert timing channels, which can be exploited to leak information indirectly.
+3. **隐蔽信道**：尽管实施了严格的信息流控制，HiStar 仍然难以完全避免利用隐蔽时间信道间接泄露信息的风险。
 
-   > "The network device is typically labeled {n3, nw0, i2,1}, where n and nw are owned by netd, and itaints category t). However, thetainted thread can make a tainted, i2,1} copy..."
+   > “网络设备通常被标记为 {n3, nw0, i2,1}，其中 n 和 nw 由 netd 拥有，而它会给类别 t 添加污染。尽管被污染的线程可以创建一个 {i2,1} 的复制...”
 
-The authors propose ongoing work to address these challenges, including enhancements to the authentication mechanisms, support for additional security features, and optimizations to improve performance further.
+作者提出将继续致力于解决这些挑战，包括增强认证机制、支持更多安全特性以及进一步优化性能。
 
 <a name="conclusion"></a>
-## Conclusion
+## 结论
 
-The **HiStar** operating system represents a significant stride in the quest for secure computing environments. By making information flow explicit and minimizing trusted code dependencies, HiStar offers a robust framework for running secure and performant applications. The research paper meticulously outlines the system's architecture, demonstrating its efficacy through practical applications like untrusted virus scanners and secure authentication services.
+**HiStar** 操作系统在追求安全计算环境的道路上取得了显著进展。通过明确信息流及最小化信任代码的依赖，HiStar 为运行既安全又高性能的应用提供了一个强有力的架构。论文详细阐述了该系统的架构，并通过不可信的病毒扫描器和安全认证服务等实际应用验证了其有效性。
 
-While there are inherent limitations and areas for improvement, HiStar's innovative approach to information flow control sets it apart from traditional operating systems and other secure systems in the research landscape. As cybersecurity threats continue to evolve, systems like HiStar underscore the necessity of foundational changes in how we architect and manage operating system security.
+尽管存在固有的局限性和改进空间，HiStar 在信息流控制方面的创新方法使其在传统操作系统及其他安全系统中脱颖而出。随着网络安全威胁的不断演化，像 HiStar 这样的系统强调了在操作系统安全架构与管理方法上的根本性变革的必要性。
 
-For developers, security researchers, and system administrators seeking enhanced security without sacrificing performance, HiStar presents a compelling blueprint for the future of secure operating systems.
+对于开发者、安全研究人员和系统管理员来说，HiStar 提供了一种在不牺牲性能的前提下增强安全性的极具吸引力的未来蓝图。
 
-# References
+# 参考文献
 
-1. Zeldovich, N., Boyd-Wickizer, S., Kohler, E., & Mazieres, D. (2023). Making Information Flow Explicit in HiStar. *Proceedings of the 20th Symposium on Operating Systems Principles*, 1-16.
-2. Additional references as per the original paper content.
+1. Zeldovich, N., Boyd-Wickizer, S., Kohler, E., & Mazieres, D. (2023). 在 HiStar 中明确信息流. 《第二十届操作系统原理研讨会论文集》，1-16.
+2. 其他参考文献参见原论文内容。
 
-# Acknowledgments
+# 致谢
 
-This blog post is based on the research paper **"Making Information Flow Explicit in HiStar"** by Nickolai Zeldovich, Silas Boyd-Wickizer, Eddie Kohler, and David Mazieres. Special thanks to the authors for their groundbreaking work in secure operating systems.
+这篇博客文章基于 Nickolai Zeldovich、Silas Boyd-Wickizer、Eddie Kohler 和 David Mazieres 所著的研究论文 **"在 HiStar 中明确信息流"**。特别感谢作者们在安全操作系统领域所做的开创性工作。
 
-# About the Author
+# 关于作者
 
-*Your Name* is a technology enthusiast with a keen interest in operating systems and cybersecurity. Passionate about demystifying complex technical concepts, *Your Name* writes extensively on advancements in computer science and their real-world applications.
+*你的名字* 是一位技术爱好者，对操作系统和网络安全有着浓厚的兴趣。*你的名字* 热衷于解构复杂的技术概念，并经常撰写有关计算机科学进展及其实际应用的文章。
 
-# Join the Conversation
+# 一起来交流
 
-Have thoughts on HiStar or secure OS designs? Leave a comment below or reach out on [Twitter](https://twitter.com/) to share your perspectives!
+对 HiStar 或安全操作系统设计有何看法？欢迎在下方留言或通过 [Twitter](https://twitter.com/) 与我们分享你的观点！
 
-# Tags
+# 标签
 
-#OperatingSystems #Security #InfoFlowControl #HiStar #Cybersecurity #TechResearch #Computing
+#操作系统 #安全 #信息流控制 #HiStar #网络安全 #科技研究 #计算
 
 > 了解更多请访问 <https://yunwei37.github.io/My-AI-experiment/> 或者 Github： <https://github.com/yunwei37/My-AI-experiment>

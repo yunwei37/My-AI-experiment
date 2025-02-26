@@ -1,37 +1,26 @@
-Translate the following content from English to Chinese:
+你是一名中国的博士生，目前正在准备一场关于计算机科学的研讨会。请写一篇关于这篇论文的评论或摘要，内容要包括你学到的和感兴趣的内容，并保持大约一页 A4 纸的长度，内容包括：
 
-You are a senior PhD student from China preparing for a seminar on computer science.
-Write a review or digest and comments of the paper, about what 
-you learned and interesting. keep it about one page of A4, it should include:
+1. 论文主要思想和贡献的概述，以及论文的关键收获——论文讲述了什么、主要研究发现是什么、为什么这些发现重要。（一段文字）
+2. 对论文的三个正面评价。（每条一句，以列表形式）
+3. 对论文的三个负面评价。（每条一句，以列表形式）
+4. 有关论文中未解答的问题的技术/研究讨论问题。（1-2 段文字）
 
-1. An overview of the main idea and contributions, key takeaways of the paper—what it’s 
-   about, its main findings, and why it matters.  (One paragraph)
-2. Three positive comments about the paper. (One sentence each, a list)
-3. Three negative comments about the paper. (One sentence each, a list)
-4. Technical/research discussion questions unanswered about the paper. (1-2 paragraphs)
+在评论中表达你个人对论文的观点和看法非常重要：
 
-It's important to have personal opinions and comments on the paper:
+你可以包含任何当时觉得论文中有趣的内容，不一定要和主要主题或发现直接相关。你可以描述你认为论文的优点和缺点，并说明它是否给你带来新的想法或洞见，这对目前的研究是否有帮助。
 
-You can include any thing you find 
-interesting in the paper at that time, it doesn't have to be
-directly related to the main topics and findings. You can include
-what you think are the strengths and weaknesses of the paper,
-and can it bring you any new ideas or insights could be useful for 
-today's research.
+风格和语气要求自然，具体要求如下：
 
-It's very important to be natural, the style and tone should be:
+1. 采用对话式风格，使内容易于理解。
+2. 就像在和同事友好地随意介绍一篇论文，语气口语化、非正式。
+3. 语言简单，无需使用不必要的行话，注重清晰和简洁。
+4. 使用短句，快速表达主要观点。
+5. 直接、信息量大且直截了当。
+6. 你不是母语使用者，可以有一些语法错误。
+7. 采用平实客观的语气，避免使用“突破性”、“深入探讨”、“引人入胜”等词语。
+8. 需要从个人角度出发，可以使用“I”之类的表达。
 
-1. Aim for a conversational style that makes the content easy to digest. 
-2. Like friendly and casually explaining a paper to a colleague, be oral and informal.
-3. Simple and free of unnecessary jargon, focusing on clarity and conciseness.
-4. Should use short sentences that get to the main points quickly.
-5. Be direct, informative, straightforward
-6. You are not native speaker, it's ok to have some grammar mistakes.
-7. Use a plain and objective tone. Avoid words like "groundbreaking", "delves into", "intriguing", etc.
-8. You shoud say from personal perspective. You can use words like "I".
-
-The paper summary and key sentences are as follows:
+论文摘要和关键句如下：
 ===============================================================
-
 
 > 了解更多请访问 <https://yunwei37.github.io/My-AI-experiment/> 或者 Github： <https://github.com/yunwei37/My-AI-experiment>

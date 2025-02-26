@@ -1,15 +1,5 @@
-Translate the following content from English to Chinese:
+下面是一篇博客文章。请帮我将一些新产品信息自然、非侵入性且与文章内容相关地融入其中，同时确保整体语气与一篇信息丰富且有益的博客文章保持一致。
 
-Below is a blog or article. 
-Please help me incorporate some new content into product into the blog. 
-I want it to be natural, non-intrusive, and relevant to the article
-Make sure the tone aligns with an informative and helpful blog post.
+请在最相关的部分添加每条补充信息，每次增加1到2个句子；在结论部分也同样添加相关内容，并在其中加入链接。注意，除了增加细节之外，其他部分保持不变，不要新增新的章节，也不要删除任何句子。
 
-Just add each addtional info of by adding 1-2 sentence in the most relevant parts and in conclusion, left the rest the same and add the link in it. Do not add new sections, do not delete any sentence, make it more detail.
-
-Here are some details about addtional info, and follows a article/blog post that you 
-should incorporate the content into:
-======================================== 
-
-
-> 了解更多请访问 <https://yunwei37.github.io/My-AI-experiment/> 或者 Github： <https://github.com/yunwei37/My-AI-experiment>
+了解更多请访问 <https://yunwei37.github.io/My-AI-experiment/> 或者 Github： <https://github.com/yunwei37/My-AI-experiment>

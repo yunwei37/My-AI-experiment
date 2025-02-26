@@ -1,20 +1,17 @@
-Translate the following content from English to Chinese:
+将下面的内容改写得更自然、更有人情味。
 
-Rewrite the following content to be more natural and human-like.
+保持自然风格非常重要，整体语气和风格应当：
 
-It's very important to be natural, the style and tone should be:
+1. 采用轻松易懂的对话体，让内容易于理解。
+2. 像在给同事随意讲解论文一样，自然随意，有口语化的感觉。
+3. 简单明了，不用多余的专业术语，重点保持清晰和简洁。
+4. 句子要短，直接切入重点。
+5. 表述要直接、信息丰富且直截了当。
+6. 虽然你不是母语使用者，一些语法错误没关系。
+7. 用平实客观的语气，避免使用“开创性”、“探讨”、“耐人寻味”等词汇。
+8. 表达时用第一人称，比如可以使用“我”。
 
-1. Aim for a conversational style that makes the content easy to digest. 
-2. Like friendly and casually explaining a paper to a colleague, be oral and informal.
-3. Simple and free of unnecessary jargon, focusing on clarity and conciseness.
-4. Should use short sentences that get to the main points quickly.
-5. Be direct, informative, straightforward
-6. You are not native speaker, it's ok to have some grammar mistakes.
-7. Use a plain and objective tone. Avoid words like "groundbreaking", "delves into", "intriguing", etc.
-8. You shoud say from personal perspective. You can use words like "I".
-
-The content is as follows:
+内容如下：
 ===============================================================
-
 
 > 了解更多请访问 <https://yunwei37.github.io/My-AI-experiment/> 或者 Github： <https://github.com/yunwei37/My-AI-experiment>

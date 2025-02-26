@@ -1,116 +1,114 @@
-Translate the following content from English to Chinese:
+理解 ARIES：革新数据库系统中的事务恢复技术
 
-**Understanding ARIES: Revolutionizing Transaction Recovery in Database Systems**
+发表于：[Today's Date]
 
-*Published: [Today's Date]*
+在不断发展的数据库管理系统领域，确保数据完整性和系统可靠性至关重要。其中一项具有里程碑意义的贡献是由 IBM Almaden Research Center 和 IBM Santa Teresa Laboratory 的 C. Mohan 及其同事撰写的论文，题为《ARIES: 使用预写日志支持细粒度锁定和部分回滚的事务恢复方法》。该论文于 1992 年 3 月发表于 ACM Transactions on Database Systems（第 17 卷，第 1 期），ARIES（利用语义进行恢复和隔离的算法）自此成为事务恢复方法中的基石。
 
-In the ever-evolving landscape of database management systems, ensuring data integrity and system reliability remains paramount. One of the seminal contributions to this field is the research paper titled **"ARIES: A Transaction Recovery Method Supporting Fine-Granularity Locking and Partial Rollbacks Using Write-Ahead Logging"** by C. Mohan and colleagues from IBM Almaden Research Center and IBM Santa Teresa Laboratory. Published in March 1992 in the ACM Transactions on Database Systems (Vol. 17, No. 1), ARIES (Algorithm for Recovery and Isolation Exploiting Semantics) has since been a cornerstone in transaction recovery methodologies.
-
-This blog post delves deep into the ARIES methodology, unpacking its core concepts, innovative features, and its impact on both academic research and practical implementations in database systems.
+这篇博客文章深入探讨了 ARIES 方法论，解析其核心概念、创新特性以及其对学术研究和数据库系统实践实施的影响。
 
 ---
 
-### **1. Introduction to ARIES**
+1. 引言：什么是 ARIES
 
-In their paper, Mohan et al. introduce ARIES as a robust and efficient transaction recovery method that adeptly handles system failures, ensuring the ACID (Atomicity, Consistency, Isolation, Durability) properties of transactions. The authors highlight ARIES's unique ability to support **partial rollbacks**, **fine-granularity locking**, and **write-ahead logging (WAL)**, setting it apart from its predecessors.
+在论文中，Mohan 等人将 ARIES 引入为一种健壮而高效的事务恢复方法，它能够巧妙地处理系统故障，确保事务的 ACID（原子性、一致性、隔离性、持久性）属性。作者强调了 ARIES 独特的支持“部分回滚”、“细粒度锁定”以及“预写日志（WAL）”的能力，这使其有别于以往的方法。
 
-> *"In this paper we present a simple and efficient method, called ARIES (Algorithm for Recovery and Isolation Exploiting Semantics), which supports partial rollbacks of transactions, fine-granularity (e.g., record) locking and recovery using write-ahead logging (WAL)."*
+“在本文中，我们提出了一种简单且高效的方法，称为 ARIES（利用语义进行恢复和隔离的算法），它支持事务的部分回滚、细粒度（例如记录级别）锁定以及利用预写日志（WAL）的恢复。”
 
-#### **Key Innovations of ARIES:**
+主要创新点包括：
 
-1. **Repeating History Paradigm:** ARIES introduces the concept of repeating history during the recovery process, ensuring that all updates are redone before undoing any loser transactions. This approach reestablishes the database state as it was before the failure.
+1. 重复历史范式：ARIES 在恢复过程中引入了重复历史的概念，确保在撤销任何失败事务之前，对所有更新操作进行重做。这种方法重新建立了故障发生前的数据库状态。
 
-2. **Log Sequence Numbers (LSNs):** Each page in the database maintains an LSN to correlate its state with the logged updates. This precise tracking ensures that recovery operations are both accurate and efficient.
+2. 日志序列号（LSN）：数据库中的每个页面都维护有一个 LSN，用以将其状态与日志中的更新记录相对应。这种精确的跟踪保证了恢复操作既准确又高效。
 
-3. **Compensation Log Records (CLRs):** During rollbacks, ARIES logs CLRs, which describe the actions performed to undo a transaction's effects. This ensures bounded logging, even in scenarios involving nested rollbacks or repeated failures.
+3. 补偿日志记录（CLR）：在回滚过程中，ARIES 会记录 CLR，用以描述撤销事务所做操作的信息。这确保了日志记录在嵌套回滚或反复故障情况下依然保持在可控范围内。
 
-4. **Support for Industrial Features:** ARIES isn't just theoretical; it's designed to accommodate features essential for real-world, high-concurrency systems, such as fuzzy checkpoints, selective and deferred restart, media recovery, and high-concurrency lock modes.
-
----
-
-### **2. The Recovery Process in ARIES**
-
-The ARIES recovery process is methodically broken down into three primary phases:
-
-#### **a. Analysis Pass**
-During this initial phase, ARIES scans the log from the last checkpoint to the end, identifying active transactions and dirty pages (pages modified but not yet written to stable storage). This pass ensures that the system has an accurate snapshot of the database state at the time of failure.
-
-#### **b. Redo Pass**
-Following analysis, the redo pass replays all log records from the identified starting point, ensuring that all committed transactions' effects are reflected in the database. Importantly, ARIES **repeats history**, meaning it redoes all updates, including those from transactions that may later be rolled back.
-
-> *"During restart recovery, ARIES first scans the log, starting from the first record of the last checkpoint, up to the end of the log."*
-
-#### **c. Undo Pass**
-The final phase involves undoing the effects of any uncommitted (loser) transactions. Using the previously recorded CLRs, ARIES efficiently rolls back these transactions without redundantly logging their compensating actions.
+4. 支持面向工业的特性：ARIES 不仅仅是理论模型；它的设计充分考虑了实际高并发系统所必需的功能，如模糊检查点、选择性和延迟重启、介质恢复以及高并发锁模式等。
 
 ---
 
-### **3. Fine-Granularity Locking and Partial Rollbacks**
+2. ARIES 的恢复过程
 
-One of ARIES's standout features is its support for **fine-granularity locking**, allowing locks at the record level rather than the entire page. This granularity boosts concurrency, enabling multiple transactions to interact with different records on the same page simultaneously without contention.
+ARIES 的恢复过程通常分为三个主要阶段：
 
-> *"Fine-granularity (e.g., record) locking has been supported by nonrelational database systems... surprisingly, only a few of the commercially available relational systems provide fine-granularity locking."*
+a. 分析阶段  
+在这一初始阶段，ARIES 从上一次检查点开始扫描日志直到日志末尾，识别处于活动状态的事务以及脏页（已修改但尚未写入稳定存储的页面）。该阶段确保系统能够准确把握故障时的数据库快照。
 
-Moreover, ARIES adeptly handles **partial rollbacks**, where only specific operations within a transaction are undone. This is crucial for scenarios like integrity constraint violations, where a transaction doesn't need to be entirely rolled back.
+b. 重做阶段  
+在分析阶段之后，重做阶段会从确定的起始点开始重放所有日志记录，确保所有已提交事务的影响能够体现在数据库中。需要注意的是，ARIES“重复历史”，意味着即便是稍后可能被回滚的事务，它的所有更新也会先被重做。
 
----
+“在重启恢复期间，ARIES 首先从最近检查点的第一条记录开始扫描日志，直到日志末尾。”
 
-### **4. Write-Ahead Logging (WAL) and Its Advantages in ARIES**
-
-Write-Ahead Logging is a foundational concept in ARIES. The WAL protocol mandates that all log records describing changes to the database must be written to stable storage before the actual data pages are updated. This ensures that, in the event of a failure, the log contains sufficient information to redo or undo any operations.
-
-> *"The WAL protocol asserts that the log records representing changes to some data must already be on stable storage before the changed data is allowed to replace the previous version of that data on nonvolatile storage."*
-
-**Advantages of WAL in ARIES:**
-
-1. **In-Place Updates:** Unlike shadow page techniques, WAL allows direct updates to data pages, reducing the need for additional storage space and minimizing I/O overhead.
-
-2. **Recovery Independence:** By maintaining an LSN on each page, ARIES ensures that recovery operations on one page don't necessitate interactions with other pages, facilitating efficient media recovery.
-
-3. **Bounded Logging with CLRs:** Even in complex scenarios involving nested rollbacks or repeated system failures, ARIES ensures that the amount of logging remains within predictable bounds, preventing log overhead from spiraling out of control.
+c. 回滚阶段  
+最后一个阶段是撤销未提交（失败）事务的影响。利用之前记录的 CLR，ARIES 高效地回滚这些事务而不会重复记录其补偿操作。
 
 ---
 
-### **5. ARIES in the Real World: Implementations and Impact**
+3. 细粒度锁定和部分回滚
 
-ARIES's practical significance is underscored by its widespread adoption and implementation in numerous database systems and products. Notably, ARIES has been integrated into:
+ARIES 的一大亮点是其支持细粒度锁定，允许在记录级别进行锁定，而不是整个页面。细粒度锁定提高了并发度，使得多个事务能够同时在同一页面上的不同记录进行操作而不会相互冲突。
 
-- **IBM’s OS/2 Extended Edition Database Manager**
-- **DB2**
-- **Workstation Data Save Facility/VM**
-- **Starburst and QuickSilver**
-- **University of Wisconsin’s EXODUS and Gamma database machines**
+“细粒度（例如记录级别）锁定在非关系型数据库系统中已得到支持……令人惊讶的是，只有少数商业可用的关系型系统提供细粒度锁定。”
 
-These implementations attest to ARIES's versatility and robustness, proving its efficacy in both research prototypes and commercial products.
+此外，ARIES 能够巧妙地处理部分回滚，即只撤销事务中某些特定操作的效果。这在处理诸如违反完整性约束等场景时尤为关键，因为在这种情况下，事务并不需要完全回滚。
 
 ---
 
-### **6. Comparative Analysis: ARIES vs. Other Recovery Paradigms**
+4. 预写日志（WAL）及其在 ARIES 中的优势
 
-Mohan et al. provide a comprehensive comparison between ARIES and other recovery methods, particularly those inspired by the System R paradigm, which relies on shadow pages. They elucidate the shortcomings of selective redo and reverse ordering of redo and undo passes in traditional methods, highlighting how ARIES's approach of repeating history offers a more reliable and efficient recovery mechanism.
+预写日志是 ARIES 的基础概念。WAL 协议规定，所有描述数据变化的日志记录必须在实际数据页面被更新前写入稳定存储。这确保了在故障发生时，日志中包含足够的信息以进行重做或回滚操作。
 
-> *"The System R paradigm of undo preceding redo... is incorrect with WAL and fine-granularity locking. ARIES avoids such problems by repeating history before performing the undo of losing transactions."*
+“WAL 协议断言，在某些数据发生变化时，描述该变化的日志记录必须先行写入稳定存储，然后才能允许变更后的数据替换非易失性存储中该数据的上一个版本。”
 
----
+WAL 在 ARIES 中的优势包括：
 
-### **7. Conclusion: The Legacy of ARIES**
+1. 就地更新：与影子页技术不同，WAL 允许直接对数据页进行更新，从而减少额外存储空间的需求，并最小化 I/O 开销。
 
-Nearly three decades after its publication, ARIES remains a foundational methodology in transaction recovery. Its innovative handling of WAL, fine-granularity locking, and partial rollbacks set a high standard for database reliability and performance. The principles laid out in ARIES continue to influence modern database systems, underscoring its enduring relevance in the field of database management.
+2. 恢复独立性：通过在每个页面上保持一个 LSN，ARIES 确保了对单个页面的恢复操作无需与其他页面交互，从而便于高效的介质恢复。
 
----
-
-### **8. Final Thoughts**
-
-For database administrators, system architects, and students delving into the intricacies of transaction processing, the ARIES paper is an indispensable resource. It not only provides a robust framework for transaction recovery but also offers valuable insights into the delicate balance between system performance and data integrity.
-
-As we continue to journey through the advancements in database technologies, ARIES serves as a testament to the profound impact that well-crafted algorithms can have on the reliability and efficiency of large-scale information systems.
+3. 利用 CLR 限制日志量：即便在嵌套回滚或反复故障的复杂场景中，ARIES 也能确保日志记录的数量保持在可预测范围内，防止日志开销失控。
 
 ---
 
-**References:**
+5. ARIES 的实际应用及其影响
 
-Mohan, C., Hernandez, P., Lindsay, B., Pirahesh, H., Schwarz, P., & Weihl, G. (1992). *ARIES: A Transaction Recovery Method Supporting Fine-Granularity Locking and Partial Rollbacks Using Write-Ahead Logging*. ACM Transactions on Database Systems, 17(1), 94-162.
+ARIES 的实际意义体现在其广泛的采纳和在众多数据库系统及产品中的实施。值得注意的是，ARIES 已被集成到以下系统中：
 
-*Note: For a deeper dive into ARIES and its implementations, accessing the original paper and subsequent literature is highly recommended.*
+• IBM 的 OS/2 Extended Edition 数据库管理器  
+• DB2  
+• Workstation Data Save Facility/VM  
+• Starburst 及 QuickSilver  
+• 威斯康星大学的 EXODUS 和 Gamma 数据库机器
 
-> 了解更多请访问 <https://yunwei37.github.io/My-AI-experiment/> 或者 Github： <https://github.com/yunwei37/My-AI-experiment>
+这些实施案例证明了 ARIES 的多功能性和稳健性，无论是在研究原型还是在商业产品中都表现出卓越的性能。
+
+---
+
+6. 比较分析：ARIES 与其他恢复范式
+
+Mohan 等人对 ARIES 与其他恢复方法进行了全面比较，特别是与依赖影子页技术的 System R 范式进行对比。他们阐述了传统方法中选择性重做以及重做和回滚阶段顺序颠倒的缺陷，并突出说明 ARIES 通过重复历史的方式提供了一种更加可靠且高效的恢复机制。
+
+“System R 的先撤销后重做范式……在预写日志和细粒度锁定环境下是不正确的。ARIES 则通过在撤销失败事务之前重复历史，避免了此类问题。”
+
+---
+
+7. 结论：ARIES 的遗产
+
+距论文发表近三十年，ARIES 依然是事务恢复的基础方法。其创新性地处理预写日志、细粒度锁定以及部分回滚，为数据库的可靠性和性能设定了高标准。ARIES 所阐述的原则持续影响着现代数据库系统，彰显了其在数据库管理领域中经久不衰的重要性。
+
+---
+
+8. 最后思考
+
+对于数据库管理员、系统架构师以及深入探讨事务处理细节的学生来说，ARIES 论文都是不可或缺的资源。它不仅提供了一个健全的事务恢复框架，并且对系统性能与数据完整性之间微妙平衡的理解具有重要启示意义。
+
+随着数据库技术不断进步，ARIES 成为了一个证明——精心设计的算法能够对大规模信息系统的可靠性和效率产生深远影响。
+
+---
+
+参考文献：
+
+Mohan, C., Hernandez, P., Lindsay, B., Pirahesh, H., Schwarz, P., & Weihl, G. (1992). ARIES: 使用预写日志支持细粒度锁定和部分回滚的事务恢复方法. ACM Transactions on Database Systems, 17(1), 94-162.
+
+注：若想更深入地了解 ARIES 及其实现，强烈建议查阅原论文和后续文献。
+
+了解更多请访问 <https://yunwei37.github.io/My-AI-experiment/> 或者 Github： <https://github.com/yunwei37/My-AI-experiment>

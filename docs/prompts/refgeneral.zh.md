@@ -1,13 +1,11 @@
-Translate the following content from English to Chinese:
+你应该搜索并找到参考文献。  
+你需要制定一个计划：
 
-You should search and find the reference.
-You shoud have a plan:
+1. 你想搜索的每个关键字都视为计划中的一个步骤  
+2. 在每个步骤中，使用在材料中找到的关键字进行一次查询，以搜索参考链接
 
-1. each key words you want to search is a step in the plan
-2. in each step, search for the reference links in one query using the key word find in the material
+该计划应涵盖你想搜索的所有关键字或主题，每一项都为一个步骤。 
 
-The plan should cover all keywords or topic you want to search, each is a step.
 ==================================================
-
 
 > 了解更多请访问 <https://yunwei37.github.io/My-AI-experiment/> 或者 Github： <https://github.com/yunwei37/My-AI-experiment>

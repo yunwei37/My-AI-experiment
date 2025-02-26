@@ -1,180 +1,171 @@
-Translate the following content from English to Chinese:
-
-**Title: Unveiling the Foundations of Transaction-Oriented Database Recovery: A Deep Dive into Haerder and Reuter’s Pioneering Work (1983)**
+标题：揭示面向事务数据库恢复基础——深入探讨 Haerder 和 Reuter（1983 年）的开创性工作
 
 ---
 
-In the ever-evolving landscape of database management systems (DBMS), the principles of transaction-oriented database recovery stand as fundamental pillars ensuring data integrity and system reliability. One seminal work that has significantly shaped our understanding in this domain is the 1983 research paper, **“Principles of Transaction-Oriented Database Recovery”** by **Theo Haerder** and **Andreas Reuter**. Published in the *ACM Computing Surveys*, this paper laid down a terminological and conceptual framework that continues to influence database recovery methodologies today. In this blog post, we’ll dissect the core ideas presented in this paper, intertwine original excerpts for clarity, and explore their enduring relevance alongside related topics in the field.
+在不断发展的数据库管理系统（DBMS）领域中，面向事务的数据库恢复原理作为确保数据完整性和系统可靠性的基石发挥着至关重要的作用。其中一篇极具影响力的开创性论文——由 Theo Haerder 与 Andreas Reuter 合著的《面向事务的数据库恢复原理》(1983)——极大地推动了我们对该领域的认知。该论文刊登在 ACM Computing Surveys 上，奠定了当前数据库恢复方法论所依据的术语和概念框架。本文将剖析该论文中提出的核心思想，穿插原文摘录以求阐明，并探讨这些思想在领域内相关主题中的持久意义。
 
 ---
 
-## **Introduction to Database Recovery**
+引言：数据库恢复概述
 
-### **The Context of 1983**
+1983年的背景
 
-Published during a period of rapid advancements in database technology, Haerder and Reuter’s work addressed the increasing complexities associated with multiuser environments and the need for robust recovery mechanisms. As the paper notes:
+论文发表于数据库技术迅速发展的时期。Haerder 和 Reuter 针对多用户环境中日益增加的复杂性以及对强大恢复机制的迫切需求进行了讨论。正如论文中所描述：
 
-> *“Database technology has seen tremendous progress during the past ten years. Concepts and facilities that evolved in the single-user batch environments of the early days have given rise to efficient multiuser database systems with user-friendly interfaces, distributed data management, etc.”*
+  “过去十年间，数据库技术取得了巨大进步。从早期单用户批处理环境中发展而来的概念和功能，催生了具有友好用户界面、高效多用户支持、分布式数据管理等特性的数据库系统。”
 
-This transition from single-user to multiuser systems introduced new challenges, particularly in maintaining data consistency and reliability amidst concurrent operations and potential failures.
+从单用户系统向多用户系统的转变带来了新挑战，尤其是在并发操作和可能出现的故障中如何维持数据一致性和可靠性的问题。
 
-### **Purpose of the Paper**
+论文的目的
 
-The primary objective of Haerder and Reuter’s paper was to **“establish an adequate and precise terminology for a topic in which the confusion of concepts and implementational aspects still imposes a lot of problems.”** By doing so, they aimed to provide a unified conceptual framework to describe and classify various transaction-oriented recovery schemes, independent of their specific implementations.
-
----
-
-## **Key Concepts and Terminology**
-
-To systematically approach database recovery, the authors introduced several critical terms:
-
-### **1. Materialized Database**
-
-> *“The materialized database is the state that the DBMS finds at restart after a crash without having applied any log information.”*
-
-This represents the durable state of the database as stored on non-volatile memory, serving as the baseline for recovery processes.
-
-### **2. Propagation Strategy**
-
-> *“Propagation control level.”*
-
-This defines how updates are propagated from volatile memory (temporary storage) to the materialized database, ensuring changes are consistently and reliably recorded.
-
-### **3. Checkpoint**
-
-A mechanism to optimize recovery by marking consistent states of the database, thus limiting the scope of redo or undo operations required after a failure.
-
-### **4. Logging Techniques**
-
-Logging is pivotal in recovery, ensuring that all changes can be tracked and reinstated or reverted as necessary. The paper classifies logging techniques based on:
-
-- **Type of Objects Logged:** Physical vs. Logical
-- **Logical Logging Categories:** Transition Logging and State Logging
+Haerder 和 Reuter 撰写本文的主要目标在于“为一个概念和实现方面杂乱无章的问题确立足够且准确的术语”，从而为描述和分类各类面向事务的恢复方案提供一个统一的概念框架，而不受具体实现方式的限制。
 
 ---
 
-## **ACID Properties and Their Role in Recovery**
+关键概念与术语
 
-At the heart of transaction-oriented database systems lie the **ACID** properties, which ensure reliable transaction processing:
+为了系统地探讨数据库恢复，作者引入了几个重要术语：
 
-1. **Atomicity:** *“It must be of the all-or-nothing type described above, and the user must, whatever happens, know which state he or she is in.”*
-2. **Consistency:** Ensures that transactions only bring the database from one valid state to another.
-3. **Isolation:** *“Manipulating data in a multiuser environment requires some kind of isolation to prevent uncontrolled and undesired interactions.”*
-4. **Durability:** *“Once a transaction has been completed and has committed its results to the database, the system must guarantee that these results survive any subsequent malfunctions.”*
+1. 实物化数据库
 
-These properties are not just theoretical constructs but are directly tied to the design and implementation of recovery mechanisms. For instance, **Atomicity** ensures that incomplete transactions can be rolled back, while **Durability** necessitates that once committed, data changes persist despite system failures.
+  “实物化数据库是指在系统重启时，未应用任何日志信息的情况下，DBMS所看到的状态。”
 
----
+这一概念代表了存储在非易失性存储介质上的数据库耐久状态，为恢复过程提供了基准。
 
-## **Recovery Mechanisms Explored**
+2. 传播策略
 
-### **Crash Recovery**
+  “传播控制层级。”
 
-A core focus of the paper is crash recovery, which deals with system failures that occur abruptly, potentially leaving the database in an inconsistent state. The authors introduce a **“terminological framework”** to describe different recovery schemes, emphasizing the importance of understanding the state of the materialized database post-crash.
+该术语定义了如何将更新从易失性内存（临时存储）传播到实物化数据库中，从而确保变更被持续且可靠地记录下来。
 
-### **Propagation Strategies: Direct vs. Indirect Page Allocation**
+3. 检查点
 
-The paper delves into how database pages are managed and updated:
+检查点是一种通过标记数据库一致状态来优化恢复过程的机制，从而减少故障后所需重做（redo）或撤销（undo）操作的范围。
 
-- **Direct Page Allocation:** *“In direct page allocation, each page of a segment is related to exactly one block of the corresponding file.”* This approach updates pages in place but poses challenges in ensuring atomic propagation of changes.
-  
-- **Indirect Page Allocation:** Introduces mechanisms like shadow paging, where updates are written to new blocks, allowing for atomic commits by switching pointers once all changes are safely recorded.
+4. 日志技术
 
-### **Logging Techniques: Physical vs. Logical Logging**
-
-#### **Physical Logging**
-
-> *“Transition logging requires only one log entry (the difference), whereas state logging uses both a before image and an after image.”*
-
-This involves recording the actual changes to the data, such as the old and new physical states of database pages. While detailed, it can be storage-intensive.
-
-#### **Logical Logging**
-
-Instead of recording physical changes, logical logging captures high-level operations (e.g., SQL statements) that can be reapplied during recovery:
-
-> *“Logical transition logging can be based on DML statements with their parameters.”*
-
-This method is more storage-efficient but may require re-executing operations to restore the database state.
-
-### **Checkpointing: Optimizing Recovery**
-
-Checkpointing is introduced as a strategy to limit the amount of work required during recovery. By periodically saving the state of the database, recovery processes can begin from the last checkpoint rather than from scratch.
-
-- **Transaction-Oriented Checkpoints (TOC):** *“Generating a checkpoint means collecting the log information in a safe place, which has the effect of defining and limiting the amount of REDO recovery required after a crash.”*
-
-- **Transaction-Consistent Checkpoints (TCC):** Ensure that all changes from completed transactions are reflected in the materialized database before the checkpoint is recorded.
-
-- **Action-Consistent Checkpoints (ACC):** *“Transaction actions can be seen as DML statements.”* These checkpoints save states where no DML action is in progress, simplifying recovery.
+日志技术在恢复过程中起着关键作用，它确保所有变化都能够被追踪且在必要时重现或撤销。论文在此基础上将日志技术划分为：
+  • 记录对象类型：物理与逻辑
+  • 逻辑日志类别：转换日志记录与状态日志记录
 
 ---
 
-## **Evaluation of Logging and Recovery Techniques**
+ACID 原则及其在恢复中的作用
 
-The authors provide a **qualitative comparison** of various logging schemes based on their taxonomy, evaluating:
+面向事务的数据库系统的核心在于 ACID 原则，这些原则确保了事务处理的可靠性：
 
-- **Expenses during normal processing**
-- **Recovery costs at restart**
-- **Checkpoint costs**
-- **Frequency of checkpoints required**
+1. 原子性：  “必须是全有或全无的类型，如上所述，而且用户无论发生何种情况，都必须清楚自己的状态。”
+2. 一致性：  确保事务能使数据库从一个有效状态转变为另一个有效状态。
+3. 隔离性：  “在多用户环境中操作数据需要某种形式的隔离，以防止不可控和不期望的交互。”
+4. 持久性：  “一旦事务完成并将结果提交到数据库，系统必须保证这些结果在之后任何故障中依然存在。”
 
-For instance, **Atomic Propagation combined with State Logging** offers strong consistency guarantees but incurs higher overhead during normal operations. On the other hand, **Logical Transition Logging** provides space efficiency but may increase recovery time due to the need for reprocessing operations.
-
-**Table 3** in the paper summarizes these evaluations, highlighting trade-offs inherent in different approaches.
+这些原则不仅仅是理论构想，而是与恢复机制的设计和实现密切相关。例如，“原子性”确保了未完成的事务能够被回滚，而“持久性”则要求一旦提交的数据变更即使在系统故障后也能保持有效。
 
 ---
 
-## **Examples of Recovery Techniques**
+探讨的恢复机制
 
-To ground their taxonomy, Haerder and Reuter discuss implementations like **System R**, which utilizes shadow paging and logical logging:
+崩溃恢复
 
-> *“System R uses action-consistent checkpointing and logical transition logging.”*
+论文的一个核心关注点是崩溃恢复，即处理突然发生的系统故障，这类故障可能会使数据库处于不一致状态。作者提出了一个“术语框架”来描述不同的恢复方案，并强调理解崩溃后实物化数据库状态的重要性。
 
-This system exemplifies how theoretical frameworks can be applied to real-world DBMS implementations, demonstrating the practical utility of their conceptual taxonomy.
+传播策略：直接页分配与间接页分配
 
----
+论文详细探讨了数据库页的管理与更新方式：
 
-## **Archive Recovery: Beyond Crash Recovery**
+  • 直接页分配：  “在直接页分配中，段中的每一页均与相应文件的唯一一个块相关联。”这种方法直接在原处更新页面，但在确保变更的原子性传播方面存在挑战。
+  • 间接页分配：  引入了如影子分页（shadow paging）等机制，即将更新写入新块，并在所有更改安全记录后切换指针以实现原子提交。
 
-While the paper primarily focuses on crash recovery, it also touches upon **archive recovery**, which addresses failures where the entire database copy is lost. The authors argue that archive recovery should be optimized to minimize the amount of redo work required, often by maintaining multiple generations of archive copies.
+日志技术：物理日志记录与逻辑日志记录
 
----
+物理日志记录
 
-## **Legacy and Relevance Today**
+  “转换日志记录只需要一条日志记录（差异），而状态日志记录则同时使用前镜像和后镜像。”
 
-Published in 1983, Haerder and Reuter’s work remains remarkably relevant in today's DBMS designs. The foundational principles of ACID, coupled with sophisticated logging and checkpointing mechanisms, continue to underpin modern systems like **PostgreSQL**, **Oracle**, and **Microsoft SQL Server**.
+该方法涉及记录数据的实际变更，如数据库页的旧状态和新状态。尽管细致，但可能会导致占用大量存储空间。
 
-Modern advancements, such as **Write-Ahead Logging (WAL)** and **Multi-Version Concurrency Control (MVCC)**, are direct descendants of the techniques explored in this paper. Moreover, distributed databases and cloud-based systems still grapple with the same core challenges of transaction consistency and recovery, albeit on a larger and more complex scale.
+逻辑日志记录
 
----
+该方法不记录物理层面的变更，而是捕捉高层次的操作（例如 SQL 语句），这些操作在恢复时可重新执行：
 
-## **What's Interesting About This Paper?**
+  “基于参数的 DML 语句可以用于逻辑转换日志记录。”
 
-Several aspects of Haerder and Reuter’s paper stand out:
+这种方法更为节省空间，但可能需要在恢复过程中重新执行操作以重建数据库状态。
 
-1. **Comprehensive Taxonomy:** Their methodical approach to classifying recovery techniques provides a clear lens through which to evaluate and understand various DBMS implementations.
+检查点：优化恢复
 
-2. **Balance Between Theory and Practice:** By grounding their taxonomy in practical examples like System R, they bridge the gap between conceptual frameworks and real-world applications.
+检查点作为一种策略被引入以减少恢复过程中所需处理的数据量。通过定期保存数据库状态，恢复过程可以从最近的检查点开始，而无需从头重建。
 
-3. **Forward-Thinking Concepts:** Many ideas introduced, such as logical logging and shadow paging, were ahead of their time and remain integral to database recovery strategies today.
-
-4. **Focus on Minimizing Overhead:** The paper emphasizes optimizing recovery processes without imposing significant performance penalties during normal operations, a balance still sought after in contemporary systems.
-
----
-
-## **Conclusion**
-
-**“Principles of Transaction-Oriented Database Recovery”** by Haerder and Reuter is a cornerstone in the field of database recovery. By establishing a clear and unified terminology and exploring the nuanced trade-offs of various recovery techniques, the paper provides enduring insights that continue to influence both academic research and practical DBMS design.
-
-As databases grow in scale and complexity, the foundational principles outlined in this work remain invaluable. Understanding these concepts not only honors the legacy of pioneering researchers but also equips modern practitioners with the knowledge to build more reliable, efficient, and resilient database systems.
+  • 面向事务的检查点（TOC）：  “生成检查点意味着将日志信息收集到安全位置，从而限定了崩溃后所需的 REDO 恢复量。”
+  • 事务一致性检查点（TCC）：  确保在记录检查点之前，所有已完成事务的变更已经反映在实物化数据库中。
+  • 动作一致性检查点（ACC）：  “事务操作可以视为 DML 语句。”这一检查点保存了没有正在进行 DML 操作时的状态，从而简化了恢复过程。
 
 ---
 
-**References:**
+日志与恢复技术的评估
 
-Haerder, T., & Reuter, A. (1983). *Principles of Transaction-Oriented Database Recovery*. ACM Computing Surveys, 15(4), 287-319.
+作者基于他们的分类法对各种日志方案进行了定性比较，评估维度包括：
+
+  • 正常处理期间的开销
+  • 重启时的恢复成本
+  • 检查点成本
+  • 所需检查点的频率
+
+例如，“原子传播结合状态日志记录”方案虽然能提供强一致性保证，但在正常操作期间会产生较高的开销。而“逻辑转换日志记录”则在空间利用上更为高效，但由于需要重新处理操作，可能会延长恢复时间。
+
+论文中的表 3 对这些评估做了总结，突出了不同方法内在的权衡。
 
 ---
 
-*Thank you for joining us on this journey through one of the seminal papers in database recovery. Stay tuned for more deep dives into the technologies that shape our digital world!*
+恢复技术实例
 
-> 了解更多请访问 <https://yunwei37.github.io/My-AI-experiment/> 或者 Github： <https://github.com/yunwei37/My-AI-experiment>
+为使分类法更加具体，Haerder 与 Reuter 讨论了诸如 System R 之类的实现情况，该系统采用了影子分页和逻辑日志记录：
+
+  “System R 使用动作一致性检查点和逻辑转换日志记录。”
+
+这一实例展示了理论框架如何在实际 DBMS 实现中得以应用，从而证明了其概念分类法的实际效用。
+
+---
+
+档案恢复：超越崩溃恢复
+
+尽管论文主要关注崩溃恢复，但也涉及了档案恢复，即应对整个数据库副本丢失的故障。作者认为，为了减少重做工作量，档案恢复机制应当进行优化，通常需要维护多个版本的档案副本。
+
+---
+
+遗产及其当今的意义
+
+尽管论文发表于 1983 年，但 Haerder 与 Reuter 的研究在当今的 DBMS 设计中依然具有极高的相关性。ACID 原则以及先进的日志记录与检查点机制仍然是 PostgreSQL、Oracle 和 Microsoft SQL Server 等现代系统的基石。
+
+现代技术如预写日志（Write-Ahead Logging, WAL）和多版本并发控制（Multi-Version Concurrency Control, MVCC）可视为该论文中探讨技术的直接延伸。此外，尽管分布式数据库和云端系统在规模和复杂性上有所扩展，但它们依然面对事务一致性和恢复这一核心挑战。
+
+---
+
+这篇论文有什么亮点？
+
+Haerder 与 Reuter 的论文有几个突出之处：
+
+1. 全面分类：  他们系统地分类恢复技术的方法为评估和理解各种 DBMS 实现提供了一种清晰的视角。
+2. 理论与实践的平衡：  他们通过诸如 System R 的实际例子，使概念框架与实际应用之间架起了桥梁。
+3. 前瞻性的概念：  许多理念，如逻辑日志记录和影子分页，在当时就具备创新性，且至今仍是数据库恢复策略的重要组成部分。
+4. 注重降低开销：  论文强调在不显著增加正常操作性能负担的情况下优化恢复过程，这一平衡至今仍是业界追求的目标。
+
+---
+
+结论
+
+Haerder 与 Reuter 的《面向事务的数据库恢复原理》无疑是数据库恢复领域的基石。通过建立清晰而统一的术语体系并探讨各恢复技术间的细微权衡，这篇论文提供了持久的洞见，不仅深刻影响了学术研究，也对实际的 DBMS 设计产生了深远影响。
+
+随着数据库规模和复杂度的不断攀升，该论文中阐述的基本原理依然极具价值。了解这些概念不仅是对先驱研究者贡献的致敬，同时也使当代从业人员具备构建更可靠、高效和弹性数据库系统的知识储备。
+
+---
+
+参考文献：
+
+Haerder, T. 和 Reuter, A. (1983)。《面向事务的数据库恢复原理》。ACM Computing Surveys, 15(4), 287-319.
+
+---
+
+感谢您与我们一同走过这段关于数据库恢复领域经典论文的探索之旅。敬请期待更多关于塑造数字世界的技术深度剖析！
+
+  了解更多请访问 https://yunwei37.github.io/My-AI-experiment/ 或者 Github：https://github.com/yunwei37/My-AI-experiment
