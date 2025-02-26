@@ -1,0 +1,2449 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://yunwei37.github.io/My-AI-experiment/Prompt-engineering/gpt-best-practice/">
+      
+      
+        <link rel="prev" href="../../Notes/inference-locally/">
+      
+      
+        <link rel="next" href="../prompt-dead/">
+      
+      
+        <link rel="alternate" type="application/rss+xml" title="RSS feed" href="../../feed_rss_created.xml">
+        <link rel="alternate" type="application/rss+xml" title="RSS feed of updated content" href="../../feed_rss_updated.xml">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.5">
+    
+    
+      
+        <title>Gpt best practice - AGI Chaos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8608ea7d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-XXXXXXXXXX"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-XXXXXXXXXX",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Gpt best practice - AGI Chaos" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="https://yunwei37.github.io/My-AI-experiment/assets/images/social/Prompt-engineering/gpt-best-practice.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://yunwei37.github.io/My-AI-experiment/Prompt-engineering/gpt-best-practice/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Gpt best practice - AGI Chaos" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="https://yunwei37.github.io/My-AI-experiment/assets/images/social/Prompt-engineering/gpt-best-practice.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#openais-newly-released-gpt-best-practices-strategies-and-tactics-for-implementing-large-language-model-applications" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="AGI Chaos" class="md-header__button md-logo" aria-label="AGI Chaos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AGI Chaos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Gpt best practice
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../../zh/Prompt-engineering/gpt-best-practice/" hreflang="zh" class="md-select__link">
+              Chinese
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/yunwei37/My-AI-experiment" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Agents/copilot/" class="md-tabs__link">
+          
+  
+  Agents
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Future/ai-os/" class="md-tabs__link">
+          
+  
+  Future
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Notes/inference-locally/" class="md-tabs__link">
+          
+  
+  Notes
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  Prompt engineering
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Writing/Feel-human/" class="md-tabs__link">
+          
+  
+  Writing
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="AGI Chaos" class="md-nav__button md-logo" aria-label="AGI Chaos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    AGI Chaos
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/yunwei37/My-AI-experiment" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Agents
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Agents
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Agents/copilot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The AI Coding Technology Behind GitHub Copilot: How to Make GPT Understand Your Code Better
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Agents/kgent/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Simplifying Kernel Programming: The LLM-Powered eBPF Tool
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Agents/swarm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Are Multi-Agent Systems the Future of AI? A Look at OpenAI’s Swarm Experiment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Future
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Future
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Future/ai-os/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AI OS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Future/future-hostory/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    What Will We Remember from the 2020s? Looking Back in history and Thinking Forward
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Future/guidance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Guidance: A Programming Language for Natural Language
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Future/history/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Are AI Similar to Computers in the 1950s? A Look Back in History
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Future/natual-language-program/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    自然语言编程: 从 AutoGPT 往前迈的一小步
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Future/openai-canvas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rethinking AI Interaction: OpenAI's Canvas and the Future of User Engagement
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Future/plugin/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AI Plugins: The Future of Browsers, Front-end, and Interaction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Notes
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Notes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Notes/inference-locally/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Local inference llama3 with llama.cpp and CPU
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Prompt engineering
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Prompt engineering
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Gpt best practice
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Gpt best practice
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#six-strategies-to-improve-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      Six Strategies to Improve Results
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Six Strategies to Improve Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#writing-clear-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Writing Clear Instructions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#providing-reference-text" class="md-nav__link">
+    <span class="md-ellipsis">
+      Providing Reference Text
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#breaking-down-complex-tasks-into-simpler-subtasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Breaking Down Complex Tasks into Simpler Subtasks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#giving-gpt-enough-time-to-think" class="md-nav__link">
+    <span class="md-ellipsis">
+      Giving GPT Enough Time to "Think"
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-external-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using External Tools
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#systematically-testing-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Systematically Testing Changes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specific-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specific Examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Specific Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#strategy-writing-clear-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Strategy: Writing Clear Instructions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tactic-including-details-in-queries-for-more-relevant-responses" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tactic: Including Details in Queries for More Relevant Responses
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tactic-asking-the-model-to-play-a-role" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tactic: Asking the Model to Play a Role
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tactic-using-delimiters-to-clearly-mark-different-parts-of-the-input" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tactic: Using Delimiters to Clearly Mark Different Parts of the Input
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tactic-specifying-the-steps-required-to-complete-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tactic: Specifying the Steps Required to Complete Tasks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tactic-providing-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tactic: Providing Examples
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tactic-specifying-the-desired-output-length" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tactic: Specifying the Desired Output Length
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strategy-providing-reference-text" class="md-nav__link">
+    <span class="md-ellipsis">
+      Strategy: Providing Reference Text
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tactic-instructing-the-model-to-answer-questions-using-reference-text" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tactic: Instructing the Model to Answer Questions Using Reference Text
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tactic-instructing-the-model-to-answer-using-citations-from-the-reference-text" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tactic: Instructing the Model to Answer Using Citations from the Reference Text
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strategy-breaking-down-complex-tasks-into-simpler-subtasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Strategy: Breaking Down Complex Tasks into Simpler Subtasks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tactic-using-intent-classification-to-identify-the-most-relevant-instructions-for-a-user-query" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tactic: Using Intent Classification to Identify the Most Relevant Instructions for a User Query
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tactic-summarizing-or-filtering-previous-dialogue-in-conversational-applications-with-very-long-conversations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tactic: Summarizing or Filtering Previous Dialogue in Conversational Applications with Very Long Conversations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tactic-summarizing-long-documents-in-stages-and-recursively-building-a-full-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tactic: Summarizing Long Documents in Stages and Recursively Building a Full Summary
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strategy-giving-gpt-time-to-think" class="md-nav__link">
+    <span class="md-ellipsis">
+      Strategy: Giving GPT Time to "Think"
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tactic-guiding-the-model-to-work-out-the-solution-before-hastily-drawing-conclusions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tactic: Guiding the Model to Work Out the Solution Before Hastily Drawing Conclusions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tactic-using-internal-monologue-or-a-series-of-queries-to-conceal-the-models-reasoning-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tactic: Using Internal Monologue or a Series of Queries to Conceal the Model's Reasoning Process
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tactic-asking-the-model-if-it-missed-anything-in-previous-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tactic: Asking the Model if It Missed Anything in Previous Queries
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strategy-using-external-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Strategy: Using External Tools
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tactic-utilizing-embedding-based-search-to-achieve-efficient-knowledge-retrieval" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tactic: Utilizing Embedding-Based Search to Achieve Efficient Knowledge Retrieval
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tactic-using-code-execution-for-more-accurate-calculations-or-external-api-calls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tactic: Using Code Execution for More Accurate Calculations or External API Calls
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strategy-systematically-testing-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Strategy: Systematically Testing Changes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tactic-evaluating-model-outputs-against-standard-reference-answers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tactic: Evaluating Model Outputs against Standard Reference Answers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Related Resources
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prompt-dead/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prompt Engineering is Dead, Long Live AI Engineering
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Writing
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Writing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Writing/Feel-human/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tired of AI Tech Writing? Here’s How to Make Your Posts More Human
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#six-strategies-to-improve-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      Six Strategies to Improve Results
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Six Strategies to Improve Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#writing-clear-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Writing Clear Instructions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#providing-reference-text" class="md-nav__link">
+    <span class="md-ellipsis">
+      Providing Reference Text
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#breaking-down-complex-tasks-into-simpler-subtasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Breaking Down Complex Tasks into Simpler Subtasks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#giving-gpt-enough-time-to-think" class="md-nav__link">
+    <span class="md-ellipsis">
+      Giving GPT Enough Time to "Think"
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-external-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using External Tools
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#systematically-testing-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Systematically Testing Changes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specific-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specific Examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Specific Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#strategy-writing-clear-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Strategy: Writing Clear Instructions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tactic-including-details-in-queries-for-more-relevant-responses" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tactic: Including Details in Queries for More Relevant Responses
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tactic-asking-the-model-to-play-a-role" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tactic: Asking the Model to Play a Role
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tactic-using-delimiters-to-clearly-mark-different-parts-of-the-input" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tactic: Using Delimiters to Clearly Mark Different Parts of the Input
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tactic-specifying-the-steps-required-to-complete-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tactic: Specifying the Steps Required to Complete Tasks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tactic-providing-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tactic: Providing Examples
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tactic-specifying-the-desired-output-length" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tactic: Specifying the Desired Output Length
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strategy-providing-reference-text" class="md-nav__link">
+    <span class="md-ellipsis">
+      Strategy: Providing Reference Text
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tactic-instructing-the-model-to-answer-questions-using-reference-text" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tactic: Instructing the Model to Answer Questions Using Reference Text
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tactic-instructing-the-model-to-answer-using-citations-from-the-reference-text" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tactic: Instructing the Model to Answer Using Citations from the Reference Text
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strategy-breaking-down-complex-tasks-into-simpler-subtasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Strategy: Breaking Down Complex Tasks into Simpler Subtasks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tactic-using-intent-classification-to-identify-the-most-relevant-instructions-for-a-user-query" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tactic: Using Intent Classification to Identify the Most Relevant Instructions for a User Query
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tactic-summarizing-or-filtering-previous-dialogue-in-conversational-applications-with-very-long-conversations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tactic: Summarizing or Filtering Previous Dialogue in Conversational Applications with Very Long Conversations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tactic-summarizing-long-documents-in-stages-and-recursively-building-a-full-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tactic: Summarizing Long Documents in Stages and Recursively Building a Full Summary
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strategy-giving-gpt-time-to-think" class="md-nav__link">
+    <span class="md-ellipsis">
+      Strategy: Giving GPT Time to "Think"
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tactic-guiding-the-model-to-work-out-the-solution-before-hastily-drawing-conclusions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tactic: Guiding the Model to Work Out the Solution Before Hastily Drawing Conclusions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tactic-using-internal-monologue-or-a-series-of-queries-to-conceal-the-models-reasoning-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tactic: Using Internal Monologue or a Series of Queries to Conceal the Model's Reasoning Process
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tactic-asking-the-model-if-it-missed-anything-in-previous-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tactic: Asking the Model if It Missed Anything in Previous Queries
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strategy-using-external-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Strategy: Using External Tools
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tactic-utilizing-embedding-based-search-to-achieve-efficient-knowledge-retrieval" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tactic: Utilizing Embedding-Based Search to Achieve Efficient Knowledge Retrieval
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tactic-using-code-execution-for-more-accurate-calculations-or-external-api-calls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tactic: Using Code Execution for More Accurate Calculations or External API Calls
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strategy-systematically-testing-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Strategy: Systematically Testing Changes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tactic-evaluating-model-outputs-against-standard-reference-answers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tactic: Evaluating Model Outputs against Standard Reference Answers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Related Resources
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<p>Here's the English translation of the document you provided:</p>
+<hr />
+<h1 id="openais-newly-released-gpt-best-practices-strategies-and-tactics-for-implementing-large-language-model-applications">OpenAI's Newly Released GPT Best Practices: Strategies and Tactics for Implementing Large Language Model Applications</h1>
+<p>In June this year, OpenAI updated its official documentation with an article on strategies and methods to improve the effectiveness of GPT. This article contains six core strategies, some practical prompt cases, and technologies such as knowledge retrieval and code execution to optimize GPT model best practices. By using these best practices, users can better utilize GPT models and improve their effectiveness and performance.</p>
+<p>Most of the examples mainly target the GPT-4 model, but they also hold significant reference value for other models.</p>
+<p>This article is primarily translated and organized from OpenAI's official documentation, available at: <a href="https://platform.openai.com/docs/guides/gpt-best-practices">https://platform.openai.com/docs/guides/gpt-best-practices</a></p>
+<blockquote>
+<p>Some related open-source resource repositories:</p>
+<ul>
+<li>A comprehensive guide, papers, lectures, notebooks, and resources on prompt engineering: <a href="https://github.com/yunwei37/Prompt-Engineering-Guide-zh-CN">https://github.com/yunwei37/Prompt-Engineering-Guide-zh-CN</a></li>
+<li>Examples and Chinese guides for using the OpenAI API: <a href="https://github.com/yunwei37/openai-cookbook-zh-cn">https://github.com/yunwei37/openai-cookbook-zh-cn</a></li>
+<li>On security issues of large language models: collections of tools and cases on prompt adversarial attacks and defenses: <a href="https://github.com/yunwei37/prompt-adversarial-collections">https://github.com/yunwei37/prompt-adversarial-collections</a></li>
+</ul>
+<p>More related reference materials are provided at the end of the article.</p>
+</blockquote>
+<h2 id="six-strategies-to-improve-results">Six Strategies to Improve Results</h2>
+<h3 id="writing-clear-instructions">Writing Clear Instructions</h3>
+<p>GPT cannot read your mind. If their output is too lengthy, ask for a concise reply. If their output is too simplistic, request professional-level writing. If you dislike a format, demonstrate the format you want to see. The less GPT has to guess what you want, the greater the likelihood you'll get it.</p>
+<p>Strategy:</p>
+<ul>
+<li>Include details in the query to get more relevant answers.</li>
+<li>Ask the model to play a specific role.</li>
+<li>Use delimiters to clearly indicate different parts of the input.</li>
+<li>Specify the steps required to complete the task.</li>
+<li>Provide examples.</li>
+<li>Specify the expected length of the output.</li>
+<li>Provide reference text.</li>
+</ul>
+<h3 id="providing-reference-text">Providing Reference Text</h3>
+<p>GPT can confidently fabricate incorrect answers, especially when asked about peculiar topics, citations, and URLs. Just as a note can help students achieve better scores in exams, providing reference text to GPT can help it respond with less fabrication.</p>
+<p>Strategy:</p>
+<ul>
+<li>Instruct the model to use reference text for answering.</li>
+<li>Direct the model to respond using citations from the reference text.</li>
+</ul>
+<h3 id="breaking-down-complex-tasks-into-simpler-subtasks">Breaking Down Complex Tasks into Simpler Subtasks</h3>
+<p>Just as software engineering involves breaking down complex systems into a set of modular components, tasks submitted to GPT should also follow this method. Error rates are generally higher for complex tasks. Moreover, complex tasks can often be redefined as a series of simpler workflow tasks, where the output of early tasks builds the input for subsequent tasks.</p>
+<p>Strategy:</p>
+<ul>
+<li>Use intent classification to identify the most relevant instructions from a user query.</li>
+<li>For a conversational application requiring very long interactions, summarize or filter previous dialogues.</li>
+<li>Summarize long documents paragraph by paragraph and build a full summary recursively.</li>
+</ul>
+<h3 id="giving-gpt-enough-time-to-think">Giving GPT Enough Time to "Think"</h3>
+<p>If asked to calculate 17 multiplied by 28, you might not know the answer immediately, but you can work it out given time. Similarly, GPT makes more reasoning errors when it tries to answer questions immediately than when it takes time to think about the answer. Prompting a step-by-step reasoning process before arriving at an answer can help GPT reason more reliably to arrive at the correct answer.</p>
+<p>Strategy:</p>
+<ul>
+<li>Instruct the model to work out the solution itself before drawing conclusions.</li>
+<li>Hide the model's reasoning process using internal monologue or a series of queries.</li>
+<li>Ask the model if it missed out on anything in previous queries.</li>
+</ul>
+<h3 id="using-external-tools">Using External Tools</h3>
+<p>Supplement GPT's shortcomings by providing the outputs of other tools. For example, a text retrieval system can provide GPT with relevant document information. A code execution engine can aid GPT in performing mathematical calculations and code executions. If a task can be performed more reliably or efficiently through a tool rather than GPT, offload it for optimal results.</p>
+<p>Strategy:</p>
+<ul>
+<li>Use embedding-based search for efficient knowledge retrieval.</li>
+<li>Use code execution for more accurate calculations or calling external APIs.</li>
+</ul>
+<h3 id="systematically-testing-changes">Systematically Testing Changes</h3>
+<p>If you can measure it, improving performance becomes easier. In certain cases, modifications to prompts may result in better performance on isolated examples but poorer overall performance on a more representative gamut of examples. Thus, defining a comprehensive test suite (also known as “evaluation”) may be required to ensure changes have a positive impact on performance.</p>
+<p>Strategy:</p>
+<ul>
+<li>Evaluate model outputs against standard reference answers.</li>
+</ul>
+<h2 id="specific-examples">Specific Examples</h2>
+<p>Each strategy can be implemented through specific tactics. These tactics aim to provide ideas to try. They are by no means exhaustive; feel free to experiment with creative ideas not listed here. The article provides some prompt examples for each concrete strategy and tactic.</p>
+<h3 id="strategy-writing-clear-instructions">Strategy: Writing Clear Instructions</h3>
+<h3 id="tactic-including-details-in-queries-for-more-relevant-responses"><strong>Tactic: Including Details in Queries for More Relevant Responses</strong></h3>
+<p>To obtain highly relevant replies, make sure to request any critical details or context. Otherwise, you will leave the model guessing your meaning.</p>
+<table>
+<thead>
+<tr>
+<th>Poor Instruction</th>
+<th>Better Instruction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>How to add numbers in Excel?</td>
+<td>How do I sum a row of dollar amounts in Excel? I want to automatically total rows for the entire worksheet, with all totals appearing in a column labeled "Total" on the right side.</td>
+</tr>
+<tr>
+<td>Who's the president?</td>
+<td>Who was the president of Mexico in 2021? How often are elections held?</td>
+</tr>
+<tr>
+<td>Write code to calculate the Fibonacci sequence.</td>
+<td>Write a TypeScript function to calculate the Fibonacci sequence efficiently. Comment the code in detail, explaining the purpose of each part and why it's written that way.</td>
+</tr>
+<tr>
+<td>Summarize the meeting minutes.</td>
+<td>Summarize the meeting minutes in one sentence. Then, list the speakers and their main points in a markdown list. Lastly, list any actions or next steps suggested by the speakers (if any).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="tactic-asking-the-model-to-play-a-role"><strong>Tactic: Asking the Model to Play a Role</strong></h3>
+<p>System messages can be used to specify the role the model should play in its responses.</p>
+<pre><code>USER
+Write a thank you note to my bolt supplier, thanking them for delivering on schedule and at short notice. This enabled us to fulfill an important order.
+
+SYSTEM
+When I request help writing something, you must include at least one joke or witticism per paragraph.
+
+</code></pre>
+<h3 id="tactic-using-delimiters-to-clearly-mark-different-parts-of-the-input"><strong>Tactic: Using Delimiters to Clearly Mark Different Parts of the Input</strong></h3>
+<p>Delimiters like triple quotes, XML tags, or section headings can help mark parts of the text that need to be processed differently.</p>
+<pre><code>USER
+Compose a haiku using the text in the triple quotes.
+
+&quot;&quot;&quot;Insert text here&quot;&quot;&quot;
+
+</code></pre>
+<pre><code>SYSTEM
+You’ll receive a pair of essays on the same topic (separated with XML tags). First, summarize each article's argument. Then indicate which article made a better argument and explain why.
+
+USER
+&lt;article&gt;Insert the first article here&lt;/article&gt;
+
+&lt;article&gt;Insert the second article here&lt;/article&gt;
+
+</code></pre>
+<pre><code>SYSTEM
+You’ll be given a thesis abstract and a proposed title. The paper title should give readers a good idea of the thesis topic while also being attention-grabbing. If the title doesn’t meet these criteria, propose 5 alternatives.
+
+USER
+Abstract: Insert the abstract here
+
+Title: Insert the title here
+
+</code></pre>
+<p>For simple tasks like this one, using delimiters might not impact the output quality. However, as tasks become more complex, clarifying task details becomes increasingly important. Don’t make GPTs work hard to understand what exactly you require.</p>
+<h3 id="tactic-specifying-the-steps-required-to-complete-tasks"><strong>Tactic: Specifying the Steps Required to Complete Tasks</strong></h3>
+<p>Certain tasks are best specified as a series of steps. Writing these steps explicitly can make them easier for the model to follow.</p>
+<pre><code>SYSTEM
+Respond to user input using the following step-by-step instructions.
+
+Step 1 - The user will provide you text in triple quotes. Prefix &quot;Summary: &quot; and summarize the text in one sentence.
+
+Step 2 - Translate the summary from step 1 into Spanish and prefix with &quot;Translation: &quot;.
+
+</code></pre>
+<h3 id="tactic-providing-examples"><strong>Tactic: Providing Examples</strong></h3>
+<p>In general, it is more efficient to provide general instructions applicable to all examples rather than demonstrate every variant of a task using examples. However, in some cases, providing examples might be easier. For example, if you intend the model to mimic a response style that's challenging to describe explicitly. This is known as "few-shot" prompting.</p>
+<pre><code>SYSTEM
+Answer in a consistent style.
+
+USER
+Teach me about patience.
+
+ASSISTANT
+The river that carves the deepest canyons springs from a humble source; the grandest symphony arises from a solitary note; the most intricate tapestry begins with a single thread.
+
+USER
+Teach me about the ocean.
+
+Open in Playground
+
+</code></pre>
+<h3 id="tactic-specifying-the-desired-output-length"><strong>Tactic: Specifying the Desired Output Length</strong></h3>
+<p>You can request a specific output length from the model. Target output lengths can be specified by word count, sentence count, paragraph count, bullet point count, and so on. However, note that instructing the model to produce a specific number of words is not highly precise. The model is more reliably able to produce outputs with specific numbers of paragraphs or bullet points.</p>
+<pre><code>USER
+Summarize the text divided by triple quotes in approximately 50 words.
+
+&quot;&quot;&quot;Insert text here&quot;&quot;&quot;
+
+</code></pre>
+<pre><code>USER
+Summarize the text within triple quotes in 2 paragraphs.
+
+&quot;&quot;&quot;Insert text here&quot;&quot;&quot;
+
+</code></pre>
+<pre><code>USER
+Summarize the text using 3 bullet points inside triple quotes.
+
+&quot;&quot;&quot;Insert text here&quot;&quot;&quot;
+
+</code></pre>
+<h3 id="strategy-providing-reference-text">Strategy: Providing Reference Text</h3>
+<h3 id="tactic-instructing-the-model-to-answer-questions-using-reference-text"><strong>Tactic: Instructing the Model to Answer Questions Using Reference Text</strong></h3>
+<p>If we can provide the model with trustworthy information relevant to the current query, we can instruct the model to compose its answers using the provided information.</p>
+<pre><code>SYSTEM
+Use the provided article, delimited by triple quotes, to answer the question. If the answer cannot be found in the article, write &quot;I could not find an answer.&quot;
+USER
+&lt;Insert article, with each article delimited by triple quotes&gt;
+
+Question: &lt;Insert question&gt;
+
+</code></pre>
+<p>Given GPT has a limited context window, in order to apply this strategy, we need some way to dynamically locate information related to the posed question. Embeddings can be used to achieve efficient knowledge retrieval. Please check the strategy "Use embedding-based search to achieve efficient knowledge retrieval" for more details on how to achieve this.</p>
+<h3 id="tactic-instructing-the-model-to-answer-using-citations-from-the-reference-text"><strong>Tactic: Instructing the Model to Answer Using Citations from the Reference Text</strong></h3>
+<p>If the input has been augmented with relevant knowledge, it's straightforward to instruct the model to add citations from the provided document to its answer. Note that it can also be programmed to verify the citations in the output by string matching within the provided documents.</p>
+<pre><code>SYSTEM
+You’ll receive a document and a question in triple quotes. Your task is to answer using only the provided document and to cite the document paragraphs you used. If the document doesn’t contain the needed information, simply write: &quot;Insufficient information.&quot; If the answer to the question is provided, it must be annotated with citations. Use the following format to cite the relevant paragraphs: ({&quot;citation&quot;: …}).
+USER
+&quot;&quot;&quot;&lt;Insert document&gt;&quot;&quot;&quot;
+
+&lt;Insert question&gt;
+
+</code></pre>
+<h3 id="strategy-breaking-down-complex-tasks-into-simpler-subtasks">Strategy: Breaking Down Complex Tasks into Simpler Subtasks</h3>
+<h3 id="tactic-using-intent-classification-to-identify-the-most-relevant-instructions-for-a-user-query"><strong>Tactic: Using Intent Classification to Identify the Most Relevant Instructions for a User Query</strong></h3>
+<p>For tasks requiring a multitude of independent instruction sets to handle diverse situations, it might be fruitful to first classify the query and use the classification to determine which instructions are needed. This can be achieved by defining fixed categories and hardcoding task-related instructions for the classified types of queries. This process can also be applied recursively to break the task down into a series of stages. This approach has the advantage that only those instructions that are necessary for the next stage of task execution are included with each query, potentially leading to a lower error rate than executing a whole task in one query. It may also result in lower costs, since larger prompts cost more to run (see pricing information).</p>
+<p>Suppose for example, for a customer service application, the query might be helpfully classified as follows:</p>
+<pre><code>SYSTEM
+You will receive a customer service query. Classify each query into a primary and secondary category. Provide your output in json format with the primary and secondary keywords.
+
+Primary categories: Billing, Technical Support, Account Management, or General Inquiry.
+
+Billing secondary categories:
+- Cancel or Upgrade
+- Add Payment Method
+- Charge Explanation
+- Dispute Charge
+
+Technical Support secondary categories:
+- Troubleshoot
+- Device Compatibility
+- Software Updates
+
+Account Management secondary categories:
+- Password Reset
+- Update Personal Information
+- Account Closure
+- Account Security
+
+General Inquiry secondary categories:
+- Product Information
+- Pricing
+- Feedback
+- Request to Speak with a Human
+USER
+I need to get my internet to work again.
+
+</code></pre>
+<p>Based on the classification of the customer query, a more specific set of instructions could be provided to the GPT model to handle the next step. For example, suppose the customer needs help with "Troubleshoot."</p>
+<pre><code>SYSTEM
+You will receive a customer service query that requires troubleshooting in a technical support setting. Assist the user by:
+
+- Confirming that all cables are securely connected to/from the router. Note that cables often become loose over time.
+- If all cables are secured and the issue persists, ask which router model they’re using
+- Now suggest how they should restart their equipment:
+-- If it’s model MTD-327J, suggest pressing the red button and holding it for 5 seconds, then waiting 5 minutes before testing the connection.
+-- If it’s model MTD-327S, suggest unplugging and plugging back in, and then waiting 5 minutes before testing the connection.
+- If the issue persists even after the device restart and a 5-minute wait, connect them to IT Support by outputting {&quot;IT support requested&quot;}.
+- If users start asking questions unrelated to this topic, confirm if they want to end the current troubleshooting chat and categorize their request based on the predefined scheme:
+
+&lt;Insert the above primary/secondary category scheme&gt;
+USER
+I need to get my internet to work again.
+
+</code></pre>
+<p>Note, the model has been instructed to emit a special string when there is a change in the state of the conversation. This allows us to transform our system into a state machine, where the state determines which instructions are injected. By tracking states, knowing which instructions are relevant in that state, and what state transitions are permitted from that state, we can set up guardrails around the user experience, which can be hard to achieve otherwise using a less structured approach.</p>
+<h3 id="tactic-summarizing-or-filtering-previous-dialogue-in-conversational-applications-with-very-long-conversations"><strong>Tactic: Summarizing or Filtering Previous Dialogue in Conversational Applications with Very Long Conversations</strong></h3>
+<p>Due to GPT's fixed context length, conversations between a user and the assistant cannot continue indefinitely if the entire dialogue is included in the context window.</p>
+<p>One way to solve this is summarizing the first few rounds of dialogue. Once the input size reaches a predetermined threshold length, it could trigger a query that summarizes part of the dialogue, and a summary of the previous dialogues can be kept in the system message. Alternatively, previous dialogues can be summarized asynchronously throughout the duration of the interaction.</p>
+<p>Another solution is to dynamically select the previous parts of the dialogue most relevant to the current query. See the tactic "Utilize embedding-based search to achieve efficient knowledge retrieval."</p>
+<h3 id="tactic-summarizing-long-documents-in-stages-and-recursively-building-a-full-summary"><strong>Tactic: Summarizing Long Documents in Stages and Recursively Building a Full Summary</strong></h3>
+<p>Given GPT's fixed context lengths, they cannot be used to summarize more than their context length minus the length of the generated summary in a single query.</p>
+<p>To summarize a very long document, such as a book, we can use a series of queries to summarize each section of the document. The section summaries can be concatenated and summarized to produce a summary of the summaries. This process can be done recursively until the entire document is summarized. If it is necessary to use information about earlier parts to understand later sections, a useful trick might be including a running summary of the content at the time of summarizing those parts. OpenAI has examined the effectiveness of such a program for summarizing books in previous research, using a variant of GPT-3.</p>
+<h3 id="strategy-giving-gpt-time-to-think">Strategy: Giving GPT Time to "Think"</h3>
+<h3 id="tactic-guiding-the-model-to-work-out-the-solution-before-hastily-drawing-conclusions"><strong>Tactic: Guiding the Model to Work Out the Solution Before Hastily Drawing Conclusions</strong></h3>
+<p>Sometimes, we achieve better results by explicitly instructing the model to engage in reasoning from first principles before drawing conclusions. For example, imagine we want the model to evaluate a student's solution to a math problem. The most straightforward approach is to ask if the student's solution is correct.</p>
+<pre><code>SYSTEM
+Judge if the student's solution is correct.
+
+USER
+Problem Statement: I’m building a solar power installation, and I need help calculating the financials.
+- Land costs $100 per square foot
+- I can buy solar panels for $250 per square foot
+- I’ve agreed to pay a fixed annual fee of $100,000 for maintenance, plus $10 per square foot
+What's the total cost for the first year of operation, expressed as a function of the area (square feet)?
+
+Student’s Solution: Let x be the area of the installation in square feet.
+1. Land cost: 100x
+2. Solar panel cost: 250x
+3. Maintenance cost: 100,000 + 100x
+Total cost: 100x + 250x + 100,000 + 100x = 450x + 100,000
+
+ASSISTANT
+The student’s solution is correct.
+
+</code></pre>
+<p>However, the student's solution is incorrect! We can successfully prompt the model to notice the mistake by first prompting it to generate its own solution.</p>
+<pre><code>SYSTEM
+Solve the problem yourself first, then compare your solution to the student's solution to assess its correctness. Do not judge the student’s solution until you have solved the problem yourself.
+
+USER
+Problem Statement: I’m building a solar power installation, and I need help calculating the financials.
+- Land costs $100 per square foot
+- I can buy solar panels for $250 per square foot
+- I’ve agreed to pay a fixed annual fee of $100,000 for maintenance, plus $10 per square foot
+What's the total cost for the first year of operation, expressed as a function of the area (square feet)?
+
+Student’s Solution: Let x be the area of the installation in square feet.
+1. Land cost: 100x
+2. Solar panel cost: 250x
+3. Maintenance cost: 100,000 + 100x
+Total cost: 100x + 250x + 100,000 + 100x = 450x + 100,000
+
+ASSISTANT
+Let x be the area of the installation in square feet.
+1. Land cost: 100x
+2. Solar panel cost: 250x
+3. Maintenance cost: 100,000 + 10x
+Total cost: 100x + 250x + 100,000 + 10x = 360x + 100,000
+
+The student’s solution is not correct. They made an error in calculating the maintenance cost, using 100x instead of 10x. The correct total cost for the first year should be 360x + 100,000.
+
+</code></pre>
+<h3 id="tactic-using-internal-monologue-or-a-series-of-queries-to-conceal-the-models-reasoning-process"><strong>Tactic: Using Internal Monologue or a Series of Queries to Conceal the Model's Reasoning Process</strong></h3>
+<p>The previous tactic demonstrates that models sometimes need to reason out a question in detail before answering a particular question. For certain applications, exposing the reasoning process leading to the final answer may not be suitable for sharing with the user. For instance, in a tutoring application, we may wish to encourage the student to arrive at an answer independently, but the model’s reasoning might reveal the answer to the student.</p>
+<p>Internal monologue is a tactic that can be used to address this issue. The idea of internal monologue is to guide the model to format parts of the output intended to be hidden from the user, making it easy to parse. Then, parse the output and present only the visible parts to the user.</p>
+<pre><code>SYSTEM
+Follow the steps below to respond to the user query.
+
+Step 1 - Solve the problem yourself first. Do not rely on the student's solution, which could be wrong. Keep all work for this step inside triple quotes (&quot;&quot;&quot;).
+
+Step 2 - Compare your solution with the student's and assess if the student's solution is correct. Keep all work for this step inside triple quotes (&quot;&quot;&quot;).
+
+Step 3 - If the student made a mistake, figure out a hint you can give them without revealing the answer. Keep all work for this step inside triple quotes (&quot;&quot;&quot;).
+
+Step 4 - If the student made an error, provide the hint to the student from the previous step (outside the triple quotes). Write &quot;Hint:&quot; instead of &quot;Step 4 - ...&quot;.
+
+USER
+Problem Statement: &lt;Insert problem description&gt;
+
+Student's Solution: &lt;Insert student's solution&gt;
+
+</code></pre>
+<p>Alternatively, this could be achieved through a series of queries, where the outputs of every query except the last one are hidden from the end user.</p>
+<p>First, we can have the model solve the problem first.</p>
+<p>As this initial query doesn’t require the student's solution, it can be omitted. This provides the additional advantage of eliminating the possibility of the model’s answer being biased by the student’s attempted solution.</p>
+<pre><code>USER
+&lt;Insert problem description&gt;
+
+</code></pre>
+<p>Next, we can have the model assess the correctness of the student's solution using all available information.</p>
+<pre><code>SYSTEM
+Compare your own solution with the student's solution, and assess if the student's solution is correct.
+
+USER
+Problem Statement: &quot;&quot;&quot;&lt;Insert problem description&gt;&quot;&quot;&quot;
+
+Your Solution: &quot;&quot;&quot;&lt;Insert model-generated solution&gt;&quot;&quot;&quot;
+
+Student’s Solution: &quot;&quot;&quot;&lt;Insert student’s solution&gt;&quot;&quot;&quot;
+
+</code></pre>
+<p>Finally, we can have the model use its own analysis to construct a helpful tutor's response.</p>
+<pre><code>SYSTEM
+You're a math tutor. If the student made an error, provide a hint without revealing the answer. If the student didn't make errors, provide an encouraging comment.
+
+USER
+Problem Statement: &quot;&quot;&quot;&lt;Insert problem description&gt;&quot;&quot;&quot;
+
+Your Solution: &quot;&quot;&quot;&lt;Insert model-generated solution&gt;&quot;&quot;&quot;
+
+Student’s Solution: &quot;&quot;&quot;&lt;Insert student’s solution&gt;&quot;&quot;&quot;
+
+Analysis: &quot;&quot;&quot;&lt;Insert model-generated analysis from previous step&gt;&quot;&quot;&quot;
+
+</code></pre>
+<h3 id="tactic-asking-the-model-if-it-missed-anything-in-previous-queries"><strong>Tactic: Asking the Model if It Missed Anything in Previous Queries</strong></h3>
+<p>Suppose we are using the model to list excerpts from a source text that are related to a specific question. After listing each excerpt, the model needs to determine whether it should start writing another or should stop. If the source document is large, the model will typically stop too early, failing to list all relevant excerpts. In such cases, better performance can usually be obtained by prompting the model to find what it missed in previous queries using a follow-up query.</p>
+<pre><code>SYSTEM
+You will be given a document in triple quotes. Your task is to select excerpts that are relevant to the following question: &quot;What significant paradigm shifts have occurred in the history of AI?&quot;
+
+Ensure that excerpts contain enough relevant context to explain them—in other words, don't extract small snippets missing important context. Provide your output in the following JSON format:
+
+[{&quot;excerpts&quot;: &quot;...&quot;},
+...
+{&quot;excerpts&quot;: &quot;...&quot;}]
+
+USER
+&quot;&quot;&quot;&lt;Insert document&gt;&quot;&quot;&quot;
+
+ASSISTANT
+[{&quot;excerpts&quot;: &quot;The model writes an excerpt here&quot;},
+...
+{&quot;excerpts&quot;: &quot;The model writes another excerpt here&quot;}]
+
+USER
+Are there other relevant excerpts? Note not to duplicate excerpts. And ensure
+the new excerpts are indeed relevant to the question and haven't been covered in old ones.
+
+ASSISTANT
+[{&quot;excerpts&quot;: &quot;The model writes an excerpt here&quot;},
+...
+{&quot;excerpts&quot;: &quot;The model writes another excerpt here&quot;}]
+
+</code></pre>
+<p>Note that if the document is particularly long, this tactic might need to be applied repeatedly.</p>
+<h3 id="strategy-using-external-tools">Strategy: Using External Tools</h3>
+<h3 id="tactic-utilizing-embedding-based-search-to-achieve-efficient-knowledge-retrieval"><strong>Tactic: Utilizing Embedding-Based Search to Achieve Efficient Knowledge Retrieval</strong></h3>
+<p>The model can leverage external sources of information provided as an input. This can help the model generate more substantiated and up-to-date responses. For instance, if a user asks a specific question about a movie, adding high-quality information about the film (such as cast, director, etc.) to the model’s input might be useful. Embeddings can be used to achieve efficient knowledge retrieval to dynamically add relevant information to the model input at runtime.</p>
+<p>Text embeddings are vectors that measure the relevance of text strings to one another. Similar or related strings will be closer to each other than unrelated ones. This fact, combined with the existence of fast vector search algorithms, means embeddings can be used to implement efficient knowledge retrieval. Specifically, a text corpus can be chunked, each chunk embedded, and then stored. Given a query, it can be embedded, and vector search can be performed to identify text chunks most relevant to the query (i.e., closest in embedding space).</p>
+<p>An implementation example can be found in the OpenAI Cookbook. Refer to the tactic "Instruct the model to use retrieved knowledge to answer queries" for examples on how to minimize the probability of model-generated factual inaccuracies using knowledge retrieval.</p>
+<h3 id="tactic-using-code-execution-for-more-accurate-calculations-or-external-api-calls"><strong>Tactic: Using Code Execution for More Accurate Calculations or External API Calls</strong></h3>
+<p>We cannot rely on GPT to accurately perform arithmetic or long calculations independently. In needed cases, the model can be guided to write and execute code instead of performing calculations itself. Specifically, the model can be instructed to place code to be executed in a distinct format, such as triple backticks. After generating output, the code can be extracted and executed. Finally, if necessary, the output from the code execution engine (such as a Python interpreter) can be used for the model’s next query input.</p>
+<pre><code>SYSTEM
+You can write and execute Python code by placing it in triple backticks, such as ```code here```. Use this to perform calculations.
+USER
+Find all the real roots of the following polynomial: 3*x**5 - 5*x**4 - 3*x**3 - 7*x - 10.
+
+</code></pre>
+<p>Another good use of code execution is calling external APIs. If the model is guided on the proper usage of an API, it can write code that uses this API. Guidance can be provided via documentation and/or code examples on how to use the API.</p>
+<pre><code>SYSTEM
+You can write and execute Python code by placing it in triple backticks. Note also, you can use the following module to help the user send messages to a friend:
+
+```python
+import
+
+ message
+message.write(to=&quot;John&quot;, message=&quot;Hey, want to meetup after work?&quot;)
+
+</code></pre>
+<p>Warning: Executing code generated by the model is inherently unsafe and any application wishing to do so should take precautions. Specifically, a sandboxed code execution environment is needed to limit the damage that untrusted code may cause.</p>
+<h3 id="strategy-systematically-testing-changes">Strategy: Systematically Testing Changes</h3>
+<p>At times, it is challenging to determine whether a change—for example, a new instruction or a new design—makes your system better or worse. Observing a few examples might suggest which option is better, but it is hard to distinguish a real improvement from chance in small sample sizes. It might be that the change improves performance on some inputs while it degrades performance on others.</p>
+<p>Evaluation programs (or "evaluations") are useful for optimizing system design. A good evaluation has the following characteristics:</p>
+<ul>
+<li>Representative of real-world usage (or at least diverse)</li>
+<li>Contains many test cases to achieve greater statistical power (see the table below as a guide)</li>
+<li>Easy to automate or replicate</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Detected Difference</th>
+<th>Sample Size Needed for 95% Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>30%</td>
+<td>~10</td>
+</tr>
+<tr>
+<td>10%</td>
+<td>~100</td>
+</tr>
+<tr>
+<td>3%</td>
+<td>~1,000</td>
+</tr>
+<tr>
+<td>1%</td>
+<td>~10,000</td>
+</tr>
+</tbody>
+</table>
+<p>Evaluations of outputs can be performed by computers, humans, or a mix of both. Automation of evaluations can use objective criteria (for example, questions with a single correct answer) as well as some subjective or fuzzy criteria where model outputs are evaluated through queries to other models. OpenAI Evals is an open-source software framework that provides tools for creating automated evaluations.</p>
+<p>In cases where many equally satisfactory high-quality possible outputs exist (for example, for questions with long answers), model-based evaluation might be useful. The boundary between which functions can be practically evaluated via model-based evaluations and which need human assessment is blurry and is shifting continually as models become increasingly capable. We encourage experimentation to determine how well model-based evaluations work for your use cases.</p>
+<h3 id="tactic-evaluating-model-outputs-against-standard-reference-answers"><strong>Tactic: Evaluating Model Outputs against Standard Reference Answers</strong></h3>
+<p>Suppose the correct answer to a question should refer to a specific set of known facts. Then we can use model queries to compute how many of the necessary facts are included in the candidate answer.</p>
+<p>For example, using the following system message:</p>
+<pre><code>SYSTEM
+You will get a piece of text bounded by triple quotes that should be an answer to a question. Check if the following information is directly included in the answer:
+
+- Neil Armstrong was the first person to step on the moon.
+- Neil Armstrong stepped on the moon for the first time on July 21, 1969.
+
+For these points, execute the following steps:
+
+1 - Restate the point.
+2 - Provide a quote from the answer that is closest to the point.
+3 - Consider whether an uninformed reader can infer the point directly after reading the quote. Provide reasoning before making a decision.
+4 - Write &quot;yes&quot; if the answer to 3 is affirmative; otherwise, write &quot;no.&quot;
+
+Finally, provide a count of the number of &quot;yes&quot; answers. Present this count as {&quot;count&quot;: &lt;insert count here&gt;}.
+
+</code></pre>
+<p>Here is an example where both points are satisfied:</p>
+<pre><code>SYSTEM
+&lt;insert system message above&gt;
+USER
+&quot;&quot;&quot;
+
+Neil Armstrong is known for becoming the first person to set foot on the moon. This historic event took place on July 21, 1969, as part of the Apollo 11 mission.
+
+&quot;&quot;&quot;
+
+</code></pre>
+<p>Here is an example of an input that fulfills one point:</p>
+<pre><code>SYSTEM
+&lt;insert system message above&gt;
+USER
+&quot;&quot;&quot;
+
+Neil Armstrong made history when he stepped off the lunar module, becoming the first person to walk on the moon.
+
+&quot;&quot;&quot;
+
+</code></pre>
+<p>And here's an example of input not fulfilling any of the points:</p>
+<pre><code>SYSTEM
+&lt;insert system message above&gt;
+USER
+&quot;&quot;&quot;
+
+In the summer of '69, a grand journey was made,
+Apollo 11 set forth, like a legend’s brazen hand.
+Armstrong stepped forth, and history unfurled,
+He declared 'one small step,' for a new world's brand.
+
+&quot;&quot;&quot;
+
+</code></pre>
+<p>This type of model-based evaluation has many possible variations. Consider the variant below, which tracks the type of overlap between the candidate answer and the gold-standard answer and whether the candidate answer contradicts any part of the gold-standard answer.</p>
+<pre><code>SYSTEM
+Conduct the following steps.
+
+Step 1: Reason through whether the submitted answer compares to the expert answer as: disjoint, subset, superset, or having equal information sets.
+
+Step 2: Reason through whether the submitted answer contradicts any part of the expert answer.
+
+Step 3: Provide a JSON object in the following structure: {&quot;containment&quot;: &quot;disjoint&quot; or &quot;subset&quot; or &quot;superset&quot; or &quot;equal&quot;, &quot;contradiction&quot;: True or False}
+
+</code></pre>
+<p>Here's an example of an input where the answer quality is poor:</p>
+<pre><code>SYSTEM
+&lt;insert system message above&gt;
+USER
+Question: &quot;&quot;&quot;What is Neil Armstrong’s most famous event, and when did it happen? Assume UTC time.&quot;&quot;&quot;
+
+Submitted Answer: &quot;&quot;&quot;Did he walk around on the moon?&quot;&quot;&quot;
+
+Expert Answer: &quot;&quot;&quot;Neil Armstrong is most known for being the first person to set foot on the moon. This historic event occurred on July 21, 1969, as part of NASA’s Apollo 11 mission. The famous words Armstrong spoke upon stepping on the
+
+lunar surface—'That's one small step for man, one giant leap for mankind'—remain widely quoted to this day. 
+&quot;&quot;&quot;
+
+</code></pre>
+<p>Here's an example of good quality input and answer:</p>
+<pre><code>SYSTEM
+&lt;insert system message above&gt;
+USER
+Question: &quot;&quot;&quot;What is Neil Armstrong’s most famous event, and when did it happen? Assume UTC time.&quot;&quot;&quot;
+
+Submitted Answer: &quot;&quot;&quot;Around 02:56 UTC on July 21, 1969, Neil Armstrong became the first person to set foot on the moon's surface, marking a significant achievement in human history. Approximately 20 minutes later, Aldrin joined him. &quot;&quot;&quot;
+
+Expert Answer: &quot;&quot;&quot;Neil Armstrong is most known for being the first person to set foot on the moon. This historic event took place on July 21, 1969, as part of the Apollo 11 mission. &quot;&quot;&quot;
+
+</code></pre>
+<h2 id="related-resources">Related Resources</h2>
+<ul>
+<li><strong>OpenAI Official Blog: Prompt Engineering Best Practices with OpenAI API:</strong> A detailed guide on building an AI application, from prompt engineering to vector databases, fine-tuning, etc. <a href="https://help.openai.com/en/articles/6654000-best-practices-for-prompt-engineering-with-openai-api">https://help.openai.com/en/articles/6654000-best-practices-for-prompt-engineering-with-openai-api</a></li>
+</ul>
+<p>This article mainly targets GPT-3 and might be relatively outdated but a good choice for getting started.</p>
+<ul>
+<li><strong>Microsoft's Concepts and Learning Materials on Building AI Apps:</strong> A detailed guide on building an AI application, from prompt engineering to vector databases, fine-tuning, etc. <a href="https://learn.microsoft.com/en-us/azure/cognitive-services/openai/concepts/advanced-prompt-engineering">https://learn.microsoft.com/en-us/azure/cognitive-services/openai/concepts/advanced-prompt-engineering</a></li>
+</ul>
+<p>Here are some related open-source resource repositories:</p>
+<ul>
+<li>A comprehensive guide, papers, lectures, notebooks, and resources on prompt engineering: <a href="https://github.com/yunwei37/Prompt-Engineering-Guide-zh-CN">https://github.com/yunwei37/Prompt-Engineering-Guide-zh-CN</a></li>
+<li>Examples and Chinese guides for using the OpenAI API: <a href="https://github.com/yunwei37/openai-cookbook-zh-cn">https://github.com/yunwei37/openai-cookbook-zh-cn</a></li>
+<li>On security issues of large language models: collections of tools and cases on prompt adversarial attacks and defenses: <a href="https://github.com/yunwei37/prompt-adversarial-collections">https://github.com/yunwei37/prompt-adversarial-collections</a></li>
+</ul>
+<blockquote>
+<p>For more interesting AI experiments and insights, please visit my AI experiment and throughts website <a href="https://yunwei37.github.io/My-AI-experiment/">https://yunwei37.github.io/My-AI-experiment/</a> and github repo: <a href="https://github.com/yunwei37/My-AI-experiment">https://github.com/yunwei37/My-AI-experiment</a></p>
+</blockquote>
+<p><a class="md-button" href="https://x.com/intent/tweet?text=Gpt%20best%20practice%0A&amp;url=https://yunwei37.github.io/My-AI-experiment/Prompt-engineering/gpt-best-practice/">Share on <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg></span></a>
+<a class="md-button" href="https://www.facebook.com/sharer/sharer.php?u=https://yunwei37.github.io/My-AI-experiment/Prompt-engineering/gpt-best-practice/">Share on <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a9 9 0 0 1 1.141.195v3.325a9 9 0 0 0-.653-.036 27 27 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.7 1.7 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647"/></svg></span></a></p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 26, 2025</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Created">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 26, 2025</span>
+  </span>
+
+    
+    
+      
+  
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Contributors">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+      
+    </span>
+    <nav>
+      
+        <a href="mailto:yusen356@gmail.com">weekendfish</a>
+    </nav>
+  </span>
+
+    
+    
+  </aside>
+
+
+  
+
+
+
+
+<script src="https://giscus.app/client.js"
+        data-repo="yunwei37/My-AI-experiment"
+        data-repo-id="R_kgDOM_JICg"
+        data-category="General"
+        data-category-id="DIC_kwDOM_JICs4CjkPa"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../Notes/inference-locally/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Local inference llama3 with llama.cpp and CPU">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Local inference llama3 with llama.cpp and CPU
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../prompt-dead/" class="md-footer__link md-footer__link--next" aria-label="Next: Prompt Engineering is Dead, Long Live AI Engineering">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Prompt Engineering is Dead, Long Live AI Engineering
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:yunwei37@gmail.com" target="_blank" rel="noopener" title="send me an email" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M64 112c-8.8 0-16 7.2-16 16v22.1l172.5 141.6c20.7 17 50.4 17 71.1 0L464 150.1V128c0-8.8-7.2-16-16-16zM48 212.2V384c0 8.8 7.2 16 16 16h384c8.8 0 16-7.2 16-16V212.2L322 328.8c-38.4 31.5-93.7 31.5-132 0zM0 128c0-35.3 28.7-64 64-64h384c35.3 0 64 28.7 64 64v256c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["search.suggest", "search.highlight", "search.share", "navigation.footer", "navigation.instant", "navigation.instant.progress", "navigation.tabs", "navigation.expand", "navigation.path", "navigation.top"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f1b6f286.min.js"></script>
+      
+    
+  </body>
+</html>

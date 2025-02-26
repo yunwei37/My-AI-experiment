@@ -1,0 +1,2444 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://yunwei37.github.io/My-AI-experiment/zh/Prompt-engineering/gpt-best-practice/">
+      
+      
+        <link rel="prev" href="../../Notes/inference-locally/">
+      
+      
+        <link rel="next" href="../prompt-dead/">
+      
+      
+        <link rel="alternate" type="application/rss+xml" title="RSS 订阅" href="../../../feed_rss_created.xml">
+        <link rel="alternate" type="application/rss+xml" title="已更新内容的 RSS 订阅" href="../../../feed_rss_updated.xml">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.5">
+    
+    
+      
+        <title>OpenAI 新发布GPT 最佳实践：落地大模型应用的策略和战术 - AGI Chaos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.8608ea7d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-XXXXXXXXXX"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-XXXXXXXXXX",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="OpenAI 新发布GPT 最佳实践：落地大模型应用的策略和战术 - AGI Chaos" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="https://yunwei37.github.io/My-AI-experiment/assets/images/social/Prompt-engineering/gpt-best-practice.zh.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://yunwei37.github.io/My-AI-experiment/zh/Prompt-engineering/gpt-best-practice/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="OpenAI 新发布GPT 最佳实践：落地大模型应用的策略和战术 - AGI Chaos" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="https://yunwei37.github.io/My-AI-experiment/assets/images/social/Prompt-engineering/gpt-best-practice.zh.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#openai-gpt" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../" title="AGI Chaos" class="md-header__button md-logo" aria-label="AGI Chaos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AGI Chaos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              OpenAI 新发布GPT 最佳实践：落地大模型应用的策略和战术
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="选择当前语言">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="../../../Prompt-engineering/gpt-best-practice/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="zh" class="md-select__link">
+              Chinese
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/yunwei37/My-AI-experiment" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link">
+        
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Agents/copilot/" class="md-tabs__link">
+          
+  
+  Agents
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Future/ai-os/" class="md-tabs__link">
+          
+  
+  Future
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Notes/inference-locally/" class="md-tabs__link">
+          
+  
+  Notes
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  Prompt engineering
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Writing/Feel-human/" class="md-tabs__link">
+          
+  
+  Writing
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../" title="AGI Chaos" class="md-nav__button md-logo" aria-label="AGI Chaos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    AGI Chaos
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/yunwei37/My-AI-experiment" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    首页
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Agents
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Agents
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Agents/copilot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GitHub Copilot 背后的 AI 编码技术：如何让 GPT 更好地理解你的代码
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Agents/kgent/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    简化内核编程：由 LLM 驱动的 eBPF 工具
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Agents/swarm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    多智能体系统是人工智能的未来吗？探讨OpenAI的Swarm实验
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Future
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Future
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Future/ai-os/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ai os
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Future/future-hostory/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    我们会从2020年代记住什么？回顾历史，展望未来
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Future/guidance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    guidance: 自然语言的编程语言
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Future/history/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Are AI similar to the computers in 1950s? Look back in histry
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Future/natual-language-program/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Natual language program
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Future/openai-canvas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    如何重新定义与AI的互动？Canvas能带来什么改变？
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Future/plugin/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AI 插件：未来的浏览器、前端与交互
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Notes
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Notes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Notes/inference-locally/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    本地推理 llama3 使用 llama.cpp 和 CPU
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Prompt engineering
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Prompt engineering
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    OpenAI 新发布GPT 最佳实践：落地大模型应用的策略和战术
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    OpenAI 新发布GPT 最佳实践：落地大模型应用的策略和战术
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      提高结果的六种策略
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="提高结果的六种策略">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      编写清晰的指令
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      提供参考文本
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      将复杂任务分解为简单子任务
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpt" class="md-nav__link">
+    <span class="md-ellipsis">
+      给予 GPT 足够的时间进行“思考”
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用外部工具
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      系统地测试变更
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      具体的示例
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="具体的示例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      策略：编写清晰的指令
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      战术：在查询中包含细节以获得更相关的回答
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      战术：要求模型扮演角色
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      战术：使用分隔符清晰标示输入的不同部分
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      战术：指定完成任务所需的步骤
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      战术：提供示例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      战术：指定所需的输出长度
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      策略：提供参考文本
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      战术：指示模型使用参考文本回答问题
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      战术：指示模型使用参考文本的引文进行回答
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      策略：将复杂任务分解为更简单的子任务
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      战术：使用意图分类来识别用户查询最相关的指令
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      战术
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      战术：分段汇总长文档并递归构造完整汇总
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpt_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      策略：给予 GPT 时间“思考”
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      战术：在匆忙得出结论前，指导模型自行找出解决方案
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      战术：使用内心独白或一系列查询来隐藏模型的推理过程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      战术：询问模型是否在前几轮查询中遗漏了任何内容
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      策略：使用外部工具
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      战术：利用基于嵌入的搜索实现高效的知识检索
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    <span class="md-ellipsis">
+      战术：使用代码执行进行更精确的计算或调用外部API
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      策略：系统地测试改变
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      战术：参照标准答案评估模型输出
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      相关资料
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prompt-dead/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    提示工程已死，AI工程万岁
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Writing
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Writing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Writing/Feel-human/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    厌倦了AI技术写作？以下是让你的文章更具人情味的方法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      提高结果的六种策略
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="提高结果的六种策略">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      编写清晰的指令
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      提供参考文本
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      将复杂任务分解为简单子任务
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpt" class="md-nav__link">
+    <span class="md-ellipsis">
+      给予 GPT 足够的时间进行“思考”
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用外部工具
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      系统地测试变更
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      具体的示例
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="具体的示例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      策略：编写清晰的指令
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      战术：在查询中包含细节以获得更相关的回答
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      战术：要求模型扮演角色
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      战术：使用分隔符清晰标示输入的不同部分
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      战术：指定完成任务所需的步骤
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      战术：提供示例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      战术：指定所需的输出长度
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      策略：提供参考文本
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      战术：指示模型使用参考文本回答问题
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      战术：指示模型使用参考文本的引文进行回答
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      策略：将复杂任务分解为更简单的子任务
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      战术：使用意图分类来识别用户查询最相关的指令
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      战术
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      战术：分段汇总长文档并递归构造完整汇总
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpt_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      策略：给予 GPT 时间“思考”
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      战术：在匆忙得出结论前，指导模型自行找出解决方案
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      战术：使用内心独白或一系列查询来隐藏模型的推理过程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      战术：询问模型是否在前几轮查询中遗漏了任何内容
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      策略：使用外部工具
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      战术：利用基于嵌入的搜索实现高效的知识检索
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    <span class="md-ellipsis">
+      战术：使用代码执行进行更精确的计算或调用外部API
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      策略：系统地测试改变
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      战术：参照标准答案评估模型输出
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      相关资料
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="openai-gpt">OpenAI 新发布GPT 最佳实践：落地大模型应用的策略和战术</h1>
+<p>在今年六月份，OpenAI 在其官方文档中更新了一篇关于提高 GPT 效果的策略和方法。这篇文章包含了六种核心策略，以及一些实际的提示词案例，和知识检索和代码执行等技术来优化GPT模型的最佳实践。通过使用这些最佳实践，用户可以更好地使用 GPT 模型，并提高其效果和性能。</p>
+<p>大部分的示例主要针对 GPT-4 模型，但对于其他模型而言也会有不少参考价值。</p>
+<p>本文主要翻译和整理自 OpenAI 的官方文档，原文地址：<a href="https://platform.openai.com/docs/guides/gpt-best-practices">https://platform.openai.com/docs/guides/gpt-best-practices</a></p>
+<blockquote>
+<p>一些相关的开源资料仓库：</p>
+<ul>
+<li>关于提示词工程（prompt）的指南、论文、讲座、笔记本和资源大全：<a href="https://github.com/yunwei37/Prompt-Engineering-Guide-zh-CN">https://github.com/yunwei37/Prompt-Engineering-Guide-zh-CN</a></li>
+<li>使用 OpenAI API 的例子和中文指南：<a href="https://github.com/yunwei37/openai-cookbook-zh-cn">https://github.com/yunwei37/openai-cookbook-zh-cn</a></li>
+<li>关于大语言模型的安全问题：提示词对抗、破解攻防的工具和案例集合：<a href="https://github.com/yunwei37/prompt-adversarial-collections">https://github.com/yunwei37/prompt-adversarial-collections</a></li>
+</ul>
+<p>文末附有更多相关参考资料。</p>
+</blockquote>
+<h2 id="_1">提高结果的六种策略</h2>
+<h3 id="_2">编写清晰的指令</h3>
+<p>GPT 无法读取您的思想。如果它们的输出过长，请要求简洁回复。如果它们的输出过于简单，请要求专业水平的写作。如果您不喜欢某种格式，请展示您想要看到的格式。GPT 越少猜测您想要的内容，您获得的可能性就越大。</p>
+<p>策略：</p>
+<ul>
+<li>在查询中包含详细信息，以获得更相关的答案。</li>
+<li>要求模型扮演某个角色。</li>
+<li>使用分隔符清晰地表示输入的不同部分。</li>
+<li>指定完成任务所需的步骤。</li>
+<li>提供示例。</li>
+<li>指定输出的期望长度。</li>
+<li>提供参考文本。</li>
+</ul>
+<h3 id="_3">提供参考文本</h3>
+<p>GPT 可以自信地编造假答案，特别是当被询问奇特的话题、引用和网址时。就像一张笔记可以帮助学生在考试中取得更好的成绩一样，为 GPT 提供参考文本可以帮助它以较少的虚构进行回答。</p>
+<p>策略：</p>
+<ul>
+<li>指示模型使用参考文本进行回答。</li>
+<li>指示模型使用参考文本中的引用进行回答。</li>
+</ul>
+<h3 id="_4">将复杂任务分解为简单子任务</h3>
+<p>就像在软件工程中将复杂系统分解为一组模块化组件一样，提交给 GPT 的任务也是如此。相比较而言，复杂任务的错误率往往较高。此外，复杂任务通常可以重新定义为一系列较简单任务的工作流程，其中早期任务的输出用于构建后续任务的输入。</p>
+<p>策略：</p>
+<ul>
+<li>使用意图分类来识别用户查询的最相关指令。</li>
+<li>对于需要非常长对话的对话应用程序，总结或过滤以前的对话。</li>
+<li>逐段概括长文档并递归构建完整概要。</li>
+</ul>
+<h3 id="gpt">给予 GPT 足够的时间进行“思考”</h3>
+<p>如果被要求计算 17 乘以 28，您可能无法立即知道答案，但可以通过时间来计算出来。同样，GPT 在试图立即回答问题时会出现更多的推理错误，而不是花时间思考答案。在得出答案之前，要求进行一连串的推理过程可以帮助 GPT 更可靠地推理出正确答案。</p>
+<p>策略：</p>
+<ul>
+<li>指示模型在得出结论之前自行解决问题。</li>
+<li>使用内心独白或一系列查询来隐藏模型的推理过程。</li>
+<li>询问模型是否在之前的处理中漏掉了任何内容。</li>
+</ul>
+<h3 id="_5">使用外部工具</h3>
+<p>通过向 GPT 提供其他工具的输出来弥补 GPT 的不足之处。例如，文本检索系统可以向 GPT 提供相关文档信息。代码执行引擎可以帮助 GPT 进行数学计算和代码运行。如果通过工具而不是 GPT 可以更可靠或更高效地完成任务，则将其卸载以获得最佳结果。</p>
+<p>策略：</p>
+<ul>
+<li>使用基于嵌入的搜索来实现高效的知识检索。</li>
+<li>使用代码执行来执行更准确的计算或调用外部 API。</li>
+</ul>
+<h3 id="_6">系统地测试变更</h3>
+<p>如果您能够进行衡量，那么改进性能就会更容易。在某些情况下，对提示的修改可能会在一些孤立的示例上实现更好的性能，但在更具代表性的一组示例上导致更差的综合性能。因此，为了确保变更对性能有正面的影响，可能需要定义一个全面的测试套件（也称为“评估”）。</p>
+<p>策略：</p>
+<ul>
+<li>使用参考标准答案评估模型输出。</li>
+</ul>
+<h2 id="_7">具体的示例</h2>
+<p>每个策略都可以通过具体的战术进行实施。这些战术旨在提供尝试的思路。它们并不是完全详尽的，您可以随意尝试不在此处列出的创造性想法。本文为每个具体的策略与战术提供了一些提示词示例。</p>
+<h3 id="_8">策略：编写清晰的指令</h3>
+<h3 id="_9"><strong>战术：在查询中包含细节以获得更相关的回答</strong></h3>
+<p>为了获得高度相关的回复，请确保请求提供任何重要的细节或上下文。否则，您将让模型猜测您的意思。</p>
+<table>
+<thead>
+<tr>
+<th>更差的指令</th>
+<th>更好的指令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>如何在Excel中添加数字？</td>
+<td>如何在Excel中累加一行美元金额？我想要自动为整个工作表的行求和，所有总数都显示在右侧的名为"Total"的列中。</td>
+</tr>
+<tr>
+<td>谁是总统？</td>
+<td>2021年墨西哥的总统是谁？选举多久举行一次？</td>
+</tr>
+<tr>
+<td>编写计算斐波那契数列的代码。</td>
+<td>编写一个高效计算斐波那契数列的TypeScript函数。详细注释代码，解释每个部分的作用以及为什么这样编写。</td>
+</tr>
+<tr>
+<td>总结会议记录。</td>
+<td>用一段话总结会议记录。然后，使用Markdown列表列出发言者及其主要观点。最后，列出发言者建议的下一步行动或待办事项（如果有）。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_10"><strong>战术：要求模型扮演角色</strong></h3>
+<p>系统消息可以用于指定模型在回复中扮演的角色。</p>
+<pre><code>USER
+写一封感谢信给我的螺栓供应商，感谢他们准时并在短时间内交货。这使我们能够交付一份重要的订单。
+
+SYSTEM
+当我请求帮助写东西时，你将在每个段落中至少加入一个笑话或俏皮话。
+
+</code></pre>
+<h3 id="_11"><strong>战术：使用分隔符清晰标示输入的不同部分</strong></h3>
+<p>像三重引号、XML标记、节标题等分隔符可以帮助标示需要以不同方式处理的文本部分。</p>
+<pre><code>USER
+使用三重引号中的文本撰写一首俳句。
+
+&quot;&quot;&quot;在这里插入文本&quot;&quot;&quot;
+
+</code></pre>
+<pre><code>SYSTEM
+你将获得一对关于同一主题的文章（用XML标记分隔）。首先总结每篇文章的论点。然后指出哪篇文章提出了更好的论点，并解释为什么。
+
+USER
+&lt;article&gt;在这里插入第一篇文章&lt;/article&gt;
+
+&lt;article&gt;在这里插入第二篇文章&lt;/article&gt;
+
+</code></pre>
+<pre><code>SYSTEM
+你将获得一份论文摘要和一个建议的标题。论文标题应该给读者一个很好的论文主题概念，同时也要引人注目。如果标题不符合这些标准，请
+
+提出5个备选方案。
+
+USER
+摘要：在这里插入摘要
+
+标题：在这里插入标题
+
+</code></pre>
+<p>对于像这样的简单任务，使用分隔符可能不会对输出质量产生影响。然而，任务越复杂，将任务细节澄清变得越重要。不要让 GPTs 努力理解您究竟在要求什么。</p>
+<h3 id="_12"><strong>战术：指定完成任务所需的步骤</strong></h3>
+<p>某些任务最好指定为一系列步骤。明确写出这些步骤可以让模型更容易跟随。</p>
+<pre><code>SYSTEM
+使用以下逐步说明来回应用户输入。
+
+步骤1 - 用户将用三重引号提供给您文本。用前缀&quot;Summary: &quot;对这段文本进行一句总结。
+
+步骤2 - 将步骤1中的总结翻译成西班牙语，并使用前缀&quot;Translation: &quot;。
+
+</code></pre>
+<h3 id="_13"><strong>战术：提供示例</strong></h3>
+<p>通常情况下，提供适用于所有示例的一般说明比通过示例演示任务的所有变体更高效，但在某些情况下，提供示例可能更容易。例如，如果您打算让模型复制一种难以明确描述的用户查询响应风格。这被称为"few-shot"提示。</p>
+<pre><code>SYSTEM
+用一致的风格回答。
+
+USER
+教我什么是耐心。
+
+ASSISTANT
+刻出最深峡谷的河流起源于一处平凡的泉眼；最壮丽的交响乐源于一颗单独的音符；最复杂的挂毯始于一根孤立的线缕。
+
+USER
+教我关于海洋。
+
+Open in Playground
+
+</code></pre>
+<h3 id="_14"><strong>战术：指定所需的输出长度</strong></h3>
+<p>您可以要求模型生成指定长度的输出。目标输出长度可以根据词数、句子数、段落数、项目符号数等来指定。但请注意，指示模型生成特定数量的单词并不具有高精确度。模型更可靠地生成具有特定段落或项目符号数量的输出。</p>
+<pre><code>USER
+用大约50个词总结由三重引号分隔的文本。
+
+&quot;&quot;&quot;在这里插入文本&quot;&quot;&quot;
+
+</code></pre>
+<pre><code>USER
+用2个段落总结由三重引号分隔的文本。
+
+&quot;&quot;&quot;在这里插入文本&quot;&quot;&quot;
+
+</code></pre>
+<pre><code>USER
+用3个项目符号总结由三重引号分隔的文本。
+
+&quot;&quot;&quot;在这里插入文本&quot;&quot;&quot;
+
+</code></pre>
+<h3 id="_15">策略：提供参考文本</h3>
+<h3 id="_16">战术：指示模型使用参考文本回答问题</h3>
+<p>如果我们能够为模型提供与当前查询相关的可信信息，那么我们可以指示模型使用提供的信息来组成其答案。</p>
+<pre><code>SYSTEM
+使用由三重引号分隔的所提供的文章来回答问题。如果答案在文章中找不到，写下&quot;I could not find an answer.&quot;
+USER
+&lt;插入文章，每篇文章由三重引号分隔&gt;
+
+问题：&lt;插入问题&gt;
+
+</code></pre>
+<p>鉴于GPT具有有限的上下文窗口，为了应用此策略，我们需要某种方式动态查找与被提问的问题相关的信息。可以使用嵌入来实现高效的知识检索。查看策略"使用基于嵌入的搜索实现高效知识检索"了解更多关于如何实现这一点的细节。</p>
+<h3 id="_17">战术：指示模型使用参考文本的引文进行回答</h3>
+<p>如果输入已经被相关知识补充，直接要求模型通过引用所提供文档的段落来添加引文到其回答中就很简单了。请注意，可以通过在所提供的文档中进行字符串匹配来编程验证输出中的引文。</p>
+<pre><code>SYSTEM
+你将得到一个由三重引号分隔的文档和一个问题。你的任务是只使用提供的文档来回答问题，并引用用来回答问题的文档段落。如果文档不包含回答此问题所需的信息，那么只需写下：“信息不足”。如果提供了问题的答案，必须用引文进行注释。使用以下格式引用相关段落 ({&quot;citation&quot;: …})。
+USER
+&quot;&quot;&quot;&lt;插入文档&gt;&quot;&quot;&quot;
+
+&lt;插入问题&gt;
+
+</code></pre>
+<h3 id="_18">策略：将复杂任务分解为更简单的子任务</h3>
+<h3 id="_19">战术：使用意图分类来识别用户查询最相关的指令</h3>
+<p>对于需要大量独立的指令集来处理不同情况的任务，首先分类查询类型并使用分类来确定需要哪些指令可能是有益的。这可以通过定义固定的类别并硬编码与处理给定类别任务相关的指令来实现。此过程也可以递归应用以将任务分解为一系列阶段。这种方法的优点是每个查询只包含执行任务的下一阶段所需的那些指令，这可能导致比使用单个查询执行整个任务时的错误率更低。这也可能导致成本更低，因为更大的提示运行成本更高（参见价格信息）。</p>
+<p>假设例如，对于客户服务应用，查询可能被有用地分类如下：</p>
+<pre><code>SYSTEM
+你将得到客户服务查询。将每个查询分类为主要类别和次要类别。以json格式提供你的输出，包含主要和次要两个关键字。
+
+主要类别：计费，技术支持，账户管理，或一般咨询。
+
+计费次要类别：
+- 退订或升级
+- 添加付款方式
+- 收费解释
+- 争议收费
+
+技术支持次要类别：
+- 故障排除
+- 设备兼容性
+- 软件更新
+
+账户管理次要类别：
+- 密码重置
+- 更新个人信息
+- 关闭账户
+- 账户安全
+
+一般咨询次要类别：
+- 产品信息
+- 价格
+- 反馈
+- 要求与人对话
+USER
+我需要让我的互联网再次工作。
+
+</code></pre>
+<p>基于客户查询的分类，可以向GPT模型提供一组更具体的指令来处理下一步。例如，假设客户需要帮助"故障排除"。</p>
+<pre><code>SYSTEM
+你将得到需要在技术支持环境中进行故障排除的客户服务查询。通过以下方式帮助用户：
+
+- 让他们检查到/从路由器的所有电缆是否已连接。注意，电缆随着时间的推移会常常松动。
+- 如果所有电缆都已连接并且问题仍然存在，询问他们正在使用哪种路由器模型
+- 现在你将建议他们如何重新启动他们的设备：
+-- 如果型号是MTD-327J，建议他们按下红色按钮并保持5秒钟，然后等待5分钟后再测试连接。
+-- 如果型号是MTD-327S，建议他们拔掉并重新插入，然后等待5分钟后再测试连接。
+- 如果客户在重启设备并等待5分钟后的问题仍然存在，通过输出{&quot;IT support requested&quot;}将他们连接到IT支持。
+- 如果用户开始提问与此主题无关的问题，那么请确认他们是否希望结束当前关于故障排除的聊天，并根据以下方案对他们的请求进行分类：
+
+&lt;插入上述主/次分类方案&gt;
+USER
+我需要让我的互联网再次工作。
+
+</code></pre>
+<p>请注意，已经指示模型在会话状态改变时发出特殊的字符串。这使我们能够将我们的系统转变为状态机，其中状态决定哪些指令被注入。通过跟踪状态，什么指令在那个状态下是相关的，以及从那个状态允许什么状态转换，我们可以在用户体验周围设置保护，这在一种不太结构化的方法中很难实现。</p>
+<h3 id="_20">战术</h3>
+<p>：对需要进行非常长对话的对话应用程序，对先前的对话进行汇总或过滤 由于GPT具有固定的上下文长度，用户和助手之间的对话不能无限地继续，如果整个对话都包含在上下文窗口中。</p>
+<p>解决这个问题的方法有很多，其中之一是对对话的前几个回合进行汇总。一旦输入的大小达到预定的阈值长度，这可能会触发一个查询，该查询会汇总对话的一部分，先前对话的汇总可以作为系统消息的一部分。或者，先前的对话可以在整个对话过程中异步地进行汇总。</p>
+<p>另一个解决方案是动态选择与当前查询最相关的对话的先前部分。参见战术"使用基于嵌入的搜索来实现高效的知识检索"。</p>
+<h3 id="_21">战术：分段汇总长文档并递归构造完整汇总</h3>
+<p>由于GPT具有固定的上下文长度，它们不能在单个查询中用来汇总超过上下文长度减去生成汇总长度的文本。</p>
+<p>要汇总一个非常长的文档，如一本书，我们可以使用一系列的查询来汇总每一部分的文档。部分汇总可以被连接起来并进行汇总，产生汇总的汇总。这个过程可以递归地进行，直到整个文档被汇总。如果需要使用关于早期部分的信息来理解后来的部分，那么在对那一点的内容进行汇总时包含一个运行汇总的文本，这可能是一个有用的技巧。OpenAI在之前的研究中已经研究了这种用于汇总书籍的程序的有效性，使用的是GPT-3的变体。</p>
+<h3 id="gpt_1">策略：给予 GPT 时间“思考”</h3>
+<h3 id="_22"><strong>战术：在匆忙得出结论前，指导模型自行找出解决方案</strong></h3>
+<p>有时候，我们明确地指导模型在得出结论之前先进行从头至尾的推理，会得到更好的结果。比如，假设我们希望模型评估一个学生解决数学问题的方法。最直观的做法就是直接询问模型学生的解决方案是否正确。</p>
+<pre><code>SYSTEM
+判断学生的解答是否正确。
+
+USER
+问题描述：我正在建造一个太阳能发电装置，我需要帮助计算财务状况。
+- 土地费用为每平方英尺100美元
+- 我可以以每平方英尺250美元的价格购买太阳能板
+- 我已经商定了一个每年固定费用为10万美元的维护合同，以及每平方英尺额外的10美元
+第一年运营的总成本是多少，作为面积（平方英尺）的函数来表示。
+
+学生的解答：设x为装置的面积（平方英尺）。
+1. 土地费用：100x
+2. 太阳能板费用：250x
+3. 维护费用：100,000 + 100x
+总成本：100x + 250x + 100,000 + 100x = 450x + 100,000
+
+ASSISTANT
+学生的解答是正确的。
+
+</code></pre>
+<p>但实际上，学生的解答并不正确！我们可以通过提示模型首先生成自己的解答，从而让模型成功地注意到这一点。</p>
+<pre><code>SYSTEM
+首先自己解决这个问题，然后将你的解答与学生的解答进行比较，评估学生的解答是否正确。在你自己解决这个问题之前，不要判断学生的解答是否正确。
+
+USER
+问题描述：我正在建造一个太阳能发电装置，我需要帮助计算财务状况。
+- 土地费用为每平方英尺100美元
+- 我可以以每平方英尺250美元的价格购买太阳能板
+- 我已经商定了一个每年固定费用为10万美元的维护合同，以及每平方英尺额外的10美元
+第一年运营的总成本是多少，作为面积（平方英尺）的函数来表示。
+
+学生的解答：设x为装置的面积（平方英尺）。
+1. 土地费用：100x
+2. 太阳能板费用：250x
+3. 维护费用：100,000 + 100x
+总成本：100x
+
+ + 250x + 100,000 + 100x = 450x + 100,000
+
+ASSISTANT
+设x为装置的面积（平方英尺）。
+1. 土地费用：100x
+2. 太阳能板费用：250x
+3. 维护费用：100,000 + 10x
+总成本：100x + 250x + 100,000 + 10x = 360x + 100,000
+
+学生的解答是不正确的。他们在计算维护费用时犯了错误，使用了100x而不是10x。第一年运营的正确总成本应为360x + 100,000。
+
+</code></pre>
+<h3 id="_23"><strong>战术：使用内心独白或一系列查询来隐藏模型的推理过程</strong></h3>
+<p>前一个战术表明，模型有时需要在回答特定问题之前详细地推理一个问题。对于某些应用程序，模型用来得出最终答案的推理过程是不适合与用户分享的。例如，在辅导应用程序中，我们可能希望鼓励学生自己找出答案，但是模型对学生解答的推理过程可能会向学生透露答案。</p>
+<p>内心独白是一种可以用来解决这个问题的战术。内心独白的想法是，指导模型将那些应该对用户隐藏的输出部分放入一种结构化的格式中，使其易于解析。然后，在向用户呈现输出之前，解析输出并只使部分输出可见。</p>
+<pre><code>SYSTEM
+按照以下步骤回答用户的查询。
+
+步骤 1 - 首先自己解决问题。不要依赖学生的解答，因为它可能是错误的。将此步骤的所有工作都包含在三引号（&quot;&quot;&quot;）中。
+
+步骤 2 - 将你的解答与学生的解答进行比较，并评估学生的解答是否正确。将此步骤的所有工作都包含在三引号（&quot;&quot;&quot;）中。
+
+步骤 3 - 如果学生犯了错误，确定你可以给学生什么提示，而不透露答案。将此步骤的所有工作都包含在三引号（&quot;&quot;&quot;）中。
+
+步骤 4 - 如果学生犯了错误，将上一步的提示提供给学生（在三引号之外）。写&quot;提示：&quot;，而不是&quot;步骤4 - ...”。
+
+USER
+问题描述： &lt;插入问题描述&gt;
+
+学生的解答： &lt;插入学生的解答&gt;
+
+</code></pre>
+<p>或者，这也可以通过一系列查询实现，其中所有查询的输出（除了最后一个）都对最终用户隐藏。</p>
+<p>首先，我们可以让模型自己解决问题。</p>
+<p>由于这个初始查询不需要学生的解答，所以可以省略它。这提供了额外的优势，即模型的解答不可能被学生尝试的解答偏倚。</p>
+<pre><code>USER
+&lt;插入问题描述&gt;
+
+</code></pre>
+<p>接下来，我们可以让模型使用所有可用的信息来评估学生解答的正确性。</p>
+<pre><code>SYSTEM
+将你的解答与学生的解答进行比较，然后评估学生的解答是否正确。
+
+USER
+问题描述：&quot;&quot;&quot;&lt;插入问题描述&gt;&quot;&quot;&quot;
+
+你的解答：&quot;&quot;&quot;&lt;插入模型生成的解答&gt;&quot;&quot;&quot;
+
+学生的解答：&quot;&quot;&quot;&lt;插入学生的解答&gt;&quot;&quot;&quot;
+
+</code></pre>
+<p>最后，我们可以让模型使用自己的分析，构造一个有帮助的导师的回复。</p>
+<pre><code>SYSTEM
+你是一位数学导师。如果学生犯了错误，以不透露答案的方式给学生提供一个提示。如果学生没有犯错误，简单地对他们提供鼓励性的评论。
+
+USER
+问题描述：&quot;&quot;&quot;&lt;插入问题描述&gt;&quot;&quot;&quot;
+
+你的解答：&quot;&quot;&quot;&lt;插入模型生成的解答&gt;&quot;&quot;&quot;
+
+学生的解答：&quot;&quot;&quot;&lt;插入学生的解答&gt;&quot;&quot;&quot;
+
+分析：&quot;&quot;&quot;&lt;插入模型在前一步生成的分析&gt;&quot;&quot;&quot;
+
+</code></pre>
+<h3 id="_24"><strong>战术：询问模型是否在前几轮查询中遗漏了任何内容</strong></h3>
+<p>假设我们正在使用模型列出与特定问题相关的源文本的摘录。在列出每一篇摘录之后，模型需要确定是否应开始编写另一篇，或者是否应该停止。如果源文档很大，模型通常会过早地停止，无法列出所有相关的摘录。在这种情况下，通过提示模型用后续查询找出它在前几轮中遗漏的摘录，通常可以获得更好的性能。</p>
+<pre><code>SYSTEM
+你将获得一个用三引号分隔的文档。你的任务是选择与以下问题相关的摘录：&quot;人工智能历史上发生过哪些重大的范式转变。&quot;
+
+确保摘录包含所有相关的上下文，以便解释它们 - 换句话说，不要提取缺少重要上下文的小片段。以如下的JSON格式提供输出：
+
+[{&quot;摘录&quot;: &quot;...&quot;},
+...
+{&quot;摘录&quot;: &quot;...&quot;}]
+
+USER
+&quot;&quot;&quot;&lt;插入文档&gt;&quot;&quot;&quot;
+
+ASSISTANT
+[{&quot;摘录&quot;: &quot;模型在这里写下一段摘录&quot;},
+...
+{&quot;摘录&quot;: &quot;模型在这里写下另一段摘录&quot;}]
+
+USER
+还有其他相关的摘录吗？请注意不要重复摘录。并确保
+
+新的摘录确实与问题有关，而且在旧的摘录中还没有涵盖。
+
+ASSISTANT
+[{&quot;摘录&quot;: &quot;模型在这里写下一段摘录&quot;},
+...
+{&quot;摘录&quot;: &quot;模型在这里写下另一段摘录&quot;}]
+
+</code></pre>
+<p>注意，如果文档特别长，这个战术可能需要多次应用。</p>
+<h3 id="_25">策略：使用外部工具</h3>
+<h3 id="_26">战术：利用基于嵌入的搜索实现高效的知识检索</h3>
+<p>模型可以利用作为其输入的外部信息源。这可以帮助模型生成更有依据和最新的响应。例如，如果用户询问关于特定电影的问题，将有关该电影的高质量信息（如演员、导演等）添加到模型的输入可能是有用的。嵌入可以用来实现高效的知识检索，以便在运行时动态地将相关信息添加到模型输入。</p>
+<p>文本嵌入是一种可以测量文本字符串之间相关性的向量。相似或相关的字符串将比无关的字符串更接近。这个事实，再加上快速向量搜索算法的存在，意味着嵌入可以被用来实现高效的知识检索。具体来说，文本语料库可以被切割成块，每个块可以被嵌入并存储。然后，给定的查询可以被嵌入，向量搜索可以被执行，以找到与查询最相关的文本块（即，在嵌入空间中最接近的）。</p>
+<p>实施示例可以在OpenAI Cookbook中找到。请参阅战术"Instruct the model to use retrieved knowledge to answer queries"，以获取如何使用知识检索来最小化模型制造错误事实的可能性的例子。</p>
+<h3 id="api">战术：使用代码执行进行更精确的计算或调用外部API</h3>
+<p>我们不能依赖GPT自己精确地进行算术或长时间的计算。在需要的情况下，可以指导模型编写和运行代码，而不是自己进行计算。特别是，可以指导模型将要运行的代码放入特定格式，如三重反引号。在产生输出后，可以提取并运行代码。最后，如果必要，可以将代码执行引擎（如Python解释器）的输出作为模型下一次查询的输入。</p>
+<pre><code>SYSTEM
+你可以通过将代码包含在三重反引号中来编写和执行Python代码，例如 ```代码在此```。使用这种方式来进行计算。
+USER
+找出以下多项式的所有实数根：3*x**5 - 5*x**4 - 3*x**3 - 7*x - 10。
+
+</code></pre>
+<p>代码执行的另一个好用途是调用外部API。如果模型在API的正确使用上得到了指导，它就可以编写使用这个API的代码。可以通过向模型提供文档和/或代码示例来指导模型如何使用API。</p>
+<pre><code>SYSTEM
+你可以通过将代码包含在三重反引号中来编写和执行Python代码。另外注意，你可以使用以下模块帮助用户向朋友发送消息：
+
+```python
+import
+
+ message
+message.write(to=&quot;John&quot;, message=&quot;Hey, want to meetup after work?&quot;)
+
+</code></pre>
+<p>警告：执行由模型产生的代码本质上并不安全，任何希望执行此操作的应用都应该采取预防措施。特别地，需要一个沙箱化的代码执行环境来限制不受信任的代码可能导致的危害。</p>
+<h3 id="_27">策略：系统地测试改变</h3>
+<p>有时候，很难确定一个改变——例如，新的指令或新的设计——是否使你的系统更好或更差。观察几个例子可能会暗示哪个更好，但是在小样本的情况下，很难区分真正的改进和随机运气。可能这种变化在某些输入上提高了性能，但在其他输入上却降低了性能。</p>
+<p>评估程序（或“评估”）对优化系统设计很有用。良好的评估具有以下特性：</p>
+<ul>
+<li>代表现实世界的使用情况（或至少多样化）</li>
+<li>包含许多测试用例，以获得更大的统计能力（见下表作为指南）</li>
+<li>易于自动化或重复</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>检测到的差异</th>
+<th>95%置信度所需的样本大小</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>30%</td>
+<td>~10</td>
+</tr>
+<tr>
+<td>10%</td>
+<td>~100</td>
+</tr>
+<tr>
+<td>3%</td>
+<td>~1,000</td>
+</tr>
+<tr>
+<td>1%</td>
+<td>~10,000</td>
+</tr>
+</tbody>
+</table>
+<p>输出的评估可以由计算机、人或两者混合完成。计算机可以使用目标标准（例如，具有单一正确答案的问题）以及某些主观或模糊的标准自动化评估，其中模型输出由其他模型查询进行评估。OpenAI Evals 是一个开源软件框架，提供用于创建自动化评估的工具。</p>
+<p>当存在一系列被认为是同等高质量的可能输出（例如，对于具有长答案的问题）时，基于模型的评估可能有用。哪些可以用基于模型的评估真实地进行评估，哪些需要人来评估的边界是模糊的，随着模型变得越来越有能力，这个边界正在不断地移动。我们鼓励进行实验，以确定基于模型的评估对你的用例有多大的效果。</p>
+<h3 id="_28">战术：参照标准答案评估模型输出</h3>
+<p>假设已知一个问题的正确答案应该参考一组特定的已知事实。然后，我们可以使用模型查询来计算答案中包含了多少必需的事实。</p>
+<p>例如，使用以下的系统消息：</p>
+<pre><code>SYSTEM
+您将获得由三个引号界定的文本，这应该是问题的答案。检查以下的信息是否直接包含在答案中：
+
+- 尼尔·阿姆斯特朗是第一个登上月球的人。
+- 尼尔·阿姆斯特朗第一次走上月球的日期是1969年7月21日。
+
+对于这些点，请执行以下步
+
+骤：
+
+1 - 重述这一点。
+2 - 提供一个来自答案的引用，这个引用最接近这一点。
+3 - 考虑一个不了解这个主题的人读了引用是否可以直接推断出这一点。在做决定之前，解释为什么或为什么不。
+4 - 如果3的答案是肯定的，写“是”，否则写“否”。
+
+最后，提供一个“是”的答案的数量。将这个数量作为{&quot;count&quot;: &lt;insert count here&gt;}提供。
+
+</code></pre>
+<p>下面是一个例子，其中两个要点都得到了满足：</p>
+<pre><code>SYSTEM
+&lt;insert system message above&gt;
+USER
+&quot;&quot;&quot;尼尔·阿姆斯特朗因为是第一个踏上月球的人而闻名。这个历史性的事件发生在1969年7月21日，是阿波罗11号任务的一部分。&quot;&quot;&quot;
+
+</code></pre>
+<p>这是一个只满足一个要点的输入示例：</p>
+<pre><code>SYSTEM
+&lt;insert system message above&gt;
+USER
+&quot;&quot;&quot;尼尔·阿姆斯特朗在他从月球模块走下来时创造了历史，成为第一个在月球上行走的人。&quot;&quot;&quot;
+
+</code></pre>
+<p>这是一个没有满足任何要点的输入示例：</p>
+<pre><code>SYSTEM
+&lt;insert system message above&gt;
+USER
+&quot;&quot;&quot;在'69年的夏天，一个宏大的旅程，
+阿波罗11号，像传说的手一样大胆。
+阿姆斯特朗迈出了一步，历史展开，
+他说的'一个小步'，是为了一个新的世界。&quot;&quot;&quot;
+
+</code></pre>
+<p>这种类型的基于模型的评估有许多可能的变体。考虑下面这个跟踪候选答案和金标准答案之间的重叠种类，以及候选答案是否与金标准答案的任何部分矛盾的变体。</p>
+<pre><code>SYSTEM
+按照以下步骤进行。
+
+步骤1：逐步推理提交的答案与专家答案比较，是：不相交、子集、超集，还是有相等的信息集。
+
+步骤2：逐步推理提交的答案是否与专家答案的任何部分矛盾。
+
+步骤3：输出一个JSON对象，结构如下：{&quot;containment&quot;: &quot;disjoint&quot; or &quot;subset&quot; or &quot;superset&quot; or &quot;equal&quot;, &quot;contradiction&quot;: True or False}
+
+</code></pre>
+<p>这是一个输入例子，其中的答案质量较差：</p>
+<pre><code>SYSTEM
+&lt;insert system message above&gt;
+USER
+Question: &quot;&quot;&quot;尼尔·阿姆斯特朗最著名的事件是什么，它发生在什么时候？假设UTC时间。&quot;&quot;&quot;
+
+Submitted Answer: &quot;&quot;&quot;他在月球上
+
+走了一圈吗？&quot;&quot;&quot;
+
+Expert Answer: &quot;&quot;&quot;尼尔·阿姆斯特朗最为人所知的是他是第一个踏上月球的人。这一历史性的事件发生在1969年7月21日，是NASA的阿波罗11号任务的一部分。阿姆斯特朗踏上月球表面时说的名言：&quot;那是人类的一小步，却是人类的一大步&quot;，至今仍被广泛引用。
+&quot;&quot;&quot;
+
+</code></pre>
+<p>这是一个有好答案的输入示例：</p>
+<pre><code>SYSTEM
+&lt;insert system message above&gt;
+USER
+Question: &quot;&quot;&quot;尼尔·阿姆斯特朗最著名的事件是什么，它发生在什么时候？假设UTC时间。&quot;&quot;&quot;
+
+Submitted Answer: &quot;&quot;&quot;在1969年7月21日的大约02:56 UTC时间，尼尔·阿姆斯特朗成为第一个踏上月球表面的人，标志着人类历史上的一项伟大成就。大约20分钟后，奥尔德林也加入到他的行列。&quot;&quot;&quot;
+
+Expert Answer: &quot;&quot;&quot;尼尔·阿姆斯特朗最为人所知的是他是第一个踏上月球的人。这一历史性的事件发生在1969年7月21日，是阿波罗11号任务的一部分。&quot;&quot;&quot;
+
+</code></pre>
+<h2 id="_29">相关资料</h2>
+<ul>
+<li><strong><em>*OpenAI 官方 Blog：</em></strong><em>使用 </em><strong><em>OpenAI API 进行提示词工程的最佳实践：</em></strong>*关于如何构建一个 AI 应用，从提示词工程到向量数据库、微调等等的详细指南。</li>
+</ul>
+<p><a href="https://help.openai.com/en/articles/6654000-best-practices-for-prompt-engineering-with-openai-api">https://help.openai.com/en/articles/6654000-best-practices-for-prompt-engineering-with-openai-api</a></p>
+<p>这篇文章主要针对于 GPT-3，可能相对而言有些过时，但也是一个入门的不错选择。</p>
+<ul>
+<li><strong>微软发布的关于构建 AI 应用的概念和学习资料：</strong>关于如何构建一个 AI 应用，从提示词工程到向量数据库、微调等等的详细指南。</li>
+</ul>
+<p><a href="https://learn.microsoft.com/en-us/azure/cognitive-services/openai/concepts/advanced-prompt-engineering">https://learn.microsoft.com/en-us/azure/cognitive-services/openai/concepts/advanced-prompt-engineering</a></p>
+<p>这里也有一些相关的开源资料仓库：</p>
+<ul>
+<li>关于提示词工程（prompt）的指南、论文、讲座、笔记本和资源大全：<a href="https://github.com/yunwei37/Prompt-Engineering-Guide-zh-CN">https://github.com/yunwei37/Prompt-Engineering-Guide-zh-CN</a></li>
+<li>使用 OpenAI API 的例子和中文指南：<a href="https://github.com/yunwei37/openai-cookbook-zh-cn">https://github.com/yunwei37/openai-cookbook-zh-cn</a></li>
+<li>关于大语言模型的安全问题：提示词对抗、破解攻防的工具和案例集合：<a href="https://github.com/yunwei37/prompt-adversarial-collections">https://github.com/yunwei37/prompt-adversarial-collections</a></li>
+</ul>
+<blockquote>
+<p>了解更多请访问 <a href="https://yunwei37.github.io/My-AI-experiment/">https://yunwei37.github.io/My-AI-experiment/</a> 或者 Github： <a href="https://github.com/yunwei37/My-AI-experiment">https://github.com/yunwei37/My-AI-experiment</a></p>
+</blockquote>
+<p><a class="md-button" href="https://x.com/intent/tweet?text=OpenAI%20%E6%96%B0%E5%8F%91%E5%B8%83GPT%20%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%EF%BC%9A%E8%90%BD%E5%9C%B0%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%BA%94%E7%94%A8%E7%9A%84%E7%AD%96%E7%95%A5%E5%92%8C%E6%88%98%E6%9C%AF%0A&amp;url=https://yunwei37.github.io/My-AI-experiment/zh/Prompt-engineering/gpt-best-practice/">Share on <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg></span></a>
+<a class="md-button" href="https://www.facebook.com/sharer/sharer.php?u=https://yunwei37.github.io/My-AI-experiment/zh/Prompt-engineering/gpt-best-practice/">Share on <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a9 9 0 0 1 1.141.195v3.325a9 9 0 0 0-.653-.036 27 27 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.7 1.7 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647"/></svg></span></a></p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2025年2月26日</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="创建日期">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2025年2月26日</span>
+  </span>
+
+    
+    
+      
+  
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="贡献者">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+      
+    </span>
+    <nav>
+      
+        <a href="mailto:yusen356@gmail.com">weekendfish</a>
+    </nav>
+  </span>
+
+    
+    
+  </aside>
+
+
+  
+
+
+
+
+<script src="https://giscus.app/client.js"
+        data-repo="yunwei37/My-AI-experiment"
+        data-repo-id="R_kgDOM_JICg"
+        data-category="General"
+        data-category-id="DIC_kwDOM_JICs4CjkPa"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../../Notes/inference-locally/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 本地推理 llama3 使用 llama.cpp 和 CPU">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                本地推理 llama3 使用 llama.cpp 和 CPU
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../prompt-dead/" class="md-footer__link md-footer__link--next" aria-label="下一页: 提示工程已死，AI工程万岁">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                提示工程已死，AI工程万岁
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:yunwei37@gmail.com" target="_blank" rel="noopener" title="send me an email" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M64 112c-8.8 0-16 7.2-16 16v22.1l172.5 141.6c20.7 17 50.4 17 71.1 0L464 150.1V128c0-8.8-7.2-16-16-16zM48 212.2V384c0 8.8 7.2 16 16 16h384c8.8 0 16-7.2 16-16V212.2L322 328.8c-38.4 31.5-93.7 31.5-132 0zM0 128c0-35.3 28.7-64 64-64h384c35.3 0 64 28.7 64 64v256c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["search.suggest", "search.highlight", "search.share", "navigation.footer", "navigation.instant", "navigation.instant.progress", "navigation.tabs", "navigation.expand", "navigation.path", "navigation.top"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.f1b6f286.min.js"></script>
+      
+    
+  </body>
+</html>

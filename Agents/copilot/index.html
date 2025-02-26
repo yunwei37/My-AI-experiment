@@ -1,0 +1,1553 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://yunwei37.github.io/My-AI-experiment/Agents/copilot/">
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+        <link rel="next" href="../kgent/">
+      
+      
+        <link rel="alternate" type="application/rss+xml" title="RSS feed" href="../../feed_rss_created.xml">
+        <link rel="alternate" type="application/rss+xml" title="RSS feed of updated content" href="../../feed_rss_updated.xml">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.5">
+    
+    
+      
+        <title>The AI Coding Technology Behind GitHub Copilot: How to Make GPT Understand Your Code Better - AGI Chaos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8608ea7d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-XXXXXXXXXX"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-XXXXXXXXXX",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="The AI Coding Technology Behind GitHub Copilot: How to Make GPT Understand Your Code Better - AGI Chaos" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="https://yunwei37.github.io/My-AI-experiment/assets/images/social/Agents/copilot.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://yunwei37.github.io/My-AI-experiment/Agents/copilot/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="The AI Coding Technology Behind GitHub Copilot: How to Make GPT Understand Your Code Better - AGI Chaos" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="https://yunwei37.github.io/My-AI-experiment/assets/images/social/Agents/copilot.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#the-ai-coding-technology-behind-github-copilot-how-to-make-gpt-understand-your-code-better" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="AGI Chaos" class="md-header__button md-logo" aria-label="AGI Chaos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AGI Chaos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              The AI Coding Technology Behind GitHub Copilot: How to Make GPT Understand Your Code Better
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../../zh/Agents/copilot/" hreflang="zh" class="md-select__link">
+              Chinese
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/yunwei37/My-AI-experiment" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  Agents
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Future/ai-os/" class="md-tabs__link">
+          
+  
+  Future
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Notes/inference-locally/" class="md-tabs__link">
+          
+  
+  Notes
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Prompt-engineering/gpt-best-practice/" class="md-tabs__link">
+          
+  
+  Prompt engineering
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Writing/Feel-human/" class="md-tabs__link">
+          
+  
+  Writing
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="AGI Chaos" class="md-nav__button md-logo" aria-label="AGI Chaos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    AGI Chaos
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/yunwei37/My-AI-experiment" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Agents
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Agents
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    The AI Coding Technology Behind GitHub Copilot: How to Make GPT Understand Your Code Better
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    The AI Coding Technology Behind GitHub Copilot: How to Make GPT Understand Your Code Better
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#from-openais-codex-model-to-github-copilot" class="md-nav__link">
+    <span class="md-ellipsis">
+      From OpenAI's Codex Model to GitHub Copilot
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-context-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Context Matters
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-github-copilot-understands-your-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      How GitHub Copilot Understands Your Code
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-and-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary and Review
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Summary and Review">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learn-more" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learn More
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kgent/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Simplifying Kernel Programming: The LLM-Powered eBPF Tool
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../swarm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Are Multi-Agent Systems the Future of AI? A Look at OpenAI’s Swarm Experiment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Future
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Future
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Future/ai-os/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AI OS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Future/future-hostory/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    What Will We Remember from the 2020s? Looking Back in history and Thinking Forward
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Future/guidance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Guidance: A Programming Language for Natural Language
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Future/history/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Are AI Similar to Computers in the 1950s? A Look Back in History
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Future/natual-language-program/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    自然语言编程: 从 AutoGPT 往前迈的一小步
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Future/openai-canvas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rethinking AI Interaction: OpenAI's Canvas and the Future of User Engagement
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Future/plugin/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AI Plugins: The Future of Browsers, Front-end, and Interaction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Notes
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Notes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Notes/inference-locally/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Local inference llama3 with llama.cpp and CPU
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Prompt engineering
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Prompt engineering
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Prompt-engineering/gpt-best-practice/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gpt best practice
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Prompt-engineering/prompt-dead/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prompt Engineering is Dead, Long Live AI Engineering
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Writing
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Writing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Writing/Feel-human/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tired of AI Tech Writing? Here’s How to Make Your Posts More Human
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#from-openais-codex-model-to-github-copilot" class="md-nav__link">
+    <span class="md-ellipsis">
+      From OpenAI's Codex Model to GitHub Copilot
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-context-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Context Matters
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-github-copilot-understands-your-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      How GitHub Copilot Understands Your Code
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-and-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary and Review
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Summary and Review">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learn-more" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learn More
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="the-ai-coding-technology-behind-github-copilot-how-to-make-gpt-understand-your-code-better">The AI Coding Technology Behind GitHub Copilot: How to Make GPT Understand Your Code Better</h1>
+<p>AI coding tools are gradually changing our programming habits and experiences, with GitHub Copilot being the best representative of this change. This product uses powerful algorithms to select the most relevant code snippets and comments from multiple sources based on the developer's context and needs, thereby generating coding suggestions. In this article, we'll delve into the technical ideas behind GitHub Copilot, drawing on some copilot prompts obtained through reverse engineering, with the hope of providing some assistance in building AI-assisted coding tools. This content is partly translated and organized from Microsoft's blog, and we will also discuss other people's research findings and views.</p>
+<blockquote>
+<p>GitHub Copilot selects relevant code snippets or comments through algorithms and uses context understanding to generate coding suggestions. GitHub Copilot has developed a sophisticated prompt engineering strategy, prioritizing information about developer context in the prompt library, using a vector database to create a customized coding experience for developers working in private repositories or handling proprietary code.</p>
+</blockquote>
+<p>To make developers using GitHub Copilot feel like they are collaborating with another programmer, GitHub's machine learning experts have been researching, developing, and testing new features, many of which focus on enhancing the AI programmer's context understanding. This is because good communication is crucial for collaborative programming, and inferring context is essential for achieving good communication.</p>
+<p>To uncover the work behind the scenes, the original author asked GitHub researchers and engineers about their efforts to improve Copilot's context understanding. Here is what they discovered.</p>
+<h2 id="from-openais-codex-model-to-github-copilot">From OpenAI's Codex Model to GitHub Copilot</h2>
+<p>When OpenAI released GPT-3 in June 2020, GitHub knew that developers would benefit from a product that utilized this model specifically for coding. Thus, they provided input to OpenAI to help build Codex, a descendant of GPT-3 and LLM that would drive GitHub Copilot. This programmer pairing tool was launched as a technical preview in June 2021 and became the world's first large-scale generative AI coding tool in June 2022.</p>
+<p>To ensure the model had the best information to make optimal predictions quickly, GitHub's machine learning (ML) researchers conducted a lot of work known as prompt engineering (explained in detail below) so that the model would provide contextually relevant responses with low latency.</p>
+<p>Although GitHub is always experimenting with new models, Codex was the first truly robust generative AI model available, and GitHub's machine learning engineer David Slater stated: "The practical experience we gain from iterating on model and prompt improvements is invaluable."</p>
+<p>All these experiments ultimately led to a pair programming tool that "freed up developers' time so they could focus on more meaningful work." The tool is even a huge help when starting new projects or files from scratch, as it provides a starting point that developers can adjust and improve as needed, according to GitHub's machine learning researcher Alice Li.</p>
+<h2 id="why-context-matters">Why Context Matters</h2>
+<p>Developers use details like pull requests, project folders, and open issues to determine the context of their code. When it comes to generating AI coding tools, Copilot needs to teach these tools what information to use to do the same thing.</p>
+<p>Transformer LLMs excel at connections and big-picture thinking. These large language models (LLMs) power generative AI coding tools, which are trained on massive amounts of code and human language. Today's state-of-the-art LLMs are transformers, allowing them to establish connections between the user-inputted text and the model-generated output. This is why today's generative AI tools provide more contextually relevant responses than earlier AI models.</p>
+<p>However, AI needs to be told which information is relevant to your code. Currently, transformers that are fast enough to support GitHub Copilot can only handle about 6,000 characters at a time. While this is sufficient to advance and accelerate tasks like code completion and code change summarization, the limited character count means not all of a developer's code can be used as context.</p>
+<p>Thus, Copilot's challenge is figuring out not only which data to provide to the model but also how to best sort and input it for optimal suggestions.</p>
+<h2 id="how-github-copilot-understands-your-code">How GitHub Copilot Understands Your Code</h2>
+<p><strong>It all comes down to prompts</strong>, which are compilations of integrated IDE code and contextual information for the model to use. These prompts are generated by background algorithms and can produce coding suggestions at any moment while you're coding. This is why GitHub Copilot generates coding suggestions, whether you're writing or have just finished a comment or are handling complex code.</p>
+<ul>
+<li><strong>Here’s how prompt creation occurs</strong>: A set of algorithms first selects relevant code snippets or comments from the current file and other sources. Then, these snippets and comments are prioritized, filtered, and assembled to form the final prompt.</li>
+</ul>
+<p><strong>GitHub Copilot's context understanding is constantly maturing</strong>. The first version could only consider the file you were working on in the IDE as relevant context. But the Copilot team knew context went beyond that. Now, just a year later, they are experimenting with algorithms to consider your entire codebase to generate customized suggestions.</p>
+<p>Here's <strong>how they got here</strong>:</p>
+<ul>
+<li>
+<p><strong>Prompt engineering</strong> is the delicate art of creating prompts so that the model offers the most useful predictions to users. Prompts tell LLMs, including GitHub Copilot, what data to process, and in what order, to contextualize your code. Much of this work takes place in the so-called <strong>prompt library</strong>, where experts collaborate with algorithms to extract and prioritize various pieces of information about the developer's context, creating prompts to be processed by the GitHub Copilot model.</p>
+</li>
+<li>
+<p><strong>Adjacent tabs</strong> is a technique that allows GitHub Copilot to process all open files in a developer's IDE, not just the single file being worked on. By opening all files related to their project, developers automatically invoke GitHub Copilot to scan all the data, finding matches between the developer's code around the cursor and adding these matches to the prompt.</p>
+</li>
+</ul>
+<p>In developing adjacent tabs, GitHub Next team and internal ML researchers conducted A/B testing to determine the best parameters for matching code in the IDE with code in open tabs. They found <strong>setting a very low threshold for including matches actually provided the best coding suggestions</strong>.</p>
+<p>By including every little context, adjacent tabs helped relatively increase the number of users accepting GitHub Copilot's suggestions by 5%.</p>
+<ul>
+<li><strong>The Fill-In-the-Middle (FIM) paradigm</strong> broadened the context aperture further. Before FIM, only the code before the cursor was put into the prompt, while the code after the cursor was ignored. (On GitHub, code before the cursor is called the prefix, and code after the cursor is the suffix). <strong>With FIM, we can tell the model which part of the prompt is the prefix and which is the suffix</strong>.</li>
+</ul>
+<p>Even if you're creating a file from scratch and only have a skeleton, Copilot understands that coding isn't linear or sequential. Thus, as you jump around the file, FIM can help GitHub Copilot provide better coding suggestions for the part where your cursor is or for what should appear between the prefix and suffix.</p>
+<p>Based on A/B testing, FIM improved relative performance by 10%, meaning developers accepted more than 10% of the suggestions they saw. With optimal cache usage, adjacent tabs and FIM run in the background without adding any latency.</p>
+<p><img alt="Image" src="https://mmbiz.qpic.cn/mmbiz_png/UPYfEY1kia004V6Yia6OiaMq3zCGKUfMyDRde1jvVgjSZia33Nd227ZCnAWSD6P6qqOicibtaSLupPye0TCQA2CkBu8A/640?wx_fmt=png" /></p>
+<p>Perhaps it is easier to understand with practical code examples. For example, in the reverse-engineered GitHub Copilot plugin code, the following content was included when constructing prompts:</p>
+<pre><code>exports.Priorities  = 
+  exports.PromptWishlist  = 
+  exports.PromptElementRanges  = 
+  exports.PromptChoices  = 
+  exports.PromptBackground  = 
+  exports.PromptElementKind  = 
+    undefined;
+const M_prompt_parsing_utils_maybe = require(&quot;prompt-parsing-utils&quot;);
+const M_tokenizer_maybe = require(&quot;tokenizer&quot;);
+var i;
+!(function (e) {
+  e.BeforeCursor = &quot;BeforeCursor&quot;;
+  e.AfterCursor = &quot;AfterCursor&quot;;
+  e.SimilarFile = &quot;SimilarFile&quot;;
+  e.ImportedFile = &quot;ImportedFile&quot;;
+  e.LanguageMarker = &quot;LanguageMarker&quot;;
+  e.PathMarker = &quot;PathMarker&quot;;
+})((i = exports.PromptElementKind || (exports.PromptElementKind = {})));
+
+// The main function of this code is to define an enumeration type to represent various kinds of prompt elements used internally by the GitHub Copilot system, and it imports some modules that may be related to processing these prompt elements. It defines some variables named `PromptElementKind`, which is an enumeration object used to describe different types of prompt elements. These prompt elements could be different types of information needed during coding, such as code before or after the cursor, similar files, imported files, language markers, and path markers. These prompts might include related code snippets or comments selected from the current file and other sources, then prioritize, filter, and assemble these snippets and comments to form the final prompt. These prompts instruct the model on which data to process and in what order to contextualize the code.
+
+A practical example of a Copilot prompt might look like this:
+
+</code></pre>
+<p>{
+  "prefix": "# Path: codeviz\\app.py\n# Compare this snippet from codeviz\\predictions.py:\n# import json\n# import sys\n# import time\n# from manifest import Manifest\n#\n# sys.path.append(<strong>file</strong> + \"/..\")\n# from common import module_codes, module_deps, module_categories, data_dir, cur_dir\n#\n# gold_annots = json.loads(open(data_dir / \"gold_annotations.js\").read()",
+  "suffix": "if <strong>name</strong> == '<strong>main</strong>':\r\n    app.run(debug=True)",
+  "isFimEnabled": true,
+  "promptElementRanges": [
+    { "kind": "PathMarker", "start": 0, "end": 23 },
+    { "kind": "SimilarFile", "start": 23, "end": 2219 },
+    { "kind": "BeforeCursor", "start": 2219, "end": 3142 }
+  ]
+}</p>
+<pre><code>
+As you can see, this prompt includes a prefix and a suffix. Copilot then sends this prompt (after some formatting) to the model. In this case, Copilot is invoking Codex in &quot;insert mode&quot; (also known as fill-in-the-middle or FIM mode) because the suffix is not empty.
+
+Enhancing Semantic Understanding
+--------------------------------
+
+Today, Copilot is attempting to use **vector databases to create personalized coding experiences for developers working in private repositories or with proprietary code**. Generative AI coding tools use something called embeddings to retrieve information from vector databases.
+
+*   **What is a vector database?** It is a database that indexes high-dimensional vectors.
+
+*   **What are high-dimensional vectors?** They are mathematical representations of objects. Because these vectors can simulate objects across multiple dimensions, they can capture the complexity of the object. When properly used to represent code snippets, they can represent the semantic intent of the code, not just its syntax.
+
+*   **What is an embedding?** In the context of coding and LLMs, an embedding is how code snippets are represented as high-dimensional vectors. Because LLMs &quot;know&quot; about programming and human language, they can capture both the syntax and semantics of code in these vectors.
+
+**Here's how they work together:**
+
+*   Algorithms will create embeddings for all snippets in a repository (potentially billions) and store them in a vector database.
+
+*   Then, when you code, algorithms will embed snippets within the IDE.
+
+*   Algorithms will then perform approximate matches between the IDE snippet embeddings and the embeddings stored in the vector database, also in real-time. The vector database allows the algorithm to quickly search for approximate matches on vectors (not just exact matches), even if it stores billions of embeddings.
+
+Developers are familiar with using hash codes to retrieve data, which usually look for exact character matches, explained GitHub's senior ML researcher Alireza Goudarzi. &quot;But embeddings – because they are derived from data-trained LLMs – create semantic proximity between code snippets and natural language prompts.&quot;
+
+Read the following three sentences and determine which two are semantically most similar.
+
+*   **Sentence A**: The king moved and captured the pawn.
+
+*   **Sentence B**: The king was crowned at Westminster Abbey.
+
+*   **Sentence C**: Two white rooks are still in the game.
+
+The answer is sentences A and C because both are about chess. While sentences A and B are syntactically or structurally similar due to &quot;the king&quot; being the subject, they are semantically different as &quot;the king&quot; is used in different contexts.
+
+Here's how each statement would be translated into Python. Notice that despite their semantic differences, fragments A and B have syntactic similarities, while fragments A and C have semantic similarities.
+
+### Fragment A:
+
+</code></pre>
+<p>if king.location() == pawn.location():
+    board.captures_piece(king, pawn)</p>
+<pre><code>
+### Fragment B:
+
+</code></pre>
+<p>if king.location() == "Westminster Abbey":
+    king.crown()</p>
+<pre><code>
+### Fragment C:
+
+</code></pre>
+<p>if len([ r for r in board.pieces("white") if r.type == "rook" ]) == 2:
+    return True</p>
+<pre><code>
+As mentioned, Copilot is still working on retrieval algorithms and is designing the feature for enterprise customers, particularly those looking for a personalized coding experience in private repositories who have explicitly opted into using this feature.
+
+We can further discuss this issue by combining reverse engineering of Copilot's code. To handle large-scale natural language processing tasks, Copilot utilizes a combination of Cushman and ONNX models on the client side. Specifically, Copilot transforms the output of the Cushman model into vector representations and then uses vector similarity calculations to match the most relevant local files.
+
+Besides on-the-spot vectorization and similarity matching, Copilot also uses local similarity calculations and token handling to manage tokens, better handling large-scale natural language processing tasks. For example, the following possible code snippet appeared in Copilot reverse engineering:
+
+</code></pre>
+<p>e.prototype.useAutoCorrelation = function (e, t) {
+    if (e &amp;&amp; !this._isAutoCorrelating) {
+      M_correlation_context_manager.CorrelationContextManager.enable(t);
+    } else {
+      if (!e &amp;&amp; this._isAutoCorrelating) {
+        M_correlation_context_manager.CorrelationContextManager.disable();
+      }
+    }
+    this._isAutoCorrelating = e;
+  };
+```</p>
+<h2 id="summary-and-review">Summary and Review</h2>
+<p>Last year, the Copilot team conducted a quantitative study on GitHub Copilot, finding that developers using this software can code at speeds up to 55% faster. This means developers feel more efficient, can complete repetitive tasks more quickly, and can focus more on satisfying work. But our work doesn't stop there.</p>
+<p>GitHub’s product and R&amp;D teams, including GitHub Next, have been collaborating with the Microsoft Azure AI platform to continue improving GitHub Copilot's context understanding. Much of the work that helps GitHub Copilot understand your code occurs behind the scenes. As you write and edit your code, GitHub Copilot responds in real-time by generating prompts (or, based on your actions in the IDE, prioritizing and sending relevant information to the model) to provide the best coding suggestions continually.</p>
+<h3 id="learn-more">Learn More</h3>
+<ul>
+<li>GitHub Copilot X envisions the future of AI-powered software development. Discover new content.</li>
+<li>Learn how the LLMs powering GitHub Copilot are becoming more spectacular.</li>
+<li>Read the corresponding research to learn how GitHub Copilot influences developer productivity.</li>
+</ul>
+<p>Resources Related to Copilot Reverse Engineering:</p>
+<ul>
+<li>https://github.com/thakkarparth007/copilot-explorer</li>
+<li>https://github.com/saschaschramm/github-copilot</li>
+</ul>
+<blockquote>
+<p>For more interesting AI experiments and insights, please visit my AI experiment and throughts website <a href="https://yunwei37.github.io/My-AI-experiment/">https://yunwei37.github.io/My-AI-experiment/</a> and github repo: <a href="https://github.com/yunwei37/My-AI-experiment">https://github.com/yunwei37/My-AI-experiment</a></p>
+</blockquote>
+<p><a class="md-button" href="https://x.com/intent/tweet?text=The%20AI%20Coding%20Technology%20Behind%20GitHub%20Copilot%3A%20How%20to%20Make%20GPT%20Understand%20Your%20Code%20Better%0A&amp;url=https://yunwei37.github.io/My-AI-experiment/Agents/copilot/">Share on <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg></span></a>
+<a class="md-button" href="https://www.facebook.com/sharer/sharer.php?u=https://yunwei37.github.io/My-AI-experiment/Agents/copilot/">Share on <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a9 9 0 0 1 1.141.195v3.325a9 9 0 0 0-.653-.036 27 27 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.7 1.7 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647"/></svg></span></a></p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 26, 2025</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Created">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 26, 2025</span>
+  </span>
+
+    
+    
+      
+  
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Contributors">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+      
+    </span>
+    <nav>
+      
+        <a href="mailto:yusen356@gmail.com">weekendfish</a>
+    </nav>
+  </span>
+
+    
+    
+  </aside>
+
+
+  
+
+
+
+
+<script src="https://giscus.app/client.js"
+        data-repo="yunwei37/My-AI-experiment"
+        data-repo-id="R_kgDOM_JICg"
+        data-category="General"
+        data-category-id="DIC_kwDOM_JICs4CjkPa"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../.." class="md-footer__link md-footer__link--prev" aria-label="Previous: Home">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Home
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../kgent/" class="md-footer__link md-footer__link--next" aria-label="Next: Simplifying Kernel Programming: The LLM-Powered eBPF Tool">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Simplifying Kernel Programming: The LLM-Powered eBPF Tool
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:yunwei37@gmail.com" target="_blank" rel="noopener" title="send me an email" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M64 112c-8.8 0-16 7.2-16 16v22.1l172.5 141.6c20.7 17 50.4 17 71.1 0L464 150.1V128c0-8.8-7.2-16-16-16zM48 212.2V384c0 8.8 7.2 16 16 16h384c8.8 0 16-7.2 16-16V212.2L322 328.8c-38.4 31.5-93.7 31.5-132 0zM0 128c0-35.3 28.7-64 64-64h384c35.3 0 64 28.7 64 64v256c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["search.suggest", "search.highlight", "search.share", "navigation.footer", "navigation.instant", "navigation.instant.progress", "navigation.tabs", "navigation.expand", "navigation.path", "navigation.top"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f1b6f286.min.js"></script>
+      
+    
+  </body>
+</html>
